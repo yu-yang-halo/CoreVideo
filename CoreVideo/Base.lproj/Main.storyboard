@@ -635,7 +635,7 @@
                                             <action selector="zoomInOut:" target="47X-5P-zVC" id="ICK-7n-xfR"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="快退" translatesAutoresizingMaskIntoConstraints="NO" id="HFj-XD-jPT">
+                                    <button toolTip="静音" translatesAutoresizingMaskIntoConstraints="NO" id="HFj-XD-jPT">
                                         <rect key="frame" x="23" y="17" width="27" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27" id="KMr-pr-522"/>
@@ -652,7 +652,7 @@
                                             <action selector="clickVoiceBtn:" target="47X-5P-zVC" id="SYO-CE-Bns"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Or-Da-ogn">
+                                    <button toolTip="上一个文件" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Or-Da-ogn">
                                         <rect key="frame" x="224" y="16" width="28" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="28" id="33l-X0-lUu"/>
@@ -661,13 +661,13 @@
                                         <animations/>
                                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="last" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="O5t-24-qBi">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="lastFile:" target="47X-5P-zVC" id="nQM-98-EP7"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pZP-Ep-Nz3">
+                                    <button toolTip="下一个文件" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pZP-Ep-Nz3">
                                         <rect key="frame" x="415" y="16" width="28" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="28" id="nO1-P7-ukQ"/>
@@ -887,7 +887,7 @@
                                             <constraint firstAttribute="width" constant="109" id="9Ps-9r-uOK"/>
                                         </constraints>
                                         <animations/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="0" id="2TG-6r-W2D">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="2TG-6r-W2D">
                                             <font key="font" size="16" name="STHeitiSC-Light"/>
                                             <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -925,7 +925,7 @@
                                             <constraint firstAttribute="height" constant="20" id="YQW-p9-ISg"/>
                                         </constraints>
                                         <animations/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="0" id="u69-R9-DHS">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="u69-R9-DHS">
                                             <font key="font" size="16" name="STHeitiSC-Light"/>
                                             <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -938,7 +938,7 @@
                                             <constraint firstAttribute="height" constant="20" id="e13-Lg-e8U"/>
                                         </constraints>
                                         <animations/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="0" id="JH6-AG-zxs">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="JH6-AG-zxs">
                                             <font key="font" size="16" name="STHeitiSC-Light"/>
                                             <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

@@ -3,7 +3,7 @@
 //  CoreVideo
 //
 //  Created by apple on 15/9/13.
-//  Copyright (c) 2015年 cn.lztech  合肥联正电子科技有限公司. All rights reserved.
+//  Copyright (c) 2015年 yangyu   QQ：623240480. All rights reserved.
 //
 
 #import "TimeFormatUtils.h"

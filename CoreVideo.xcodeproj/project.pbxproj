@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180364DB1BAEADD100870783 /* CustomGsensorView.m */; };
-		180364DE1BAED2BA00870783 /* Class界面 in Resources */ = {isa = PBXBuildFile; fileRef = 180364DD1BAED2BA00870783 /* Class界面 */; };
 		183CBA9E1BD113760075D7F4 /* AppColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 183CBA9D1BD113760075D7F4 /* AppColorManager.m */; };
 		1890EA501BB677E600AAE6E1 /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1890EA4E1BB677E600AAE6E1 /* PreferenceController.m */; };
 		1890EA5E1BB688D500AAE6E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1890EA601BB688D500AAE6E1 /* Localizable.strings */; };
@@ -67,7 +66,6 @@
 /* Begin PBXFileReference section */
 		180364DA1BAEADD100870783 /* CustomGsensorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGsensorView.h; sourceTree = "<group>"; };
 		180364DB1BAEADD100870783 /* CustomGsensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGsensorView.m; sourceTree = "<group>"; };
-		180364DD1BAED2BA00870783 /* Class界面 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Class界面"; sourceTree = "<group>"; };
 		18313C1B1BE79BFF00D07AC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		18313C1D1BE79C0600D07AC0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		183CBA9C1BD113760075D7F4 /* AppColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppColorManager.h; sourceTree = "<group>"; };
@@ -173,21 +171,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		186162D41BB82173000CC33E /* util */ = {
-			isa = PBXGroup;
-			children = (
-				18DAF4CC1BB6AE4B004EDA75 /* AppLanguageManager.h */,
-				18DAF4CD1BB6AE4B004EDA75 /* AppLanguageManager.m */,
-				18DAF4CF1BB6BE34004EDA75 /* AppUtils.h */,
-				18DAF4D01BB6BE34004EDA75 /* AppUtils.m */,
-				18DAF4D21BB6C133004EDA75 /* AppUserDefaults.h */,
-				18DAF4D31BB6C133004EDA75 /* AppUserDefaults.m */,
-				183CBA9C1BD113760075D7F4 /* AppColorManager.h */,
-				183CBA9D1BD113760075D7F4 /* AppColorManager.m */,
-			);
-			name = util;
-			sourceTree = "<group>";
-		};
 		1890EA521BB677FE00AAE6E1 /* object */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +219,14 @@
 		18D89F6A1BA5384F000D058C /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				18DAF4CC1BB6AE4B004EDA75 /* AppLanguageManager.h */,
+				18DAF4CD1BB6AE4B004EDA75 /* AppLanguageManager.m */,
+				18DAF4CF1BB6BE34004EDA75 /* AppUtils.h */,
+				18DAF4D01BB6BE34004EDA75 /* AppUtils.m */,
+				18DAF4D21BB6C133004EDA75 /* AppUserDefaults.h */,
+				18DAF4D31BB6C133004EDA75 /* AppUserDefaults.m */,
+				183CBA9C1BD113760075D7F4 /* AppColorManager.h */,
+				183CBA9D1BD113760075D7F4 /* AppColorManager.m */,
 				18D89F6B1BA53874000D058C /* TimeFormatUtils.h */,
 				18D89F6C1BA53874000D058C /* TimeFormatUtils.m */,
 				846C31DC1BA66E480007ACDB /* MyCache.h */,
@@ -285,7 +276,6 @@
 		84A85E6B1BA28E0E00817598 /* CoreVideo */ = {
 			isa = PBXGroup;
 			children = (
-				186162D41BB82173000CC33E /* util */,
 				1890EA521BB677FE00AAE6E1 /* object */,
 				18D795F51BB57E3F0074DB25 /* window */,
 				84AF2E761BAB9BA8003B3217 /* view */,
@@ -304,7 +294,6 @@
 				84B5DFDB1BAAC54500DA74DB /* mcar3.png */,
 				84A85E6C1BA28E0E00817598 /* Supporting Files */,
 				84B5DFCE1BAA5BF900DA74DB /* 高德地图KEY */,
-				180364DD1BAED2BA00870783 /* Class界面 */,
 			);
 			path = CoreVideo;
 			sourceTree = "<group>";
@@ -440,7 +429,6 @@
 				1890EA5E1BB688D500AAE6E1 /* Localizable.strings in Resources */,
 				84A85E7A1BA28E0E00817598 /* Images.xcassets in Resources */,
 				84B5DFDC1BAAC54500DA74DB /* mcar3.png in Resources */,
-				180364DE1BAED2BA00870783 /* Class界面 in Resources */,
 				84F819A51BF09F5F00FA2314 /* GeoUtils.js in Resources */,
 				84B5DFD61BAABF7C00DA74DB /* mcar.png in Resources */,
 				18D885981BC4DEDC00285E2B /* CVToastWindowController.xib in Resources */,
