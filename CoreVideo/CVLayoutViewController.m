@@ -36,6 +36,9 @@
     BOOL videoZoomStateMAX;
     BOOL mapZoomStateMAX;
     
+    CGFloat global_position0;
+    CGFloat global_position1;
+    
 }
 @property (weak) IBOutlet NSSplitView *globalSplitView;
 @property (weak) IBOutlet NSSplitView *leftSplitView;
@@ -59,6 +62,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowFullScreenChange:) name:notification_full_screen object:nil];
+    
     
     [self.view setWantsLayer:YES];
     
@@ -139,20 +144,50 @@
     }
     return nil;
 }
+-(void)windowFullScreenChange:(NSNotification *)notification{
+    global_position0=0;
+    global_position1=0;
+}
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex{
     
-    NSLog(@"splitView %@ proposedMinimumPosition %f  dividerIndex %ld",[self currentSplitView:splitView],proposedMinimumPosition,dividerIndex);
+    //NSLog(@"splitView %@ proposedMinimumPosition %f  dividerIndex %ld",[self currentSplitView:splitView],proposedMinimumPosition,dividerIndex);
+    if(splitView==_globalSplitView){
+        if(dividerIndex==1){
+            if(global_position0>0){
+                return global_position0;
+            }
+            global_position0=proposedMinimumPosition;
+        }
+    }
+    
     return proposedMinimumPosition;
 }
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex{
-    NSLog(@"splitView %@ proposedMaximumPosition %f  dividerIndex %ld",[self currentSplitView:splitView],proposedMaximumPosition,dividerIndex);
+    //NSLog(@"splitView %@ proposedMaximumPosition %f  dividerIndex %ld",[self currentSplitView:splitView],proposedMaximumPosition,dividerIndex);
+    if(splitView==_globalSplitView){
+        if(dividerIndex==0){
+            if(global_position1>0){
+                return global_position1;
+            }
+            global_position1=proposedMaximumPosition;
+        }
+    }
+
     return proposedMaximumPosition;
 }
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex{
-    NSLog(@"splitView %@ proposedPosition %f  dividerIndex %ld",[self currentSplitView:splitView],proposedPosition,dividerIndex);
+    //NSLog(@"splitView %@ proposedPosition %f  dividerIndex %ld",[self currentSplitView:splitView],proposedPosition,dividerIndex);
+    if(splitView==_globalSplitView){
+        if(dividerIndex==0){
+            return global_position0;
+        }else if(dividerIndex==1){
+            return global_position1;
+        }
+    }
+    
     return proposedPosition;
 }
 

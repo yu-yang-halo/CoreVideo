@@ -25,17 +25,20 @@
 	<script>
 		var map;
 		var centerPoint;
+        // 百度地图API功能
+        map = new BMap.Map("mapContainer");    // 创建Map实例
+        map.clearOverlays();
+        var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});
+        var top_left_navigation = new BMap.NavigationControl();
+        map.addControl(top_left_control);
+        map.addControl(top_left_navigation);
 		loadMapData();
 		function loadMapData(){
-		   // 百度地图API功能
-			map = new BMap.Map("mapContainer");    // 创建Map实例
-            map.clearOverlays();
-	
 			if(centerPoint==undefined){
 				centerPoint=new BMap.Point(116.404, 39.915);
 			}
 			map.centerAndZoom(centerPoint, 18);  // 初始化地图,设置中心点坐标和地图级别
-			map.addControl(new BMap.MapTypeControl());   //添加地图类型控件        
+            
 			map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 	
    //创建marker
