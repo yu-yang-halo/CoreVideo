@@ -27,13 +27,13 @@
 		var centerPoint;
         // 百度地图API功能
         map = new BMap.Map("mapContainer");    // 创建Map实例
-        map.clearOverlays();
         var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});
         var top_left_navigation = new BMap.NavigationControl();
         map.addControl(top_left_control);
         map.addControl(top_left_navigation);
 		loadMapData();
 		function loadMapData(){
+            map.clearOverlays();
 			if(centerPoint==undefined){
 				centerPoint=new BMap.Point(116.404, 39.915);
 			}
