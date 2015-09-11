@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E6F1BA28E0E00817598 /* AppDelegate.m */; };
+		84A85E721BA28E0E00817598 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E711BA28E0E00817598 /* main.m */; };
+		84A85E751BA28E0E00817598 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E741BA28E0E00817598 /* ViewController.m */; };
+		84A85E781BA28E0E00817598 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E771BA28E0E00817598 /* Document.m */; };
+		84A85E7A1BA28E0E00817598 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A85E791BA28E0E00817598 /* Images.xcassets */; };
+		84A85E7D1BA28E0E00817598 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A85E7B1BA28E0E00817598 /* Main.storyboard */; };
+		84A85E891BA28E0E00817598 /* CoreVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E881BA28E0E00817598 /* CoreVideoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84A85E831BA28E0E00817598 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84A85E611BA28E0E00817598 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84A85E681BA28E0E00817598;
+			remoteInfo = CoreVideo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		84A85E691BA28E0E00817598 /* CoreVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84A85E6D1BA28E0E00817598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84A85E6E1BA28E0E00817598 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		84A85E6F1BA28E0E00817598 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		84A85E711BA28E0E00817598 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84A85E731BA28E0E00817598 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		84A85E741BA28E0E00817598 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		84A85E761BA28E0E00817598 /* Document.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
+		84A85E771BA28E0E00817598 /* Document.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		84A85E791BA28E0E00817598 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		84A85E7C1BA28E0E00817598 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84A85E821BA28E0E00817598 /* CoreVideoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreVideoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84A85E871BA28E0E00817598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84A85E881BA28E0E00817598 /* CoreVideoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreVideoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84A85E661BA28E0E00817598 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84A85E7F1BA28E0E00817598 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84A85E601BA28E0E00817598 = {
+			isa = PBXGroup;
+			children = (
+				84A85E6B1BA28E0E00817598 /* CoreVideo */,
+				84A85E851BA28E0E00817598 /* CoreVideoTests */,
+				84A85E6A1BA28E0E00817598 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84A85E6A1BA28E0E00817598 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84A85E691BA28E0E00817598 /* CoreVideo.app */,
+				84A85E821BA28E0E00817598 /* CoreVideoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84A85E6B1BA28E0E00817598 /* CoreVideo */ = {
+			isa = PBXGroup;
+			children = (
+				84A85E6E1BA28E0E00817598 /* AppDelegate.h */,
+				84A85E6F1BA28E0E00817598 /* AppDelegate.m */,
+				84A85E731BA28E0E00817598 /* ViewController.h */,
+				84A85E741BA28E0E00817598 /* ViewController.m */,
+				84A85E761BA28E0E00817598 /* Document.h */,
+				84A85E771BA28E0E00817598 /* Document.m */,
+				84A85E791BA28E0E00817598 /* Images.xcassets */,
+				84A85E7B1BA28E0E00817598 /* Main.storyboard */,
+				84A85E6C1BA28E0E00817598 /* Supporting Files */,
+			);
+			path = CoreVideo;
+			sourceTree = "<group>";
+		};
+		84A85E6C1BA28E0E00817598 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84A85E6D1BA28E0E00817598 /* Info.plist */,
+				84A85E711BA28E0E00817598 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84A85E851BA28E0E00817598 /* CoreVideoTests */ = {
+			isa = PBXGroup;
+			children = (
+				84A85E881BA28E0E00817598 /* CoreVideoTests.m */,
+				84A85E861BA28E0E00817598 /* Supporting Files */,
+			);
+			path = CoreVideoTests;
+			sourceTree = "<group>";
+		};
+		84A85E861BA28E0E00817598 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84A85E871BA28E0E00817598 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84A85E681BA28E0E00817598 /* CoreVideo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84A85E8C1BA28E0E00817598 /* Build configuration list for PBXNativeTarget "CoreVideo" */;
+			buildPhases = (
+				84A85E651BA28E0E00817598 /* Sources */,
+				84A85E661BA28E0E00817598 /* Frameworks */,
+				84A85E671BA28E0E00817598 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CoreVideo;
+			productName = CoreVideo;
+			productReference = 84A85E691BA28E0E00817598 /* CoreVideo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		84A85E811BA28E0E00817598 /* CoreVideoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84A85E8F1BA28E0E00817598 /* Build configuration list for PBXNativeTarget "CoreVideoTests" */;
+			buildPhases = (
+				84A85E7E1BA28E0E00817598 /* Sources */,
+				84A85E7F1BA28E0E00817598 /* Frameworks */,
+				84A85E801BA28E0E00817598 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84A85E841BA28E0E00817598 /* PBXTargetDependency */,
+			);
+			name = CoreVideoTests;
+			productName = CoreVideoTests;
+			productReference = 84A85E821BA28E0E00817598 /* CoreVideoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84A85E611BA28E0E00817598 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "cn.lztech  合肥联正电子科技有限公司";
+				TargetAttributes = {
+					84A85E681BA28E0E00817598 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					84A85E811BA28E0E00817598 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 84A85E681BA28E0E00817598;
+					};
+				};
+			};
+			buildConfigurationList = 84A85E641BA28E0E00817598 /* Build configuration list for PBXProject "CoreVideo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84A85E601BA28E0E00817598;
+			productRefGroup = 84A85E6A1BA28E0E00817598 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84A85E681BA28E0E00817598 /* CoreVideo */,
+				84A85E811BA28E0E00817598 /* CoreVideoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84A85E671BA28E0E00817598 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A85E7A1BA28E0E00817598 /* Images.xcassets in Resources */,
+				84A85E7D1BA28E0E00817598 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84A85E801BA28E0E00817598 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84A85E651BA28E0E00817598 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A85E781BA28E0E00817598 /* Document.m in Sources */,
+				84A85E751BA28E0E00817598 /* ViewController.m in Sources */,
+				84A85E721BA28E0E00817598 /* main.m in Sources */,
+				84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84A85E7E1BA28E0E00817598 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A85E891BA28E0E00817598 /* CoreVideoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84A85E841BA28E0E00817598 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84A85E681BA28E0E00817598 /* CoreVideo */;
+			targetProxy = 84A85E831BA28E0E00817598 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		84A85E7B1BA28E0E00817598 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84A85E7C1BA28E0E00817598 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84A85E8A1BA28E0E00817598 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		84A85E8B1BA28E0E00817598 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		84A85E8D1BA28E0E00817598 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CoreVideo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		84A85E8E1BA28E0E00817598 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CoreVideo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		84A85E901BA28E0E00817598 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CoreVideoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreVideo.app/Contents/MacOS/CoreVideo";
+			};
+			name = Debug;
+		};
+		84A85E911BA28E0E00817598 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CoreVideoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoreVideo.app/Contents/MacOS/CoreVideo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84A85E641BA28E0E00817598 /* Build configuration list for PBXProject "CoreVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84A85E8A1BA28E0E00817598 /* Debug */,
+				84A85E8B1BA28E0E00817598 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84A85E8C1BA28E0E00817598 /* Build configuration list for PBXNativeTarget "CoreVideo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84A85E8D1BA28E0E00817598 /* Debug */,
+				84A85E8E1BA28E0E00817598 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		84A85E8F1BA28E0E00817598 /* Build configuration list for PBXNativeTarget "CoreVideoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84A85E901BA28E0E00817598 /* Debug */,
+				84A85E911BA28E0E00817598 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84A85E611BA28E0E00817598 /* Project object */;
+}
