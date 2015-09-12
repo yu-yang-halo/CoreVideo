@@ -7,9 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+extern const NSString *key_url_path;
+extern const NSString *NOTIFICATION_URL_PATH;
+@protocol DocumentDelegate <NSObject>
+
+-(void)getOpenDocumentPath:(NSURL *)url;
+
+@end
 
 @interface Document : NSDocument
-
-
+@property(nonatomic,weak) id<DocumentDelegate> delegateDocPath;
 @end
 

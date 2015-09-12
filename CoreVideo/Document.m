@@ -8,7 +8,12 @@
 
 #import "Document.h"
 
+const NSString *key_url_path=@"KEY_URL_PATH";
+const NSString *NOTIFICATION_URL_PATH=@"notification_url_path";
+
 @interface Document ()
+
+
 
 @end
 
@@ -21,6 +26,8 @@
     }
     return self;
 }
+
+
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
     [super windowControllerDidLoadNib:aController];
@@ -43,11 +50,24 @@
     return nil;
 }
 
+- (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError **)outError{
+    
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_URL_PATH object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:url,key_url_path, nil]];
+    
+    return YES;
+}
+
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
     // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
     // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
     // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    [NSException raise:@"UnimplementedMethod" format:@"%@ is unimplemented", NSStringFromSelector(_cmd)];
+ 
+    
+
+    
+    
+    
     return YES;
 }
 

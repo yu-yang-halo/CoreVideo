@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6172" systemVersion="14A261f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6172"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -117,6 +117,9 @@
                                         </menuItem>
                                     </items>
                                 </menu>
+                                <connections>
+                                    <action selector="openDocument:" target="Ady-hI-5gd" id="bbN-ri-7qF"/>
+                                </connections>
                             </menuItem>
                             <menuItem title="Edit" id="5QF-Oa-p0T">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -641,15 +644,15 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider=""/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="707" y="-308"/>
         </scene>
-        <!--Window Controller - Window-->
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="jGA-0Y-lOj" storyboardIdentifier="Document Window Controller" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="Document Window Controller" id="jGA-0Y-lOj" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -657,39 +660,108 @@
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
-                        <segue destination="5gI-5U-AMq" kind="relationship" relationship="window.shadowedContentViewController" id="nsd-lR-9xd"/>
+                        <segue destination="47X-5P-zVC" kind="relationship" relationship="window.shadowedContentViewController" id="pEI-PS-byN"/>
                     </connections>
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="694" y="-67"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Video View Controller-->
+        <scene sceneID="28i-2G-ea1">
             <objects>
-                <viewController id="5gI-5U-AMq" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
-                    <view key="view" id="ERx-hH-rdd">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <viewController id="47X-5P-zVC" customClass="VideoViewController" sceneMemberID="viewController">
+                    <view key="view" id="8pP-EI-INb">
+                        <rect key="frame" x="0.0" y="0.0" width="656" height="423"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="TyV-c9-G0C">
-                                <rect key="frame" x="115" y="124" width="250" height="22"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Your document contents here" id="Cc7-nU-5Mv">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="t9R-w5-2Nn">
+                                <rect key="frame" x="0.0" y="0.0" width="656" height="423"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y55-HI-duF">
+                                        <rect key="frame" x="174" y="13" width="66" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Bgl-pc-Fvc"/>
+                                            <constraint firstAttribute="width" constant="54" id="ZWL-V9-4Bo"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="播放" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="72g-ac-17f">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                            <connections>
+                                                <action selector="play:" target="47X-5P-zVC" id="REF-hc-XuE"/>
+                                            </connections>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mA7-3U-cre">
+                                        <rect key="frame" x="416" y="13" width="66" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="htG-Q1-cc1"/>
+                                            <constraint firstAttribute="height" constant="21" id="zGT-ao-7d2"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="设置" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hbq-R4-XSI">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bSQ-sq-IjW">
+                                        <rect key="frame" x="339" y="13" width="66" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="0Lw-Fm-msB"/>
+                                            <constraint firstAttribute="width" constant="54" id="5Ak-pN-pjq"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="截图" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iJt-gA-AFw">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                            <connections>
+                                                <action selector="capture:" target="47X-5P-zVC" id="ZTJ-By-FMW"/>
+                                            </connections>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mf6-b7-GqV">
+                                        <rect key="frame" x="251" y="13" width="66" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="7Io-kN-g5v"/>
+                                            <constraint firstAttribute="height" constant="21" id="leo-ps-WS8"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="暂停" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BZ3-iX-wJZ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                            <connections>
+                                                <action selector="pause:" target="47X-5P-zVC" id="PF8-5o-aM1"/>
+                                            </connections>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="y55-HI-duF" firstAttribute="leading" secondItem="t9R-w5-2Nn" secondAttribute="leading" constant="180" id="IeD-QD-ryK"/>
+                                    <constraint firstAttribute="bottom" secondItem="bSQ-sq-IjW" secondAttribute="bottom" constant="20" id="LLv-lO-1iw"/>
+                                    <constraint firstAttribute="bottom" secondItem="mf6-b7-GqV" secondAttribute="bottom" constant="20" id="bEt-CA-Cxv"/>
+                                    <constraint firstAttribute="trailing" secondItem="mA7-3U-cre" secondAttribute="trailing" constant="180" id="cU6-pf-OTM"/>
+                                    <constraint firstAttribute="bottom" secondItem="y55-HI-duF" secondAttribute="bottom" constant="20" id="hep-Xe-Thn"/>
+                                    <constraint firstItem="mA7-3U-cre" firstAttribute="leading" secondItem="bSQ-sq-IjW" secondAttribute="trailing" constant="23" id="oyc-aY-KNk"/>
+                                    <constraint firstItem="mf6-b7-GqV" firstAttribute="leading" secondItem="y55-HI-duF" secondAttribute="trailing" constant="23" id="pfG-2Z-HKM"/>
+                                    <constraint firstAttribute="bottom" secondItem="mA7-3U-cre" secondAttribute="bottom" constant="20" id="rDI-8H-bq9"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="TyV-c9-G0C" secondAttribute="centerY" id="Rxv-Yd-F43"/>
-                            <constraint firstAttribute="centerX" secondItem="TyV-c9-G0C" secondAttribute="centerX" id="Zn4-Y4-lbg"/>
+                            <constraint firstAttribute="trailing" secondItem="t9R-w5-2Nn" secondAttribute="trailing" id="C8s-45-HYx"/>
+                            <constraint firstAttribute="bottom" secondItem="t9R-w5-2Nn" secondAttribute="bottom" id="ozE-ZU-nhC"/>
+                            <constraint firstItem="t9R-w5-2Nn" firstAttribute="leading" secondItem="8pP-EI-INb" secondAttribute="leading" id="r4C-N0-RGX"/>
+                            <constraint firstItem="t9R-w5-2Nn" firstAttribute="top" secondItem="8pP-EI-INb" secondAttribute="top" id="v6v-n5-Yyp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="captureButton" destination="bSQ-sq-IjW" id="uax-Uq-uNS"/>
+                        <outlet property="containerView" destination="t9R-w5-2Nn" id="N2p-R9-qcL"/>
+                        <outlet property="pauseButton" destination="mf6-b7-GqV" id="LSw-Ow-je2"/>
+                        <outlet property="play" destination="72g-ac-17f" id="evY-zB-hJd"/>
+                        <outlet property="playButton" destination="y55-HI-duF" id="sNX-qG-gDw"/>
+                    </connections>
                 </viewController>
-                <customObject id="2Tp-Fl-jBw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="AFW-vq-YcF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="601" y="42.5"/>
         </scene>
     </scenes>
 </document>
