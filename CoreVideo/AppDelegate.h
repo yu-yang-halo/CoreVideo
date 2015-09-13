@@ -8,8 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "VideoViewController.h"
+#import "CVWindowController.h"
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property(nonatomic,strong) VideoViewController *videoVC;
+@property(nonatomic,strong) CVWindowController  *windowVC;
 
 @end
 

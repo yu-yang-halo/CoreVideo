@@ -7,10 +7,7 @@
 //
 
 #import "Document.h"
-
-const NSString *key_url_path=@"KEY_URL_PATH";
-const NSString *NOTIFICATION_URL_PATH=@"notification_url_path";
-
+#import "AppDelegate.h"
 @interface Document ()
 
 
@@ -40,7 +37,10 @@ const NSString *NOTIFICATION_URL_PATH=@"notification_url_path";
 
 - (void)makeWindowControllers {
     // Override to return the Storyboard file name of the document.
-    [self addWindowController:[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"Document Window Controller"]];
+    
+    AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+   [self addWindowController:delegate.windowVC];
+    
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
@@ -52,10 +52,22 @@ const NSString *NOTIFICATION_URL_PATH=@"notification_url_path";
 
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError **)outError{
     
+    
+    AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+    
+    [delegate.videoVC initAssetData:url];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_URL_PATH object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:url,key_url_path, nil]];
+    
     
     return YES;
+}
+-(void)close{
+    AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+    
+    [delegate.videoVC close];
+    
+    
+    [super close];
 }
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {

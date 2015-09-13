@@ -7,7 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import <AVKit/AVKit.h>
+#import <AVFoundation/AVFoundation.h>
 @interface VideoViewController : NSViewController
 
+@property(nonatomic,strong) AVPlayer *player;
+
+-(void)initAssetData:(NSURL *)url;
+-(void)close;
+-(void)playOrPause;
 @end
