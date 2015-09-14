@@ -15,5 +15,5 @@
 +(void)playPathClear;
 
 +(NSArray *)playList;
-
++(void)syncPlayList:(NSArray *)playlist;
 @end

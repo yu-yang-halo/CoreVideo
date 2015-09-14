@@ -14,6 +14,7 @@
 		846C31DE1BA66E480007ACDB /* MyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31DD1BA66E480007ACDB /* MyCache.m */; };
 		846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E11BA679EC0007ACDB /* PlayListViewController.m */; };
 		846C31E51BA6A42A0007ACDB /* CVSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E41BA6A42A0007ACDB /* CVSplitViewController.m */; };
+		846C31E81BA6B8C10007ACDB /* CVHorizontalSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E71BA6B8C10007ACDB /* CVHorizontalSplitViewController.m */; };
 		84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E6F1BA28E0E00817598 /* AppDelegate.m */; };
 		84A85E721BA28E0E00817598 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E711BA28E0E00817598 /* main.m */; };
 		84A85E781BA28E0E00817598 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E771BA28E0E00817598 /* Document.m */; };
@@ -47,6 +48,8 @@
 		846C31E11BA679EC0007ACDB /* PlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayListViewController.m; sourceTree = "<group>"; };
 		846C31E31BA6A42A0007ACDB /* CVSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVSplitViewController.h; sourceTree = "<group>"; };
 		846C31E41BA6A42A0007ACDB /* CVSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVSplitViewController.m; sourceTree = "<group>"; };
+		846C31E61BA6B8C10007ACDB /* CVHorizontalSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVHorizontalSplitViewController.h; sourceTree = "<group>"; };
+		846C31E71BA6B8C10007ACDB /* CVHorizontalSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVHorizontalSplitViewController.m; sourceTree = "<group>"; };
 		84A85E691BA28E0E00817598 /* CoreVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A85E6D1BA28E0E00817598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84A85E6E1BA28E0E00817598 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -110,8 +113,19 @@
 				846C31E11BA679EC0007ACDB /* PlayListViewController.m */,
 				846C31E31BA6A42A0007ACDB /* CVSplitViewController.h */,
 				846C31E41BA6A42A0007ACDB /* CVSplitViewController.m */,
+				846C31E61BA6B8C10007ACDB /* CVHorizontalSplitViewController.h */,
+				846C31E71BA6B8C10007ACDB /* CVHorizontalSplitViewController.m */,
 			);
 			name = viewController;
+			sourceTree = "<group>";
+		};
+		846C31E91BA6BE710007ACDB /* document */ = {
+			isa = PBXGroup;
+			children = (
+				84A85E761BA28E0E00817598 /* Document.h */,
+				84A85E771BA28E0E00817598 /* Document.m */,
+			);
+			name = document;
 			sourceTree = "<group>";
 		};
 		84A85E601BA28E0E00817598 = {
@@ -135,13 +149,12 @@
 		84A85E6B1BA28E0E00817598 /* CoreVideo */ = {
 			isa = PBXGroup;
 			children = (
+				846C31E91BA6BE710007ACDB /* document */,
 				846C31DF1BA6797D0007ACDB /* viewController */,
 				18D89F6E1BA55CB0000D058C /* categary */,
 				18D89F6A1BA5384F000D058C /* utils */,
 				84A85E6E1BA28E0E00817598 /* AppDelegate.h */,
 				84A85E6F1BA28E0E00817598 /* AppDelegate.m */,
-				84A85E761BA28E0E00817598 /* Document.h */,
-				84A85E771BA28E0E00817598 /* Document.m */,
 				84A85E791BA28E0E00817598 /* Images.xcassets */,
 				84A85E7B1BA28E0E00817598 /* Main.storyboard */,
 				84A85E6C1BA28E0E00817598 /* Supporting Files */,
@@ -285,6 +298,7 @@
 				18D89F741BA59E87000D058C /* MySlider.m in Sources */,
 				846C31DE1BA66E480007ACDB /* MyCache.m in Sources */,
 				18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */,
+				846C31E81BA6B8C10007ACDB /* CVHorizontalSplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

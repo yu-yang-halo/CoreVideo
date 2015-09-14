@@ -19,6 +19,10 @@ static NSString *key_play_list=@"KEY_PLAY_LIST";
     [[NSUserDefaults standardUserDefaults] setObject:playList forKey:key_play_list];
 }
 
++(void)syncPlayList:(NSArray *)playlist{
+    [[NSUserDefaults standardUserDefaults] setObject:playlist forKey:key_play_list];
+}
+
 +(void)playPathClear{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:key_play_list];
 }

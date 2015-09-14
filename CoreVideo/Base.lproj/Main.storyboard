@@ -99,7 +99,7 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Ckk-yw-fiv">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="632" y="334" width="480" height="270"/>
+                        <rect key="contentRect" x="632" y="334" width="678" height="418"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -108,12 +108,12 @@
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-732" y="-1106"/>
+            <point key="canvasLocation" x="-745" y="-1055"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="eAV-kY-nR0">
             <objects>
-                <splitViewController id="E7L-ry-jmx" sceneMemberID="viewController">
+                <splitViewController id="E7L-ry-jmx" customClass="CVSplitViewController" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="251" id="aTp-zB-ICU"/>
                         <splitViewItem canCollapse="YES" id="9pB-UO-lpL"/>
@@ -129,14 +129,14 @@
                 </splitViewController>
                 <customObject id="C3l-WK-7h6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-846.5" y="-588"/>
+            <point key="canvasLocation" x="-821.5" y="-763"/>
         </scene>
         <!--Play List View Controller-->
         <scene sceneID="y97-LJ-saH">
             <objects>
                 <viewController id="8sE-u8-bVo" customClass="PlayListViewController" sceneMemberID="viewController">
                     <view key="view" id="fGD-FI-GVD">
-                        <rect key="frame" x="0.0" y="0.0" width="199" height="430"/>
+                        <rect key="frame" x="0.0" y="0.0" width="199" height="429"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZGH-IE-Fsg">
@@ -144,10 +144,10 @@
                                 <buttonCell key="cell" type="push" title="添加" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I97-1b-Csk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
+                                    <connections>
+                                        <action selector="addVideoPlay:" target="8sE-u8-bVo" id="Ykc-Kg-yQb"/>
+                                    </connections>
                                 </buttonCell>
-                                <connections>
-                                    <action selector="addVideoPlay:" target="8sE-u8-bVo" id="Glc-mb-K36"/>
-                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Thb-S1-64x">
                                 <rect key="frame" x="119" y="-1" width="66" height="32"/>
@@ -160,7 +160,7 @@
                                 </connections>
                             </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4m-i7-CcD">
-                                <rect key="frame" x="0.0" y="32" width="199" height="227"/>
+                                <rect key="frame" x="0.0" y="32" width="199" height="226"/>
                                 <clipView key="contentView" id="NgO-A4-Zp8">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -223,18 +223,18 @@
                 </viewController>
                 <customObject id="Ihf-di-Njo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-350.5" y="-531"/>
+            <point key="canvasLocation" x="-355.5" y="-270.5"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Horizontal Split View Controller-->
         <scene sceneID="9La-dd-niY">
             <objects>
-                <splitViewController id="yke-h9-xYe" sceneMemberID="viewController">
+                <splitViewController id="yke-h9-xYe" customClass="CVHorizontalSplitViewController" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="SbM-hE-BS7"/>
-                        <splitViewItem id="HtW-pz-z0r"/>
+                        <splitViewItem canCollapse="YES" holdingPriority="251" id="SbM-hE-BS7"/>
+                        <splitViewItem canCollapse="YES" id="HtW-pz-z0r"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="Wsd-nU-EEy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="673" height="429"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
                     <connections>
@@ -244,20 +244,20 @@
                 </splitViewController>
                 <customObject id="qJQ-f8-HHd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-892" y="-203"/>
+            <point key="canvasLocation" x="-797.5" y="-270.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="e6q-08-Njh">
             <objects>
                 <viewController id="3Yh-VZ-i1e" sceneMemberID="viewController">
                     <view key="view" id="eVx-GR-Oe3">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="642" height="148"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="WPU-x4-Ca8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-232" y="-113"/>
+            <point key="canvasLocation" x="-737" y="595"/>
         </scene>
         <!--Video View Controller-->
         <scene sceneID="28i-2G-ea1">
@@ -399,7 +399,7 @@
                 </viewController>
                 <customObject id="AFW-vq-YcF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-837" y="35"/>
+            <point key="canvasLocation" x="-737" y="274"/>
         </scene>
     </scenes>
 </document>

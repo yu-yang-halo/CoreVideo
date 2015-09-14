@@ -34,7 +34,18 @@
 }
 
 - (IBAction)addVideoPlay:(id)sender {
-    
+    NSOpenPanel *panel=[NSOpenPanel new];
+    [panel setCanChooseDirectories:YES];
+    [panel setCanChooseFiles:YES];
+    [panel setAllowedFileTypes:@[@"mov",@"mp4"]];
+    [panel beginSheetModalForWindow:[NSWindow new] completionHandler:^(NSInteger result) {
+        if(result==NSFileHandlingPanelOKButton){
+              //NSLog(@"%@",[panel URL]);
+             [MyCache playPathCache:[[panel URL] absoluteString]];
+             [self reloadPlayListData];
+             
+        }
+    }];
 }
 
 - (IBAction)removeVideoPlay:(id)sender {
@@ -42,6 +53,8 @@
     if(_playlist!=nil){
         if(selectIndex>=0&&selectIndex<[_playlist count]){
             [_playlist removeObjectAtIndex:selectIndex];
+            [MyCache syncPlayList:_playlist];
+            
              AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
             [delegate.videoVC close];
         }
@@ -68,6 +81,9 @@
     
 }
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
+    
+
+    
     if(_playlist!=nil){
         return [_playlist objectAtIndex:row];
     }else{
