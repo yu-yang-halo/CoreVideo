@@ -11,6 +11,9 @@
 		18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F6C1BA53874000D058C /* TimeFormatUtils.m */; };
 		18D89F741BA59E87000D058C /* MySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F731BA59E87000D058C /* MySlider.m */; };
 		8461A0021BA3FA6E0048DD69 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461A0011BA3FA6E0048DD69 /* VideoViewController.m */; };
+		846C31DE1BA66E480007ACDB /* MyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31DD1BA66E480007ACDB /* MyCache.m */; };
+		846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E11BA679EC0007ACDB /* PlayListViewController.m */; };
+		846C31E51BA6A42A0007ACDB /* CVSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E41BA6A42A0007ACDB /* CVSplitViewController.m */; };
 		84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E6F1BA28E0E00817598 /* AppDelegate.m */; };
 		84A85E721BA28E0E00817598 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E711BA28E0E00817598 /* main.m */; };
 		84A85E781BA28E0E00817598 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E771BA28E0E00817598 /* Document.m */; };
@@ -38,6 +41,12 @@
 		18D89F731BA59E87000D058C /* MySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySlider.m; sourceTree = "<group>"; };
 		8461A0001BA3FA6E0048DD69 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		8461A0011BA3FA6E0048DD69 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		846C31DC1BA66E480007ACDB /* MyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCache.h; sourceTree = "<group>"; };
+		846C31DD1BA66E480007ACDB /* MyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCache.m; sourceTree = "<group>"; };
+		846C31E01BA679EC0007ACDB /* PlayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayListViewController.h; sourceTree = "<group>"; };
+		846C31E11BA679EC0007ACDB /* PlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayListViewController.m; sourceTree = "<group>"; };
+		846C31E31BA6A42A0007ACDB /* CVSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVSplitViewController.h; sourceTree = "<group>"; };
+		846C31E41BA6A42A0007ACDB /* CVSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVSplitViewController.m; sourceTree = "<group>"; };
 		84A85E691BA28E0E00817598 /* CoreVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A85E6D1BA28E0E00817598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84A85E6E1BA28E0E00817598 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,6 +84,8 @@
 			children = (
 				18D89F6B1BA53874000D058C /* TimeFormatUtils.h */,
 				18D89F6C1BA53874000D058C /* TimeFormatUtils.m */,
+				846C31DC1BA66E480007ACDB /* MyCache.h */,
+				846C31DD1BA66E480007ACDB /* MyCache.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -86,6 +97,21 @@
 				18D89F731BA59E87000D058C /* MySlider.m */,
 			);
 			name = categary;
+			sourceTree = "<group>";
+		};
+		846C31DF1BA6797D0007ACDB /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				8461A0001BA3FA6E0048DD69 /* VideoViewController.h */,
+				8461A0011BA3FA6E0048DD69 /* VideoViewController.m */,
+				18D89F671BA4EDE7000D058C /* CVWindowController.h */,
+				18D89F681BA4EDE7000D058C /* CVWindowController.m */,
+				846C31E01BA679EC0007ACDB /* PlayListViewController.h */,
+				846C31E11BA679EC0007ACDB /* PlayListViewController.m */,
+				846C31E31BA6A42A0007ACDB /* CVSplitViewController.h */,
+				846C31E41BA6A42A0007ACDB /* CVSplitViewController.m */,
+			);
+			name = viewController;
 			sourceTree = "<group>";
 		};
 		84A85E601BA28E0E00817598 = {
@@ -109,6 +135,7 @@
 		84A85E6B1BA28E0E00817598 /* CoreVideo */ = {
 			isa = PBXGroup;
 			children = (
+				846C31DF1BA6797D0007ACDB /* viewController */,
 				18D89F6E1BA55CB0000D058C /* categary */,
 				18D89F6A1BA5384F000D058C /* utils */,
 				84A85E6E1BA28E0E00817598 /* AppDelegate.h */,
@@ -118,10 +145,6 @@
 				84A85E791BA28E0E00817598 /* Images.xcassets */,
 				84A85E7B1BA28E0E00817598 /* Main.storyboard */,
 				84A85E6C1BA28E0E00817598 /* Supporting Files */,
-				8461A0001BA3FA6E0048DD69 /* VideoViewController.h */,
-				8461A0011BA3FA6E0048DD69 /* VideoViewController.m */,
-				18D89F671BA4EDE7000D058C /* CVWindowController.h */,
-				18D89F681BA4EDE7000D058C /* CVWindowController.m */,
 			);
 			path = CoreVideo;
 			sourceTree = "<group>";
@@ -252,12 +275,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */,
 				84A85E781BA28E0E00817598 /* Document.m in Sources */,
+				846C31E51BA6A42A0007ACDB /* CVSplitViewController.m in Sources */,
 				84A85E721BA28E0E00817598 /* main.m in Sources */,
 				8461A0021BA3FA6E0048DD69 /* VideoViewController.m in Sources */,
 				18D89F691BA4EDE7000D058C /* CVWindowController.m in Sources */,
 				84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */,
 				18D89F741BA59E87000D058C /* MySlider.m in Sources */,
+				846C31DE1BA66E480007ACDB /* MyCache.m in Sources */,
 				18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

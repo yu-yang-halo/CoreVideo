@@ -12,7 +12,7 @@
 @interface VideoViewController : NSViewController
 
 @property(nonatomic,strong) AVPlayer *player;
-
+@property(nonatomic,assign,readonly) BOOL isAddVideoFile;
 -(void)initAssetData:(NSURL *)url;
 -(void)close;
 -(void)playOrPause;

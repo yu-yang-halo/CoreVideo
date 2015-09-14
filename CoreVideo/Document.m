@@ -8,6 +8,7 @@
 
 #import "Document.h"
 #import "AppDelegate.h"
+#import "MyCache.h"
 @interface Document ()
 
 
@@ -27,7 +28,7 @@
 
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
-    [super windowControllerDidLoadNib:aController];
+    //[super windowControllerDidLoadNib:aController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
 }
 
@@ -38,8 +39,8 @@
 - (void)makeWindowControllers {
     // Override to return the Storyboard file name of the document.
     
-    AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
-   [self addWindowController:delegate.windowVC];
+//    AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+//   [self addWindowController:delegate.windowVC];
     
 }
 
@@ -52,20 +53,23 @@
 
 - (BOOL)readFromURL:(NSURL *)url ofType:(NSString *)typeName error:(NSError **)outError{
     
+     [self close];
     
-    AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+     NSLog(@"url %@",url);
+     [MyCache playPathCache:[url absoluteString]];
+     AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
     
-    [delegate.videoVC initAssetData:url];
-
+     [delegate.videoVC initAssetData:url];
+    
+    [delegate.playlistVC reloadPlayListData];
     
     
     return YES;
 }
 -(void)close{
-    AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+     AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
     
     [delegate.videoVC close];
-    
     
     [super close];
 }
@@ -77,7 +81,7 @@
  
     
 
-    
+    NSLog(@"data %@",data);
     
     
     return YES;

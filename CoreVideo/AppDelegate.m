@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "VideoViewController.h"
+#import "MyCache.h"
 @interface AppDelegate ()
 
 
@@ -19,6 +20,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
     NSLog(@"applicationDidFinishLaunching...");
+    [MyCache playPathClear];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

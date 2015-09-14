@@ -10,10 +10,12 @@
 
 #import "VideoViewController.h"
 #import "CVWindowController.h"
+#import "PlayListViewController.h"
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property(nonatomic,strong) VideoViewController *videoVC;
 @property(nonatomic,strong) CVWindowController  *windowVC;
-
+@property(nonatomic,strong) PlayListViewController  *playlistVC;
 @end
 

@@ -25,6 +25,8 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 @property (weak) IBOutlet NSSlider *timeSlider;
 @property (assign) double currentTime;
 @property (readonly) double duration;
+@property (assign) float volume;
+@property (weak) IBOutlet NSSlider *volumSlider;
 
 @property (weak) IBOutlet NSView *containerView;
 @property (weak) IBOutlet NSButton *playButton;
@@ -33,9 +35,12 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 
 @property (weak) IBOutlet NSButton *fileButton;
 @property (weak) IBOutlet NSButton *captureButton;
+@property(nonatomic,assign) BOOL isAddVideoFile;
 
 - (IBAction)playOrPause:(id)sender;
 - (IBAction)capture:(id)sender;
+- (IBAction)lookPicture:(id)sender;
+- (IBAction)volumChange:(id)sender;
 
 @end
 
@@ -45,8 +50,8 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     [super viewDidLoad];
   
     
-    [self.containerView setWantsLayer:YES];
-    [self.containerView.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
+    [self.view setWantsLayer:YES];
+    [self.view.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
     
     AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
     
@@ -64,10 +69,10 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     if(url==nil){
         return;
     }
-    
+    self.isAddVideoFile=YES;
     AVURLAsset *asset = [AVAsset assetWithURL:url];
     self.imageGenerator=[[AVAssetImageGenerator alloc] initWithAsset:asset];
-    self.player=[AVPlayer new];
+   
     
     
     NSArray *assetKeysToLoadAndTest = @[@"playable", @"hasProtectedContent", @"tracks"];
@@ -116,10 +121,14 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     if ([[asset tracksWithMediaType:AVMediaTypeVideo] count] != 0)
     {
         // Create an AVPlayerLayer and add it to the player view if there is video, but hide it until it's ready for display
+        if(self.videolayer!=nil){
+            [_videolayer removeFromSuperlayer];
+        }
+        self.player=[AVPlayer new];
+        
         self.videolayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
         self.videolayer.frame = self.containerView.layer.bounds;
         self.videolayer.autoresizingMask = kCALayerWidthSizable | kCALayerHeightSizable;
-        [_videolayer removeFromSuperlayer];
         self.videolayer.hidden = YES;
         
         [self.containerView.layer addSublayer:_videolayer];
@@ -127,6 +136,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
         [self addObserver:self forKeyPath:@"player.rate" options:NSKeyValueObservingOptionNew context:AVSPPlayerRateContext];
         [self addObserver:self forKeyPath:@"player.currentItem.status" options:NSKeyValueObservingOptionNew context:AVSPPlayerItemStatusContext];
         [self addObserver:self forKeyPath:@"videolayer.readyForDisplay" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:AVSPPlayerLayerReadyForDisplay];
+        
         
     }
     else
@@ -137,6 +147,14 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     
     // Create a new AVPlayerItem and make it our player's current item.
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
+    
+    self.timeSlider.maxValue=CMTimeGetSeconds(playerItem.asset.duration);
+    self.timeSlider.doubleValue=0;
+    self.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:self.timeSlider.doubleValue];
+    self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:self.timeSlider.maxValue];
+    
+
+    
     
     // If needed, configure player item here (example: adding outputs, setting text style rules, selecting media options) before associating it with a player
     [self.player replaceCurrentItemWithPlayerItem:playerItem];
@@ -153,15 +171,18 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
         weakSelf.timeSlider.doubleValue = CMTimeGetSeconds(time);
     }]];
     
+    self.volumSlider.floatValue=self.player.volume;
+    [_player play];
     
 }
 
 - (IBAction)valueChange:(NSSlider *)sender {
-    NSLog(@"%f",sender.floatValue);
+   
     
     [_player pause];
     [self setCurrentTime:sender.floatValue];
 }
+
 
 -(void)playOrPause{
     if (self.player.rate != 1.f)
@@ -176,19 +197,25 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 
 - (IBAction)playOrPause:(id)sender {
     [self playOrPause];
-    self.timeSlider.maxValue=self.duration;
-    self.timeSlider.doubleValue=self.currentTime;
-    self.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:self.currentTime];
-    self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:self.duration];
-
+    
 }
 
+-(NSString *)pictureSaveDirectory{
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory,NSUserDomainMask,YES);
+    NSString *docDir=[paths objectAtIndex:0];
+    NSString *pictureDir=[NSString stringWithFormat:@"%@/capture",docDir];
+    BOOL isDirectory=YES;
+    if(![[NSFileManager defaultManager] fileExistsAtPath:pictureDir isDirectory:&isDirectory]){
+        [[NSFileManager defaultManager] createDirectoryAtPath:pictureDir withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return pictureDir;
+}
 
 - (IBAction)capture:(id)sender {
     NSLog(@"capture...");
     
     if([self.player status]==AVPlayerItemStatusReadyToPlay){
-        NSString *path=[NSString stringWithFormat:@"/Users/apple/Desktop/%@.png",[TimeFormatUtils stringDateFormat:[NSDate new]]];
+        NSString *path=[NSString stringWithFormat:@"%@/%@.png",[self pictureSaveDirectory],[TimeFormatUtils stringDateFormat:[NSDate new]]];
         [self saveImageFileToDiskPath:path];
     }else{
         
@@ -196,15 +223,46 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     
     
 }
+
+- (IBAction)lookPicture:(id)sender {
+    
+    [[NSWorkspace sharedWorkspace] selectFile:nil inFileViewerRootedAtPath:[self pictureSaveDirectory]];
+    
+}
++(NSSet *)keyPathsForValuesAffectingVolume{
+    return [NSSet setWithObject:@"player.volume"];
+}
+- (float)volume
+{
+    
+    return self.player.volume;
+}
+
+- (void)setVolume:(float)volume
+{
+    self.player.volume = volume;
+}
+
+- (IBAction)volumChange:(NSSlider *)sender {
+     NSLog(@"%f",sender.floatValue);
+    [self setVolume:sender.floatValue];
+}
 - (void)close
 {
-    [self.player pause];
-    [self.player removeTimeObserver:[self timeObserverToken]];
-    self.timeObserverToken = nil;
-    [self removeObserver:self forKeyPath:@"player.rate"];
-    [self removeObserver:self forKeyPath:@"player.currentItem.status"];
-    if (self.videolayer)
-        [self removeObserver:self forKeyPath:@"videolayer.readyForDisplay"];
+    
+    if(self.isAddVideoFile){
+        [self.player pause];
+        [self.player removeTimeObserver:[self timeObserverToken]];
+        self.timeObserverToken = nil;
+        [self removeObserver:self forKeyPath:@"player.rate"];
+        [self removeObserver:self forKeyPath:@"player.currentItem.status"];
+        if (self.videolayer){
+            [[self videolayer] removeFromSuperlayer];
+            [self removeObserver:self forKeyPath:@"videolayer.readyForDisplay"];
+        }
+        
+    }
+    self.isAddVideoFile=NO;
 }
 
 -(void)saveImageFileToDiskPath:(NSString *)diskPath{
