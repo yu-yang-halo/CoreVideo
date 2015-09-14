@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B22BA91BA6F30000D593C4 /* AssistFile.cpp */; };
 		18D89F691BA4EDE7000D058C /* CVWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F681BA4EDE7000D058C /* CVWindowController.m */; };
 		18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F6C1BA53874000D058C /* TimeFormatUtils.m */; };
 		18D89F741BA59E87000D058C /* MySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F731BA59E87000D058C /* MySlider.m */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18B22BA81BA6F30000D593C4 /* AssistFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssistFile.h; sourceTree = "<group>"; };
+		18B22BA91BA6F30000D593C4 /* AssistFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssistFile.cpp; sourceTree = "<group>"; };
 		18D89F671BA4EDE7000D058C /* CVWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVWindowController.h; sourceTree = "<group>"; };
 		18D89F681BA4EDE7000D058C /* CVWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVWindowController.m; sourceTree = "<group>"; };
 		18D89F6B1BA53874000D058C /* TimeFormatUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeFormatUtils.h; sourceTree = "<group>"; };
@@ -82,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18B22BA71BA6F2E900D593C4 /* assist */ = {
+			isa = PBXGroup;
+			children = (
+				18B22BA81BA6F30000D593C4 /* AssistFile.h */,
+				18B22BA91BA6F30000D593C4 /* AssistFile.cpp */,
+			);
+			name = assist;
+			sourceTree = "<group>";
+		};
 		18D89F6A1BA5384F000D058C /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +161,7 @@
 		84A85E6B1BA28E0E00817598 /* CoreVideo */ = {
 			isa = PBXGroup;
 			children = (
+				18B22BA71BA6F2E900D593C4 /* assist */,
 				846C31E91BA6BE710007ACDB /* document */,
 				846C31DF1BA6797D0007ACDB /* viewController */,
 				18D89F6E1BA55CB0000D058C /* categary */,
@@ -294,6 +307,7 @@
 				84A85E721BA28E0E00817598 /* main.m in Sources */,
 				8461A0021BA3FA6E0048DD69 /* VideoViewController.m in Sources */,
 				18D89F691BA4EDE7000D058C /* CVWindowController.m in Sources */,
+				18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */,
 				84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */,
 				18D89F741BA59E87000D058C /* MySlider.m in Sources */,
 				846C31DE1BA66E480007ACDB /* MyCache.m in Sources */,

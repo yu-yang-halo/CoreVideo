@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
@@ -160,13 +160,13 @@
                                 </connections>
                             </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4m-i7-CcD">
-                                <rect key="frame" x="0.0" y="32" width="199" height="226"/>
+                                <rect key="frame" x="0.0" y="32" width="199" height="161"/>
                                 <clipView key="contentView" id="NgO-A4-Zp8">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="Vgf-hx-fZ3" id="za9-4p-bFi">
-                                            <rect key="frame" x="0.0" y="0.0" width="238" height="134"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="194" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -212,7 +212,7 @@
                             <constraint firstItem="i4m-i7-CcD" firstAttribute="leading" secondItem="fGD-FI-GVD" secondAttribute="leading" id="Qfz-hE-EPW"/>
                             <constraint firstItem="ZGH-IE-Fsg" firstAttribute="leading" secondItem="fGD-FI-GVD" secondAttribute="leading" constant="20" symbolic="YES" id="fLu-HY-9A2"/>
                             <constraint firstAttribute="bottom" secondItem="i4m-i7-CcD" secondAttribute="bottom" constant="32" id="oyL-Xf-Ms9"/>
-                            <constraint firstItem="i4m-i7-CcD" firstAttribute="top" secondItem="fGD-FI-GVD" secondAttribute="top" constant="171" id="p3z-P4-H3U"/>
+                            <constraint firstItem="i4m-i7-CcD" firstAttribute="top" secondItem="fGD-FI-GVD" secondAttribute="top" constant="236" id="p3z-P4-H3U"/>
                             <constraint firstItem="ZGH-IE-Fsg" firstAttribute="baseline" secondItem="Thb-S1-64x" secondAttribute="baseline" id="wpB-mF-Mqs"/>
                             <constraint firstItem="ZGH-IE-Fsg" firstAttribute="top" secondItem="i4m-i7-CcD" secondAttribute="bottom" constant="5" id="zs6-jO-h3z"/>
                         </constraints>

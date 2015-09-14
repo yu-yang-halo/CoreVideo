@@ -38,12 +38,12 @@
     [panel setCanChooseDirectories:YES];
     [panel setCanChooseFiles:YES];
     [panel setAllowedFileTypes:@[@"mov",@"mp4"]];
-    [panel beginSheetModalForWindow:[NSWindow new] completionHandler:^(NSInteger result) {
+    [panel beginWithCompletionHandler:^(NSInteger result) {
         if(result==NSFileHandlingPanelOKButton){
-              //NSLog(@"%@",[panel URL]);
-             [MyCache playPathCache:[[panel URL] absoluteString]];
-             [self reloadPlayListData];
-             
+            //NSLog(@"%@",[panel URL]);
+            [MyCache playPathCache:[[panel URL] absoluteString]];
+            [self reloadPlayListData];
+            
         }
     }];
 }
@@ -82,15 +82,19 @@
 }
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
     
-
-    
     if(_playlist!=nil){
-        return [_playlist objectAtIndex:row];
+        NSString *abbrev=[NSString stringWithFormat:@"%ld:%@",row,[self abbreviationFile:[_playlist objectAtIndex:row]]];
+        return abbrev;
     }else{
         return @"";
     }
   
 }
+-(NSString *)abbreviationFile:(NSString *)path{
+    
+    return [path lastPathComponent];
+}
+
 - (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
     return NO;
 }
@@ -105,6 +109,9 @@
    
     
     return proposedSelectionIndexes;
+}
+- (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn{
+    NSLog(@"%@",tableColumn);
 }
 
 -(void)playCurrentItem:(NSString *)path{

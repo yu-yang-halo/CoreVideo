@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    [self.splitView adjustSubviews];
+    //[self.splitView adjustSubviews];
 }
 
 @end
