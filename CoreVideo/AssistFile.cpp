@@ -1,21 +1,21 @@
-#include <string>
-#include <list>
-#include <stdlib.h>
+
 #include "AssistFile.h"
-extern "C" int __cdecl _fseeki64(FILE *, int64_t, int);
-extern "C" int64_t __cdecl _ftelli64(FILE *);
+//extern "C++" int  __cdecl fseek(FILE *, int, int);
+//extern "C++" int  __cdecl ftell(FILE *);
 
 CAssistFile::CAssistFile(void)
 {
+   
 }
 
 CAssistFile::~CAssistFile(void)
 {
-	m_infoList.empty();
+	m_infoList.clear();
 }
 
 void decryt(char *szline, int key)
 {
+    
 	int len = strlen(szline);
 	int pos = 0;
 	char *p = szline;
@@ -65,26 +65,30 @@ void parse_coordinate(char *coord, char dir, string &strCoord)
 */
 		if(degree_of_data == 5){
 			mmssss = dddmm % 100 * 10000 + ssss;
+            char value[20];
 			if(flag < 0) {
-				strCoord.Format("-%d.%06d",  ddd, (int)mmssss * 100 / 60);
-                
+                sprintf(value,"-%d.%06d",ddd,(int)mmssss * 100 / 60);
 			} else {
-				strCoord.Format(_T("%d.%06d"),  ddd, (int)mmssss * 100 / 60);
-			}			
+                sprintf(value,"%d.%06d",ddd,(int)mmssss * 100 / 60);
+			}
+            
+            strCoord=value;
 		}else if(degree_of_data == 6){
 			mmssss = dddmm % 100 * 100000 + ssss;
+            char value[20];
 			if(flag < 0) {
-				strCoord.Format(_T("-%d.%07d"),  ddd, (int)mmssss * 100 / 60);
+                sprintf(value,"-%d.%07d",ddd,(int)mmssss * 100 / 60);
 			} else {
-				strCoord.Format(_T("%d.%07d"),  ddd, (int)mmssss * 100 / 60);
-			}			
+                sprintf(value,"%d.%07d",ddd,(int)mmssss * 100 / 60);
+			}
+            strCoord=value;
 		}	
 	} else {
-		strCoord = _T("0");
+		strCoord = "0";
 	}
 }
 
-int CAssistFile::ParseRMC(char *gpsinfo, CString &strLat, CString &strLgt, int &spd, double &north_angle)
+int CAssistFile::ParseRMC(char *gpsinfo, string &strLat, string &strLgt, int &spd, double &north_angle)
 {
 	//$GPRMC,053014.000,A,2237.4177,N,11403.4075,E,1.90,235.83,050510,,,A*6B
 	char *p = NULL;
@@ -134,7 +138,7 @@ int CAssistFile::ParseRMC(char *gpsinfo, CString &strLat, CString &strLgt, int &
 
 		p = strtok(NULL, ",");		//<9> UTC Date
 
-		CString str;
+		string str;
 		parse_coordinate(lgt, lgt_dir, str);
 		strLgt = str;
 		parse_coordinate(lat, lat_dir, str);
@@ -147,7 +151,7 @@ int CAssistFile::ParseRMC(char *gpsinfo, CString &strLat, CString &strLgt, int &
 	return 0;
 }
 
-int CAssistFile::ParseGGA(char *gpsinfo, CString &strLat, CString &strLgt, int &spd)
+int CAssistFile::ParseGGA(char *gpsinfo, string &strLat, string &strLgt, int &spd)
 {
 	//$GPGGA,071458.000,0000.0000,N,00000.0000,E,0,06,2.7,39.8,M,-2.7,M,,0000*7F
 	char *p = NULL;
@@ -182,7 +186,7 @@ int CAssistFile::ParseGGA(char *gpsinfo, CString &strLat, CString &strLgt, int &
 		if(!p) break;
         lat_dir = p[0];
 	
-		CString str;
+		string str;
 		parse_coordinate(lgt, lgt_dir, str);
 		strLgt = str;
 		parse_coordinate(lat, lat_dir, str);
@@ -208,9 +212,9 @@ int CAssistFile::ParseLine(char *pszLine, int key)
 	x = y = z = 0;
 	if(!pszLine) return -1;
 		
-	TRACE("Line:%s\n", pszLine);
+	printf("Line:%s\n", pszLine);
 	decryt(pszLine, key);
-	TRACE("    :%s\n", pszLine);
+	printf("    :%s\n", pszLine);
 	sscanf(pszLine, "%d\t%d\t%d\t%s", &x, &y, &z, gpsinfo);			
 	node.gsensor_x = x / 1000.0f;
 	node.gsensor_y = y / 1000.0f;
@@ -221,17 +225,17 @@ int CAssistFile::ParseLine(char *pszLine, int key)
 		ParseRMC(gpsinfo, node.gps_lat, node.gps_lgt, node.spd, node.north_angle);
 	}	
 
-	m_infoList.AddTail(node);
+	m_infoList.push_back(node);
 #if 1	//模拟文件以1Hz采样,实际是用10Hz采样
-	m_infoList.AddTail(node);
-	m_infoList.AddTail(node);
-	m_infoList.AddTail(node);
-	m_infoList.AddTail(node);
-	m_infoList.AddTail(node);
-	m_infoList.AddTail(node);
-	m_infoList.AddTail(node);
-	m_infoList.AddTail(node);
-	m_infoList.AddTail(node);		
+	m_infoList.push_back(node);
+	m_infoList.push_back(node);
+	m_infoList.push_back(node);
+	m_infoList.push_back(node);
+	m_infoList.push_back(node);
+	m_infoList.push_back(node);
+	m_infoList.push_back(node);
+	m_infoList.push_back(node);
+	m_infoList.push_back(node);
 #endif
 	do {
 		
@@ -239,23 +243,22 @@ int CAssistFile::ParseLine(char *pszLine, int key)
 
 	return 0;
 }
-int CAssistFile::ParseAssistFile(CString strAstFile)
+int CAssistFile::ParseAssistFile(string strAstFile)
 {
-	TCHAR	tFile[MAX_PATH]	 = {0};
-	char	szFile[MAX_PATH] = {0};
+	char	tFile[PATH_MAX]	 = {0};
+	char	szFile[PATH_MAX] = {0};
 	char	szLine[1024]		 = {0};	
 	FILE	*fd				 = NULL;		
 	
-	USES_CONVERSION;
 
 	//Convert TCHAR to CHAR
-	wsprintf(tFile, _T("%s"), strAstFile);
-	sprintf(szFile, "%s", T2A(tFile));
+	sprintf(tFile, "%s",strAstFile.data());
+	sprintf(szFile, "%s",tFile);
 
 	//Clear list first
-	m_infoList.RemoveAll();
+	m_infoList.clear();
 
-	if(strAstFile.GetLength() < 4) return -1;
+	if(strAstFile.length() < 4) return -1;
 
 	//Open file
 	fd = fopen(szFile, "rb");
@@ -304,27 +307,26 @@ end:
 	fclose(fd);
 	fd = NULL;	
 	
-	return m_infoList.GetCount();
+	return m_infoList.size();
 }
 
 #define POS(x)  (7+x)
-int CAssistFile::ParseAssistDataForSunplus(CString strMOVFile)
+int CAssistFile::ParseAssistDataForSunplus(string strMOVFile)
 {
-	TCHAR	tFile[MAX_PATH]	 = {0};
-	char	szFile[MAX_PATH] = {0};
+	char	tFile[PATH_MAX]	 = {0};
+	char	szFile[PATH_MAX] = {0};
 	char	szLine[1024]		 = {0};	
 	FILE	*fd				 = NULL;	
 	char	dat_hdr_flag[17] = {'\0'};
 
-	USES_CONVERSION;
 
 	//Convert TCHAR to CHAR
-	wsprintf(tFile, _T("%s"), strMOVFile);
-	sprintf(szFile, "%s", T2A(tFile));
+	sprintf(tFile,"%s", strMOVFile.data());
+	sprintf(szFile, "%s", tFile);
 	//Clear list first
-	m_infoList.RemoveAll();
+	m_infoList.clear();
 
-	if(strMOVFile.GetLength() < 4) return -1;
+	if(strMOVFile.length() < 4) return -1;
 
 	//Open file
 	fd = fopen(szFile, "rb");
@@ -347,35 +349,36 @@ int CAssistFile::ParseAssistDataForSunplus(CString strMOVFile)
 	fread((unsigned char*)b, 1, 4, fd);		//get mdat address(ftyp size)
 	ftypsize = b[0] << 24 | b[1] << 16 | b[2] << 8 | b[3];
 	if(ftypsize > 0) {
-		_fseeki64(fd, ftypsize, SEEK_SET);			
-		TRACE(_T("mdat_addr: 0x%08X\n"), ftypsize);
+		fseek(fd, ftypsize, SEEK_SET);
+        
+		printf("mdat_addr: 0x%08X\n", ftypsize);
 		
 		fread((unsigned char*)b, 1, 4, fd); //get mdat size
 		mdatsize = b[0] << 24 | b[1] << 16 | b[2] << 8 | b[3];		
 		if(mdatsize > 0) {
 			moov_addr = mdatsize + ftypsize;  
-			_fseeki64(fd, moov_addr, SEEK_SET);
-			TRACE(_T("moov_addr: 0x%08X\n"), moov_addr);
+			fseek(fd, moov_addr, SEEK_SET);
+			printf("moov_addr: 0x%08X\n", moov_addr);
 			fread((unsigned char*)b, 1, 4, fd); //get moov size
 			moovsize = b[0] << 24 | b[1] << 16 | b[2] << 8 | b[3];
 			if(moovsize > 0) {				
 				udat_addr = moov_addr + moovsize;
-				_fseeki64(fd, udat_addr, SEEK_SET);
-				TRACE(_T("udat_addr: 0x%08X, moovsize:0x%08X\n"), udat_addr, moovsize);
+				fseek(fd, udat_addr, SEEK_SET);
+				printf("udat_addr: 0x%08X, moovsize:0x%08X\n", udat_addr, moovsize);
 
 				fread((unsigned char*)b, 1, 4, fd); //get udat size
 				udatsize = b[0] << 24 | b[1] << 16 | b[2] << 8 | b[3];
 				if(udatsize > 0) {
-					TRACE(_T("udatSize: 0x%08X\n"), udatsize);
-					//_fseeki64(fd, 4, SEEK_CUR);		//skip 'udat'
+					printf("udatSize: 0x%08X\n", udatsize);
+					//fseek(fd, 4, SEEK_CUR);		//skip 'udat'
 					if(fread(dat_hdr_flag, 1, 4, fd) == 4) {
 						if(dat_hdr_flag[0] == 'f' && dat_hdr_flag[1] == 'r' && dat_hdr_flag[2] == 'e' && dat_hdr_flag[3] == 'e') {
 							udat_addr += udatsize;
-							_fseeki64(fd, udat_addr + 8, SEEK_SET); //8: udat flag + udat size
+							fseek(fd, udat_addr + 8, SEEK_SET); //8: udat flag + udat size
 						}
 						if(fread(dat_hdr_flag, 1, 16, fd) == 16) {
 							dat_hdr_flag[15] = '\0';
-							TRACE("data:%s\n", dat_hdr_flag);
+							printf("data:%s\n", dat_hdr_flag);
 							if(dat_hdr_flag[0] == 's' && dat_hdr_flag[1] == 'a' && dat_hdr_flag[2] == 'm' && dat_hdr_flag[3] == 'o'
 								&& dat_hdr_flag[4] == 'o' && dat_hdr_flag[5] == 'n' && dat_hdr_flag[6] == '1') 
 							{		//"samoon1"
@@ -415,7 +418,7 @@ int CAssistFile::ParseAssistDataForSunplus(CString strMOVFile)
 					gps_dat.gps_info_rmc[i] -= key;
 				}
 				dat_hdr_flag[16] = '\0';
-				TRACE("Flag:%s KEY:%d x:%d y:%d z:%d rmc:%s \n", dat_hdr_flag, key, gps_dat.gsensor_x, gps_dat.gsensor_y, gps_dat.gsensor_z, gps_dat.gps_info_rmc);
+				printf("Flag:%s KEY:%d x:%d y:%d z:%d rmc:%s \n", dat_hdr_flag, key, gps_dat.gsensor_x, gps_dat.gsensor_y, gps_dat.gsensor_z, gps_dat.gps_info_rmc);
 			}
 
 			AssistInfo_t	node;	
@@ -427,17 +430,17 @@ int CAssistFile::ParseAssistDataForSunplus(CString strMOVFile)
 						
 			ParseRMC(gps_dat.gps_info_rmc, node.gps_lat, node.gps_lgt, node.spd, node.north_angle);				
 
-			m_infoList.AddTail(node);
+			m_infoList.push_back(node);
 #if 1	//模拟文件以1Hz采样,实际是用10Hz采样
-			m_infoList.AddTail(node);
-			m_infoList.AddTail(node);
-			m_infoList.AddTail(node);
-			m_infoList.AddTail(node);
-			m_infoList.AddTail(node);
-			m_infoList.AddTail(node);
-			m_infoList.AddTail(node);
-			m_infoList.AddTail(node);
-			m_infoList.AddTail(node);		
+			m_infoList.push_back(node);
+			m_infoList.push_back(node);
+			m_infoList.push_back(node);
+			m_infoList.push_back(node);
+			m_infoList.push_back(node);
+			m_infoList.push_back(node);
+			m_infoList.push_back(node);
+			m_infoList.push_back(node);
+			m_infoList.push_back(node);
 #endif
 
 		}
@@ -447,26 +450,25 @@ end:
 	fclose(fd);
 	fd = NULL;	
 
-	return m_infoList.GetCount();
+	return m_infoList.size();
 }
 
 #if 0
-int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
+int CAssistFile::ParseAssistDataForNovatek(string strMOVFile)
 {
-	TCHAR	tFile[MAX_PATH]	 = {0};
-	char	szFile[MAX_PATH] = {0};
+	char	tFile[PATH_MAX]	 = {0};
+	char	szFile[PATH_MAX] = {0};
 	FILE	*fd				 = NULL;	
 	char	szBuf[1024] = {0};
-	char	file[MAX_PATH] = {0};
+	char	file[PATH_MAX] = {0};
 	int		flag	= 0;
 
-	USES_CONVERSION;
 
 	//Convert TCHAR to CHAR
-	wsprintf(tFile, _T("%s"), strMOVFile);
+	sprintf(tFile,"%s", strMOVFile);
 	sprintf(szFile, "%s", T2A(tFile));
 	//Clear list first
-	m_infoList.RemoveAll();
+	m_infoList.clear();
 
 	if(strMOVFile.GetLength() < 4) return -1;
 
@@ -512,7 +514,7 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 				TRACE(" [0x%08X]%s\n", *((unsigned int*)chSize), chFlag);
 
 				memset(&gsdata, 0, sizeof(RMCINFO));
-				_fseeki64(fd, 36, SEEK_CUR);			//Offset 36
+				fseek(fd, 36, SEEK_CUR);			//Offset 36
 				offset += 36;
 				
 				fread((char*)&gsdata, 1, sizeof(RMCINFO), fd);
@@ -576,7 +578,7 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 			}
 
 			pos = (32*1024 - offset);
-			_fseeki64(fd, pos, SEEK_CUR);
+			fseek(fd, pos, SEEK_CUR);
 		}
 	}while(0);
 end:
@@ -584,24 +586,23 @@ end:
 	fd = NULL;	
 }
 #else
-int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
+int CAssistFile::ParseAssistDataForNovatek(string strMOVFile)
 {
-	TCHAR	tFile[MAX_PATH]	 = {0};
-	char	szFile[MAX_PATH] = {0};
+	char	tFile[PATH_MAX]	 = {0};
+	char	szFile[PATH_MAX] = {0};
 	FILE	*fd				 = NULL;	
 	char	szBuf[1024] = {0};
-	char	file[MAX_PATH] = {0};
+	char	file[PATH_MAX] = {0};
 	int		flag	= 0;
 
-	USES_CONVERSION;
 
 	//Convert TCHAR to CHAR
-	wsprintf(tFile, _T("%s"), strMOVFile);
-	sprintf(szFile, "%s", T2A(tFile));
+	sprintf(tFile, "%s", strMOVFile.data());
+	sprintf(szFile, "%s",tFile);
 	//Clear list first
-	m_infoList.RemoveAll();
+	m_infoList.clear();
 
-	if(strMOVFile.GetLength() < 4) return -1;
+	if(strMOVFile.size() < 4) return -1;
 
 	//Open file
 	fd = fopen(szFile, "rb");
@@ -641,18 +642,18 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 			if(fread(chFlag, 1, 4, fd) != 4) break;
 
 			pos += size;
-			TRACE(" [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
+			printf(" [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 
 			if(strcmp(chFlag, "mdat") == 0) {
-				mdat_addr = _ftelli64(fd);
+				mdat_addr = ftell(fd);
 			}
 			if(strcmp(chFlag, "moov") == 0) {
 				check_flag = 1;
-				curpos = _ftelli64(fd);
+				curpos = ftell(fd);
 				break;
 			}
 
-			_fseeki64(fd, size-8, SEEK_CUR);
+			fseek(fd, size-8, SEEK_CUR);
 		}
 		if(check_flag == 0) break;
 
@@ -665,14 +666,14 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 			if(fread(chFlag, 1, 4, fd) != 4) break;
 
 			pos += size;
-			TRACE("         [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);		
+			printf("         [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 
 			if(track_id > 0 && strcmp(chFlag, "trak") != 0) {	//only 1 track
 				check_flag = 1;
-				_fseeki64(fd, curpos, SEEK_SET);
+				fseek(fd, curpos, SEEK_SET);
 			}
 			if(strcmp(chFlag, "trak") == 0) {
-				curpos = _ftelli64(fd);
+				curpos = ftell(fd);
 				track_id ++;
 				if(track_id == 2) {		//track1: video, track2: audio
 					check_flag = 1;					
@@ -684,69 +685,69 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 				do {					
 					//Step4. Get mdia from trak
 					int check_flag2 = 0;
-					while(_ftelli64(fd) <= pos) {
+					while(ftell(fd) <= pos) {
 						if(fread(chSize, 1, 4, fd) != 4) break;		//get address
 						size = ENDIAN_CONV(chSize);		//convert size			
 						if(fread(chFlag, 1, 4, fd) != 4) break;
 
-						TRACE("                [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
+						printf("                [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 						if(strcmp(chFlag, "mdia") == 0) {
 							check_flag2 = 1;
 							break;
 						}
-						_fseeki64(fd, size-8, SEEK_CUR);
+						fseek(fd, size-8, SEEK_CUR);
 					}
 					if(check_flag2 == 0) break;
 
 					//Step5. Get minf from mdia
 					check_flag2 = 0;
-					while(_ftelli64(fd) <= pos) {
+					while(ftell(fd) <= pos) {
 						if(fread(chSize, 1, 4, fd) != 4) break;		//get address
 						size = ENDIAN_CONV(chSize);		//convert size			
 						if(fread(chFlag, 1, 4, fd) != 4) break;
 
-						TRACE("                        [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
+						printf("                        [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 						if(strcmp(chFlag, "minf") == 0) {
 							check_flag2 = 1;
 							break;
 						}
-						_fseeki64(fd, size-8, SEEK_CUR);
+						fseek(fd, size-8, SEEK_CUR);
 					}
 					if(check_flag2 == 0) break;
 
 					//Step6. Get stbl from minf
 					check_flag2 = 0;
-					while(_ftelli64(fd) <= pos) {
+					while(ftell(fd) <= pos) {
 						if(fread(chSize, 1, 4, fd) != 4) break;		//get address
 						size = ENDIAN_CONV(chSize);		//convert size			
 						if(fread(chFlag, 1, 4, fd) != 4) break;
 
-						TRACE("                                [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
+						printf("                                [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 						if(strcmp(chFlag, "stbl") == 0) {
 							check_flag2 = 1;
 							break;
 						}
-						_fseeki64(fd, size-8, SEEK_CUR);
+						fseek(fd, size-8, SEEK_CUR);
 					}
 					if(check_flag2 == 0) break;
 
 					//Step7. Get stsz from stbl
 					check_flag2 = 0;
-					while(_ftelli64(fd) <= pos) {
+					while(ftell(fd) <= pos) {
 						if(fread(chSize, 1, 4, fd) != 4) break;		//get address						
 						if(fread(chFlag, 1, 4, fd) != 4) break;
 						size = ENDIAN_CONV(chSize);		//convert size
-						TRACE("                                        [0x%08X]% 4d-%s - Pos:0x%08X\n", *((unsigned int*)chSize), size, chFlag, pos);
+						printf("                                        [0x%08X]% 4d-%s - Pos:0x%08X\n", *((unsigned int*)chSize), size, chFlag, pos);
 						if((track_id == 1 && strcmp(chFlag, "stsz") == 0)
 							|| ((track_id > 1 && strcmp(chFlag, "stco") == 0))) {
 							check_flag2 = 1;
 							break;
 						}									
-						_fseeki64(fd, size-8, SEEK_CUR);
+						fseek(fd, size-8, SEEK_CUR);
 					}
 					if(check_flag2 == 0) break;
 					
-					unsigned int stsz_addr = _ftelli64(fd);
+					unsigned int stsz_addr = ftell(fd);
 					unsigned int stsz_size = size;
 					unsigned int addr = 0;
 					unsigned int *alladdr;
@@ -760,10 +761,10 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 						} else {
 							break;
 						}
-						TRACE("	Founded %d stsz indexs! mdat_addr:0x%08X, curr:0x%08X\n", size, mdat_addr, _ftelli64(fd));
+						printf("	Founded %d stsz indexs! mdat_addr:0x%08X, curr:0x%08X\n", size, mdat_addr, ftell(fd));
 						
 						//Step8. Read video frame size from STSZ
-						_fseeki64(fd, 8, SEEK_CUR);	//Skip the first 8 bytes
+						fseek(fd, 8, SEEK_CUR);	//Skip the first 8 bytes
 						for(i = 0; i < size; i++) {
 							unsigned int addr = 0, rval = 0, idx;
 							memset(chSize, 0, 8);
@@ -774,20 +775,20 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 							idx = (i + 1) / 30;
 							if(i > 0 && (i % 30) == 0) {	//Read video frame size by every 30fps(at the 31frame)							
 								alladdr[idx - 1] = addr;		//video frame size
-								TRACE("\tSTSZ    idx%d: 0x%08X\n", idx, addr);
+								printf("\tSTSZ    idx%d: 0x%08X\n", idx, addr);
 							}							
 						}
 
 						//Read video frame offset from STCO
-						_fseeki64(fd, stsz_addr + stsz_size - 8, SEEK_SET);
+						fseek(fd, stsz_addr + stsz_size - 8, SEEK_SET);
 						if(fread(chSize, 1, 4, fd) != 4) break;   //[4] size
 						if(fread(chFlag, 1, 4, fd) != 4) break;   //[4] flag
 						size = ENDIAN_CONV(chSize);
 						size = (size - 8) / 4;
 						if(size > 0) {
-							TRACE("	Founded %d %s indexs(0x%08X)! mdat_addr:0x%08X, curr:0x%08X\n", size, chFlag, stsz_addr, mdat_addr, _ftelli64(fd));
+							printf("	Founded %d %s indexs(0x%08X)! mdat_addr:0x%08X, curr:0x%08X\n", size, chFlag, stsz_addr, mdat_addr, ftell(fd));
 							//Read video frame size from STCO
-							_fseeki64(fd, 8, SEEK_CUR);	//Skip the first 8 bytes
+							fseek(fd, 8, SEEK_CUR);	//Skip the first 8 bytes
 							for(i = 0; i < size; i++) {
 								unsigned int addr = 0, rval = 0, idx;
 								memset(chSize, 0, 8);
@@ -800,7 +801,7 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 									addr = alladdr[idx-1] + addr; //Video frame size + Video frame offset
 									addr = ((addr + 0x7fff) & 0xFFFF8000);		//Aligned to 0x8000(For wirte cluster size)
 									alladdr[idx-1] = addr;		
-									TRACE("\tSTCO    idx%d: 0x%08X\n", idx, addr);									
+									printf("\tSTCO    idx%d: 0x%08X\n", idx, addr);
 								}					
 							}
 						}
@@ -812,7 +813,7 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 						if(size > 0) {
 							alladdr = (unsigned int *)malloc((size + 1)*sizeof(unsigned int));
 						}
-						TRACE("	Founded %d indexs! mdat_addr:0x%08X, curr:0x%08X\n", size, mdat_addr, _ftelli64(fd));
+						printf("	Founded %d indexs! mdat_addr:0x%08X, curr:0x%08X\n", size, mdat_addr, ftell(fd));
 						for(i = 0; i < size; i++) {
 							unsigned int addr = 0, rval = 0;
 							memset(chSize, 0, 8);
@@ -821,7 +822,7 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 							//alladdr[i] = addr; //Skip 0x00 0x35
 							//alladdr[i] = addr + 0x20000; //0x10000: cluster size: 128K   立体声: 0x20000
 							alladdr[i] = addr + 0x10000; //cluster size: 128K   单声道: 0x10000
-							TRACE("    idx%d: 0x%08X\n", i, addr);
+							printf("    idx%d: 0x%08X\n", i, addr);
 						}
 						gps_rec_cnt = size;
 					}
@@ -835,7 +836,7 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 
 						RMCINFO gsdata;
 						memset(&gsdata, 0, sizeof(RMCINFO));
-						_fseeki64(fd, alladdr[i] + 48/*72 Fuck!!!*/, SEEK_SET);						
+						fseek(fd, alladdr[i] + 48/*72 Fuck!!!*/, SEEK_SET);						
 						fread((char*)&gsdata, 1, sizeof(RMCINFO), fd);
 						
 						char num[2] = {0};
@@ -864,7 +865,7 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 								pos ++;
 								len--;
 							}
-							TRACE("[%d] dectyped: x:%d, y:%d, z:%d, gps:%s\n", i, gsdata.Xacc, gsdata.Yacc, gsdata.Zacc, gsdata.Gps_str);
+							printf("[%d] dectyped: x:%d, y:%d, z:%d, gps:%s\n", i, gsdata.Xacc, gsdata.Yacc, gsdata.Zacc, gsdata.Gps_str);
 
 							AssistInfo_t	node;							
 							node.north_angle = 0.0f;
@@ -886,17 +887,17 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 								ParseRMC(&gsdata.Gps_str[1], node.gps_lat, node.gps_lgt, node.spd, node.north_angle);
 							}	
 
-							m_infoList.AddTail(node);
+							m_infoList.push_back(node);
 #if 1	//模拟文件以1Hz采样,实际是用10Hz采样
-							m_infoList.AddTail(node);
-							m_infoList.AddTail(node);
-							m_infoList.AddTail(node);
-							m_infoList.AddTail(node);
-							m_infoList.AddTail(node);
-							m_infoList.AddTail(node);
-							m_infoList.AddTail(node);
-							m_infoList.AddTail(node);
-							m_infoList.AddTail(node);		
+							m_infoList.push_back(node);
+							m_infoList.push_back(node);
+							m_infoList.push_back(node);
+							m_infoList.push_back(node);
+							m_infoList.push_back(node);
+							m_infoList.push_back(node);
+							m_infoList.push_back(node);
+							m_infoList.push_back(node);
+							m_infoList.push_back(node);
 #endif
 						}
 
@@ -909,11 +910,11 @@ int CAssistFile::ParseAssistDataForNovatek(CString strMOVFile)
 					break;
 				}while(0);
 
-				_fseeki64(fd, curpos, SEEK_SET);
+				fseek(fd, curpos, SEEK_SET);
 
 				break;
 			}
-			_fseeki64(fd, size-8, SEEK_CUR);			
+			fseek(fd, size-8, SEEK_CUR);			
 		}		
 	}while(0);
 
@@ -921,29 +922,29 @@ end:
 	fclose(fd);
 	fd = NULL;	
 
-	return m_infoList.GetCount();
+	return m_infoList.size();
 }
 #endif
 
 //@20130627
-int CAssistFile::ParseMOVSubtitle(CString strMOVFile)
+int CAssistFile::ParseMOVSubtitle(string strMOVFile)
 {
-	TCHAR	tFile[MAX_PATH]	 = {0};
-	char	szFile[MAX_PATH] = {0};
+	char	tFile[PATH_MAX]	 = {0};
+	char	szFile[PATH_MAX] = {0};
 	FILE	*fd				 = NULL;	
 	char	szBuf[1024] = {0};
-	char	file[MAX_PATH] = {0};
+	char	file[PATH_MAX] = {0};
 	int		flag	= 0;
 
-	USES_CONVERSION;
+	
 
 	//Convert TCHAR to CHAR
-	wsprintf(tFile, _T("%s"), strMOVFile);
-	sprintf(szFile, "%s", T2A(tFile));
+	sprintf(tFile,"%s", strMOVFile.data());
+	sprintf(szFile, "%s", tFile);
 	//Clear list first
-	m_infoList.RemoveAll();
+	m_infoList.clear();
 
-	if(strMOVFile.GetLength() < 4) return -1;
+	if(strMOVFile.length() < 4) return -1;
 
 	//Open file
 	fd = fopen(szFile, "rb");
@@ -1000,15 +1001,15 @@ int CAssistFile::ParseMOVSubtitle(CString strMOVFile)
 			if(fread(chFlag, 1, 4, fd) != 4) break;
 
 			pos += size;
-			TRACE(" [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
+			printf(" [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 
 			if(strcmp(chFlag, "moov") == 0) {
 				check_flag = 1;
-				curpos = _ftelli64(fd);
+				curpos = ftell(fd);
 				break;
 			}
 
-			_fseeki64(fd, size-8, SEEK_CUR);
+			fseek(fd, size-8, SEEK_CUR);
 		}
 		if(check_flag == 0) break;
 
@@ -1021,10 +1022,10 @@ int CAssistFile::ParseMOVSubtitle(CString strMOVFile)
 			if(fread(chFlag, 1, 4, fd) != 4) break;
 
 			pos += size;
-			TRACE("         [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);		
+			printf("         [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 
 			if(strcmp(chFlag, "trak") == 0) {
-				curpos = _ftelli64(fd);
+				curpos = ftell(fd);
 				track_id ++;
 				if(track_id == 3) {
 					check_flag = 1;
@@ -1032,65 +1033,65 @@ int CAssistFile::ParseMOVSubtitle(CString strMOVFile)
 					do {					
 						//Step4. Get mdia from trak
 						int check_flag2 = 0;
-						while(_ftelli64(fd) <= pos) {
+						while(ftell(fd) <= pos) {
 							if(fread(chSize, 1, 4, fd) != 4) break;		//get address
 							size = ENDIAN_CONV(chSize);		//convert size			
 							if(fread(chFlag, 1, 4, fd) != 4) break;
 
-							TRACE("                [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
+							printf("                [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 							if(strcmp(chFlag, "mdia") == 0) {
 								check_flag2 = 1;
 								break;
 							}
-							_fseeki64(fd, size-8, SEEK_CUR);
+							fseek(fd, size-8, SEEK_CUR);
 						}
 						if(check_flag2 == 0) break;
 
 						//Step5. Get minf from mdia
 						check_flag2 = 0;
-						while(_ftelli64(fd) <= pos) {
+						while(ftell(fd) <= pos) {
 							if(fread(chSize, 1, 4, fd) != 4) break;		//get address
 							size = ENDIAN_CONV(chSize);		//convert size			
 							if(fread(chFlag, 1, 4, fd) != 4) break;
 
-							TRACE("                        [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
+							printf("                        [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 							if(strcmp(chFlag, "minf") == 0) {
 								check_flag2 = 1;
 								break;
 							}
-							_fseeki64(fd, size-8, SEEK_CUR);
+							fseek(fd, size-8, SEEK_CUR);
 						}
 						if(check_flag2 == 0) break;
 
 						//Step6. Get stbl from minf
 						check_flag2 = 0;
-						while(_ftelli64(fd) <= pos) {
+						while(ftell(fd) <= pos) {
 							if(fread(chSize, 1, 4, fd) != 4) break;		//get address
 							size = ENDIAN_CONV(chSize);		//convert size			
 							if(fread(chFlag, 1, 4, fd) != 4) break;
 
-							TRACE("                                [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
+							printf("                                [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 							if(strcmp(chFlag, "stbl") == 0) {
 								check_flag2 = 1;
 								break;
 							}
-							_fseeki64(fd, size-8, SEEK_CUR);
+							fseek(fd, size-8, SEEK_CUR);
 						}
 						if(check_flag2 == 0) break;
 
 						//Step7. Get stco from stbl
 						check_flag2 = 0;
-						while(_ftelli64(fd) <= pos) {
+						while(ftell(fd) <= pos) {
 							if(fread(chSize, 1, 4, fd) != 4) break;		//get address
 							size = ENDIAN_CONV(chSize);		//convert size			
 							if(fread(chFlag, 1, 4, fd) != 4) break;
 
-							TRACE("                                        [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
+							printf("                                        [0x%08X]%s - Pos:0x%08X\n", *((unsigned int*)chSize), chFlag, pos);
 							if(strcmp(chFlag, "stco") == 0) {
 								check_flag2 = 1;
 								break;
 							}
-							_fseeki64(fd, size-8, SEEK_CUR);
+							fseek(fd, size-8, SEEK_CUR);
 						}
 						if(check_flag2 == 0) break;
 
@@ -1110,7 +1111,7 @@ int CAssistFile::ParseMOVSubtitle(CString strMOVFile)
 							addr = ENDIAN_CONV(chSize);
 							alladdr[i] = addr; //Skip 0x00 0x35
 						}
-						TRACE(" founded %d indexs!\n", size);
+						printf(" founded %d indexs!\n", size);
 						int found_key = 0;
 						int key = 0;
 						char cache[20][128] = {0};
@@ -1119,12 +1120,12 @@ int CAssistFile::ParseMOVSubtitle(CString strMOVFile)
 							
 							memset(rbuf, 0, 128);							
 							//fseek(fd, alladdr[i], SEEK_SET);
-							_fseeki64(fd, alladdr[i], SEEK_SET);
+							fseek(fd, alladdr[i], SEEK_SET);
 							fread(chSize, 1, 2, fd);				//[Size:2][GPS String:Size]
 							len = (chSize[0] << 8) | chSize[1];    
 							fread(rbuf, 1, len, fd);
 							rbuf[0] = 0x20;
-							TRACE("#%d, Addr:0x%08X, len:%d, data:%s", i, alladdr[i], len, rbuf);			
+							printf("#%d, Addr:0x%08X, len:%d, data:%s", i, alladdr[i], len, rbuf);
 	
 							if(found_key == 0) {
 								if(len == 11) {
@@ -1143,9 +1144,9 @@ int CAssistFile::ParseMOVSubtitle(CString strMOVFile)
 									num[0] = rbuf[P(6)]; key += atoi(num);
 									num[0] = rbuf[P(7)]; key += atoi(num);
 									num[0] = rbuf[P(7)]; key += atoi(num);
-									TRACE("    Founded key: %s, %d, 0x%08X,0x%08X,0x%08X,0x%08X,0x%08X,0x%08X,0x%08X,0x%08X\n", rbuf, key,
+									printf("    Founded key: %s, %d, 0x%08X,0x%08X,0x%08X,0x%08X,0x%08X,0x%08X,0x%08X,0x%08X\n", rbuf, key,
 										rbuf[P(0)],rbuf[P(1)],rbuf[P(2)],rbuf[P(3)],rbuf[P(4)],rbuf[P(5)],rbuf[P(6)],rbuf[P(7)]);
-									TRACE("\n");
+									printf("\n");
 									
 								    int j;
 									for(j = 0; j < i; j++) {
@@ -1165,12 +1166,12 @@ int CAssistFile::ParseMOVSubtitle(CString strMOVFile)
 						break;
 					}while(0);
 
-					_fseeki64(fd, curpos, SEEK_SET);
+					fseek(fd, curpos, SEEK_SET);
 				}				
 			}
 
 			if(check_flag == 1) break;
-			_fseeki64(fd, size-8, SEEK_CUR);			
+			fseek(fd, size-8, SEEK_CUR);			
 		}		
 	}while(0);
 
@@ -1178,19 +1179,19 @@ end:
 	fclose(fd);
 	fd = NULL;	
 
-	return m_infoList.GetCount();	
+	return m_infoList.size();
 }
 
 int CAssistFile::GetNode(int idx, AssistInfo_t &node)
 {
-	POSITION	pos = m_infoList.FindIndex(idx);
+	int	pos = idx;
 
 	if(pos) {
-		node = m_infoList.GetAt(pos);
+		node = m_infoList[pos];
 		return 0;
 	} else {
-		node.gps_lat = _T("0");
-		node.gps_lgt = _T("0");
+		node.gps_lat = "0";
+		node.gps_lgt = "0";
 		node.gsensor_x = 0;
 		node.gsensor_y = 0;
 		node.gsensor_z = 0;
@@ -1201,5 +1202,5 @@ int CAssistFile::GetNode(int idx, AssistInfo_t &node)
 
 void CAssistFile::ClearList()
 {
-	m_infoList.RemoveAll();
+	m_infoList.clear();
 }

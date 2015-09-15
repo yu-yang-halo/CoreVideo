@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "VideoViewController.h"
 #import "MyCache.h"
+
 @interface AppDelegate ()
 
 
@@ -21,6 +22,11 @@
     // Insert code here to initialize your application
     NSLog(@"applicationDidFinishLaunching...");
     [MyCache playPathClear];
+    
+   // NSWindowController *gpsmapWC=[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"gpsmap"];
+    
+    
+    
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

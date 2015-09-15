@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+extern const NSString *keyPATH;
+extern const NSString *keyGPSDATA;
+typedef void (^cacheCompleteHandler)();
 @interface MyCache : NSObject
 
-+(void)playPathCache:(NSString *)path;
+
+
++(void)playPathCache:(NSString *)path block:(cacheCompleteHandler)_block;
 
 +(void)playPathClear;
 

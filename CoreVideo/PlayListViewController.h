@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import <WebKit/WebKit.h>
 @interface PlayListViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate>
 -(void)reloadPlayListData;
 @end

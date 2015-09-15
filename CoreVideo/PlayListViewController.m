@@ -16,6 +16,8 @@
 @property (weak) IBOutlet NSTableView *tableView;
 - (IBAction)addVideoPlay:(id)sender;
 - (IBAction)removeVideoPlay:(id)sender;
+
+
 @property(nonatomic,strong) NSMutableArray *playlist;
 @end
 
@@ -31,6 +33,7 @@
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
     selectIndex=-1;
+   
 }
 
 - (IBAction)addVideoPlay:(id)sender {
@@ -41,8 +44,10 @@
     [panel beginWithCompletionHandler:^(NSInteger result) {
         if(result==NSFileHandlingPanelOKButton){
             //NSLog(@"%@",[panel URL]);
-            [MyCache playPathCache:[[panel URL] absoluteString]];
-            [self reloadPlayListData];
+            [MyCache playPathCache:[[panel URL] absoluteString] block:^{
+                [self reloadPlayListData];
+            }];
+            
             
         }
     }];
@@ -83,7 +88,7 @@
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
     
     if(_playlist!=nil){
-        NSString *abbrev=[NSString stringWithFormat:@"%ld:%@",row,[self abbreviationFile:[_playlist objectAtIndex:row]]];
+        NSString *abbrev=[NSString stringWithFormat:@"%ld:%@",row,[self abbreviationFile:[[_playlist objectAtIndex:row] objectForKey:keyPATH]]];
         return abbrev;
     }else{
         return @"";
@@ -104,7 +109,7 @@
     
     selectIndex=proposedSelectionIndexes.firstIndex;
     if(selectIndex<[_playlist count]){
-         [self playCurrentItem:[_playlist objectAtIndex:selectIndex]];
+         [self playCurrentItem:[[_playlist objectAtIndex:selectIndex] objectForKey:keyPATH]];
     }
    
     

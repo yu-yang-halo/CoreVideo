@@ -56,12 +56,17 @@
      [self close];
     
      NSLog(@"url %@",url);
-     [MyCache playPathCache:[url absoluteString]];
-     AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
     
-     [delegate.videoVC initAssetData:url];
+     [MyCache playPathCache:[url absoluteString] block:^{
+         
+         AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+         
+         [delegate.videoVC initAssetData:url];
+         
+         [delegate.playlistVC reloadPlayListData];
+         
+     }];
     
-    [delegate.playlistVC reloadPlayListData];
     
     
     return YES;

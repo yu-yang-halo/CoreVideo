@@ -1,4 +1,8 @@
-
+#include <string>
+#include <vector>
+#include <stdlib.h>
+#include <limits.h>
+#include <stdio.h>
 #pragma once
 
 using namespace std;
@@ -72,7 +76,7 @@ typedef struct tagAssistInfo {
 	double  north_angle;
 }AssistInfo_t, *PAssistInfo;
 
-typedef list<AssistInfo_t>	AssistInfoList;
+typedef vector<AssistInfo_t>	AssistInfoList;
 class CAssistFile
 {
 public:
