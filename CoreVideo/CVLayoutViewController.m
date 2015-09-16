@@ -13,7 +13,7 @@
 
 
 
-@interface CVLayoutViewController (){
+@interface CVLayoutViewController ()<ZoomIODelegate>{
     VideoViewController     *videoVC ;
     CVWebViewController     *webVC ;
     PlayListViewController  *playlistVC;
@@ -53,6 +53,8 @@
     
     // Do view setup here.
     videoVC    =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"videoVC"];
+    videoVC.delegate=self;
+    
     webVC      =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"webVC"];
     playlistVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"playlistVC"];
     
@@ -62,9 +64,6 @@
     [self.displayView addSubview:webVC.view];
   
     
-    [videoVC.view setFrame:_videoView.frame];
-    [playlistVC.view setFrame:_playListView.frame];
-    [webVC.view setFrame:_displayView.frame];
     
     [self updateViewLayoutV1:_playListView hview0:_videoView hview1:_displayView];
     
@@ -118,6 +117,13 @@
     [webVC.webview setFrame:webVC.view.bounds];
     //[webVC.webview.layer setPosition:webVC.view.layer.position];
     
+    
+    
+    _videoView=hview0;
+    _displayView=hview1;
+    
+    _playListView=verView1;
+    
 }
 
 
@@ -125,6 +131,14 @@
     return NO;
 }
 
+-(void)zoomIOView:(NSInteger)state{
+    if(state==0){
+        [videoVC.view setFrame:self.view.bounds];
+        
+    }else{
+        [videoVC.view setFrame:_videoView.bounds];
+    }
+}
 
 -(void)autolayoutView{
    

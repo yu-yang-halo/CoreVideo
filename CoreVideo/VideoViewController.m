@@ -16,7 +16,9 @@ static void *AVSPPlayerItemStatusContext = &AVSPPlayerItemStatusContext;
 static void *AVSPPlayerRateContext = &AVSPPlayerRateContext;
 static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 
-@interface VideoViewController ()
+@interface VideoViewController (){
+    NSInteger zoomState;//0 放大  1 缩小
+}
 @property (weak) IBOutlet NSView *controlView;
 @property(nonatomic,strong) AVAssetImageGenerator *imageGenerator;
 
@@ -41,6 +43,8 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 - (IBAction)capture:(id)sender;
 - (IBAction)lookPicture:(id)sender;
 - (IBAction)volumChange:(id)sender;
+
+- (IBAction)zoomInOut:(id)sender;
 
 @end
 
@@ -149,10 +153,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     // Create a new AVPlayerItem and make it our player's current item.
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
     
-    self.timeSlider.maxValue=CMTimeGetSeconds(playerItem.asset.duration);
-    self.timeSlider.doubleValue=0;
-    self.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:self.timeSlider.doubleValue];
-    self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:self.timeSlider.maxValue];
+
     
 
     
@@ -163,10 +164,11 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     // Use a weak self variable to avoid a retain cycle in the block
     __weak VideoViewController *weakSelf = self;
    
+    self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(playerItem.asset.duration)];
     
     [self setTimeObserverToken:[[self player] addPeriodicTimeObserverForInterval:CMTimeMake(1, 100) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
        // NSLog(@"time is %f",CMTimeGetSeconds(time));
-       [weakSelf.currentTimeField setStringValue:[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(time)]];
+       //[weakSelf.currentTimeField setStringValue:[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(time)]];
         
         
         weakSelf.timeSlider.doubleValue = CMTimeGetSeconds(time);
@@ -248,6 +250,19 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
      NSLog(@"%f",sender.floatValue);
     [self setVolume:sender.floatValue];
 }
+
+- (IBAction)zoomInOut:(NSButton *)sender {
+    [self.delegate zoomIOView:zoomState];
+    
+    if(zoomState==0){
+        zoomState=1;
+        NSLog(@"放大");
+    }else{
+        zoomState=0;
+        NSLog(@"缩小");
+    }
+    
+}
 - (void)close
 {
     
@@ -291,6 +306,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
         return 0.f;
 }
 
+
 - (double)currentTime
 {
     return CMTimeGetSeconds(self.player.currentTime);
@@ -299,6 +315,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 - (void)setCurrentTime:(double)time
 {
     [self.player seekToTime:CMTimeMakeWithSeconds(time, 1) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+     self.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:time];
 }
 
 
