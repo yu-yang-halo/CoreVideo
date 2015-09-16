@@ -14,8 +14,6 @@
 		8461A0021BA3FA6E0048DD69 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461A0011BA3FA6E0048DD69 /* VideoViewController.m */; };
 		846C31DE1BA66E480007ACDB /* MyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31DD1BA66E480007ACDB /* MyCache.m */; };
 		846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E11BA679EC0007ACDB /* PlayListViewController.m */; };
-		846C31E51BA6A42A0007ACDB /* CVSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E41BA6A42A0007ACDB /* CVSplitViewController.m */; };
-		846C31E81BA6B8C10007ACDB /* CVHorizontalSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E71BA6B8C10007ACDB /* CVHorizontalSplitViewController.m */; };
 		84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E6F1BA28E0E00817598 /* AppDelegate.m */; };
 		84A85E721BA28E0E00817598 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E711BA28E0E00817598 /* main.m */; };
 		84A85E781BA28E0E00817598 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E771BA28E0E00817598 /* Document.m */; };
@@ -26,6 +24,7 @@
 		84B43FE71BA806FA00B4B46A /* GpsDataHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B43FE61BA806FA00B4B46A /* GpsDataHelper.mm */; };
 		84B43FE91BA8182400B4B46A /* gpslocation.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B43FE81BA8182400B4B46A /* gpslocation.html */; };
 		84B43FEC1BA81D6700B4B46A /* CVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B43FEB1BA81D6700B4B46A /* CVWebViewController.m */; };
+		84BC6A091BA8FF0400FBF400 /* CVLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC6A081BA8FF0400FBF400 /* CVLayoutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +52,6 @@
 		846C31DD1BA66E480007ACDB /* MyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCache.m; sourceTree = "<group>"; };
 		846C31E01BA679EC0007ACDB /* PlayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayListViewController.h; sourceTree = "<group>"; };
 		846C31E11BA679EC0007ACDB /* PlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayListViewController.m; sourceTree = "<group>"; };
-		846C31E31BA6A42A0007ACDB /* CVSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVSplitViewController.h; sourceTree = "<group>"; };
-		846C31E41BA6A42A0007ACDB /* CVSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVSplitViewController.m; sourceTree = "<group>"; };
-		846C31E61BA6B8C10007ACDB /* CVHorizontalSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVHorizontalSplitViewController.h; sourceTree = "<group>"; };
-		846C31E71BA6B8C10007ACDB /* CVHorizontalSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVHorizontalSplitViewController.m; sourceTree = "<group>"; };
 		84A85E691BA28E0E00817598 /* CoreVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A85E6D1BA28E0E00817598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84A85E6E1BA28E0E00817598 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +71,8 @@
 		84B43FE81BA8182400B4B46A /* gpslocation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gpslocation.html; sourceTree = "<group>"; };
 		84B43FEA1BA81D6700B4B46A /* CVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVWebViewController.h; sourceTree = "<group>"; };
 		84B43FEB1BA81D6700B4B46A /* CVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVWebViewController.m; sourceTree = "<group>"; };
+		84BC6A071BA8FF0400FBF400 /* CVLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVLayoutViewController.h; sourceTree = "<group>"; };
+		84BC6A081BA8FF0400FBF400 /* CVLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVLayoutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,12 +135,10 @@
 				18D89F681BA4EDE7000D058C /* CVWindowController.m */,
 				846C31E01BA679EC0007ACDB /* PlayListViewController.h */,
 				846C31E11BA679EC0007ACDB /* PlayListViewController.m */,
-				846C31E31BA6A42A0007ACDB /* CVSplitViewController.h */,
-				846C31E41BA6A42A0007ACDB /* CVSplitViewController.m */,
-				846C31E61BA6B8C10007ACDB /* CVHorizontalSplitViewController.h */,
-				846C31E71BA6B8C10007ACDB /* CVHorizontalSplitViewController.m */,
 				84B43FEA1BA81D6700B4B46A /* CVWebViewController.h */,
 				84B43FEB1BA81D6700B4B46A /* CVWebViewController.m */,
+				84BC6A071BA8FF0400FBF400 /* CVLayoutViewController.h */,
+				84BC6A081BA8FF0400FBF400 /* CVLayoutViewController.m */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -322,7 +317,6 @@
 			files = (
 				846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */,
 				84A85E781BA28E0E00817598 /* Document.m in Sources */,
-				846C31E51BA6A42A0007ACDB /* CVSplitViewController.m in Sources */,
 				84A85E721BA28E0E00817598 /* main.m in Sources */,
 				84B43FE71BA806FA00B4B46A /* GpsDataHelper.mm in Sources */,
 				84B43FE41BA7E1AA00B4B46A /* FileList.cpp in Sources */,
@@ -332,9 +326,9 @@
 				18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */,
 				84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */,
 				18D89F741BA59E87000D058C /* MySlider.m in Sources */,
+				84BC6A091BA8FF0400FBF400 /* CVLayoutViewController.m in Sources */,
 				846C31DE1BA66E480007ACDB /* MyCache.m in Sources */,
 				18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */,
-				846C31E81BA6B8C10007ACDB /* CVHorizontalSplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +451,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CoreVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -471,6 +466,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CoreVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

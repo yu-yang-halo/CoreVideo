@@ -46,6 +46,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 
 @implementation VideoViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
   
@@ -260,6 +261,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
             [[self videolayer] removeFromSuperlayer];
             [self removeObserver:self forKeyPath:@"videolayer.readyForDisplay"];
         }
+        [self.player replaceCurrentItemWithPlayerItem:nil];
         
     }
     self.isAddVideoFile=NO;

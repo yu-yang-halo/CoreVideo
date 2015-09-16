@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 
 @interface CVWebViewController : NSViewController
+
+@property(nonatomic,strong) WebView *webview;
 
 @end

@@ -1,122 +1,122 @@
 <!doctype html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-    <title>ä¯ÀÀÆ÷¶¨Î»</title>
-    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css"/>
-    <script type="text/javascript"
-            src="http://webapi.amap.com/maps?v=1.3&key=ÄúÉêÇëµÄkeyÖµ"></script>
-    <style type="text/css">
-        #tip {
-            min-height: 65px;
-            background-color: #fff;
-            padding-left: 10px;
-            padding-right: 10px;
-            position: absolute;
-            font-size: 12px;
-            right: 10px;
-            bottom: 20px;
-            border-radius: 3px;
-            line-height: 18px;
-            border: 1px solid #ccc;
-        }
-
-        #tip input[type='button'] {
-            margin-left: 10px;
-            margin-right: 10px;
-            margin-top: 10px;
-            background-color: #0D9BF2;
-            height: 30px;
-            text-align: center;
-            line-height: 30px;
-            color: #fff;
-            font-size: 12px;
-            border-radius: 3px;
-            outline: none;
-            border: 0;
-            float: right;
-        }
-    </style>
-<body>
-<div id='mapContainer'></div>
-<div id="tip">
-    <div>
-        <input type="button" value="³ÖĞø¼à¿ØÎ»ÖÃ" onclick="watchPosition()"/>
-        <input type="button" value="»ñµÃµ±Ç°Î»ÖÃ" onclick="getCurrentPosition()"/>
-    </div>
-    <div style="color: #C0C0C0">²»Ö§³ÖIE9ÒÔÏÂ°æ±¾</div>
-    <div id="r_title"><b>¶¨Î»½á¹û:</b></div>
-    <div id="result"></div>
-</div>
-
-<script src='http://webapi.amap.com/maps?v=1.3&key=ÄúÉêÇëµÄkeyÖµ'></script>
-<script type="text/javascript">
-    var map, geolocation;
-    //¼ÓÔØµØÍ¼£¬µ÷ÓÃä¯ÀÀÆ÷¶¨Î»·şÎñ
-    map = new AMap.Map('mapContainer', {
-        resizeEnable: true
-    });
-    map.plugin('AMap.Geolocation', function() {
-        geolocation = new AMap.Geolocation({
-            enableHighAccuracy: true,//ÊÇ·ñÊ¹ÓÃ¸ß¾«¶È¶¨Î»£¬Ä¬ÈÏ:true
-            timeout: 10000,          //³¬¹ı10ÃëºóÍ£Ö¹¶¨Î»£¬Ä¬ÈÏ£ºÎŞÇî´ó
-            maximumAge: 0,           //¶¨Î»½á¹û»º´æ0ºÁÃë£¬Ä¬ÈÏ£º0
-            convert: true,           //×Ô¶¯Æ«ÒÆ×ø±ê£¬Æ«ÒÆºóµÄ×ø±êÎª¸ßµÂ×ø±ê£¬Ä¬ÈÏ£ºtrue
-            showButton: true,        //ÏÔÊ¾¶¨Î»°´Å¥£¬Ä¬ÈÏ£ºtrue
-            buttonPosition: 'LB',    //¶¨Î»°´Å¥Í£¿¿Î»ÖÃ£¬Ä¬ÈÏ£º'LB'£¬×óÏÂ½Ç
-            buttonOffset: new AMap.Pixel(10, 20),//¶¨Î»°´Å¥ÓëÉèÖÃµÄÍ£¿¿Î»ÖÃµÄÆ«ÒÆÁ¿£¬Ä¬ÈÏ£ºPixel(10, 20)
-            showMarker: true,        //¶¨Î»³É¹¦ºóÔÚ¶¨Î»µ½µÄÎ»ÖÃÏÔÊ¾µã±ê¼Ç£¬Ä¬ÈÏ£ºtrue
-            showCircle: true,        //¶¨Î»³É¹¦ºóÓÃÔ²È¦±íÊ¾¶¨Î»¾«¶È·¶Î§£¬Ä¬ÈÏ£ºtrue
-            panToLocation: true,     //¶¨Î»³É¹¦ºó½«¶¨Î»µ½µÄÎ»ÖÃ×÷ÎªµØÍ¼ÖĞĞÄµã£¬Ä¬ÈÏ£ºtrue
-            zoomToAccuracy: true      //¶¨Î»³É¹¦ºóµ÷ÕûµØÍ¼ÊÓÒ°·¶Î§Ê¹¶¨Î»Î»ÖÃ¼°¾«¶È·¶Î§ÊÓÒ°ÄÚ¿É¼û£¬Ä¬ÈÏ£ºfalse
-        });
-        map.addControl(geolocation);
-        AMap.event.addListener(geolocation, 'complete', onComplete);//·µ»Ø¶¨Î»ĞÅÏ¢
-        AMap.event.addListener(geolocation, 'error', onError);      //·µ»Ø¶¨Î»³ö´íĞÅÏ¢
-    });
-    //»ñÈ¡µ±Ç°Î»ÖÃĞÅÏ¢
-    function getCurrentPosition() {
-        geolocation.getCurrentPosition();
-    }
-    ;
-    //¼à¿Øµ±Ç°Î»ÖÃ²¢»ñÈ¡µ±Ç°Î»ÖÃĞÅÏ¢
-    function watchPosition() {
-        geolocation.watchPosition();
-    }
-    ;
-    //½âÎö¶¨Î»½á¹û
-    function onComplete(data) {
-        var str = '<div>¶¨Î»³É¹¦</div>';
-        str += '<div>¾­¶È£º' + data.position.getLng() + '</div>';
-        str += '<div>Î³¶È£º' + data.position.getLat() + '</div>';
-        str += '<div>¾«¶È£º' + data.accuracy + ' Ã×</div>';
-        str += '<div>ÊÇ·ñ¾­¹ıÆ«ÒÆ£º' + (data.isConverted ? 'ÊÇ' : '·ñ') + '</div>';
-        result.innerHTML = str;
-    }
-    ;
-    //½âÎö¶¨Î»´íÎóĞÅÏ¢
-    function onError(data) {
-        var str = '<p>¶¨Î»Ê§°Ü</p>';
-        str += '<p>´íÎóĞÅÏ¢£º'
-        switch (data.info) {
-            case 'PERMISSION_DENIED':
-                str += 'ä¯ÀÀÆ÷×èÖ¹ÁË¶¨Î»²Ù×÷';
-                break;
-            case 'POSITION_UNAVAILBLE':
-                str += 'ÎŞ·¨»ñµÃµ±Ç°Î»ÖÃ';
-                break;
-            case 'TIMEOUT':
-                str += '¶¨Î»³¬Ê±';
-                break;
-            default:
-                str += 'Î´Öª´íÎó';
-                break;
-        }
-        str += '</p>';
-        result.innerHTML = str;
-    }
-</script>
-</body>
+    <head>
+        <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+                    <title>æµè§ˆå™¨å®šä½</title>
+                    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css"/>
+                    <script type="text/javascript"
+                        src="http://webapi.amap.com/maps?v=1.3&key=æ‚¨ç”³è¯·çš„keyå€¼"></script>
+                    <style type="text/css">
+                        #tip {
+                            min-height: 65px;
+                            background-color: #fff;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            position: absolute;
+                            font-size: 12px;
+                            right: 10px;
+                            bottom: 20px;
+                            border-radius: 3px;
+                            line-height: 18px;
+                            border: 1px solid #ccc;
+                        }
+                    
+                    #tip input[type='button'] {
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        margin-top: 10px;
+                        background-color: #0D9BF2;
+                        height: 30px;
+                        text-align: center;
+                        line-height: 30px;
+                        color: #fff;
+                        font-size: 12px;
+                        border-radius: 3px;
+                        outline: none;
+                        border: 0;
+                        float: right;
+                    }
+                    </style>
+                    <body>
+                        <div id='mapContainer'></div>
+                        <div id="tip">
+                            <div>
+                                <input type="button" value="æŒç»­ç›‘æ§ä½ç½®" onclick="watchPosition()"/>
+                                <input type="button" value="è·å¾—å½“å‰ä½ç½®" onclick="getCurrentPosition()"/>
+                            </div>
+                            <div style="color: #C0C0C0">ä¸æ”¯æŒIE9ä»¥ä¸‹ç‰ˆæœ¬</div>
+                            <div id="r_title"><b>å®šä½ç»“æœ:</b></div>
+                            <div id="result"></div>
+                        </div>
+                        
+                        <script src='http://webapi.amap.com/maps?v=1.3&key=æ‚¨ç”³è¯·çš„keyå€¼'></script>
+                        <script type="text/javascript">
+                            var map, geolocation;
+                            //åŠ è½½åœ°å›¾ï¼Œè°ƒç”¨æµè§ˆå™¨å®šä½æœåŠ¡
+                            map = new AMap.Map('mapContainer', {
+                                               resizeEnable: true
+                                               });
+                                               map.plugin('AMap.Geolocation', function() {
+                                                          geolocation = new AMap.Geolocation({
+                                                                                             enableHighAccuracy: true,//æ˜¯å¦ä½¿ç”¨é«˜ç²¾åº¦å®šä½ï¼Œé»˜è®¤:true
+                                                                                             timeout: 10000,          //è¶…è¿‡10ç§’ååœæ­¢å®šä½ï¼Œé»˜è®¤ï¼šæ— ç©·å¤§
+                                                                                             maximumAge: 0,           //å®šä½ç»“æœç¼“å­˜0æ¯«ç§’ï¼Œé»˜è®¤ï¼š0
+                                                                                             convert: true,           //è‡ªåŠ¨åç§»åæ ‡ï¼Œåç§»åçš„åæ ‡ä¸ºé«˜å¾·åæ ‡ï¼Œé»˜è®¤ï¼štrue
+                                                                                             showButton: true,        //æ˜¾ç¤ºå®šä½æŒ‰é’®ï¼Œé»˜è®¤ï¼štrue
+                                                                                             buttonPosition: 'LB',    //å®šä½æŒ‰é’®åœé ä½ç½®ï¼Œé»˜è®¤ï¼š'LB'ï¼Œå·¦ä¸‹è§’
+                                                                                             buttonOffset: new AMap.Pixel(10, 20),//å®šä½æŒ‰é’®ä¸è®¾ç½®çš„åœé ä½ç½®çš„åç§»é‡ï¼Œé»˜è®¤ï¼šPixel(10, 20)
+                                                                                             showMarker: true,        //å®šä½æˆåŠŸååœ¨å®šä½åˆ°çš„ä½ç½®æ˜¾ç¤ºç‚¹æ ‡è®°ï¼Œé»˜è®¤ï¼štrue
+                                                                                             showCircle: true,        //å®šä½æˆåŠŸåç”¨åœ†åœˆè¡¨ç¤ºå®šä½ç²¾åº¦èŒƒå›´ï¼Œé»˜è®¤ï¼štrue
+                                                                                             panToLocation: true,     //å®šä½æˆåŠŸåå°†å®šä½åˆ°çš„ä½ç½®ä½œä¸ºåœ°å›¾ä¸­å¿ƒç‚¹ï¼Œé»˜è®¤ï¼štrue
+                                                                                             zoomToAccuracy: true      //å®šä½æˆåŠŸåè°ƒæ•´åœ°å›¾è§†é‡èŒƒå›´ä½¿å®šä½ä½ç½®åŠç²¾åº¦èŒƒå›´è§†é‡å†…å¯è§ï¼Œé»˜è®¤ï¼šfalse
+                                                                                             });
+                                                          map.addControl(geolocation);
+                                                          AMap.event.addListener(geolocation, 'complete', onComplete);//è¿”å›å®šä½ä¿¡æ¯
+                                                          AMap.event.addListener(geolocation, 'error', onError);      //è¿”å›å®šä½å‡ºé”™ä¿¡æ¯
+                                                          });
+                                                          //è·å–å½“å‰ä½ç½®ä¿¡æ¯
+                                                          function getCurrentPosition() {
+                                                              geolocation.getCurrentPosition();
+                                                          }
+                        ;
+                        //ç›‘æ§å½“å‰ä½ç½®å¹¶è·å–å½“å‰ä½ç½®ä¿¡æ¯
+                        function watchPosition() {
+                            geolocation.watchPosition();
+                        }
+                        ;
+                        //è§£æå®šä½ç»“æœ
+                        function onComplete(data) {
+                            var str = '<div>å®šä½æˆåŠŸ</div>';
+                            str += '<div>ç»åº¦ï¼š' + data.position.getLng() + '</div>';
+                            str += '<div>çº¬åº¦ï¼š' + data.position.getLat() + '</div>';
+                            str += '<div>ç²¾åº¦ï¼š' + data.accuracy + ' ç±³</div>';
+                            str += '<div>æ˜¯å¦ç»è¿‡åç§»ï¼š' + (data.isConverted ? 'æ˜¯' : 'å¦') + '</div>';
+                            result.innerHTML = str;
+                        }
+                        ;
+                        //è§£æå®šä½é”™è¯¯ä¿¡æ¯
+                        function onError(data) {
+                            var str = '<p>å®šä½å¤±è´¥</p>';
+                            str += '<p>é”™è¯¯ä¿¡æ¯ï¼š'
+                            switch (data.info) {
+                                case 'PERMISSION_DENIED':
+                                str += 'æµè§ˆå™¨é˜»æ­¢äº†å®šä½æ“ä½œ';
+                                break;
+                                case 'POSITION_UNAVAILBLE':
+                                str += 'æ— æ³•è·å¾—å½“å‰ä½ç½®';
+                                break;
+                                case 'TIMEOUT':
+                                str += 'å®šä½è¶…æ—¶';
+                                break;
+                                default:
+                                str += 'æœªçŸ¥é”™è¯¯';
+                                break;
+                            }
+                            str += '</p>';
+                            result.innerHTML = str;
+                        }
+                        </script>
+                    </body>
 </html>

@@ -7,9 +7,9 @@
 //
 
 #import "CVWebViewController.h"
-#import <WebKit/WebKit.h>
+
 @interface CVWebViewController ()
-@property(nonatomic,strong) WebView *webview;
+
 @end
 
 @implementation CVWebViewController
@@ -17,13 +17,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.view setWantsLayer:YES];
+    [self.view.layer setBackgroundColor:[[NSColor purpleColor] CGColor]];
+    
+    
     self.webview=[[WebView alloc] initWithFrame:self.view.bounds];
     
     [self.view addSubview:_webview];
     
-    [[self.webview mainFrame] loadHTMLString:@"gpslocation.html" baseURL:[[NSBundle mainBundle] bundleURL]];
+    //[self autolayoutWebview];
     
+    NSString *gpsPath=[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"gpslocation.html"];
     
+ 
+    
+    [[self.webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:gpsPath]]];
+    
+}
+
+-(void)autolayoutWebview{
+
+    [[NSLayoutConstraint constraintWithItem:self.webview attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0] setActive:YES];
+    [[NSLayoutConstraint constraintWithItem:self.webview attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0] setActive:YES];
 }
 
 @end
