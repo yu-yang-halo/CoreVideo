@@ -14,12 +14,19 @@
 -(void)zoomIOView:(NSInteger)state;
 
 @end
+@protocol GpsMapDelegate<NSObject>
+
+-(void)beginDrawPath;
+-(void)updateGpsDataToMapByCurrentTime:(Float64)time;
+
+@end
 
 @interface VideoViewController : NSViewController
 
 @property(nonatomic,strong) AVPlayer *player;
 @property(nonatomic,assign,readonly) BOOL isAddVideoFile;
 @property(nonatomic,weak) id<ZoomIODelegate> delegate;
+@property(nonatomic,weak) id<GpsMapDelegate> gpsMapdelegate;
 
 -(void)initAssetData:(NSURL *)url;
 -(void)close;

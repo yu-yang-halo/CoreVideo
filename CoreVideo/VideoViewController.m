@@ -152,7 +152,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     
     // Create a new AVPlayerItem and make it our player's current item.
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
-    
+    [self.gpsMapdelegate beginDrawPath];
 
     
 
@@ -167,11 +167,11 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(playerItem.asset.duration)];
     
     [self setTimeObserverToken:[[self player] addPeriodicTimeObserverForInterval:CMTimeMake(1, 100) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-       // NSLog(@"time is %f",CMTimeGetSeconds(time));
-       //[weakSelf.currentTimeField setStringValue:[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(time)]];
         
+         [weakSelf.gpsMapdelegate updateGpsDataToMapByCurrentTime:CMTimeGetSeconds(time)];
         
-        weakSelf.timeSlider.doubleValue = CMTimeGetSeconds(time);
+         weakSelf.timeSlider.doubleValue = CMTimeGetSeconds(time);
+         weakSelf.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(time)];
     }]];
     
     self.volumSlider.floatValue=self.player.volume;
@@ -277,7 +277,8 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
             [self removeObserver:self forKeyPath:@"videolayer.readyForDisplay"];
         }
         [self.player replaceCurrentItemWithPlayerItem:nil];
-        
+        self.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:0];
+        self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:0];
     }
     self.isAddVideoFile=NO;
 }

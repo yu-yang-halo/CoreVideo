@@ -105,7 +105,7 @@
 }
 
 - (NSIndexSet *)tableView:(NSTableView *)tableView selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes NS_AVAILABLE_MAC(10_5){
-    NSLog(@"%ld : %ld",proposedSelectionIndexes.firstIndex,proposedSelectionIndexes.lastIndex);
+   // NSLog(@"%ld : %ld",proposedSelectionIndexes.firstIndex,proposedSelectionIndexes.lastIndex);
     
     selectIndex=proposedSelectionIndexes.firstIndex;
     if(selectIndex<[_playlist count]){

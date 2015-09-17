@@ -8,8 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
-
-@interface CVWebViewController : NSViewController
+#import "VideoViewController.h"
+@interface CVWebViewController : NSViewController<GpsMapDelegate>
 
 @property(nonatomic,strong) WebView *webview;
 
