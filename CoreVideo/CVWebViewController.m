@@ -9,9 +9,11 @@
 #import "CVWebViewController.h"
 #import "MyCache.h"
 #import "JSONKit.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 @interface CVWebViewController ()
 {
     NSMutableArray *currentVideoGpsDataArr;
+    NSString       *currentPlayVideoPath;
 }
 @end
 
@@ -36,6 +38,15 @@
     
     [[self.webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:gpsPath]]];
     
+    JSContext *context=self.webview.mainFrame.javaScriptContext;
+    
+    context[@"cocoa_getDistance"]=^(){
+        NSArray *args=[JSContext currentArguments];
+        JSValue *value=args[0];
+        NSLog(@"当前距离是 : %f" ,value.toDouble);
+        
+    };
+    
     
 }
 
@@ -53,7 +64,7 @@
 }
 -(void)updateGpsDataToMapByCurrentTime:(Float64)time{
     int index=(int)time*9.6;
-    NSLog(@"time %d",index);
+    //NSLog(@"time %d",index);
     
     if(currentVideoGpsDataArr!=nil){
         if(index<[currentVideoGpsDataArr count]){
@@ -65,20 +76,31 @@
     
    
 }
--(void)beginDrawPath{
+
+-(NSArray *)findGpsDatas:(NSString *)videoPath{
+    NSArray *gpsDataArr;
+    for (NSDictionary *gpsItem in [MyCache playList]) {
+        if([[gpsItem objectForKey:keyPATH] isEqualToString:videoPath]){
+             gpsDataArr=[gpsItem objectForKey:keyGPSDATA];
+             break;
+        }
+    }
+    return gpsDataArr;
+}
+
+-(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath{
+     currentPlayVideoPath=playVideoPath;
     
-     NSArray *gpsDataArr=[[[MyCache playList] objectAtIndex:0] objectForKey:keyGPSDATA];
+     NSArray *gpsDataArr=[self findGpsDatas:currentPlayVideoPath];
+    
      currentVideoGpsDataArr=[NSMutableArray new];
      [gpsDataArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-         NSLog(@"%@ %@",[obj objectForKey:@"gps_lat"],[obj objectForKey:@"gps_lgt"] );
+         //NSLog(@"%@ %@",[obj objectForKey:@"gps_lat"],[obj objectForKey:@"gps_lgt"] );
          
          NSString *gps_lat=[obj objectForKey:@"gps_lat"];
          NSString *gps_lgt=[obj objectForKey:@"gps_lgt"];
 
          if(gps_lat.floatValue>0&&gps_lgt.floatValue>0){
-             
-             NSValue *pValue=[NSValue valueWithPoint:CGPointMake(gps_lat.floatValue, gps_lgt.floatValue)];
-             
              
              [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:gps_lat.floatValue],[NSNumber numberWithFloat:gps_lgt.floatValue], nil]];
          }
@@ -86,11 +108,6 @@
         
         
      }];
-    
-    NSString *jsonS=[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:currentVideoGpsDataArr options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding] ;
-    
-    
-     NSLog(@"line arr::  %@ %@",jsonS,@"");
     
     [self.webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"drawPolyLinePath(%@)",[currentVideoGpsDataArr JSONString]]];
 }

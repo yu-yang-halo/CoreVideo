@@ -16,7 +16,7 @@
 @end
 @protocol GpsMapDelegate<NSObject>
 
--(void)beginDrawPath;
+-(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath;
 -(void)updateGpsDataToMapByCurrentTime:(Float64)time;
 
 @end

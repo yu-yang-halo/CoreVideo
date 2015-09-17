@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
@@ -122,15 +122,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="557" height="400"/>
                                 <subviews>
                                     <splitView fixedFrame="YES" dividerStyle="paneSplitter" id="fLw-UN-Iij">
-                                        <rect key="frame" x="0.0" y="0.0" width="395" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="410" height="400"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <customView fixedFrame="YES" id="boK-8k-89u">
-                                                <rect key="frame" x="0.0" y="0.0" width="395" height="266"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="410" height="266"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </customView>
                                             <customView fixedFrame="YES" id="ScP-Js-CyH">
-                                                <rect key="frame" x="0.0" y="276" width="395" height="124"/>
+                                                <rect key="frame" x="0.0" y="276" width="410" height="124"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </customView>
                                         </subviews>
@@ -139,10 +139,24 @@
                                             <real value="428"/>
                                         </holdingPriorities>
                                     </splitView>
-                                    <customView fixedFrame="YES" id="bVL-Fr-baQ">
-                                        <rect key="frame" x="396" y="0.0" width="161" height="400"/>
+                                    <splitView fixedFrame="YES" dividerStyle="paneSplitter" id="Bez-Bp-4kx">
+                                        <rect key="frame" x="411" y="0.0" width="146" height="400"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </customView>
+                                        <subviews>
+                                            <customView fixedFrame="YES" id="d6V-Pi-2L9">
+                                                <rect key="frame" x="0.0" y="0.0" width="146" height="220"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </customView>
+                                            <customView fixedFrame="YES" id="IZ9-b6-pAC">
+                                                <rect key="frame" x="0.0" y="230" width="146" height="170"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </customView>
+                                        </subviews>
+                                        <holdingPriorities>
+                                            <real value="250"/>
+                                            <real value="250"/>
+                                        </holdingPriorities>
+                                    </splitView>
                                 </subviews>
                                 <holdingPriorities>
                                     <real value="384"/>
@@ -159,9 +173,11 @@
                     </view>
                     <connections>
                         <outlet property="displayView" destination="ScP-Js-CyH" id="DVL-Vt-1Uz"/>
-                        <outlet property="horizontalSplitView" destination="fLw-UN-Iij" id="27A-Zu-YiP"/>
-                        <outlet property="playListView" destination="bVL-Fr-baQ" id="XDh-gZ-6sQ"/>
-                        <outlet property="verticalSplitView" destination="fMV-32-O5K" id="dVI-4k-TAZ"/>
+                        <outlet property="globalSplitView" destination="fMV-32-O5K" id="sAs-GU-CFf"/>
+                        <outlet property="leftSplitView" destination="fLw-UN-Iij" id="UCe-oh-xVM"/>
+                        <outlet property="mapView" destination="d6V-Pi-2L9" id="5Gp-R2-8n4"/>
+                        <outlet property="playListView" destination="IZ9-b6-pAC" id="M0m-3V-ulk"/>
+                        <outlet property="rightSplitView" destination="Bez-Bp-4kx" id="5pj-xu-lVP"/>
                         <outlet property="videoView" destination="boK-8k-89u" id="Az1-EQ-TUC"/>
                     </connections>
                 </viewController>
@@ -174,17 +190,37 @@
             <objects>
                 <viewController storyboardIdentifier="playlistVC" id="8sE-u8-bVo" customClass="PlayListViewController" sceneMemberID="viewController">
                     <view key="view" id="fGD-FI-GVD">
-                        <rect key="frame" x="0.0" y="0.0" width="153" height="334"/>
+                        <rect key="frame" x="0.0" y="0.0" width="153" height="211"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZGH-IE-Fsg">
+                                <rect key="frame" x="14" y="1" width="66" height="32"/>
+                                <buttonCell key="cell" type="push" title="添加" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I97-1b-Csk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                    <connections>
+                                        <action selector="addVideoPlay:" target="8sE-u8-bVo" id="Ykc-Kg-yQb"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Thb-S1-64x">
+                                <rect key="frame" x="73" y="1" width="66" height="32"/>
+                                <buttonCell key="cell" type="push" title="删除" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pA5-pW-3DD">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="removeVideoPlay:" target="8sE-u8-bVo" id="UHA-D2-llM"/>
+                                </connections>
+                            </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXM-kg-aKg">
-                                <rect key="frame" x="0.0" y="41" width="153" height="132"/>
+                                <rect key="frame" x="0.0" y="41" width="153" height="170"/>
                                 <clipView key="contentView" id="uHz-0e-rEU">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="gG3-bX-HXu" id="DIn-L8-6La">
-                                            <rect key="frame" x="0.0" y="0.0" width="238" height="134"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="151" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -221,43 +257,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="eGA-Vt-854">
-                                <rect key="frame" x="0.0" y="171" width="153" height="168"/>
-                            </customView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZGH-IE-Fsg">
-                                <rect key="frame" x="14" y="-1" width="66" height="32"/>
-                                <buttonCell key="cell" type="push" title="添加" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I97-1b-Csk">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name="STHeitiSC-Light"/>
-                                    <connections>
-                                        <action selector="addVideoPlay:" target="8sE-u8-bVo" id="Ykc-Kg-yQb"/>
-                                    </connections>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Thb-S1-64x">
-                                <rect key="frame" x="73" y="-1" width="66" height="32"/>
-                                <buttonCell key="cell" type="push" title="删除" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pA5-pW-3DD">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name="STHeitiSC-Light"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="removeVideoPlay:" target="8sE-u8-bVo" id="UHA-D2-llM"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="YXM-kg-aKg" firstAttribute="leading" secondItem="fGD-FI-GVD" secondAttribute="leading" id="2xo-zi-Oa7"/>
-                            <constraint firstAttribute="bottom" secondItem="YXM-kg-aKg" secondAttribute="bottom" constant="41" id="3Av-Uh-jeX"/>
-                            <constraint firstItem="Thb-S1-64x" firstAttribute="baseline" secondItem="ZGH-IE-Fsg" secondAttribute="baseline" id="JQc-AP-UVc"/>
-                            <constraint firstAttribute="trailing" secondItem="YXM-kg-aKg" secondAttribute="trailing" id="Kgy-sQ-gJl"/>
-                            <constraint firstAttribute="trailing" secondItem="Thb-S1-64x" secondAttribute="trailing" constant="20" symbolic="YES" id="QQB-5m-R3l"/>
-                            <constraint firstItem="uHz-0e-rEU" firstAttribute="width" secondItem="eGA-Vt-854" secondAttribute="width" constant="-2" id="WI2-pm-OYM"/>
-                            <constraint firstItem="eGA-Vt-854" firstAttribute="leading" secondItem="YXM-kg-aKg" secondAttribute="leading" id="Zsk-yF-95E"/>
-                            <constraint firstItem="ZGH-IE-Fsg" firstAttribute="top" secondItem="YXM-kg-aKg" secondAttribute="bottom" constant="14" id="aUr-Zq-k9s"/>
-                            <constraint firstItem="ZGH-IE-Fsg" firstAttribute="leading" secondItem="fGD-FI-GVD" secondAttribute="leading" constant="20" symbolic="YES" id="gg6-nH-ehp"/>
-                            <constraint firstItem="YXM-kg-aKg" firstAttribute="top" secondItem="eGA-Vt-854" secondAttribute="bottom" constant="-2" id="nE6-99-x4T"/>
-                            <constraint firstItem="YXM-kg-aKg" firstAttribute="top" secondItem="fGD-FI-GVD" secondAttribute="top" constant="161" id="ssQ-aR-G79"/>
-                            <constraint firstItem="eGA-Vt-854" firstAttribute="top" secondItem="fGD-FI-GVD" secondAttribute="top" constant="-5" id="tzG-5b-6Hm"/>
+                            <constraint firstItem="ZGH-IE-Fsg" firstAttribute="leading" secondItem="fGD-FI-GVD" secondAttribute="leading" constant="20" symbolic="YES" id="4wa-BU-CLG"/>
+                            <constraint firstAttribute="trailing" secondItem="Thb-S1-64x" secondAttribute="trailing" constant="20" symbolic="YES" id="5fs-Ws-KvG"/>
+                            <constraint firstItem="ZGH-IE-Fsg" firstAttribute="top" secondItem="YXM-kg-aKg" secondAttribute="bottom" constant="12" id="KsT-yz-4MO"/>
+                            <constraint firstAttribute="bottom" secondItem="YXM-kg-aKg" secondAttribute="bottom" constant="41" id="RWm-lG-KPU"/>
+                            <constraint firstAttribute="trailing" secondItem="YXM-kg-aKg" secondAttribute="trailing" id="Rzg-1A-DY1"/>
+                            <constraint firstItem="YXM-kg-aKg" firstAttribute="leading" secondItem="fGD-FI-GVD" secondAttribute="leading" id="SKK-hW-oAz"/>
+                            <constraint firstItem="YXM-kg-aKg" firstAttribute="top" secondItem="fGD-FI-GVD" secondAttribute="top" id="XPd-mF-t9Y"/>
+                            <constraint firstItem="ZGH-IE-Fsg" firstAttribute="baseline" secondItem="Thb-S1-64x" secondAttribute="baseline" id="kTv-eg-uyi"/>
                         </constraints>
                     </view>
                     <connections>
@@ -266,7 +275,7 @@
                 </viewController>
                 <customObject id="Ihf-di-Njo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-21409.5" y="-7372"/>
+            <point key="canvasLocation" x="-21437.5" y="-7485.5"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="a3d-fc-xmz">
@@ -312,8 +321,8 @@
                                         </constraints>
                                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="71.35249732905983" tickMarkPosition="above" sliderType="linear" id="p2l-RU-7L6"/>
                                         <connections>
-                                            <binding destination="47X-5P-zVC" name="maxValue" keyPath="self.duration" id="MnI-g8-fp8"/>
                                             <binding destination="47X-5P-zVC" name="value" keyPath="self.currentTime" previousBinding="MnI-g8-fp8" id="kaM-6Y-tSh"/>
+                                            <binding destination="47X-5P-zVC" name="maxValue" keyPath="self.duration" id="MnI-g8-fp8"/>
                                         </connections>
                                     </slider>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Lg-7A-Yrm">

@@ -5,7 +5,7 @@
         <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-                    <title>轨迹回放</title>
+                    <title>地图显示行车轨迹</title>
                     <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css"/>
                     <script src="http://webapi.amap.com/maps?v=1.3&key=674faad6018dd303028068369f5f2a48"></script>
     </head>
@@ -50,8 +50,8 @@
                                                                                            marker = new AMap.Marker({
                                                                                                                     map: map,
                                                                                                                     //icon: "http://code.mapabc.com/images/car_03.png",
-                                                                                                                    icon:"mcar3.png",                                                                  //offset: new AMap.Pixel(-26, -10),
-                                                                                                                    title:'车的位置',                                                   autoRotation: true
+                                                                                                                    icon:"mcar3.png",                                                                  offset: new AMap.Pixel(-16,-39),
+                                                                                                                                                                       autoRotation: true
                                                                                                                     });
                                                                                                                     
                                                             
@@ -67,15 +67,15 @@
                                              map: map,
                                              path: lineArr,
                                              strokeColor: "#0091FF",  //线颜色
-                                             strokeOpacity: 1,     //线透明度
-                                             strokeWeight: 5,      //线宽
+                                             strokeOpacity:0.9,     //线透明度
+                                             strokeWeight: 4,      //线宽
                                              strokeStyle: "solid"  //线样式
                                              });
                                              map.setFitView();
                                              
+          //marker.title="行驶路径公里数：";//＋polyline.getLength();
                                              
-                                             
-           
+          cocoa_getDistance(polyline.getLength());
         }
         function updateMarkerPosition(position){
             marker.setPosition(position);

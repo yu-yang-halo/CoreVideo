@@ -74,6 +74,9 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     if(url==nil){
         return;
     }
+    [self.gpsMapdelegate loadGpsLoadPathToMapByPlayVideo:url.absoluteString];
+    
+
     self.isAddVideoFile=YES;
     AVURLAsset *asset = [AVAsset assetWithURL:url];
     self.imageGenerator=[[AVAssetImageGenerator alloc] initWithAsset:asset];
@@ -152,8 +155,6 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     
     // Create a new AVPlayerItem and make it our player's current item.
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
-    [self.gpsMapdelegate beginDrawPath];
-
     
 
     
