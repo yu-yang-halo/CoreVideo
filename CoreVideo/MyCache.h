@@ -20,4 +20,7 @@ typedef void (^cacheCompleteHandler)();
 
 +(NSArray *)playList;
 +(void)syncPlayList:(NSArray *)playlist;
+
++(NSArray *)findGpsDatas:(NSString *)videoPath;
+
 @end

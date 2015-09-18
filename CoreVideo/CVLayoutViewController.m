@@ -10,16 +10,23 @@
 #import "VideoViewController.h"
 #import "PlayListViewController.h"
 #import "CVWebViewController.h"
-
+#import "CVDisplayViewController.h"
 
 
 @interface CVLayoutViewController ()<ZoomIODelegate>{
     VideoViewController     *videoVC ;
     CVWebViewController     *webVC ;
     PlayListViewController  *playlistVC;
+    CVDisplayViewController *displayVC;
     
     NSRect globalView1Rect;
+    NSRect globalView0Rect;
+    
     NSRect leftView1Rect;
+    NSRect leftView0Rect;
+    
+    NSRect rightView1Rect;
+    NSRect rightView0Rect;
     
 }
 @property (weak) IBOutlet NSSplitView *globalSplitView;
@@ -45,23 +52,29 @@
     
     // Do view setup here.
     
+    displayVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"displayVC"];
+    
     webVC      =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"webVC"];
+    webVC.distanceDelegate=displayVC;
+    
+    
     
     videoVC    =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"videoVC"];
     videoVC.delegate=self;
     videoVC.gpsMapdelegate=webVC;
-    
+    videoVC.speeddelegate=displayVC;
     
     playlistVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"playlistVC"];
+  
     
     
     [self.videoView addSubview:videoVC.view];
     [self.playListView addSubview:playlistVC.view];
     [self.mapView addSubview:webVC.view];
-  
+    [self.displayView addSubview:displayVC.view];
     
     
-    [self updateViewLetfView0:_videoView view1:nil rightView0:_mapView view1:_playListView];
+    [self updateViewLetfView0:_videoView view1:_displayView rightView0:_mapView view1:_playListView];
     
     
     
@@ -108,8 +121,11 @@
 -(void)updateViewLetfRect0:(NSRect)leftRect0 rect1:(NSRect)leftRect1 rightRect0:(NSRect)rightRect0 rect1:(NSRect)rightRect1{
     
     [videoVC.view setFrame:leftRect0];
+    [displayVC.view setFrame:leftRect1];
+    
     [playlistVC.view setFrame:rightRect1];
     [webVC.view setFrame:rightRect0];
+    
     
     [webVC.webview setFrame:webVC.view.bounds];
     
@@ -127,8 +143,14 @@
     if(state==0){
         
         globalView1Rect=[[[_globalSplitView subviews] objectAtIndex:1] bounds];
+        globalView0Rect=[[[_globalSplitView subviews] objectAtIndex:0] bounds];
    
         leftView1Rect=[[[_leftSplitView subviews] objectAtIndex:1] bounds];
+        leftView0Rect=[[[_leftSplitView subviews] objectAtIndex:0] bounds];
+        
+        rightView1Rect=[[[_rightSplitView subviews] objectAtIndex:1] bounds];
+        rightView0Rect=[[[_rightSplitView subviews] objectAtIndex:0] bounds];
+        
         
         [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSZeroRect];
         
@@ -136,8 +158,13 @@
         
     }else{
         [[[_globalSplitView subviews] objectAtIndex:1] setFrame:globalView1Rect];
+        [[[_globalSplitView subviews] objectAtIndex:0] setFrame:globalView0Rect];
         
         [[[_leftSplitView subviews] objectAtIndex:1] setFrame:leftView1Rect];
+        [[[_leftSplitView subviews] objectAtIndex:0] setFrame:leftView0Rect];
+        
+        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:rightView1Rect];
+        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:rightView0Rect];
        
     }
 }

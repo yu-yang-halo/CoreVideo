@@ -49,4 +49,15 @@ const NSString *keyGPSDATA=@"key_gps_data";
     return [[NSUserDefaults standardUserDefaults] objectForKey:key_play_list];
 }
 
++(NSArray *)findGpsDatas:(NSString *)videoPath{
+    NSArray *gpsDataArr;
+    for (NSDictionary *gpsItem in [self playList]) {
+        if([[gpsItem objectForKey:keyPATH] isEqualToString:videoPath]){
+            gpsDataArr=[gpsItem objectForKey:keyGPSDATA];
+            break;
+        }
+    }
+    return gpsDataArr;
+}
+
 @end

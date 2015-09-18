@@ -18,6 +18,7 @@
 
 -(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath;
 -(void)updateGpsDataToMapByCurrentTime:(Float64)time;
+-(void)videoDurationTime:(Float64)time;
 
 @end
 
@@ -27,7 +28,7 @@
 @property(nonatomic,assign,readonly) BOOL isAddVideoFile;
 @property(nonatomic,weak) id<ZoomIODelegate> delegate;
 @property(nonatomic,weak) id<GpsMapDelegate> gpsMapdelegate;
-
+@property(nonatomic,weak) id<GpsMapDelegate> speeddelegate;
 -(void)initAssetData:(NSURL *)url;
 -(void)close;
 -(void)playOrPause;

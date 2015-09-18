@@ -40,11 +40,13 @@
     
     JSContext *context=self.webview.mainFrame.javaScriptContext;
     
+    __weak CVWebViewController *weakSelf = self;
+    
     context[@"cocoa_getDistance"]=^(){
         NSArray *args=[JSContext currentArguments];
         JSValue *value=args[0];
         NSLog(@"当前距离是 : %f" ,value.toDouble);
-        
+        [weakSelf.distanceDelegate caculateTotalDistance:value.toDouble];
     };
     
     
@@ -77,21 +79,12 @@
    
 }
 
--(NSArray *)findGpsDatas:(NSString *)videoPath{
-    NSArray *gpsDataArr;
-    for (NSDictionary *gpsItem in [MyCache playList]) {
-        if([[gpsItem objectForKey:keyPATH] isEqualToString:videoPath]){
-             gpsDataArr=[gpsItem objectForKey:keyGPSDATA];
-             break;
-        }
-    }
-    return gpsDataArr;
-}
+
 
 -(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath{
      currentPlayVideoPath=playVideoPath;
     
-     NSArray *gpsDataArr=[self findGpsDatas:currentPlayVideoPath];
+     NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
     
      currentVideoGpsDataArr=[NSMutableArray new];
      [gpsDataArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {

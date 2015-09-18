@@ -75,6 +75,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
         return;
     }
     [self.gpsMapdelegate loadGpsLoadPathToMapByPlayVideo:url.absoluteString];
+    [self.speeddelegate  loadGpsLoadPathToMapByPlayVideo:url.absoluteString];
     
 
     self.isAddVideoFile=YES;
@@ -166,10 +167,13 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     __weak VideoViewController *weakSelf = self;
    
     self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(playerItem.asset.duration)];
+    [self.speeddelegate videoDurationTime:CMTimeGetSeconds(playerItem.asset.duration)];
     
     [self setTimeObserverToken:[[self player] addPeriodicTimeObserverForInterval:CMTimeMake(1, 100) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         
          [weakSelf.gpsMapdelegate updateGpsDataToMapByCurrentTime:CMTimeGetSeconds(time)];
+         [weakSelf.speeddelegate updateGpsDataToMapByCurrentTime:CMTimeGetSeconds(time)];
+        
         
          weakSelf.timeSlider.doubleValue = CMTimeGetSeconds(time);
          weakSelf.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(time)];

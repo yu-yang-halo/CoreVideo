@@ -20,6 +20,8 @@
 		84A85E7A1BA28E0E00817598 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A85E791BA28E0E00817598 /* Images.xcassets */; };
 		84A85E7D1BA28E0E00817598 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A85E7B1BA28E0E00817598 /* Main.storyboard */; };
 		84A85E891BA28E0E00817598 /* CoreVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E881BA28E0E00817598 /* CoreVideoTests.m */; };
+		84AF2E751BAB9920003B3217 /* CVDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF2E741BAB9920003B3217 /* CVDisplayViewController.m */; };
+		84AF2E791BAB9CDA003B3217 /* CustomSpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF2E781BAB9CDA003B3217 /* CustomSpeedView.m */; };
 		84B43FE41BA7E1AA00B4B46A /* FileList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84B43FE21BA7E1AA00B4B46A /* FileList.cpp */; };
 		84B43FE71BA806FA00B4B46A /* GpsDataHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B43FE61BA806FA00B4B46A /* GpsDataHelper.mm */; };
 		84B43FE91BA8182400B4B46A /* gpslocation.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B43FE81BA8182400B4B46A /* gpslocation.html */; };
@@ -70,6 +72,10 @@
 		84A85E821BA28E0E00817598 /* CoreVideoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreVideoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A85E871BA28E0E00817598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84A85E881BA28E0E00817598 /* CoreVideoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreVideoTests.m; sourceTree = "<group>"; };
+		84AF2E731BAB9920003B3217 /* CVDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDisplayViewController.h; sourceTree = "<group>"; };
+		84AF2E741BAB9920003B3217 /* CVDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVDisplayViewController.m; sourceTree = "<group>"; };
+		84AF2E771BAB9CDA003B3217 /* CustomSpeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSpeedView.h; sourceTree = "<group>"; };
+		84AF2E781BAB9CDA003B3217 /* CustomSpeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSpeedView.m; sourceTree = "<group>"; };
 		84B43FE21BA7E1AA00B4B46A /* FileList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileList.cpp; sourceTree = "<group>"; };
 		84B43FE31BA7E1AA00B4B46A /* FileList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileList.h; sourceTree = "<group>"; };
 		84B43FE51BA806FA00B4B46A /* GpsDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpsDataHelper.h; sourceTree = "<group>"; };
@@ -154,6 +160,8 @@
 				84B43FEB1BA81D6700B4B46A /* CVWebViewController.m */,
 				84BC6A071BA8FF0400FBF400 /* CVLayoutViewController.h */,
 				84BC6A081BA8FF0400FBF400 /* CVLayoutViewController.m */,
+				84AF2E731BAB9920003B3217 /* CVDisplayViewController.h */,
+				84AF2E741BAB9920003B3217 /* CVDisplayViewController.m */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 		84A85E6B1BA28E0E00817598 /* CoreVideo */ = {
 			isa = PBXGroup;
 			children = (
+				84AF2E761BAB9BA8003B3217 /* view */,
 				18B22BA71BA6F2E900D593C4 /* assist */,
 				846C31E91BA6BE710007ACDB /* document */,
 				846C31DF1BA6797D0007ACDB /* viewController */,
@@ -232,6 +241,15 @@
 				84A85E871BA28E0E00817598 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84AF2E761BAB9BA8003B3217 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				84AF2E771BAB9CDA003B3217 /* CustomSpeedView.h */,
+				84AF2E781BAB9CDA003B3217 /* CustomSpeedView.m */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,12 +360,14 @@
 			files = (
 				846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */,
 				84A85E781BA28E0E00817598 /* Document.m in Sources */,
+				84AF2E751BAB9920003B3217 /* CVDisplayViewController.m in Sources */,
 				84A85E721BA28E0E00817598 /* main.m in Sources */,
 				84B43FE71BA806FA00B4B46A /* GpsDataHelper.mm in Sources */,
 				84B43FE41BA7E1AA00B4B46A /* FileList.cpp in Sources */,
 				8461A0021BA3FA6E0048DD69 /* VideoViewController.m in Sources */,
 				84B43FEC1BA81D6700B4B46A /* CVWebViewController.m in Sources */,
 				18D89F691BA4EDE7000D058C /* CVWindowController.m in Sources */,
+				84AF2E791BAB9CDA003B3217 /* CustomSpeedView.m in Sources */,
 				18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */,
 				84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */,
 				18D89F741BA59E87000D058C /* MySlider.m in Sources */,
