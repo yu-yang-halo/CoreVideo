@@ -44,7 +44,6 @@
         //NSLog(@"%@ %@",[obj objectForKey:@"gps_lat"],[obj objectForKey:@"gps_lgt"] );
         
         NSNumber *spd=[obj objectForKey:@"spd"];
-        
        
         
        [currentSpeedDataArr addObject:spd];
@@ -54,8 +53,14 @@
     }];
 }
 -(void)updateGpsDataToMapByCurrentTime:(Float64)time{
-    int index=(int)time*9.9;
-    //NSLog(@"time %d",index);
+    float m_ratio=9.9;
+    if(totalTime!=0){
+       m_ratio= [currentSpeedDataArr count]/totalTime;
+    }
+    
+    int index=(int)time*m_ratio;
+    
+    //NSLog(@"time %d  m_ratio:%f",index,m_ratio);
     
     if(currentSpeedDataArr!=nil){
         if(index<[currentSpeedDataArr count]){

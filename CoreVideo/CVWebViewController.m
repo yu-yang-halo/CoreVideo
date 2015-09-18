@@ -65,6 +65,8 @@
     [[NSLayoutConstraint constraintWithItem:self.webview attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0] setActive:YES];
 }
 -(void)updateGpsDataToMapByCurrentTime:(Float64)time{
+    
+    
     int index=(int)time*9.6;
     //NSLog(@"time %d",index);
     
