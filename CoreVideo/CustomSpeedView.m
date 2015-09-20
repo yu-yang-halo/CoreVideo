@@ -70,7 +70,7 @@ static NSString* MAX_SPEED=@"120";//从左到右读
 
     
     
-    NSString *currentSpeed=[NSString stringWithFormat:@"%ld KM/H",_currentSpeed];
+    NSString *currentSpeed=[NSString stringWithFormat:@"%ld Km/H",_currentSpeed];
   
     NSMutableDictionary *md=[NSMutableDictionary dictionary];
     [md setObject:[NSFont fontWithName:@"Helvetica" size:30] forKey:NSFontAttributeName];

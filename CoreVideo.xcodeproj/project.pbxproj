@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180364DB1BAEADD100870783 /* CustomGsensorView.m */; };
 		18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B22BA91BA6F30000D593C4 /* AssistFile.cpp */; };
 		18D89F691BA4EDE7000D058C /* CVWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F681BA4EDE7000D058C /* CVWindowController.m */; };
 		18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F6C1BA53874000D058C /* TimeFormatUtils.m */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180364DA1BAEADD100870783 /* CustomGsensorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGsensorView.h; sourceTree = "<group>"; };
+		180364DB1BAEADD100870783 /* CustomGsensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGsensorView.m; sourceTree = "<group>"; };
 		18B22BA81BA6F30000D593C4 /* AssistFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssistFile.h; sourceTree = "<group>"; };
 		18B22BA91BA6F30000D593C4 /* AssistFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssistFile.cpp; sourceTree = "<group>"; };
 		18D89F671BA4EDE7000D058C /* CVWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVWindowController.h; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 			children = (
 				84AF2E771BAB9CDA003B3217 /* CustomSpeedView.h */,
 				84AF2E781BAB9CDA003B3217 /* CustomSpeedView.m */,
+				180364DA1BAEADD100870783 /* CustomGsensorView.h */,
+				180364DB1BAEADD100870783 /* CustomGsensorView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */,
+				180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */,
 				84A85E781BA28E0E00817598 /* Document.m in Sources */,
 				84AF2E751BAB9920003B3217 /* CVDisplayViewController.m in Sources */,
 				84A85E721BA28E0E00817598 /* main.m in Sources */,

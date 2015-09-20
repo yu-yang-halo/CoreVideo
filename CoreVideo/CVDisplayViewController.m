@@ -71,7 +71,7 @@
             }
             
             [self.speedView setCurrentSpeed:[mspd integerValue]];
-            [self.maxHSpeed setStringValue:[NSString stringWithFormat:@"%ldKM/H",maxSpd]];
+            [self.maxHSpeed setStringValue:[NSString stringWithFormat:@"%ldKm/H",maxSpd]];
         }
     }
 
@@ -86,13 +86,13 @@
  */
 -(void)caculateTotalDistance:(float)distance{
     totalDistance=distance;
-    [self.movingDistance setStringValue:[NSString stringWithFormat:@"%.3fKM",distance/1000]];
+    [self.movingDistance setStringValue:[NSString stringWithFormat:@"%.3fKm",distance/1000]];
     [self loadAverageSpeedContent];
 }
 //1m/s==3.6km/h
 -(void)loadAverageSpeedContent{
     if(totalTime>0){
-        [self.averageHSpeed setStringValue:[NSString stringWithFormat:@"%dKM/H",(int)((totalDistance/totalTime)*3.6)]];
+        [self.averageHSpeed setStringValue:[NSString stringWithFormat:@"%dKm/H",(int)((totalDistance/totalTime)*3.6)]];
     }
 }
 -(void)videoDurationTime:(Float64)time{
