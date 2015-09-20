@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180364DB1BAEADD100870783 /* CustomGsensorView.m */; };
+		180364DE1BAED2BA00870783 /* Class界面 in Resources */ = {isa = PBXBuildFile; fileRef = 180364DD1BAED2BA00870783 /* Class界面 */; };
 		18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B22BA91BA6F30000D593C4 /* AssistFile.cpp */; };
 		18D89F691BA4EDE7000D058C /* CVWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F681BA4EDE7000D058C /* CVWindowController.m */; };
 		18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F6C1BA53874000D058C /* TimeFormatUtils.m */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		180364DA1BAEADD100870783 /* CustomGsensorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGsensorView.h; sourceTree = "<group>"; };
 		180364DB1BAEADD100870783 /* CustomGsensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGsensorView.m; sourceTree = "<group>"; };
+		180364DD1BAED2BA00870783 /* Class界面 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Class界面"; sourceTree = "<group>"; };
 		18B22BA81BA6F30000D593C4 /* AssistFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssistFile.h; sourceTree = "<group>"; };
 		18B22BA91BA6F30000D593C4 /* AssistFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssistFile.cpp; sourceTree = "<group>"; };
 		18D89F671BA4EDE7000D058C /* CVWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVWindowController.h; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				84B5DFDB1BAAC54500DA74DB /* mcar3.png */,
 				84A85E6C1BA28E0E00817598 /* Supporting Files */,
 				84B5DFCE1BAA5BF900DA74DB /* 高德地图KEY */,
+				180364DD1BAED2BA00870783 /* Class界面 */,
 			);
 			path = CoreVideo;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				84B5DFD81BAAC0D100DA74DB /* mcar1.png in Resources */,
 				84A85E7A1BA28E0E00817598 /* Images.xcassets in Resources */,
 				84B5DFDC1BAAC54500DA74DB /* mcar3.png in Resources */,
+				180364DE1BAED2BA00870783 /* Class界面 in Resources */,
 				84B5DFD61BAABF7C00DA74DB /* mcar.png in Resources */,
 				84B5DFCF1BAA5BF900DA74DB /* 高德地图KEY in Resources */,
 				84B5DFDA1BAAC44200DA74DB /* mcar2.png in Resources */,

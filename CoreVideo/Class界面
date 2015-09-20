@@ -1,0 +1,30 @@
+根据类型Class设计界面
+
+
+类型的icon
+
+类型的页数 1页 2页 3页 ...
+
+第一页 如何布局
+
+有无statusbar  有？显示什么内容 field
+
+View   属性：top，bottom，center（默认） 有显示，无隐藏
+
+groups title{
+    group
+    group
+
+}
+
+<label input> <send><save><get> method
+
+<label label>
+
+<button>  background-image (default,selected)
+
+
+
+
+
+
