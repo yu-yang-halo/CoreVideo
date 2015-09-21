@@ -8,6 +8,7 @@
 
 #import "CVDisplayViewController.h"
 #import "CustomSpeedView.h"
+#import "CustomGsensorView.h"
 #import "MyCache.h"
 @interface CVDisplayViewController (){
     NSMutableArray *currentSpeedDataArr;
@@ -17,6 +18,7 @@
     float          totalTime;//单位 s
 }
 @property (weak) IBOutlet CustomSpeedView *speedView;
+@property (weak) IBOutlet CustomGsensorView *gsensorView;
 
 @property (weak) IBOutlet NSTextField *maxHSpeed;
 
@@ -31,7 +33,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    [self.gsensorView setWantsLayer:YES];
+    [self.gsensorView
+     .layer setBackgroundColor:[[NSColor blueColor] CGColor]];
+    
     
 }
 -(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath{

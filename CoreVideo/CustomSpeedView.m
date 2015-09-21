@@ -58,7 +58,7 @@ static NSString* MAX_SPEED=@"120";//从左到右读
     
     
     midX=NSMidX(self.bounds);
-    midY=NSMidY(self.bounds)-Radius/2;
+    midY=NSMidY(self.bounds)/2;
     
     
     
