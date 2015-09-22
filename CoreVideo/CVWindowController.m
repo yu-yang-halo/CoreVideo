@@ -11,11 +11,15 @@
 @interface CVWindowController ()
 
 @end
-
+static NSString *appName=@"行车记录仪";
+static CGFloat  winWidth=1280;
+static CGFloat  winHeight=760;
 @implementation CVWindowController
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    
+    
     
     AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
     
@@ -23,13 +27,25 @@
     
     NSLog(@"windowDidLoad...");
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [self.window setTitle:appName];
+   
+    [self.window setMiniwindowTitle:appName];
+    
+    CGFloat screenW=[[NSScreen mainScreen] frame].size.width;
+    CGFloat screenH=[[NSScreen mainScreen] frame].size.height;
+    
+    [self.window setFrame:NSMakeRect((screenW-winWidth)/2,(screenH-winHeight)/2, winWidth, winHeight) display:YES];
+    
+    
+    [self.window setContentMaxSize:NSMakeSize(winWidth,winHeight)];
+    [self.window setContentMinSize:NSMakeSize(winWidth,winHeight)];
+    
 }
 - (void)windowWillLoad{
     NSLog(@"windowWillLoad...");
 }
 - (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName{
-    return @"行车记录仪";
+    return appName;
 }
 
 @end
