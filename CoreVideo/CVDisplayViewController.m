@@ -12,6 +12,7 @@
 #import "MyCache.h"
 @interface CVDisplayViewController (){
     NSMutableArray *currentSpeedDataArr;
+    NSMutableArray *currentGsensorDataArr;
     NSString       *currentPlayVideoPath;
     NSInteger      maxSpd;
     float          totalDistance;//单位 m
@@ -33,10 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.gsensorView setWantsLayer:YES];
-    [self.gsensorView
-     .layer setBackgroundColor:[[NSColor blueColor] CGColor]];
-    
+
     
 }
 -(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath{
@@ -45,31 +43,45 @@
     NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
     
     currentSpeedDataArr=[NSMutableArray new];
+    currentGsensorDataArr=[NSMutableArray new];
     [gpsDataArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         //NSLog(@"%@ %@",[obj objectForKey:@"gps_lat"],[obj objectForKey:@"gps_lgt"] );
         
         NSNumber *spd=[obj objectForKey:@"spd"];
        
+        NSNumber *gsensor_x=[obj objectForKey:@"gsensor_x"];
+        NSNumber *gsensor_y=[obj objectForKey:@"gsensor_y"];
+        NSNumber *gsensor_z=[obj objectForKey:@"gsensor_z"];
+        if([gsensor_x floatValue]>2||[gsensor_x floatValue]<-2||[gsensor_y floatValue]>2||[gsensor_y floatValue]<-2||[gsensor_z floatValue]>2||[gsensor_z floatValue]<-2){
+            
+        }else{
+            [currentGsensorDataArr addObject:@[gsensor_x,gsensor_y,gsensor_z]];
+            
+        }
         
-       [currentSpeedDataArr addObject:spd];
+        [currentSpeedDataArr addObject:spd];
         
         
         
     }];
+    _gsensorView.gsensorArray=currentGsensorDataArr;
 }
 -(void)updateGpsDataToMapByCurrentTime:(Float64)time{
-    float m_ratio=9.9;
+    float m_ratio0=9.9;
+    float m_ratio1=9.9;
     if(totalTime!=0){
-       m_ratio= [currentSpeedDataArr count]/totalTime;
+       m_ratio0= [currentSpeedDataArr count]/totalTime;
+        m_ratio1= [currentGsensorDataArr count]/totalTime;
     }
     
-    int index=(int)time*m_ratio;
+    int index0=(int)time*m_ratio0;
+    int index1=(int)time*m_ratio1;
     
     //NSLog(@"time %d  m_ratio:%f",index,m_ratio);
     
     if(currentSpeedDataArr!=nil){
-        if(index<[currentSpeedDataArr count]){
-            NSNumber *mspd=currentSpeedDataArr[index];
+        if(index0<[currentSpeedDataArr count]){
+            NSNumber *mspd=currentSpeedDataArr[index0];
             
             if(maxSpd<[mspd integerValue]){
                 maxSpd=[mspd integerValue];
@@ -77,6 +89,12 @@
             
             [self.speedView setCurrentSpeed:[mspd integerValue]];
             [self.maxHSpeed setStringValue:[NSString stringWithFormat:@"%ldKm/H",maxSpd]];
+        }
+    }
+    
+    if(currentGsensorDataArr!=nil){
+        if(index1<[currentGsensorDataArr count]){
+            [_gsensorView updateGsensorRange:index1];
         }
     }
 

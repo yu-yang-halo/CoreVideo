@@ -9,5 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface CustomGsensorView : NSView
+//xValue yValue zValue
+@property(nonatomic,strong) NSMutableArray *gsensorArray;
+
+-(void)updateGsensorRange:(int)len;
 
 @end

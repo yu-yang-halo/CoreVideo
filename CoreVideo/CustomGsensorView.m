@@ -10,7 +10,21 @@
 static float x_min_shaft=150;
 static float y_min_shaft=100;
 
+@interface CustomGsensorView(){
+    int index;//gsensor array index
+    
+    
+}
+
+
+@end
+
 @implementation CustomGsensorView
+
+-(void)updateGsensorRange:(int)len{
+    index=len;
+    [self setNeedsDisplay:YES];
+}
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -57,6 +71,8 @@ static float y_min_shaft=100;
     NSPoint originP=NSMakePoint(spaceX,spaceY);
     [bezierPath moveToPoint:originP];
     [bezierPath lineToPoint:NSMakePoint(spaceX,Y_shaft)];
+    [[NSColor greenColor] set];
+    [bezierPath stroke];
     
     float _ly=(Y_shaft-spaceY)/6;
     //-2.0 -1.0
@@ -76,17 +92,63 @@ static float y_min_shaft=100;
          [numbers[i] drawAtPoint:NSMakePoint(spaceX-shortLineWidth-size.width,spaceY+ _ly*(i+1)-size.height/2) withAttributes:fattr];
     }
     
-
-    
-    
-    
-    
     
     [bezierPath moveToPoint:originP];
     [bezierPath lineToPoint:NSMakePoint(X_shaft,20)];
     
     [[NSColor greenColor] set];
     [bezierPath stroke];
+
+    
+    NSBezierPath *bezierPathX=[NSBezierPath bezierPath];
+    NSBezierPath *bezierPathY=[NSBezierPath bezierPath];
+    NSBezierPath *bezierPathZ=[NSBezierPath bezierPath];
+    
+    //-3~3 _ly  x:  i/count*(X_shaft-spaceX) y
+    
+    if(_gsensorArray!=nil&&[_gsensorArray count]>(index+1)){
+        NSArray *subArr=[_gsensorArray subarrayWithRange:NSMakeRange(0,index+1)];
+        
+        for (int i=0;i<[subArr count];i++) {
+            float xValue=[subArr[i][0] floatValue];
+            float yValue=[subArr[i][1] floatValue];
+            float zValue=[subArr[i][2] floatValue];
+            
+            NSPoint xP=NSMakePoint(spaceX+((float)(i+1)/[_gsensorArray count])*(X_shaft-spaceX),(xValue+3)*_ly+spaceY);
+            NSPoint yP=NSMakePoint(spaceX+((float)i/[_gsensorArray count])*(X_shaft-spaceX),(yValue+3)*_ly+spaceY);
+            
+            NSPoint zP=NSMakePoint(spaceX+((float)i/[_gsensorArray count])*(X_shaft-spaceX),(zValue+3)*_ly+spaceY);
+            
+            if(i==0){
+                [bezierPathX moveToPoint:xP];
+                [bezierPathY moveToPoint:yP];
+                [bezierPathZ moveToPoint:zP];
+            }else{
+                [bezierPathX lineToPoint:xP];
+                [bezierPathY lineToPoint:yP];
+                [bezierPathZ lineToPoint:zP];
+                
+            }
+            
+            
+            
+        
+            
+        }
+        
+        [[NSColor redColor] set];
+        [bezierPathX stroke];
+        
+        [[NSColor greenColor] set];
+        [bezierPathY stroke];
+        
+
+        [[NSColor blueColor] set];
+        [bezierPathZ stroke];
+        
+
+        
+    }
     
     
 }
