@@ -65,6 +65,10 @@
     videoVC.speeddelegate=displayVC;
     
     playlistVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"playlistVC"];
+    
+    //leftRect0:x:0.000000 y:0.000000 w:1013.000000 h:422.000000 leftRect1:x:0.000000 y:0.000000 w:1013.000000 h:328.000000 rightRect0:x:0.000000 y:0.000000 w:266.000000 h:423.000000 rightRect1:x:0.000000 y:0.000000 w:266.000000 h:327.000000
+    
+    
   
     
     
@@ -74,7 +78,17 @@
     [self.displayView addSubview:displayVC.view];
     
     
-    [self updateViewLetfView0:_videoView view1:_displayView rightView0:_mapView view1:_playListView];
+    //[self updateViewLetfView0:_videoView view1:_displayView rightView0:_mapView view1:_playListView];
+    
+    [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
+    [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,760)];
+    
+    [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,440)];
+    [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,320)];
+    
+    [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,433)];
+    [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,327)];
+    
     
     
     
@@ -120,6 +134,9 @@
 
 -(void)updateViewLetfRect0:(NSRect)leftRect0 rect1:(NSRect)leftRect1 rightRect0:(NSRect)rightRect0 rect1:(NSRect)rightRect1{
     
+    //NSLog(@"leftRect0:%@ leftRect1:%@ rightRect0:%@ rightRect1:%@",[self nsRectToString:leftRect0],[self nsRectToString:leftRect1],[self nsRectToString:rightRect0],[self nsRectToString:rightRect1]);
+    
+    
     [videoVC.view setFrame:leftRect0];
     [displayVC.view setFrame:leftRect1];
     
@@ -133,6 +150,9 @@
     
 }
 
+-(NSString *)nsRectToString:(NSRect)rect{
+    return [NSString stringWithFormat:@"x:%f y:%f w:%f h:%f",rect.origin.x,rect.origin.y,rect.size.width,rect.size.height];
+}
 
 - (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)view NS_AVAILABLE_MAC(10_6){
     return YES;

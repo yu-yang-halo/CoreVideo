@@ -27,6 +27,12 @@
 
 @property (weak) IBOutlet NSTextField *movingDistance;
 
+
+@property (weak) IBOutlet NSTextField *xTextField;
+
+@property (weak) IBOutlet NSTextField *yTextField;
+@property (weak) IBOutlet NSTextField *zTextField;
+
 @end
 
 @implementation CVDisplayViewController
@@ -95,6 +101,16 @@
     if(currentGsensorDataArr!=nil){
         if(index1<[currentGsensorDataArr count]){
             [_gsensorView updateGsensorRange:index1];
+            
+            float xVal=[currentGsensorDataArr[index1][0] floatValue];
+            float yVal=[currentGsensorDataArr[index1][1] floatValue];
+            float zVal=[currentGsensorDataArr[index1][2] floatValue];
+            
+            
+            [_xTextField setStringValue:[NSString stringWithFormat:@"X: %.2f",xVal]];
+            [_yTextField setStringValue:[NSString stringWithFormat:@"Y: %.2f",yVal]];
+            [_zTextField setStringValue:[NSString stringWithFormat:@"Z: %.2f",zVal]];
+            
         }
     }
 
