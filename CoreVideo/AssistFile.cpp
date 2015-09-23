@@ -5,7 +5,7 @@
 
 CAssistFile::CAssistFile(void)
 {
-   
+    
 }
 
 CAssistFile::~CAssistFile(void)
