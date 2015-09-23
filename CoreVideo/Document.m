@@ -56,7 +56,8 @@
      [self close];
     
      NSLog(@"url %@",url);
-    
+   
+
      [MyCache playPathCache:[url absoluteString] block:^{
          
          AppDelegate *delegate=[[NSApplication sharedApplication] delegate];

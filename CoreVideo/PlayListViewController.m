@@ -89,7 +89,7 @@
     
     if(_playlist!=nil){
         NSString *abbrev=[NSString stringWithFormat:@"%ld:%@",row,[self abbreviationFile:[[_playlist objectAtIndex:row] objectForKey:keyPATH]]];
-        return abbrev;
+        return [abbrev stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }else{
         return @"";
     }

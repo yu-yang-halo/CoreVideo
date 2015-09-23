@@ -15,8 +15,12 @@
 +(NSArray *)readGpsData:(NSString *)filePath{
     filePath=[self clearfilePrefix:filePath];
     CAssistFile m_assistInfo=CAssistFile();
+    //chinesePath /Users/apple/Desktop/473下午－434.mov
+    //chinesePath /Users/apple/Desktop/473下午－434.mov
+    NSString *chinesePath=[filePath stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"chinesePath %@",chinesePath);
     
-    int count= m_assistInfo.ParseMOVSubtitle([[filePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] UTF8String]);
+    int count= m_assistInfo.ParseMOVSubtitle([chinesePath UTF8String]);
     NSLog(@"count %d",count);
 
     NSMutableArray *videoDats=[[NSMutableArray alloc] init];
