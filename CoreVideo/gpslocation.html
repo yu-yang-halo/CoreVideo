@@ -12,56 +12,54 @@
     
     <body>
         <div id="mapContainer"></div>
-<!--        <div id="tip" class="button-group">-->
-<!--            <input type="button" class="button" value="开始动画" id="start" />-->
-<!--            <input type="button" class="button" value="停止动画" id="stop" />-->
-<!--        </div>-->
         <script>
             var defaultLayer=new AMap.TileLayer();
             var traffic=new AMap.TileLayer.Traffic();
-            var map = new AMap.Map("mapContainer", {
-                                   resizeEnable: true,
-                                   layers:[defaultLayer,traffic],
-                                   center:[113.904341,22.516091],
-                                   zoom: 17,
-                                   continuousZoomEnable: false
-                                   
-                                   });
-                                   
-                                   map.on( "complete", completeEventHandler);
-                                   AMap.plugin(['AMap.ToolBar','AMap.Scale'],function(){
-                                   
-                                               var toobar=new AMap.ToolBar();
-                                               var scale=new AMap.Scale();
-                                               map.addControl(toobar);
-                                               map.addControl(scale);
-                                               });
-                                   
-                                   AMap.event.addDomListener(document.getElementById('start'),'click', function() {
-                                                             startAnimation();
-                                                             }, false);
-                                                             
-                                                             AMap.event.addDomListener(document.getElementById('stop'),'click', function() {
-                                                                                       stopAnimation();
-                                                                                       }, false);
+            var map;
+            var centerPoint;
+            loadMapData();
+            function loadMapData(){
+                map= new AMap.Map("mapContainer", {
+                                       resizeEnable: true,
+                                       layers:[defaultLayer,traffic],
+                                       center:centerPoint,//,
+                                       zoom: 17,
+                                       continuousZoomEnable: false
+                                       });
+                                       
+                                       map.on( "complete", completeEventHandler);
+                                       AMap.plugin(['AMap.ToolBar','AMap.Scale'],
+                                                   function(){
+                                                   
+                                                   var toobar=new AMap.ToolBar();
+                                                   var scale=new AMap.Scale();
+                                                   map.addControl(toobar);
+                                                   map.addControl(scale);
+                                                   });
+            
+            }
                                                                                        
-                                                                                       // 地图图块加载完毕后执行函数
-                                                                                       function completeEventHandler() {
-                                                                                           marker = new AMap.Marker({
-                                                                                                                    map: map,
-                                                                                                                    //icon: "http://code.mapabc.com/images/car_03.png",
-                                                                                                                    icon:"mcar3.png",                                                                  offset: new AMap.Pixel(-16,-39),
-                                                                                                                                                                       autoRotation: true
-                                                                                                                    });
-                                                                                                                    
-                                                            
-                                                                                                                    
-                                                                                                                                            
-                                                                                                                        
-                                                                                       }
+            // 地图图块加载完毕后执行函数
+            function completeEventHandler() {
+                if(centerPoint){
+                 
+                 marker = new AMap.Marker({
+                                          map: map,
+                                          position:centerPoint,
+                                          icon:"mcar3.png",
+                                          offset: new AMap.Pixel(-16,-39),
+                                          autoRotation: true
+                                          });
+                }
+                
+
+            }
         
         function drawPolyLinePath(lineArr){
-        
+            if(lineArr.length>0){
+               centerPoint=lineArr[0];
+            }
+            loadMapData();
             // 绘制轨迹
             var polyline = new AMap.Polyline({
                                              map: map,
@@ -80,15 +78,7 @@
         function updateMarkerPosition(position){
             marker.setPosition(position);
         }
-        
-        function startAnimation(lineArr) {
-            marker.moveAlong(lineArr, 10);
-        }
-        
-        function stopAnimation() {
-            marker.stopMove();
-        }
-        </script>
+    </script>
     </body>
     
 </html>
