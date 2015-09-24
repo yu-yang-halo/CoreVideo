@@ -22,6 +22,7 @@
 		84A85E7A1BA28E0E00817598 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A85E791BA28E0E00817598 /* Images.xcassets */; };
 		84A85E7D1BA28E0E00817598 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A85E7B1BA28E0E00817598 /* Main.storyboard */; };
 		84A85E891BA28E0E00817598 /* CoreVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E881BA28E0E00817598 /* CoreVideoTests.m */; };
+		84AE44C01BB3F0F4007E7950 /* DocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AE44BF1BB3F0F4007E7950 /* DocumentController.m */; };
 		84AF2E751BAB9920003B3217 /* CVDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF2E741BAB9920003B3217 /* CVDisplayViewController.m */; };
 		84AF2E791BAB9CDA003B3217 /* CustomSpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF2E781BAB9CDA003B3217 /* CustomSpeedView.m */; };
 		84B43FE41BA7E1AA00B4B46A /* FileList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84B43FE21BA7E1AA00B4B46A /* FileList.cpp */; };
@@ -77,6 +78,8 @@
 		84A85E821BA28E0E00817598 /* CoreVideoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreVideoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A85E871BA28E0E00817598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84A85E881BA28E0E00817598 /* CoreVideoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreVideoTests.m; sourceTree = "<group>"; };
+		84AE44BE1BB3F0F4007E7950 /* DocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentController.h; sourceTree = "<group>"; };
+		84AE44BF1BB3F0F4007E7950 /* DocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentController.m; sourceTree = "<group>"; };
 		84AF2E731BAB9920003B3217 /* CVDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVDisplayViewController.h; sourceTree = "<group>"; };
 		84AF2E741BAB9920003B3217 /* CVDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVDisplayViewController.m; sourceTree = "<group>"; };
 		84AF2E771BAB9CDA003B3217 /* CustomSpeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSpeedView.h; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 			children = (
 				84A85E761BA28E0E00817598 /* Document.h */,
 				84A85E771BA28E0E00817598 /* Document.m */,
+				84AE44BE1BB3F0F4007E7950 /* DocumentController.h */,
+				84AE44BF1BB3F0F4007E7950 /* DocumentController.m */,
 			);
 			name = document;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				84BC6A091BA8FF0400FBF400 /* CVLayoutViewController.m in Sources */,
 				846C31DE1BA66E480007ACDB /* MyCache.m in Sources */,
 				18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */,
+				84AE44C01BB3F0F4007E7950 /* DocumentController.m in Sources */,
 				84B5DFD21BAA758600DA74DB /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

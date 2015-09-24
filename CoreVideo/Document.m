@@ -20,16 +20,15 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        // Add your subclass-specific initialization here.
+        NSLog(@"Document 初始化...");
     }
     return self;
 }
 
-
-
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
-    //[super windowControllerDidLoadNib:aController];
+    [super windowControllerDidLoadNib:aController];
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
+    NSLog(@"windowControllerDidLoadNib");
 }
 
 + (BOOL)autosavesInPlace {
@@ -38,9 +37,9 @@
 
 - (void)makeWindowControllers {
     // Override to return the Storyboard file name of the document.
-    
-//    AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
-//   [self addWindowController:delegate.windowVC];
+     NSLog(@"makeWindowControllers");
+   AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+   [self addWindowController:delegate.windowVC];
     
 }
 
@@ -68,8 +67,7 @@
          
      }];
     
-    
-    
+
     return YES;
 }
 -(void)close{

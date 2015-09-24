@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "VideoViewController.h"
 #import "MyCache.h"
-
+#import "DocumentController.h"
 @interface AppDelegate ()
 
 
@@ -27,6 +27,29 @@
     
     
     
+}
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender{
+    NSLog(@"applicationShouldOpenUntitledFile");
+    return YES;
+}
+- (BOOL)applicationOpenUntitledFile:(NSApplication *)sender{
+    NSLog(@"applicationOpenUntitledFile");
+    return YES;
+}
+
+
+-(BOOL)application:(NSApplication *)sender openFile:(NSString *)filename{
+    NSLog(@"filename %@",filename);
+    return YES;
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag{
+    
+    if(!flag){
+        NSLog(@"applicationShouldHandleReopen flag:%d",flag);
+        [self.windowVC showWindow:self];
+    }
+    return flag;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
