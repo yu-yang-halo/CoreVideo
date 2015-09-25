@@ -17,5 +17,7 @@
 @property(nonatomic,strong) VideoViewController *videoVC;
 @property(nonatomic,strong) CVWindowController  *windowVC;
 @property(nonatomic,strong) PlayListViewController  *playlistVC;
+
+- (IBAction)openFile:(id)sender;
 @end
 

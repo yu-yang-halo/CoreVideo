@@ -37,6 +37,33 @@ const NSString *keyGPSDATA=@"key_gps_data";
     
 }
 
++(void)playPathArrCache:(NSArray *)pathArr block:(cacheCompleteHandler)_block{
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableArray *playList=[[[NSUserDefaults standardUserDefaults] objectForKey:key_play_list] mutableCopy];
+        if(playList==nil){
+            playList=[NSMutableArray new];
+        }
+        
+        
+        for (NSURL *path in pathArr) {
+             NSArray *gpsDats=[GpsDataHelper readGpsData:[path absoluteString]];
+             NSDictionary *pathDic=[NSDictionary dictionaryWithObjectsAndKeys:[path absoluteString],keyPATH,gpsDats,keyGPSDATA,nil];
+             [playList addObject:pathDic];
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:playList forKey:key_play_list];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _block();
+        });
+        
+    });
+}
+
+
+
+
 +(void)syncPlayList:(NSArray *)playlist{
     [[NSUserDefaults standardUserDefaults] setObject:playlist forKey:key_play_list];
 }

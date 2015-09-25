@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "VideoViewController.h"
 #import "MyCache.h"
-#import "DocumentController.h"
+
 @interface AppDelegate ()
 
 
@@ -41,6 +41,26 @@
 -(BOOL)application:(NSApplication *)sender openFile:(NSString *)filename{
     NSLog(@"filename %@",filename);
     return YES;
+}
+- (IBAction)openFile:(id)sender {
+   
+    __weak AppDelegate *weakSelf=self;
+    [[NSDocumentController sharedDocumentController] beginOpenPanelWithCompletionHandler:^(NSArray *fileList) {
+         NSLog(@"%@",fileList);
+         [weakSelf.videoVC close];
+        if(fileList!=nil&&[fileList count]>0){
+            NSURL *fisrtUrl=[fileList objectAtIndex:0];
+            
+            [MyCache playPathArrCache:fileList block:^{
+                
+                [weakSelf.videoVC initAssetData:fisrtUrl];
+                
+                [weakSelf.playlistVC reloadPlayListData];
+                
+            }];
+        }
+        
+    }];
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag{

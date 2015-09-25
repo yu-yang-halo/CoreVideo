@@ -29,7 +29,7 @@
                                     <items>
                                         <menuItem title="打开" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
-                                                <action selector="openDocument:" target="Ady-hI-5gd" id="uii-3y-WMV"/>
+                                                <action selector="openFile:" target="Voe-Tx-rLC" id="OcX-tn-9ti"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="设置" keyEquivalent="s" id="KaW-ft-85H">
@@ -364,16 +364,6 @@
                                             </connections>
                                         </sliderCell>
                                     </slider>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="udu-xZ-0Nh">
-                                        <rect key="frame" x="337" y="28" width="66" height="32"/>
-                                        <buttonCell key="cell" type="push" title="文件" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qnn-HA-1k9">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="13" name="STHeitiSC-Light"/>
-                                            <connections>
-                                                <action selector="openDocument:" target="AFW-vq-YcF" id="Zcb-n4-aYK"/>
-                                            </connections>
-                                        </buttonCell>
-                                    </button>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="i9J-Aa-eR3">
                                         <rect key="frame" x="450" y="17" width="48" height="48"/>
                                         <constraints>
@@ -386,6 +376,16 @@
                                         </buttonCell>
                                         <connections>
                                             <action selector="zoomInOut:" target="47X-5P-zVC" id="ICK-7n-xfR"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="udu-xZ-0Nh">
+                                        <rect key="frame" x="337" y="28" width="66" height="32"/>
+                                        <buttonCell key="cell" type="push" title="文件" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qnn-HA-1k9">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openFile:" target="47X-5P-zVC" id="fpH-9Q-x9l"/>
                                         </connections>
                                     </button>
                                 </subviews>

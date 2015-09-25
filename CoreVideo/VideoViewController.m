@@ -376,5 +376,9 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     return [NSSet setWithObjects:@"player.currentItem", @"player.currentItem.status", nil];
 }
 
+- (IBAction)openFile:(id)sender {
+    AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+    [delegate openFile:sender];
+}
 
 @end

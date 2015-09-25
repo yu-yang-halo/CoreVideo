@@ -37,20 +37,20 @@
 }
 
 - (IBAction)addVideoPlay:(id)sender {
-    NSOpenPanel *panel=[NSOpenPanel new];
-    [panel setCanChooseDirectories:YES];
-    [panel setCanChooseFiles:YES];
-    [panel setAllowedFileTypes:@[@"mov",@"mp4"]];
-    [panel beginWithCompletionHandler:^(NSInteger result) {
-        if(result==NSFileHandlingPanelOKButton){
-            //NSLog(@"%@",[panel URL]);
-            [MyCache playPathCache:[[panel URL] absoluteString] block:^{
+    
+    [[NSDocumentController sharedDocumentController] beginOpenPanelWithCompletionHandler:^(NSArray *fileList) {
+        NSLog(@"%@",fileList);
+        if(fileList!=nil&&[fileList count]>0){
+           // NSURL *fisrtUrl=[fileList objectAtIndex:0];
+            
+            [MyCache playPathArrCache:fileList block:^{
                 [self reloadPlayListData];
             }];
-            
-            
         }
+        
     }];
+    
+
 }
 
 - (IBAction)removeVideoPlay:(id)sender {

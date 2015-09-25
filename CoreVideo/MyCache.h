@@ -14,7 +14,9 @@ typedef void (^cacheCompleteHandler)();
 
 
 
-+(void)playPathCache:(NSString *)path block:(cacheCompleteHandler)_block;
+//+(void)playPathCache:(NSString *)path block:(cacheCompleteHandler)_block;
+
++(void)playPathArrCache:(NSArray *)pathArr block:(cacheCompleteHandler)_block;
 
 +(void)playPathClear;
 
