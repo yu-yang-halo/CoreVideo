@@ -7,7 +7,8 @@
 //
 
 #import "CustomSpeedView.h"
-
+#import "AppUtils.h"
+#import "AppUserDefaults.h"
 static NSInteger Radius=100;
 static NSInteger LineWidth=40;
 static NSInteger MIN_ANGLE=0;
@@ -15,10 +16,13 @@ static NSInteger MAX_ANGLE=180;//从右到左
 
 static NSString* MIN_SPEED=@"0";// km/h
 static NSString* MAX_SPEED=@"120";//从左到右读
+static NSString* MAX_SPEED_MPH=@"75";//从左到右读
 @interface CustomSpeedView(){
     CGFloat midX;
     CGFloat midY;
     float   ratio;//速度转换刻度系数
+    NSString*  max_spd_str;
+    NSString*  min_spd_str;
 }
 
 @end
@@ -31,14 +35,24 @@ static NSString* MAX_SPEED=@"120";//从左到右读
  
  120*180/120=180读
  
+ 120km=75mph
+ 
  */
 
 @implementation CustomSpeedView
 
 
 -(void)setCurrentSpeed:(NSInteger)currentSpeed{
-    if(currentSpeed>MAX_SPEED.integerValue){
-        currentSpeed=MAX_SPEED.integerValue;
+    
+    if([AppUserDefaults isKMPH]){
+        max_spd_str=MAX_SPEED;
+    }else{
+        max_spd_str=MAX_SPEED_MPH;
+    }
+    min_spd_str=MIN_SPEED;
+    
+    if(currentSpeed>max_spd_str.integerValue){
+        currentSpeed=max_spd_str.integerValue;
     }else if(currentSpeed<0){
         currentSpeed=0;
     }
@@ -50,8 +64,14 @@ static NSString* MAX_SPEED=@"120";//从左到右读
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
+    if(max_spd_str==nil){
+        max_spd_str=MAX_SPEED;
+    }
+    if(min_spd_str==nil){
+        min_spd_str=MIN_SPEED;
+    }
     
-    ratio=(float)MAX_ANGLE/[MAX_SPEED integerValue];
+    ratio=(float)MAX_ANGLE/[max_spd_str integerValue];
    // NSLog(@"ratio 系数 %f",ratio);
     
     
@@ -70,15 +90,23 @@ static NSString* MAX_SPEED=@"120";//从左到右读
 
     
     
-    NSString *currentSpeed=[NSString stringWithFormat:@"%ld Km/H",_currentSpeed];
+    NSString *currentSpeed=[NSString stringWithFormat:@"%.f",[AppUtils convertSpeed:_currentSpeed]];
   
     NSMutableDictionary *md=[NSMutableDictionary dictionary];
-    [md setObject:[NSFont fontWithName:@"Helvetica" size:30] forKey:NSFontAttributeName];
-    [md setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
-    NSSize size=[currentSpeed sizeWithAttributes:md];
+    [md setObject:[NSFont fontWithName:@"Helvetica" size:60] forKey:NSFontAttributeName];
+    [md setObject:[NSColor greenColor] forKey:NSForegroundColorAttributeName];
+    NSMutableDictionary *md1=[NSMutableDictionary dictionary];
+    [md1 setObject:[NSFont fontWithName:@"Helvetica" size:15] forKey:NSFontAttributeName];
+    [md1 setObject:[NSColor grayColor] forKey:NSForegroundColorAttributeName];
     
+    
+    NSSize size=[currentSpeed sizeWithAttributes:md];
+    NSSize unitSize=[[AppUtils currentSpeedUnit] sizeWithAttributes:md1];
     
     [self drawText:currentSpeed location:NSMakePoint(midX-size.width/2,midY) attibutes:md];
+    
+    [self drawText:[AppUtils currentSpeedUnit] location:NSMakePoint(midX-unitSize.width/2,midY-unitSize.height) attibutes:md1];
+
     
     
     
@@ -87,12 +115,13 @@ static NSString* MAX_SPEED=@"120";//从左到右读
     [md2 setObject:[NSColor gridColor] forKey:NSForegroundColorAttributeName];
     
     
-    NSSize  minsSize=[MIN_SPEED sizeWithAttributes:md2];
-    NSSize  maxsSize=[MAX_SPEED sizeWithAttributes:md2];
+    NSSize  minsSize=[min_spd_str sizeWithAttributes:md2];
+    NSSize  maxsSize=[max_spd_str sizeWithAttributes:md2];
     
-    [self drawText:MIN_SPEED location:NSMakePoint(midX-minsSize.width/2-Radius,midY-minsSize.height) attibutes:md2];
+    [self drawText:min_spd_str location:NSMakePoint(midX-minsSize.width/2-Radius,midY-minsSize.height) attibutes:md2];
     
-    [self drawText:MAX_SPEED location:NSMakePoint(midX-maxsSize.width/2+Radius,midY-maxsSize.height) attibutes:md2];
+    [self drawText:max_spd_str location:NSMakePoint(midX-maxsSize.width/2+Radius,midY-maxsSize.height) attibutes:md2];
+    
     
     
     

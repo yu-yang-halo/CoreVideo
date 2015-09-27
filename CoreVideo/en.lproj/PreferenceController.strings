@@ -1,0 +1,27 @@
+
+/* Class = "NSButtonCell"; title = "中文"; ObjectID = "283-kV-864"; */
+"283-kV-864.title" = "Chinese";
+
+/* Class = "NSButtonCell"; title = "Radio"; ObjectID = "N2U-Pf-xyJ"; */
+"N2U-Pf-xyJ.title" = "Radio";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "OON-oE-xo9"; */
+"OON-oE-xo9.title" = "Window";
+
+/* Class = "NSButtonCell"; title = "公里/小时"; ObjectID = "Vjy-jR-ZQb"; */
+"Vjy-jR-ZQb.title" = "Km/H";
+
+/* Class = "NSTextFieldCell"; title = "速度单位"; ObjectID = "W0R-vO-zam"; */
+"W0R-vO-zam.title" = "Speed unit";
+
+/* Class = "NSButtonCell"; title = "英文"; ObjectID = "dbv-fK-hwT"; */
+"dbv-fK-hwT.title" = "English";
+
+/* Class = "NSButtonCell"; title = "Radio"; ObjectID = "lsd-vY-8qO"; */
+"lsd-vY-8qO.title" = "Radio";
+
+/* Class = "NSButtonCell"; title = "英里/小时"; ObjectID = "pbs-69-z5q"; */
+"pbs-69-z5q.title" = "MPH";
+
+/* Class = "NSTextFieldCell"; title = "国际化"; ObjectID = "rDv-xq-mdy"; */
+"rDv-xq-mdy.title" = "Language";

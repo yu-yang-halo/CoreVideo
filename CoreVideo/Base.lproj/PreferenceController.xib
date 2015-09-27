@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferenceController">
+            <connections>
+                <outlet property="languageRadio" destination="hR3-BG-PD0" id="9Gs-QM-RPl"/>
+                <outlet property="speedUnitRadio" destination="S9e-7x-fqz" id="deG-xR-hgC"/>
+                <outlet property="window" destination="OON-oE-xo9" id="g0v-4u-x4S"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="OON-oE-xo9" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="179" y="685" width="346" height="148"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="346" height="148"/>
+            <value key="maxSize" type="size" width="346" height="148"/>
+            <view key="contentView" id="Tye-Fn-uQE">
+                <rect key="frame" x="0.0" y="0.0" width="346" height="148"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vCo-nD-Qvr">
+                        <rect key="frame" x="30" y="54" width="143" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="139" id="aVf-RQ-Dy0"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="速度单位" id="W0R-vO-zam">
+                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3UF-or-x8s">
+                        <rect key="frame" x="30" y="123" width="112" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="108" id="MG5-es-a2C"/>
+                        </constraints>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="系统语言" id="rDv-xq-mdy">
+                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S9e-7x-fqz">
+                        <rect key="frame" x="68" y="20" width="244" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="244" id="MjF-OC-dmC"/>
+                            <constraint firstAttribute="height" constant="18" id="QUF-z7-S2e"/>
+                        </constraints>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <size key="cellSize" width="79" height="18"/>
+                        <size key="intercellSpacing" width="4" height="2"/>
+                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="lsd-vY-8qO">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <cells>
+                            <column>
+                                <buttonCell type="radio" title="公里/小时" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="Vjy-jR-ZQb">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </column>
+                            <column>
+                                <buttonCell type="radio" title="英里/小时" imagePosition="left" alignment="left" inset="2" id="pbs-69-z5q">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </column>
+                        </cells>
+                        <connections>
+                            <action selector="speedUnitChange:" target="-2" id="xki-H1-phP"/>
+                        </connections>
+                    </matrix>
+                    <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hR3-BG-PD0">
+                        <rect key="frame" x="68" y="85" width="244" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="244" id="27A-NT-l0f"/>
+                            <constraint firstAttribute="height" constant="18" id="pww-xc-ftq"/>
+                        </constraints>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <size key="cellSize" width="48" height="18"/>
+                        <size key="intercellSpacing" width="4" height="2"/>
+                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="N2U-Pf-xyJ">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <cells>
+                            <column>
+                                <buttonCell type="radio" title="中文" imagePosition="left" alignment="left" enabled="NO" state="on" tag="1" inset="2" id="283-kV-864">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </column>
+                            <column>
+                                <buttonCell type="radio" title="英文" imagePosition="left" alignment="left" enabled="NO" inset="2" id="dbv-fK-hwT">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </column>
+                        </cells>
+                        <connections>
+                            <action selector="languageChange:" target="-2" id="1EK-lT-KmW"/>
+                        </connections>
+                    </matrix>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="hR3-BG-PD0" secondAttribute="trailing" constant="34" id="45a-FB-VET"/>
+                    <constraint firstItem="hR3-BG-PD0" firstAttribute="top" secondItem="3UF-or-x8s" secondAttribute="bottom" constant="20" id="GLu-M1-PdS"/>
+                    <constraint firstItem="vCo-nD-Qvr" firstAttribute="leading" secondItem="3UF-or-x8s" secondAttribute="leading" id="GOO-fa-DAF"/>
+                    <constraint firstItem="hR3-BG-PD0" firstAttribute="leading" secondItem="Tye-Fn-uQE" secondAttribute="leading" constant="68" id="dhD-Yz-7xc"/>
+                    <constraint firstAttribute="bottom" secondItem="S9e-7x-fqz" secondAttribute="bottom" constant="20" symbolic="YES" id="eUh-di-Ghf"/>
+                    <constraint firstItem="hR3-BG-PD0" firstAttribute="leading" secondItem="S9e-7x-fqz" secondAttribute="leading" id="f5d-z9-SH3"/>
+                    <constraint firstItem="S9e-7x-fqz" firstAttribute="trailing" secondItem="hR3-BG-PD0" secondAttribute="trailing" id="fWF-bQ-PYn"/>
+                    <constraint firstItem="vCo-nD-Qvr" firstAttribute="top" secondItem="hR3-BG-PD0" secondAttribute="bottom" constant="14" id="jHe-3v-Fev"/>
+                    <constraint firstItem="3UF-or-x8s" firstAttribute="leading" secondItem="Tye-Fn-uQE" secondAttribute="leading" constant="32" id="nRf-4C-2Gk"/>
+                    <constraint firstItem="S9e-7x-fqz" firstAttribute="top" secondItem="vCo-nD-Qvr" secondAttribute="bottom" constant="16" id="znM-HD-vct"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="639" y="-51"/>
+        </window>
+    </objects>
+</document>

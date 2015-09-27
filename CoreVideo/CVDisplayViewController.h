@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "VideoViewController.h"
-#import "CVWebViewController.h"s
+#import "CVWebViewController.h"
+#import "PreferenceController.h"
 @interface CVDisplayViewController : NSViewController<GpsMapDelegate,CaculateDistanceDelegate>
 
 @end

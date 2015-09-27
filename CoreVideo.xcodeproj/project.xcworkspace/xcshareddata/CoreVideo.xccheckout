@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>53C37DED-2D62-4B13-8AE9-3DEF16172B36</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CoreVideo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>05D1BE31788C92848807852199BE4F012E5B7B01</key>
+		<string>https://github.com/yu-yang-halo/CoreVideo</string>
+		<key>0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC</key>
+		<string>https://github.com/yu-yang-halo/elTools.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CoreVideo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>05D1BE31788C92848807852199BE4F012E5B7B01</key>
+		<string>../..</string>
+		<key>0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC</key>
+		<string>../../../elToolsBranch</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yu-yang-halo/CoreVideo</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>05D1BE31788C92848807852199BE4F012E5B7B01</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>05D1BE31788C92848807852199BE4F012E5B7B01</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CoreVideo</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>elToolsBranch</string>
+		</dict>
+	</array>
+</dict>
+</plist>

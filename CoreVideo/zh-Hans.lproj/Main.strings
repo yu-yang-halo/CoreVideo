@@ -1,0 +1,111 @@
+
+/* Class = "NSButtonCell"; title = "播放"; ObjectID = "0XC-4g-uKL"; */
+"0XC-4g-uKL.title" = "播放";
+
+/* Class = "NSMenuItem"; title = "行车记录仪"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "行车记录仪";
+
+/* Class = "NSTextFieldCell"; title = "0Km/H"; ObjectID = "2TG-6r-W2D"; */
+"2TG-6r-W2D.title" = "0";
+
+/* Class = "NSButtonCell"; title = "截图"; ObjectID = "3cT-he-XWR"; */
+"3cT-he-XWR.title" = "截图";
+
+/* Class = "NSTextFieldCell"; title = "X: 0.00"; ObjectID = "4iJ-v4-8pO"; */
+"4iJ-v4-8pO.title" = "X: 0.00";
+
+/* Class = "NSTextFieldCell"; title = "平均时速"; ObjectID = "4qq-pE-CoO"; */
+"4qq-pE-CoO.title" = "平均时速";
+
+/* Class = "NSMenuItem"; title = "退出"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "退出";
+
+/* Class = "NSMenuItem"; title = "显示"; ObjectID = "5QF-Oa-p0T"; */
+"5QF-Oa-p0T.title" = "显示";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "Ckk-yw-fiv"; */
+"Ckk-yw-fiv.title" = "Window";
+
+/* Class = "NSMenu"; title = "帮助"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "帮助";
+
+/* Class = "NSMenuItem"; title = "关于"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "关于";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
+"H8h-7b-M4v.title" = "View";
+
+/* Class = "NSButtonCell"; title = "添加"; ObjectID = "I97-1b-Csk"; */
+"I97-1b-Csk.title" = "添加";
+
+/* Class = "NSMenuItem"; title = "打开"; ObjectID = "IAo-SY-fd9"; */
+"IAo-SY-fd9.title" = "打开";
+
+/* Class = "NSTextFieldCell"; title = "0Km/H"; ObjectID = "JH6-AG-zxs"; */
+"JH6-AG-zxs.title" = "0";
+
+/* Class = "NSMenuItem"; title = "设置"; ObjectID = "KaW-ft-85H"; */
+"KaW-ft-85H.title" = "设置";
+
+/* Class = "NSButtonCell"; title = "文件"; ObjectID = "Qnn-HA-1k9"; */
+"Qnn-HA-1k9.title" = "文件";
+
+/* Class = "NSTextFieldCell"; title = "最高时速"; ObjectID = "TQV-8A-2Hv"; */
+"TQV-8A-2Hv.title" = "最高时速";
+
+/* Class = "NSMenu"; title = "显示"; ObjectID = "W48-6f-4Dl"; */
+"W48-6f-4Dl.title" = "显示";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Window";
+
+/* Class = "NSButtonCell"; title = "图片"; ObjectID = "bde-yK-jDu"; */
+"bde-yK-jDu.title" = "图片";
+
+/* Class = "NSMenu"; title = "文件"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "文件";
+
+/* Class = "NSMenuItem"; title = "文件"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "文件";
+
+/* Class = "NSTextFieldCell"; title = "00:00:00"; ObjectID = "dwW-6X-K7w"; */
+"dwW-6X-K7w.title" = "00:00:00";
+
+/* Class = "NSTextFieldCell"; title = "Y: 0.00"; ObjectID = "gJI-XP-hRo"; */
+"gJI-XP-hRo.title" = "Y: 0.00";
+
+/* Class = "NSTableColumn"; headerCell.title = "文件列表"; ObjectID = "ikD-1Y-J4C"; */
+"ikD-1Y-J4C.headerCell.title" = "文件列表";
+
+/* Class = "NSMenuItem"; title = "Format"; ObjectID = "jxT-CU-nIS"; */
+"jxT-CU-nIS.title" = "Format";
+
+/* Class = "NSButtonCell"; title = "删除"; ObjectID = "pA5-pW-3DD"; */
+"pA5-pW-3DD.title" = "删除";
+
+/* Class = "NSMenuItem"; title = "地图"; ObjectID = "pa3-QI-u2k"; */
+"pa3-QI-u2k.title" = "地图";
+
+/* Class = "NSTextFieldCell"; title = "总移动距离"; ObjectID = "qHZ-Rv-znd"; */
+"qHZ-Rv-znd.title" = "总移动距离";
+
+/* Class = "NSTextFieldCell"; title = "00:00:00"; ObjectID = "sON-m2-MmF"; */
+"sON-m2-MmF.title" = "00:00:00";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "tbQ-SY-QQY"; */
+"tbQ-SY-QQY.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "0Km"; ObjectID = "u69-R9-DHS"; */
+"u69-R9-DHS.title" = "0";
+
+/* Class = "NSMenu"; title = "行车记录仪"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "行车记录仪";
+
+/* Class = "NSTextFieldCell"; title = "Z: 0.00"; ObjectID = "uyE-O6-B1r"; */
+"uyE-O6-B1r.title" = "Z: 0.00";
+
+/* Class = "NSMenuItem"; title = "帮助"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "帮助";

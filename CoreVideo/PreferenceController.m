@@ -1,0 +1,62 @@
+//
+//  PreferenceController.m
+//  CoreVideo
+//
+//  Created by apple on 15/9/26.
+//  Copyright (c) 2015年 cn.lztech  合肥联正电子科技有限公司. All rights reserved.
+//
+
+#import "PreferenceController.h"
+#import "AppLanguageManager.h"
+#import "AppUserDefaults.h"
+
+NSString *const SPEED_UNIT_NOTIFICATION=@"speed_unit_notification";
+@interface PreferenceController ()
+
+
+@end
+
+@implementation PreferenceController
+
+- (void)windowDidLoad {
+    [super windowDidLoad];
+    
+    [self.window setTitle:NSLocalizedString(@"setting",nil)];
+    NSLog(@" %@",[AppLanguageManager systemCurrentLanguage]);
+    //zh-Hans
+    if([@"zh-Hans" isEqualToString:[AppLanguageManager systemCurrentLanguage]]){
+       
+        [_languageRadio setState:1 atRow:0 column:0];
+        
+    }else{
+        
+        [_languageRadio setState:1 atRow:0 column:1];
+    }
+    
+    
+    if([AppUserDefaults isKMPH]){
+        [_speedUnitRadio setState:1 atRow:0 column:0];
+    }else{
+        [_speedUnitRadio setState:1 atRow:0 column:1];
+    }
+    
+}
+-(NSString *)windowNibName{
+    return @"PreferenceController";
+}
+
+- (IBAction)speedUnitChange:(NSMatrix *)sender {
+   
+    NSLog(@"%ld",sender.selectedColumn);
+    
+    if(sender.selectedColumn==0){
+        [[NSUserDefaults standardUserDefaults] setObject:KMPH forKey:@"speed_unit"];
+        [AppUserDefaults setSpeedUnit:KMPH];
+    }else{
+        [AppUserDefaults setSpeedUnit:MILEPH];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:SPEED_UNIT_NOTIFICATION object:nil];
+    
+}
+@end

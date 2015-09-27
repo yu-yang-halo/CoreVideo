@@ -64,7 +64,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     
     [self.controlView setWantsLayer:YES];
     [self.controlView.layer setCornerRadius:10];
-    [self.controlView.layer setBackgroundColor:[[NSColor colorWithCalibratedRed:90 green:0 blue:10 alpha:0.5] CGColor]];
+    [self.controlView.layer setBackgroundColor:[[NSColor colorWithCalibratedRed:90 green:0 blue:10 alpha:0.6] CGColor]];
     
     
 }
@@ -350,11 +350,11 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
         float rate = [change[NSKeyValueChangeNewKey] floatValue];
         if (rate != 1.f)
         {
-            self.playButton.title = @"播放";
+            self.playButton.title = NSLocalizedString(@"play", nil);
         }
         else
         {
-            self.playButton.title = @"停止";
+            self.playButton.title = NSLocalizedString(@"pause", nil);;
         }
     }
     else if (context == AVSPPlayerLayerReadyForDisplay)

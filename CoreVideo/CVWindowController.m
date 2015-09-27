@@ -18,9 +18,6 @@ static CGFloat  winHeight=760;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
-    
-    
     AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
     
     delegate.windowVC=self;

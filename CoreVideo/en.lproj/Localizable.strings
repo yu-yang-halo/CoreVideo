@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  CoreVideo
+
+  Created by apple on 9/26/15.
+  Copyright (c) 2015 cn.lztech  合肥联正电子科技有限公司. All rights reserved.
+*/
+"setting"="Settings";
+"filelist"="File list";
+"play"="Play";
+"pause"="Pause";
+"km_speedUnit"="Km/H";
+"mph_speedUnit"="MPH";
+"m_speedUnit"="m/H";
+"mile_distanceUnit"="Mile";
+"km_distanceUnit"="Km";
+"m_distanceUnit"="m";

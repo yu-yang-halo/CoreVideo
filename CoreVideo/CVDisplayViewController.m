@@ -10,11 +10,14 @@
 #import "CustomSpeedView.h"
 #import "CustomGsensorView.h"
 #import "MyCache.h"
+#import "AppUtils.h"
 @interface CVDisplayViewController (){
     NSMutableArray *currentSpeedDataArr;
     NSMutableArray *currentGsensorDataArr;
     NSString       *currentPlayVideoPath;
     NSInteger      maxSpd;
+    NSInteger      currentSpd;
+    
     float          totalDistance;//单位 m
     float          totalTime;//单位 s
 }
@@ -40,9 +43,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUI:) name:SPEED_UNIT_NOTIFICATION object:nil];
     
 }
+
+-(void)updateUI:(NSNotification *)notification{
+    
+    [self.averageHSpeed setStringValue:[AppUtils convertSpeedUnit:((totalDistance/totalTime)*3.6)]];
+    
+    [self.speedView setCurrentSpeed:[AppUtils convertSpeed:currentSpd]];
+    
+    [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:maxSpd]];
+    [self.movingDistance setStringValue:[AppUtils convertDistanceUnit:totalDistance]];
+    
+    
+}
+-(void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:SPEED_UNIT_NOTIFICATION object:nil];
+    
+}
+
+
 -(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath{
     currentPlayVideoPath=playVideoPath;
     
@@ -77,7 +100,7 @@
     float m_ratio1=9.9;
     if(totalTime!=0){
        m_ratio0= [currentSpeedDataArr count]/totalTime;
-        m_ratio1= [currentGsensorDataArr count]/totalTime;
+       m_ratio1= [currentGsensorDataArr count]/totalTime;
     }
     
     int index0=(int)time*m_ratio0;
@@ -88,13 +111,13 @@
     if(currentSpeedDataArr!=nil){
         if(index0<[currentSpeedDataArr count]){
             NSNumber *mspd=currentSpeedDataArr[index0];
-            
+            currentSpd=[mspd integerValue];
             if(maxSpd<[mspd integerValue]){
                 maxSpd=[mspd integerValue];
             }
             
-            [self.speedView setCurrentSpeed:[mspd integerValue]];
-            [self.maxHSpeed setStringValue:[NSString stringWithFormat:@"%ldKm/H",maxSpd]];
+            [self.speedView setCurrentSpeed:[AppUtils convertSpeed:[mspd integerValue]]];
+            [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:maxSpd]];
         }
     }
     
@@ -125,13 +148,15 @@
  */
 -(void)caculateTotalDistance:(float)distance{
     totalDistance=distance;
-    [self.movingDistance setStringValue:[NSString stringWithFormat:@"%.3fKm",distance/1000]];
+    [self.movingDistance setStringValue:[AppUtils convertDistanceUnit:distance]];
+    
     [self loadAverageSpeedContent];
 }
 //1m/s==3.6km/h
 -(void)loadAverageSpeedContent{
     if(totalTime>0){
-        [self.averageHSpeed setStringValue:[NSString stringWithFormat:@"%dKm/H",(int)((totalDistance/totalTime)*3.6)]];
+        
+        [self.averageHSpeed setStringValue:[AppUtils convertSpeedUnit:((totalDistance/totalTime)*3.6)]];
     }
 }
 -(void)videoDurationTime:(Float64)time{
