@@ -19,5 +19,9 @@
 @property(nonatomic,strong) PlayListViewController  *playlistVC;
 
 - (IBAction)openFile:(id)sender;
+
+
+-(void)activeCurrentPlayIndex:(int)index;
+
 @end
 

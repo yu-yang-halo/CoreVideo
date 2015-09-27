@@ -7,10 +7,11 @@
 //
 
 #import "MyCache.h"
-static NSString *key_play_list=@"KEY_PLAY_LIST";
-const NSString *keyPATH=@"key_path";
-const NSString *keyGPSDATA=@"key_gps_data";
 
+NSString *const key_play_list=@"KEY_PLAY_LIST";
+NSString *const keyPATH=@"key_path";
+NSString *const keyGPSDATA=@"key_gps_data";
+NSString *const keyActiveYN=@"key_active_yn";
 #import "GpsDataHelper.h"
 @implementation MyCache
 
@@ -22,7 +23,7 @@ const NSString *keyGPSDATA=@"key_gps_data";
         }
         NSArray *gpsDats=[GpsDataHelper readGpsData:path];
         
-        NSDictionary *pathDic=[NSDictionary dictionaryWithObjectsAndKeys:path,keyPATH,gpsDats,keyGPSDATA,nil];
+        NSMutableDictionary *pathDic=[NSMutableDictionary dictionaryWithObjectsAndKeys:path,keyPATH,gpsDats,keyGPSDATA,nil];
         
         
         [playList addObject:pathDic];
@@ -48,14 +49,14 @@ const NSString *keyGPSDATA=@"key_gps_data";
         
         for (NSURL *path in pathArr) {
              NSArray *gpsDats=[GpsDataHelper readGpsData:[path absoluteString]];
-             NSDictionary *pathDic=[NSDictionary dictionaryWithObjectsAndKeys:[path absoluteString],keyPATH,gpsDats,keyGPSDATA,nil];
+             NSMutableDictionary *pathDic=[NSMutableDictionary dictionaryWithObjectsAndKeys:[path absoluteString],keyPATH,gpsDats,keyGPSDATA,nil];
              [playList addObject:pathDic];
         }
         
         [[NSUserDefaults standardUserDefaults] setObject:playList forKey:key_play_list];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            _block();
+              _block();
         });
         
     });

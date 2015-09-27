@@ -55,6 +55,8 @@
             
             [MyCache playPathArrCache:fileList block:^{
                 
+                [weakSelf activeCurrentPlayFile:[fisrtUrl absoluteString]];
+                
                 [weakSelf.videoVC initAssetData:fisrtUrl];
                 
                 [weakSelf.playlistVC reloadPlayListData];
@@ -64,6 +66,70 @@
         
     }];
 }
+
+-(void)activeCurrentPlayFile:(NSString *)filePath{
+    NSArray *playList=[[NSUserDefaults standardUserDefaults] objectForKey:key_play_list];
+    
+    NSMutableArray *newPlayList=[NSMutableArray new];
+    for (int i=0; i<[playList count];i++) {
+        
+    
+        NSMutableDictionary *dic=[playList[i] mutableCopy];
+        [dic setObject:[NSNumber numberWithBool:NO] forKey:keyActiveYN];
+        
+        [newPlayList addObject:dic];
+        
+    }
+    
+    for (int i=(int)[playList count]-1; i>=0;i--) {
+        
+        if([filePath isEqualToString:[playList[i] objectForKey:keyPATH]]){
+        
+            NSMutableDictionary *dic=[playList[i] mutableCopy];
+            [dic setObject:[NSNumber numberWithBool:YES] forKey:keyActiveYN];
+            
+            [newPlayList replaceObjectAtIndex:i withObject:dic];
+            
+            break;
+        }
+        
+        
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:newPlayList forKey:key_play_list];
+    
+}
+-(void)activeCurrentPlayIndex:(int)index{
+    NSArray *playList=[[NSUserDefaults standardUserDefaults] objectForKey:key_play_list];
+    
+    NSMutableArray *newPlayList=[NSMutableArray new];
+    for (int i=0; i<[playList count];i++) {
+        
+        
+        NSMutableDictionary *dic=[playList[i] mutableCopy];
+        [dic setObject:[NSNumber numberWithBool:NO] forKey:keyActiveYN];
+        
+        [newPlayList addObject:dic];
+        
+    }
+    
+    for (int i=0;i<[playList count];i++) {
+        
+        if(i==index){
+            NSMutableDictionary *dic=[playList[i] mutableCopy];
+            [dic setObject:[NSNumber numberWithBool:YES] forKey:keyActiveYN];
+            
+            [newPlayList replaceObjectAtIndex:i withObject:dic];
+            
+            break;
+        }
+        
+        
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:newPlayList forKey:key_play_list];
+    
+}
+
+
 
 
 

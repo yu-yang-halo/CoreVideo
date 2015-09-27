@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-extern const NSString *keyPATH;
-extern const NSString *keyGPSDATA;
+extern NSString *const key_play_list;
+extern NSString *const keyPATH;
+extern NSString *const keyGPSDATA;
+extern NSString *const keyActiveYN;
 typedef void (^cacheCompleteHandler)();
 @interface MyCache : NSObject
 

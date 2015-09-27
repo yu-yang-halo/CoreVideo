@@ -41,8 +41,6 @@
     [[NSDocumentController sharedDocumentController] beginOpenPanelWithCompletionHandler:^(NSArray *fileList) {
         NSLog(@"%@",fileList);
         if(fileList!=nil&&[fileList count]>0){
-           // NSURL *fisrtUrl=[fileList objectAtIndex:0];
-            
             [MyCache playPathArrCache:fileList block:^{
                 [self reloadPlayListData];
             }];
@@ -63,16 +61,18 @@
              AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
             [delegate.videoVC close];
         }
-        [_tableView reloadData];
+        [self reloadPlayListData];
+        [_tableView deselectAll:self];
     }
     selectIndex=-1;
-    
 }
 
 
 -(void)reloadPlayListData{
     self.playlist=[[MyCache playList] mutableCopy];
     [_tableView reloadData];
+    
+    
 }
 
 
@@ -89,6 +89,15 @@
     
     if(_playlist!=nil){
         NSString *abbrev=[NSString stringWithFormat:@"%ld:%@",row,[self abbreviationFile:[[_playlist objectAtIndex:row] objectForKey:keyPATH]]];
+        
+        NSNumber *activeYN=[[_playlist objectAtIndex:row] objectForKey:keyActiveYN];
+        
+        if(activeYN!=nil&&[activeYN boolValue]==YES){
+            [_tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+            selectIndex=row;
+        
+        }
+        
         return [abbrev stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }else{
         return @"";
@@ -110,9 +119,13 @@
     selectIndex=proposedSelectionIndexes.firstIndex;
     if(selectIndex<[_playlist count]){
          [self playCurrentItem:[[_playlist objectAtIndex:selectIndex] objectForKey:keyPATH]];
+        
+        AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+        [delegate activeCurrentPlayIndex:selectIndex];
     }
-   
     
+    
+    [self reloadPlayListData];
     return proposedSelectionIndexes;
 }
 - (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn{

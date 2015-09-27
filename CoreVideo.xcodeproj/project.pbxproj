@@ -143,17 +143,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1890EA521BB677FE00AAE6E1 /* object */ = {
+		186162D41BB82173000CC33E /* util */ = {
 			isa = PBXGroup;
 			children = (
-				1890EA531BB6781F00AAE6E1 /* AppController.h */,
-				1890EA541BB6781F00AAE6E1 /* AppController.m */,
 				18DAF4CC1BB6AE4B004EDA75 /* AppLanguageManager.h */,
 				18DAF4CD1BB6AE4B004EDA75 /* AppLanguageManager.m */,
 				18DAF4CF1BB6BE34004EDA75 /* AppUtils.h */,
 				18DAF4D01BB6BE34004EDA75 /* AppUtils.m */,
 				18DAF4D21BB6C133004EDA75 /* AppUserDefaults.h */,
 				18DAF4D31BB6C133004EDA75 /* AppUserDefaults.m */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		1890EA521BB677FE00AAE6E1 /* object */ = {
+			isa = PBXGroup;
+			children = (
+				1890EA531BB6781F00AAE6E1 /* AppController.h */,
+				1890EA541BB6781F00AAE6E1 /* AppController.m */,
 			);
 			name = object;
 			sourceTree = "<group>";
@@ -250,6 +257,7 @@
 		84A85E6B1BA28E0E00817598 /* CoreVideo */ = {
 			isa = PBXGroup;
 			children = (
+				186162D41BB82173000CC33E /* util */,
 				1890EA521BB677FE00AAE6E1 /* object */,
 				18D795F51BB57E3F0074DB25 /* window */,
 				84AF2E761BAB9BA8003B3217 /* view */,
