@@ -10,7 +10,6 @@
 		180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180364DB1BAEADD100870783 /* CustomGsensorView.m */; };
 		180364DE1BAED2BA00870783 /* Class界面 in Resources */ = {isa = PBXBuildFile; fileRef = 180364DD1BAED2BA00870783 /* Class界面 */; };
 		1890EA501BB677E600AAE6E1 /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1890EA4E1BB677E600AAE6E1 /* PreferenceController.m */; };
-		1890EA551BB6781F00AAE6E1 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1890EA541BB6781F00AAE6E1 /* AppController.m */; };
 		1890EA5E1BB688D500AAE6E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1890EA601BB688D500AAE6E1 /* Localizable.strings */; };
 		1890EA671BB68CCE00AAE6E1 /* PreferenceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890EA691BB68CCE00AAE6E1 /* PreferenceController.xib */; };
 		18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B22BA91BA6F30000D593C4 /* AssistFile.cpp */; };
@@ -18,6 +17,7 @@
 		18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F6C1BA53874000D058C /* TimeFormatUtils.m */; };
 		18D89F741BA59E87000D058C /* MySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F731BA59E87000D058C /* MySlider.m */; };
 		18D8B1B71BB570CA00444132 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D8B1B91BB570CA00444132 /* InfoPlist.strings */; };
+		18DA97381BB96AB4007FCEF6 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA97371BB96AB4007FCEF6 /* AppController.m */; };
 		18DAF4CE1BB6AE4B004EDA75 /* AppLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF4CD1BB6AE4B004EDA75 /* AppLanguageManager.m */; };
 		18DAF4D11BB6BE34004EDA75 /* AppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF4D01BB6BE34004EDA75 /* AppUtils.m */; };
 		18DAF4D41BB6C133004EDA75 /* AppUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF4D31BB6C133004EDA75 /* AppUserDefaults.m */; };
@@ -62,8 +62,6 @@
 		1885F5FE1BB6A6DE00D0F3D0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PreferenceController.strings"; sourceTree = "<group>"; };
 		1890EA4D1BB677E600AAE6E1 /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
 		1890EA4E1BB677E600AAE6E1 /* PreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceController.m; sourceTree = "<group>"; };
-		1890EA531BB6781F00AAE6E1 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ../../elToolsBranch/AppController.h; sourceTree = "<group>"; };
-		1890EA541BB6781F00AAE6E1 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = ../../elToolsBranch/AppController.m; sourceTree = "<group>"; };
 		1890EA5F1BB688D500AAE6E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1890EA611BB688D600AAE6E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1890EA631BB689D700AAE6E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -81,6 +79,8 @@
 		18D89F731BA59E87000D058C /* MySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySlider.m; sourceTree = "<group>"; };
 		18D8B1B81BB570CA00444132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18D8B1BA1BB570CF00444132 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		18DA97361BB96AB4007FCEF6 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		18DA97371BB96AB4007FCEF6 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		18DAF4CC1BB6AE4B004EDA75 /* AppLanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppLanguageManager.h; sourceTree = "<group>"; };
 		18DAF4CD1BB6AE4B004EDA75 /* AppLanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppLanguageManager.m; sourceTree = "<group>"; };
 		18DAF4CF1BB6BE34004EDA75 /* AppUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtils.h; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 		1890EA521BB677FE00AAE6E1 /* object */ = {
 			isa = PBXGroup;
 			children = (
-				1890EA531BB6781F00AAE6E1 /* AppController.h */,
-				1890EA541BB6781F00AAE6E1 /* AppController.m */,
+				18DA97361BB96AB4007FCEF6 /* AppController.h */,
+				18DA97371BB96AB4007FCEF6 /* AppController.m */,
 			);
 			name = object;
 			sourceTree = "<group>";
@@ -433,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */,
+				18DA97381BB96AB4007FCEF6 /* AppController.m in Sources */,
 				180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */,
 				1890EA501BB677E600AAE6E1 /* PreferenceController.m in Sources */,
 				18DAF4CE1BB6AE4B004EDA75 /* AppLanguageManager.m in Sources */,
@@ -442,7 +443,6 @@
 				84B43FE71BA806FA00B4B46A /* GpsDataHelper.mm in Sources */,
 				84B43FE41BA7E1AA00B4B46A /* FileList.cpp in Sources */,
 				8461A0021BA3FA6E0048DD69 /* VideoViewController.m in Sources */,
-				1890EA551BB6781F00AAE6E1 /* AppController.m in Sources */,
 				84B43FEC1BA81D6700B4B46A /* CVWebViewController.m in Sources */,
 				18DAF4D41BB6C133004EDA75 /* AppUserDefaults.m in Sources */,
 				18D89F691BA4EDE7000D058C /* CVWindowController.m in Sources */,
