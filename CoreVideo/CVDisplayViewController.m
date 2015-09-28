@@ -49,14 +49,19 @@
 }
 
 -(void)updateUI:(NSNotification *)notification{
-    
-    [self.averageHSpeed setStringValue:[AppUtils convertSpeedUnit:((totalDistance/totalTime)*3.6)]];
-    
+    if(totalTime>0){
+     
+        [self.averageHSpeed setStringValue:[AppUtils convertSpeedUnit:((totalDistance/totalTime)*3.6)]];
+        
+    }else{
+         [self.averageHSpeed setStringValue:[AppUtils convertSpeedUnit:(0.0)]];
+    }
     [self.speedView setCurrentSpeed:[AppUtils convertSpeed:currentSpd]];
     
     [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:maxSpd]];
     [self.movingDistance setStringValue:[AppUtils convertDistanceUnit:totalDistance]];
     
+
     
 }
 -(void)dealloc{
@@ -68,6 +73,10 @@
 
 -(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath{
     currentPlayVideoPath=playVideoPath;
+    maxSpd=0;
+    currentSpd=0;
+
+    
     
     NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
     
@@ -94,6 +103,7 @@
         
     }];
     _gsensorView.gsensorArray=currentGsensorDataArr;
+    
 }
 -(void)updateGpsDataToMapByCurrentTime:(Float64)time{
     float m_ratio0=9.9;
@@ -152,16 +162,18 @@
     
     [self loadAverageSpeedContent];
 }
-//1m/s==3.6km/h
--(void)loadAverageSpeedContent{
-    if(totalTime>0){
-        
-        [self.averageHSpeed setStringValue:[AppUtils convertSpeedUnit:((totalDistance/totalTime)*3.6)]];
-    }
-}
+
 -(void)videoDurationTime:(Float64)time{
     totalTime=time;
     [self loadAverageSpeedContent];
+}
+
+
+//1m/s==3.6km/h
+-(void)loadAverageSpeedContent{
+    if(totalTime>0){
+        [self.averageHSpeed setStringValue:[AppUtils convertSpeedUnit:((totalDistance/totalTime)*3.6)]];
+    }
 }
 
 @end
