@@ -11,7 +11,7 @@
 @interface CVWindowController ()
 
 @end
-static NSString *appName=@"行车记录仪";
+
 static CGFloat  winWidth=1280;
 static CGFloat  winHeight=760;
 @implementation CVWindowController
@@ -23,7 +23,8 @@ static CGFloat  winHeight=760;
     delegate.windowVC=self;
     
     NSLog(@"windowDidLoad...");
-    
+   
+    NSString *appName= NSLocalizedStringFromTable(@"CFBundleDisplayName",@"InfoPlist", nil);
     [self.window setTitle:appName];
    
     [self.window setMiniwindowTitle:appName];
@@ -41,8 +42,6 @@ static CGFloat  winHeight=760;
 - (void)windowWillLoad{
     NSLog(@"windowWillLoad...");
 }
-- (NSString *)windowTitleForDocumentDisplayName:(NSString *)displayName{
-    return appName;
-}
+
 
 @end

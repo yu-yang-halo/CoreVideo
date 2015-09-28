@@ -3,13 +3,13 @@
 "0XC-4g-uKL.title" = "Play";
 
 /* Class = "NSMenuItem"; title = "行车记录仪"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "Car Driving";
+"1Xt-HY-uBw.title" = "Car DVR";
 
 /* Class = "NSTextFieldCell"; title = "0Km/H"; ObjectID = "2TG-6r-W2D"; */
 "2TG-6r-W2D.title" = "0";
 
 /* Class = "NSButtonCell"; title = "截图"; ObjectID = "3cT-he-XWR"; */
-"3cT-he-XWR.title" = "Snap";
+"3cT-he-XWR.title" = "Snapshot";
 
 /* Class = "NSTextFieldCell"; title = "X: 0.00"; ObjectID = "4iJ-v4-8pO"; */
 "4iJ-v4-8pO.title" = "X: 0.00";
@@ -102,7 +102,7 @@
 "u69-R9-DHS.title" = "0";
 
 /* Class = "NSMenu"; title = "行车记录仪"; ObjectID = "uQy-DD-JDr"; */
-"uQy-DD-JDr.title" = "Car Driving";
+"uQy-DD-JDr.title" = "Car DVR";
 
 /* Class = "NSTextFieldCell"; title = "Z: 0.00"; ObjectID = "uyE-O6-B1r"; */
 "uyE-O6-B1r.title" = "Z: 0.00";
