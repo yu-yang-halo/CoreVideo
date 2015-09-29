@@ -9,26 +9,15 @@
 #import <Cocoa/Cocoa.h>
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
-@protocol ZoomIODelegate <NSObject>
-
--(void)zoomIOView:(NSInteger)state;
-
-@end
-@protocol GpsMapDelegate<NSObject>
-
--(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath;
--(void)updateGpsDataToMapByCurrentTime:(Float64)time;
--(void)videoDurationTime:(Float64)time;
-
-@end
+#import "CVModuleProtocol.h"
 
 @interface VideoViewController : NSViewController
 
 @property(nonatomic,strong) AVPlayer *player;
 @property(nonatomic,assign,readonly) BOOL isAddVideoFile;
-@property(nonatomic,weak) id<ZoomIODelegate> delegate;
-@property(nonatomic,weak) id<GpsMapDelegate> gpsMapdelegate;
-@property(nonatomic,weak) id<GpsMapDelegate> speeddelegate;
+@property(nonatomic,weak) id<CVModuleProtocol> zoomInDelegate;
+@property(nonatomic,weak) id<CVModuleProtocol> gpsDelegate;
+@property(nonatomic,weak) id<CVModuleProtocol> speedDelegate;
 -(void)initAssetData:(NSURL *)url;
 -(void)close;
 -(void)playOrPause;

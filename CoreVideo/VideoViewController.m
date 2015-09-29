@@ -53,7 +53,6 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
     
     [self.view setWantsLayer:YES];
     [self.view.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
@@ -74,8 +73,8 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     if(url==nil){
         return;
     }
-    [self.gpsMapdelegate loadGpsLoadPathToMapByPlayVideo:url.absoluteString];
-    [self.speeddelegate  loadGpsLoadPathToMapByPlayVideo:url.absoluteString];
+    [self.gpsDelegate dataLogicProcessOfViodePath:url.absoluteString];
+    [self.speedDelegate  dataLogicProcessOfViodePath:url.absoluteString];
     
 
     self.isAddVideoFile=YES;
@@ -167,12 +166,14 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     __weak VideoViewController *weakSelf = self;
    
     self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(playerItem.asset.duration)];
-    [self.speeddelegate videoDurationTime:CMTimeGetSeconds(playerItem.asset.duration)];
+    [self.speedDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
+    [self.gpsDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
+    
     
     [self setTimeObserverToken:[[self player] addPeriodicTimeObserverForInterval:CMTimeMake(1, 100) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         
-         [weakSelf.gpsMapdelegate updateGpsDataToMapByCurrentTime:CMTimeGetSeconds(time)];
-         [weakSelf.speeddelegate updateGpsDataToMapByCurrentTime:CMTimeGetSeconds(time)];
+         [weakSelf.gpsDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
+         [weakSelf.speedDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
         
         
          weakSelf.timeSlider.doubleValue = CMTimeGetSeconds(time);
@@ -184,12 +185,6 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     
 }
 
-- (IBAction)valueChange:(NSSlider *)sender {
-   
-    
-    [_player pause];
-    [self setCurrentTime:sender.floatValue];
-}
 
 
 -(void)playOrPause{
@@ -257,8 +252,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 }
 
 - (IBAction)zoomInOut:(NSButton *)sender {
-    [self.delegate zoomIOView:zoomState];
-    
+    [self.zoomInDelegate zoomInVideoPlayWindow:zoomState];
     if(zoomState==0){
         zoomState=1;
         NSLog(@"放大");

@@ -10,6 +10,7 @@
 #import "VideoViewController.h"
 #import "CVWebViewController.h"
 #import "PreferenceController.h"
-@interface CVDisplayViewController : NSViewController<GpsMapDelegate,CaculateDistanceDelegate>
+#import "CVModuleProtocol.h"
+@interface CVDisplayViewController : NSViewController<CVModuleProtocol>
 
 @end

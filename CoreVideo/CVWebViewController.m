@@ -14,6 +14,7 @@
 {
     NSMutableArray *currentVideoGpsDataArr;
     NSString       *currentPlayVideoPath;
+    Float64         totalTime;
 }
 @end
 
@@ -46,7 +47,7 @@
         NSArray *args=[JSContext currentArguments];
         JSValue *value=args[0];
         NSLog(@"当前距离是 : %f" ,value.toDouble);
-        [weakSelf.distanceDelegate caculateTotalDistance:value.toDouble];
+        [weakSelf.distanceDelegate totalDistance:value.toDouble];
     };
     
     
@@ -58,19 +59,15 @@
     
     
 }
-
--(void)autolayoutWebview{
-
-    [[NSLayoutConstraint constraintWithItem:self.webview attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0] setActive:YES];
-    [[NSLayoutConstraint constraintWithItem:self.webview attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0] setActive:YES];
-}
--(void)updateGpsDataToMapByCurrentTime:(Float64)time{
+-(void)updateDataByCurrentTime:(Float64)time{
+    float m_ratio=9.6;
+    if(totalTime>0){
+        m_ratio= [currentVideoGpsDataArr count]/totalTime;
+    }
     
+    int index=(int)time*m_ratio;
     
-    int index=(int)time*9.6;
-    //NSLog(@"time %d",index);
-    
-    if(currentVideoGpsDataArr!=nil){
+    if(currentVideoGpsDataArr!=nil&&[currentVideoGpsDataArr count]>0){
         if(index<[currentVideoGpsDataArr count]){
              NSArray *xyItem=currentVideoGpsDataArr[index];
             
@@ -82,16 +79,19 @@
 }
 
 
+-(void)videoAllTime:(Float64)allTime{
+    totalTime=allTime;
+}
 
--(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath{
+
+-(void)dataLogicProcessOfViodePath:(NSString *)playVideoPath{
      currentPlayVideoPath=playVideoPath;
     
      NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
     
      currentVideoGpsDataArr=[NSMutableArray new];
      [gpsDataArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-         //NSLog(@"%@ %@",[obj objectForKey:@"gps_lat"],[obj objectForKey:@"gps_lgt"] );
-         
+        
          NSString *gps_lat=[obj objectForKey:@"gps_lat"];
          NSString *gps_lgt=[obj objectForKey:@"gps_lgt"];
 

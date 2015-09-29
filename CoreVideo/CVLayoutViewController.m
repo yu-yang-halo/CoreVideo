@@ -11,9 +11,9 @@
 #import "PlayListViewController.h"
 #import "CVWebViewController.h"
 #import "CVDisplayViewController.h"
+#import "CVModuleProtocol.h"
 
-
-@interface CVLayoutViewController ()<ZoomIODelegate>{
+@interface CVLayoutViewController ()<CVModuleProtocol>{
     VideoViewController     *videoVC ;
     CVWebViewController     *webVC ;
     PlayListViewController  *playlistVC;
@@ -60,9 +60,9 @@
     
     
     videoVC    =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"videoVC"];
-    videoVC.delegate=self;
-    videoVC.gpsMapdelegate=webVC;
-    videoVC.speeddelegate=displayVC;
+    videoVC.zoomInDelegate=self;
+    videoVC.gpsDelegate=webVC;
+    videoVC.speedDelegate=displayVC;
     
     playlistVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"playlistVC"];
     
@@ -159,7 +159,7 @@
 }
 
 
--(void)zoomIOView:(NSInteger)state{
+-(void)zoomInVideoPlayWindow:(NSInteger)state{
     if(state==0){
         
         globalView1Rect=[[[_globalSplitView subviews] objectAtIndex:1] bounds];

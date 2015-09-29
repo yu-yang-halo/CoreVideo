@@ -71,12 +71,11 @@
 }
 
 
--(void)loadGpsLoadPathToMapByPlayVideo:(NSString *)playVideoPath{
+-(void)dataLogicProcessOfViodePath:(NSString *)playVideoPath{
     currentPlayVideoPath=playVideoPath;
     maxSpd=0;
     currentSpd=0;
 
-    
     
     NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
     
@@ -105,7 +104,7 @@
     _gsensorView.gsensorArray=currentGsensorDataArr;
     
 }
--(void)updateGpsDataToMapByCurrentTime:(Float64)time{
+-(void)updateDataByCurrentTime:(Float64)time{
     float m_ratio0=9.9;
     float m_ratio1=9.9;
     if(totalTime!=0){
@@ -116,9 +115,7 @@
     int index0=(int)time*m_ratio0;
     int index1=(int)time*m_ratio1;
     
-    //NSLog(@"time %d  m_ratio:%f",index,m_ratio);
-    
-    if(currentSpeedDataArr!=nil){
+    if(currentSpeedDataArr!=nil&&[currentGsensorDataArr count]>0){
         if(index0<[currentSpeedDataArr count]){
             NSNumber *mspd=currentSpeedDataArr[index0];
             currentSpd=[mspd integerValue];
@@ -129,9 +126,12 @@
             [self.speedView setCurrentSpeed:[AppUtils convertSpeed:[mspd integerValue]]];
             [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:maxSpd]];
         }
+    }else{
+        [self.speedView setCurrentSpeed:[AppUtils convertSpeed:0]];
+        [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:0]];
     }
     
-    if(currentGsensorDataArr!=nil){
+    if(currentGsensorDataArr!=nil&&[currentGsensorDataArr count]>0){
         if(index1<[currentGsensorDataArr count]){
             [_gsensorView updateGsensorRange:index1];
             
@@ -150,21 +150,21 @@
     
 }
 
-#pragma mark 计算距离代理callback
+#pragma mark 计算平均速度代理callback
 /**
  1km==1公里
  1km==2里
  1km==1000m
  */
--(void)caculateTotalDistance:(float)distance{
+-(void)totalDistance:(float)distance{
     totalDistance=distance;
     [self.movingDistance setStringValue:[AppUtils convertDistanceUnit:distance]];
     
     [self loadAverageSpeedContent];
 }
 
--(void)videoDurationTime:(Float64)time{
-    totalTime=time;
+-(void)videoAllTime:(Float64)allTime{
+    totalTime=allTime;
     [self loadAverageSpeedContent];
 }
 

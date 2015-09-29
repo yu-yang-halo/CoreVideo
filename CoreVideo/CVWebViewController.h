@@ -8,17 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
-#import "VideoViewController.h"
+#import "CVModuleProtocol.h"
 
-@protocol CaculateDistanceDelegate <NSObject>
 
--(void)caculateTotalDistance:(float)distance;
-
-@end
-
-@interface CVWebViewController : NSViewController<GpsMapDelegate>
+@interface CVWebViewController : NSViewController<CVModuleProtocol>
 
 @property(nonatomic,strong) WebView *webview;
-@property(nonatomic,weak) id<CaculateDistanceDelegate> distanceDelegate;
+@property(nonatomic,weak) id<CVModuleProtocol> distanceDelegate;
 
 @end
