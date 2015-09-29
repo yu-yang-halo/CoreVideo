@@ -22,7 +22,7 @@
                 map= new AMap.Map("mapContainer", {
                                        resizeEnable: true,
                                        layers:[defaultLayer,traffic],
-                                       center:centerPoint,//,
+                                       center:centerPoint,
                                        zoom: 17,
                                        continuousZoomEnable: false
                                        });
@@ -42,15 +42,16 @@
             // 地图图块加载完毕后执行函数
             function completeEventHandler() {
                 if(centerPoint){
-                 
-                 marker = new AMap.Marker({
+                        marker = new AMap.Marker({
                                           map: map,
-                                          position:centerPoint,
+                                          
                                           icon:"mcar3.png",
                                           offset: new AMap.Pixel(-16,-39),
                                           autoRotation: true
                                           });
+                    
                 }
+             
                 
 
             }

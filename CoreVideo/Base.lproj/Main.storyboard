@@ -326,6 +326,10 @@
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vZz-cI-tPx">
                                         <rect key="frame" x="98" y="28" width="66" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="EPY-Oq-dR5"/>
+                                            <constraint firstAttribute="height" constant="21" id="Jjn-SE-9C4"/>
+                                        </constraints>
                                         <buttonCell key="cell" type="push" title="播放" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0XC-4g-uKL">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" size="13" name="STHeitiSC-Light"/>

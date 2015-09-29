@@ -16,6 +16,7 @@
     NSString       *currentPlayVideoPath;
     Float64         totalTime;
 }
+
 @end
 
 @implementation CVWebViewController
@@ -28,6 +29,20 @@
     
     
     self.webview=[[WebView alloc] initWithFrame:self.view.bounds];
+    
+    NSButton *btn=[[NSButton alloc] initWithFrame:NSMakeRect(0, 0, 70, 20)];
+    
+    [btn setButtonType:(NSMomentaryLightButton)];
+    [btn setTitle:NSLocalizedString(@"reload", nil)];
+    [btn setTarget:self];
+    [btn setAction:@selector(reloadWeb:)];
+    [_webview addSubview:btn];
+    
+  
+    
+    
+    
+    
     self.webview.frameLoadDelegate=self;
     
     
@@ -53,9 +68,17 @@
     
 }
 
+-(void)reloadWeb:(id)sender{
+    [_webview.mainFrame reload];
+   
+
+}
+
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame{
     NSLog(@"didFinishLoadForFrame");
-    
+    if(currentVideoGpsDataArr!=nil&&[currentVideoGpsDataArr count]>0){
+        [_webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"drawPolyLinePath(%@)",[currentVideoGpsDataArr JSONString]]];
+    }
     
     
 }
@@ -85,6 +108,7 @@
 
 
 -(void)dataLogicProcessOfViodePath:(NSString *)playVideoPath{
+    
      currentPlayVideoPath=playVideoPath;
     
      NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
