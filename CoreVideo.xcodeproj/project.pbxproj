@@ -13,9 +13,11 @@
 		1890EA5E1BB688D500AAE6E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1890EA601BB688D500AAE6E1 /* Localizable.strings */; };
 		1890EA671BB68CCE00AAE6E1 /* PreferenceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890EA691BB68CCE00AAE6E1 /* PreferenceController.xib */; };
 		18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B22BA91BA6F30000D593C4 /* AssistFile.cpp */; };
+		18D885931BC4D5F400285E2B /* AppToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D885921BC4D5F400285E2B /* AppToast.m */; };
+		18D885971BC4DEDC00285E2B /* CVToastWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D885951BC4DEDC00285E2B /* CVToastWindowController.m */; };
+		18D885981BC4DEDC00285E2B /* CVToastWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D885961BC4DEDC00285E2B /* CVToastWindowController.xib */; };
 		18D89F691BA4EDE7000D058C /* CVWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F681BA4EDE7000D058C /* CVWindowController.m */; };
 		18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F6C1BA53874000D058C /* TimeFormatUtils.m */; };
-		18D89F741BA59E87000D058C /* MySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D89F731BA59E87000D058C /* MySlider.m */; };
 		18D8B1B71BB570CA00444132 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D8B1B91BB570CA00444132 /* InfoPlist.strings */; };
 		18DA97381BB96AB4007FCEF6 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DA97371BB96AB4007FCEF6 /* AppController.m */; };
 		18DAF4CE1BB6AE4B004EDA75 /* AppLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF4CD1BB6AE4B004EDA75 /* AppLanguageManager.m */; };
@@ -71,12 +73,15 @@
 		1890EA681BB68CCE00AAE6E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferenceController.xib; sourceTree = "<group>"; };
 		18B22BA81BA6F30000D593C4 /* AssistFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssistFile.h; sourceTree = "<group>"; };
 		18B22BA91BA6F30000D593C4 /* AssistFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssistFile.cpp; sourceTree = "<group>"; };
+		18D885911BC4D5F400285E2B /* AppToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppToast.h; sourceTree = "<group>"; };
+		18D885921BC4D5F400285E2B /* AppToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppToast.m; sourceTree = "<group>"; };
+		18D885941BC4DEDC00285E2B /* CVToastWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVToastWindowController.h; sourceTree = "<group>"; };
+		18D885951BC4DEDC00285E2B /* CVToastWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVToastWindowController.m; sourceTree = "<group>"; };
+		18D885961BC4DEDC00285E2B /* CVToastWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CVToastWindowController.xib; sourceTree = "<group>"; };
 		18D89F671BA4EDE7000D058C /* CVWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVWindowController.h; sourceTree = "<group>"; };
 		18D89F681BA4EDE7000D058C /* CVWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVWindowController.m; sourceTree = "<group>"; };
 		18D89F6B1BA53874000D058C /* TimeFormatUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeFormatUtils.h; sourceTree = "<group>"; };
 		18D89F6C1BA53874000D058C /* TimeFormatUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeFormatUtils.m; sourceTree = "<group>"; };
-		18D89F721BA59E87000D058C /* MySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySlider.h; sourceTree = "<group>"; };
-		18D89F731BA59E87000D058C /* MySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySlider.m; sourceTree = "<group>"; };
 		18D8B1B81BB570CA00444132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18D8B1BA1BB570CF00444132 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		18DA97361BB96AB4007FCEF6 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
@@ -189,6 +194,11 @@
 				1890EA4D1BB677E600AAE6E1 /* PreferenceController.h */,
 				1890EA4E1BB677E600AAE6E1 /* PreferenceController.m */,
 				1890EA691BB68CCE00AAE6E1 /* PreferenceController.xib */,
+				18D885911BC4D5F400285E2B /* AppToast.h */,
+				18D885921BC4D5F400285E2B /* AppToast.m */,
+				18D885941BC4DEDC00285E2B /* CVToastWindowController.h */,
+				18D885951BC4DEDC00285E2B /* CVToastWindowController.m */,
+				18D885961BC4DEDC00285E2B /* CVToastWindowController.xib */,
 			);
 			name = window;
 			sourceTree = "<group>";
@@ -202,15 +212,6 @@
 				846C31DD1BA66E480007ACDB /* MyCache.m */,
 			);
 			name = utils;
-			sourceTree = "<group>";
-		};
-		18D89F6E1BA55CB0000D058C /* categary */ = {
-			isa = PBXGroup;
-			children = (
-				18D89F721BA59E87000D058C /* MySlider.h */,
-				18D89F731BA59E87000D058C /* MySlider.m */,
-			);
-			name = categary;
 			sourceTree = "<group>";
 		};
 		846C31DF1BA6797D0007ACDB /* viewController */ = {
@@ -229,13 +230,6 @@
 				84A2AA801BBA1DD900F6BCC3 /* CVModuleProtocol.h */,
 			);
 			name = viewController;
-			sourceTree = "<group>";
-		};
-		846C31E91BA6BE710007ACDB /* document */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = document;
 			sourceTree = "<group>";
 		};
 		84A85E601BA28E0E00817598 = {
@@ -264,9 +258,7 @@
 				18D795F51BB57E3F0074DB25 /* window */,
 				84AF2E761BAB9BA8003B3217 /* view */,
 				18B22BA71BA6F2E900D593C4 /* assist */,
-				846C31E91BA6BE710007ACDB /* document */,
 				846C31DF1BA6797D0007ACDB /* viewController */,
-				18D89F6E1BA55CB0000D058C /* categary */,
 				18D89F6A1BA5384F000D058C /* utils */,
 				84A85E6E1BA28E0E00817598 /* AppDelegate.h */,
 				84A85E6F1BA28E0E00817598 /* AppDelegate.m */,
@@ -411,6 +403,7 @@
 				84B5DFDC1BAAC54500DA74DB /* mcar3.png in Resources */,
 				180364DE1BAED2BA00870783 /* Class界面 in Resources */,
 				84B5DFD61BAABF7C00DA74DB /* mcar.png in Resources */,
+				18D885981BC4DEDC00285E2B /* CVToastWindowController.xib in Resources */,
 				84B5DFCF1BAA5BF900DA74DB /* 高德地图KEY in Resources */,
 				84B5DFDA1BAAC44200DA74DB /* mcar2.png in Resources */,
 				84B43FE91BA8182400B4B46A /* gpslocation.html in Resources */,
@@ -439,6 +432,7 @@
 				180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */,
 				1890EA501BB677E600AAE6E1 /* PreferenceController.m in Sources */,
 				18DAF4CE1BB6AE4B004EDA75 /* AppLanguageManager.m in Sources */,
+				18D885971BC4DEDC00285E2B /* CVToastWindowController.m in Sources */,
 				18DAF4D11BB6BE34004EDA75 /* AppUtils.m in Sources */,
 				84AF2E751BAB9920003B3217 /* CVDisplayViewController.m in Sources */,
 				84A85E721BA28E0E00817598 /* main.m in Sources */,
@@ -451,10 +445,10 @@
 				84AF2E791BAB9CDA003B3217 /* CustomSpeedView.m in Sources */,
 				18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */,
 				84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */,
-				18D89F741BA59E87000D058C /* MySlider.m in Sources */,
 				84BC6A091BA8FF0400FBF400 /* CVLayoutViewController.m in Sources */,
 				846C31DE1BA66E480007ACDB /* MyCache.m in Sources */,
 				18D89F6D1BA53874000D058C /* TimeFormatUtils.m in Sources */,
+				18D885931BC4D5F400285E2B /* AppToast.m in Sources */,
 				84B5DFD21BAA758600DA74DB /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

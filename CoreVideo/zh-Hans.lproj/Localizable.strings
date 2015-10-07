@@ -18,3 +18,5 @@
 "m_distanceUnit"="米";
 
 "reload"="加载";
+"capture_suc"="截图成功";
+"capture_fail"="无法截图";

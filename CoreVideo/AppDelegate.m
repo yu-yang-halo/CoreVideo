@@ -25,8 +25,7 @@
     NSLog(@"applicationDidFinishLaunching...");
     [MyCache playPathClear];
     
-    
-    
+   
     
     
 }

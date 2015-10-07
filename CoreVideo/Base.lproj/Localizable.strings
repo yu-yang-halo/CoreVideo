@@ -17,4 +17,6 @@
 "km_distanceUnit"="公里";
 "m_distanceUnit"="米";
 
-"reload"="reload";
+"reload"="加载";
+"capture_suc"="截图成功";
+"capture_fail"="无法截图";

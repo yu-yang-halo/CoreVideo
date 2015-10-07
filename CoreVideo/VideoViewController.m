@@ -10,7 +10,7 @@
 
 #import "AppDelegate.h"
 #import "TimeFormatUtils.h"
-#import "MySlider.h"
+#import "AppToast.h"
 
 static void *AVSPPlayerItemStatusContext = &AVSPPlayerItemStatusContext;
 static void *AVSPPlayerRateContext = &AVSPPlayerRateContext;
@@ -215,13 +215,14 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 }
 
 - (IBAction)capture:(id)sender {
-    NSLog(@"capture...");
+    NSLog(@"capture...");    
     
     if([self.player status]==AVPlayerItemStatusReadyToPlay){
         NSString *path=[NSString stringWithFormat:@"%@/%@.png",[self pictureSaveDirectory],[TimeFormatUtils stringDateFormat:[NSDate new]]];
         [self saveImageFileToDiskPath:path];
+        [AppToast showToast:NSLocalizedString(@"capture_suc", nil) duration:0.8];
     }else{
-        
+        [AppToast showToast:NSLocalizedString(@"capture_fail", nil) duration:0.8];
     }
     
     
@@ -246,10 +247,6 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     self.player.volume = volume;
 }
 
-- (IBAction)volumChange:(NSSlider *)sender {
-     NSLog(@"%f",sender.floatValue);
-    [self setVolume:sender.floatValue];
-}
 
 - (IBAction)zoomInOut:(NSButton *)sender {
     [self.zoomInDelegate zoomInVideoPlayWindow:zoomState];
