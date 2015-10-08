@@ -220,7 +220,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     if([self.player status]==AVPlayerItemStatusReadyToPlay){
         NSString *path=[NSString stringWithFormat:@"%@/%@.png",[self pictureSaveDirectory],[TimeFormatUtils stringDateFormat:[NSDate new]]];
         [self saveImageFileToDiskPath:path];
-        [AppToast showToast:NSLocalizedString(@"capture_suc", nil) duration:0.8];
+        
     }else{
         [AppToast showToast:NSLocalizedString(@"capture_fail", nil) duration:0.8];
     }
@@ -283,10 +283,24 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
        
-        CGImageRef cgimageRef=[_imageGenerator copyCGImageAtTime:self.player.currentTime actualTime:NULL error:nil];
-        NSImage *image=[[NSImage alloc] initWithCGImage:cgimageRef size:NSSizeFromCGSize(CGSizeMake(300,200))];
-        NSFileManager *fileMgr=[NSFileManager defaultManager];
-        [fileMgr createFileAtPath:diskPath contents:[image TIFFRepresentation] attributes:nil];
+        NSError *error;
+        
+        CGImageRef cgimageRef=[_imageGenerator copyCGImageAtTime:self.player.currentTime actualTime:NULL error:&error];
+        
+        if(error==nil){
+            NSImage *image=[[NSImage alloc] initWithCGImage:cgimageRef size:NSSizeFromCGSize(CGSizeMake(300,200))];
+            NSFileManager *fileMgr=[NSFileManager defaultManager];
+            [fileMgr createFileAtPath:diskPath contents:[image TIFFRepresentation] attributes:nil];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(error==nil){
+                [AppToast showToast:NSLocalizedString(@"capture_suc", nil) duration:0.8];
+            }else{
+                [AppToast showToast:NSLocalizedString(@"capture_fail", nil) duration:0.8];
+            }
+            
+        });
+      
         
     });
     
