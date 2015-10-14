@@ -17,6 +17,8 @@
 - (IBAction)addVideoPlay:(id)sender;
 - (IBAction)removeVideoPlay:(id)sender;
 
+@property (weak) IBOutlet NSTableHeaderView *headerView;
+
 
 @property(nonatomic,strong) NSMutableArray *playlist;
 @end
@@ -26,12 +28,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.view setWantsLayer:YES];
+    NSColor *bgColor=[NSColor colorWithCalibratedRed:37/255.0 green:37/255.0 blue:44/255.0 alpha:1.0];
+    [self.view.layer setBackgroundColor:[bgColor CGColor]];
+    [self.tableView setBackgroundColor:bgColor];
+    [self.tableView setFocusRingType:NSFocusRingTypeNone];
+    [self.tableView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleRegular];
+    
+    [self.tableView setRowSizeStyle:NSTableViewRowSizeStyleCustom];
+    
+    
+    
+    if(_tableView.headerView==_headerView){
+        NSLog(@"YES");
+    
+   
+    }else{
+        NSLog(@"NO");
+    }
+    
+    
+    
     AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
     delegate.playlistVC=self;
     self.playlist=[NSMutableArray new];
     
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
+    
     selectIndex=-1;
    
 }
@@ -86,7 +110,6 @@
     
 }
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-    
     if(_playlist!=nil){
         NSString *abbrev=[NSString stringWithFormat:@"%ld:%@",row,[self abbreviationFile:[[_playlist objectAtIndex:row] objectForKey:keyPATH]]];
         
@@ -109,12 +132,9 @@
     return [path lastPathComponent];
 }
 
-- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-    return NO;
-}
 
 - (NSIndexSet *)tableView:(NSTableView *)tableView selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes NS_AVAILABLE_MAC(10_5){
-   // NSLog(@"%ld : %ld",proposedSelectionIndexes.firstIndex,proposedSelectionIndexes.lastIndex);
+  
     
     selectIndex=proposedSelectionIndexes.firstIndex;
     if(selectIndex<[_playlist count]){
@@ -123,6 +143,7 @@
         AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
         [delegate activeCurrentPlayIndex:selectIndex];
     }
+    
     
     
     [self reloadPlayListData];

@@ -43,7 +43,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.view setWantsLayer:YES];
+    [self.view.layer setBackgroundColor:[[NSColor colorWithCalibratedRed:37/255.0 green:37/255.0 blue:44/255.0 alpha:1.0] CGColor]];
    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUI:) name:SPEED_UNIT_NOTIFICATION object:nil];
     
 }

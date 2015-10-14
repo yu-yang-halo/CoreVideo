@@ -50,6 +50,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.view setWantsLayer:YES];
+    NSColor *bgColor=[NSColor colorWithCalibratedRed:37/255.0 green:37/255.0 blue:44/255.0 alpha:1.0];
+    [self.view.layer setBackgroundColor:[bgColor CGColor]];
+    
     // Do view setup here.
     
     displayVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"displayVC"];
@@ -96,6 +100,7 @@
     [_globalSplitView  setDelegate:self];
     [_leftSplitView    setDelegate:self];
     [_rightSplitView   setDelegate:self];
+    
     
 
     
