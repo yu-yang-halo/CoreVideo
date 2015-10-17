@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180364DB1BAEADD100870783 /* CustomGsensorView.m */; };
 		180364DE1BAED2BA00870783 /* Class界面 in Resources */ = {isa = PBXBuildFile; fileRef = 180364DD1BAED2BA00870783 /* Class界面 */; };
+		183CBA9E1BD113760075D7F4 /* AppColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 183CBA9D1BD113760075D7F4 /* AppColorManager.m */; };
 		1890EA501BB677E600AAE6E1 /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1890EA4E1BB677E600AAE6E1 /* PreferenceController.m */; };
 		1890EA5E1BB688D500AAE6E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1890EA601BB688D500AAE6E1 /* Localizable.strings */; };
 		1890EA671BB68CCE00AAE6E1 /* PreferenceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890EA691BB68CCE00AAE6E1 /* PreferenceController.xib */; };
@@ -60,6 +61,8 @@
 		180364DA1BAEADD100870783 /* CustomGsensorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGsensorView.h; sourceTree = "<group>"; };
 		180364DB1BAEADD100870783 /* CustomGsensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGsensorView.m; sourceTree = "<group>"; };
 		180364DD1BAED2BA00870783 /* Class界面 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Class界面"; sourceTree = "<group>"; };
+		183CBA9C1BD113760075D7F4 /* AppColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppColorManager.h; sourceTree = "<group>"; };
+		183CBA9D1BD113760075D7F4 /* AppColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppColorManager.m; sourceTree = "<group>"; };
 		1885F5FC1BB6A6DB00D0F3D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PreferenceController.strings; sourceTree = "<group>"; };
 		1885F5FE1BB6A6DE00D0F3D0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PreferenceController.strings"; sourceTree = "<group>"; };
 		1890EA4D1BB677E600AAE6E1 /* PreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceController.h; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				18DAF4D01BB6BE34004EDA75 /* AppUtils.m */,
 				18DAF4D21BB6C133004EDA75 /* AppUserDefaults.h */,
 				18DAF4D31BB6C133004EDA75 /* AppUserDefaults.m */,
+				183CBA9C1BD113760075D7F4 /* AppColorManager.h */,
+				183CBA9D1BD113760075D7F4 /* AppColorManager.m */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -442,6 +447,7 @@
 				84B43FEC1BA81D6700B4B46A /* CVWebViewController.m in Sources */,
 				18DAF4D41BB6C133004EDA75 /* AppUserDefaults.m in Sources */,
 				18D89F691BA4EDE7000D058C /* CVWindowController.m in Sources */,
+				183CBA9E1BD113760075D7F4 /* AppColorManager.m in Sources */,
 				84AF2E791BAB9CDA003B3217 /* CustomSpeedView.m in Sources */,
 				18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */,
 				84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */,

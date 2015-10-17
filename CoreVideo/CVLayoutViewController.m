@@ -12,6 +12,7 @@
 #import "CVWebViewController.h"
 #import "CVDisplayViewController.h"
 #import "CVModuleProtocol.h"
+#import "AppColorManager.h"
 
 @interface CVLayoutViewController ()<CVModuleProtocol>{
     VideoViewController     *videoVC ;
@@ -51,8 +52,9 @@
     [super viewDidLoad];
     
     [self.view setWantsLayer:YES];
-    NSColor *bgColor=[NSColor colorWithCalibratedRed:37/255.0 green:37/255.0 blue:44/255.0 alpha:1.0];
-    [self.view.layer setBackgroundColor:[bgColor CGColor]];
+    
+    
+    [self.view.layer setBackgroundColor:[[AppColorManager appBackgroundColor] CGColor]];
     
     // Do view setup here.
     

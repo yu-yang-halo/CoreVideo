@@ -9,6 +9,7 @@
 #import "PlayListViewController.h"
 #import "MyCache.h"
 #import "AppDelegate.h"
+#import "AppColorManager.h"
 @interface PlayListViewController (){
     NSInteger selectIndex;
 }
@@ -29,9 +30,11 @@
     [super viewDidLoad];
     
     [self.view setWantsLayer:YES];
-    NSColor *bgColor=[NSColor colorWithCalibratedRed:37/255.0 green:37/255.0 blue:44/255.0 alpha:1.0];
-    [self.view.layer setBackgroundColor:[bgColor CGColor]];
-    [self.tableView setBackgroundColor:bgColor];
+   
+    
+    [self.tableView setBackgroundColor:[NSColor blackColor
+                                        ]];
+    
     [self.tableView setFocusRingType:NSFocusRingTypeNone];
     [self.tableView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleRegular];
     

@@ -47,20 +47,25 @@
    
     __weak AppDelegate *weakSelf=self;
     [[NSDocumentController sharedDocumentController] beginOpenPanelWithCompletionHandler:^(NSArray *fileList) {
-         NSLog(@"%@",fileList);
-         [weakSelf.videoVC close];
-        if(fileList!=nil&&[fileList count]>0){
-            NSURL *fisrtUrl=[fileList objectAtIndex:0];
+        if(fileList!=nil){
+         
             
-            [MyCache playPathArrCache:fileList block:^{
+            NSLog(@"%@",fileList);
+            [weakSelf.videoVC close];
+            if(fileList!=nil&&[fileList count]>0){
+                NSURL *fisrtUrl=[fileList objectAtIndex:0];
                 
-                [weakSelf activeCurrentPlayFile:[fisrtUrl absoluteString]];
-                
-                [weakSelf.videoVC initAssetData:fisrtUrl];
-                
-                [weakSelf.playlistVC reloadPlayListData];
-                
-            }];
+                [MyCache playPathArrCache:fileList block:^{
+                    
+                    [weakSelf activeCurrentPlayFile:[fisrtUrl absoluteString]];
+                    
+                    [weakSelf.videoVC initAssetData:fisrtUrl];
+                    
+                    [weakSelf.playlistVC reloadPlayListData];
+                    
+                }];
+            }
+            
         }
         
     }];

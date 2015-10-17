@@ -20,7 +20,6 @@
 @property(nonatomic,weak) id<CVModuleProtocol> speedDelegate;
 -(void)initAssetData:(NSURL *)url;
 -(void)close;
--(void)playOrPause;
 
 @end
 

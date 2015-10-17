@@ -23,10 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.view setWantsLayer:YES];
-    [self.view.layer setBackgroundColor:[[NSColor purpleColor] CGColor]];
-    
+
+
     
     self.webview=[[WebView alloc] initWithFrame:self.view.bounds];
     

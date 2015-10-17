@@ -7,7 +7,7 @@
 //
 
 #import "VideoViewController.h"
-
+#import "AppColorManager.h"
 #import "AppDelegate.h"
 #import "TimeFormatUtils.h"
 #import "AppToast.h"
@@ -18,6 +18,7 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 
 @interface VideoViewController (){
     NSInteger zoomState;//0 放大  1 缩小
+    float mVideoRate;
 }
 @property (weak) IBOutlet NSView *controlView;
 @property(nonatomic,strong) AVAssetImageGenerator *imageGenerator;
@@ -42,7 +43,11 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 - (IBAction)playOrPause:(id)sender;
 - (IBAction)capture:(id)sender;
 - (IBAction)lookPicture:(id)sender;
-- (IBAction)volumChange:(id)sender;
+
+- (IBAction)forwardRate:(id)sender;
+
+- (IBAction)backwardRate:(id)sender;
+
 
 - (IBAction)zoomInOut:(id)sender;
 
@@ -62,8 +67,8 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     delegate.videoVC=self;
     
     [self.controlView setWantsLayer:YES];
-    [self.controlView.layer setCornerRadius:10];
-    [self.controlView.layer setBackgroundColor:[[NSColor colorWithCalibratedRed:90 green:0 blue:10 alpha:0.6] CGColor]];
+    [self.controlView.layer setCornerRadius:2];
+    [self.controlView.layer setBackgroundColor:[[AppColorManager appBackgroundColor] CGColor]];
     
     
 }
@@ -133,7 +138,6 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
             [_videolayer removeFromSuperlayer];
         }
         self.player=[AVPlayer new];
-        
         self.videolayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
         self.videolayer.frame = self.containerView.layer.bounds;
         self.videolayer.autoresizingMask = kCALayerWidthSizable | kCALayerHeightSizable;
@@ -183,23 +187,27 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     self.volumSlider.floatValue=self.player.volume;
     [_player play];
     
+   
 }
 
 
 
--(void)playOrPause{
-    if (self.player.rate != 1.f)
+- (IBAction)playOrPause:(id)sender {
+    NSButton *btn=(NSButton *)sender;
+    NSLog(@"state: %ld",btn.state);
+    if(self.player==nil){
+        return;
+    }
+    if (self.player.rate == 0.f)
     {
         if (self.currentTime == [self duration])
             [self setCurrentTime:0.f];
         [self.player play];
+        
     }else{
         [self.player pause];
+       
     }
-}
-
-- (IBAction)playOrPause:(id)sender {
-    [self playOrPause];
     
 }
 
@@ -233,6 +241,27 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     [[NSWorkspace sharedWorkspace] selectFile:nil inFileViewerRootedAtPath:[self pictureSaveDirectory]];
     
 }
+
+- (IBAction)forwardRate:(id)sender {
+    if(self.player!=nil){
+         mVideoRate+=0.5;
+        [self.player setRate:mVideoRate];
+    }
+}
+
+- (IBAction)backwardRate:(id)sender {
+    if(self.player!=nil){
+        if(mVideoRate>1.0){
+            mVideoRate=1.0;
+        }
+         mVideoRate-=0.2;
+        if(mVideoRate<=0){
+            mVideoRate=0.1;
+        }
+        [self.player setRate:mVideoRate];
+    }
+}
+
 +(NSSet *)keyPathsForValuesAffectingVolume{
     return [NSSet setWithObject:@"player.volume"];
 }
@@ -329,7 +358,6 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
      self.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:time];
 }
 
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (context == AVSPPlayerItemStatusContext)
@@ -353,14 +381,14 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     else if (context == AVSPPlayerRateContext)
     {
         float rate = [change[NSKeyValueChangeNewKey] floatValue];
-        if (rate != 1.f)
-        {
-            self.playButton.title = NSLocalizedString(@"play", nil);
+        NSLog(@"rate : %f",rate);
+        if(rate==0.f){
+             [_playButton setImage:[NSImage imageNamed:@"player_play"]];
+        }else{
+            [_playButton setImage:[NSImage imageNamed:@"player_pause"]];
         }
-        else
-        {
-            self.playButton.title = NSLocalizedString(@"pause", nil);;
-        }
+        
+       
     }
     else if (context == AVSPPlayerLayerReadyForDisplay)
     {
