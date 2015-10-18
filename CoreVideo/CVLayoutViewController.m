@@ -89,8 +89,8 @@
     [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
     [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,760)];
     
-    [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,440)];
-    [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,320)];
+    [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,520)];
+    [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,240)];
     
     [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,433)];
     [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,327)];

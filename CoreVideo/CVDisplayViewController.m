@@ -24,6 +24,8 @@
 @property (weak) IBOutlet CustomSpeedView *speedView;
 @property (weak) IBOutlet CustomGsensorView *gsensorView;
 
+@property (weak) IBOutlet NSView *gsensorContainer;
+
 @property (weak) IBOutlet NSTextField *maxHSpeed;
 
 @property (weak) IBOutlet NSTextField *averageHSpeed;
@@ -36,6 +38,12 @@
 @property (weak) IBOutlet NSTextField *yTextField;
 @property (weak) IBOutlet NSTextField *zTextField;
 
+@property (weak) IBOutlet NSTextField *maxSpeedLabelText;
+
+@property (weak) IBOutlet NSTextField *avageSpeedLabelText;
+@property (weak) IBOutlet NSTextField *totalDistanceLabelText;
+
+
 @end
 
 @implementation CVDisplayViewController
@@ -46,6 +54,14 @@
     [self.view setWantsLayer:YES];
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUI:) name:SPEED_UNIT_NOTIFICATION object:nil];
+    
+    [self.gsensorContainer setWantsLayer:YES];
+    [self.gsensorContainer.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
+    
+    [_maxSpeedLabelText.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
+     [_avageSpeedLabelText.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
+    
+     [_totalDistanceLabelText.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
     
 }
 

@@ -7,8 +7,8 @@
 //
 
 #import "CustomGsensorView.h"
-static float x_min_shaft=150;
-static float y_min_shaft=100;
+static float x_min_shaft=0;
+static float y_min_shaft=0;
 
 @interface CustomGsensorView(){
     int index;//gsensor array index
@@ -47,7 +47,7 @@ static float y_min_shaft=100;
     
     float spaceX=30;
     float shortLineWidth=5;
-    float spaceY=20;
+    float spaceY=0;
     
     float X_shaft=0.0;
     float Y_shaft=0.0;
@@ -71,14 +71,14 @@ static float y_min_shaft=100;
     NSPoint originP=NSMakePoint(spaceX,spaceY);
     [bezierPath moveToPoint:originP];
     [bezierPath lineToPoint:NSMakePoint(spaceX,Y_shaft)];
-    [[NSColor greenColor] set];
+    [[NSColor whiteColor] set];
     [bezierPath stroke];
     
     float _ly=(Y_shaft-spaceY)/6;
     //-2.0 -1.0
     NSMutableDictionary *fattr=[NSMutableDictionary dictionary];
-    [fattr setObject:[NSFont fontWithName:@"Helvetica" size:12] forKey:NSFontAttributeName];
-    [fattr setObject:[NSColor brownColor] forKey:NSForegroundColorAttributeName];
+    [fattr setObject:[NSFont systemFontOfSize:10] forKey:NSFontAttributeName];
+    [fattr setObject:[NSColor whiteColor] forKey:NSForegroundColorAttributeName];
     
 
     NSString *numbers[]={@"-2.0",@"-1.0",@"0.0",@"1.0",@"2.0"};
@@ -94,9 +94,9 @@ static float y_min_shaft=100;
     
     
     [bezierPath moveToPoint:originP];
-    [bezierPath lineToPoint:NSMakePoint(X_shaft,20)];
+    [bezierPath lineToPoint:NSMakePoint(X_shaft,spaceY)];
     
-    [[NSColor greenColor] set];
+    [[NSColor whiteColor] set];
     [bezierPath stroke];
 
     

@@ -9,7 +9,7 @@
 #import "CustomSpeedView.h"
 #import "AppUtils.h"
 #import "AppUserDefaults.h"
-static NSInteger Radius=100;
+static NSInteger Radius=80;
 static NSInteger LineWidth=40;
 static NSInteger MIN_ANGLE=0;
 static NSInteger MAX_ANGLE=180;//从右到左
@@ -93,7 +93,7 @@ static NSString* MAX_SPEED_MPH=@"75";//从左到右读
     NSString *currentSpeed=[NSString stringWithFormat:@"%.f",[AppUtils convertSpeed:_currentSpeed]];
   
     NSMutableDictionary *md=[NSMutableDictionary dictionary];
-    [md setObject:[NSFont fontWithName:@"Helvetica" size:60] forKey:NSFontAttributeName];
+    [md setObject:[NSFont fontWithName:@"Helvetica" size:48] forKey:NSFontAttributeName];
     [md setObject:[NSColor greenColor] forKey:NSForegroundColorAttributeName];
     NSMutableDictionary *md1=[NSMutableDictionary dictionary];
     [md1 setObject:[NSFont fontWithName:@"Helvetica" size:15] forKey:NSFontAttributeName];
