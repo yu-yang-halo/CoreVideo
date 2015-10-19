@@ -22,9 +22,17 @@
     FileNode_t m_node=m_filelist.createNodeInfo([chinesePath UTF8String]);
     
     NSLog(@"a7l: %d  novatek: %d  sunplus: %d",m_node.is_a7l,m_node.is_novatek,m_node.is_sunplus);
+    int count=0;
+    if(m_node.is_novatek==1){
+        count= m_assistInfo.ParseAssistDataForNovatek([chinesePath UTF8String]);
+    }else if(m_node.is_sunplus){
+        count= m_assistInfo.ParseAssistDataForSunplus([chinesePath UTF8String]);
+    }else{
+        count= m_assistInfo.ParseMOVSubtitle([chinesePath UTF8String]);
+    }
     
     
-    int count= m_assistInfo.ParseMOVSubtitle([chinesePath UTF8String]);
+    
     NSLog(@"count %d",count);
 
     NSMutableArray *videoDats=[[NSMutableArray alloc] init];
