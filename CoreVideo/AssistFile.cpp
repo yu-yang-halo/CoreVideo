@@ -87,22 +87,26 @@ void parse_coordinate(char *coord, char dir, string &strCoord)
 		strCoord = "0";
 	}
 }
-
+//$GPRMC,102058.000,A,2230.9655,N,11354.2605,E,9.90,117.54,300814,,,A*67
+//$GLRMC,091802.00,A,2237.57712,N,11355.25860,E,21.561,1.00,130314,,,A*4C
 int CAssistFile::ParseRMC(char *gpsinfo, string &strLat, string &strLgt, int &spd, double &north_angle)
 {
 	//$GPRMC,053014.000,A,2237.4177,N,11403.4075,E,1.90,235.83,050510,,,A*6B
+    //$GPRMC,132807.000,A,4042.7763,N,07349.4189,W,9.01,319.18,030914,,,A*7C
 	char *p = NULL;
 	char lat[32] = {0};
 	char lgt[32] = {0};
 	char speed[32] = {0};
 	char nangle[32] = {0};
 	char lat_dir = 'N';
-	char lgt_dir = 'E';	
+	char lgt_dir = 'E';
 
 	do {
 		p = strtok(gpsinfo, ",");
 		if(!p) break;
-		if(strcmp(p, "$GPRMC") != 0) {
+        printf("strcmp(p, $GPRMC) %d  ;strcmp(p, $GLRMC) %d",strcmp(p, "$GPRMC"),strcmp(p, "$GLRMC"));
+        
+        if(strcmp(p, "$GPRMC") != 0 && strcmp(p, "$GLRMC") != 0) {
 			break;
 		}
 
@@ -214,7 +218,7 @@ int CAssistFile::ParseLine(char *pszLine, int key)
 		
 	printf("Line:%s\n", pszLine);
 	decryt(pszLine, key);
-	printf("    :%s\n", pszLine);
+	printf(" *****   :%s\n", pszLine);
 	sscanf(pszLine, "%d\t%d\t%d\t%s", &x, &y, &z, gpsinfo);			
 	node.gsensor_x = x / 1000.0f;
 	node.gsensor_y = y / 1000.0f;
@@ -750,7 +754,7 @@ int CAssistFile::ParseAssistDataForNovatek(string strMOVFile)
 					unsigned int stsz_addr = ftell(fd);
 					unsigned int stsz_size = size;
 					unsigned int addr = 0;
-					unsigned int *alladdr;
+					unsigned int *alladdr = NULL;
 					int gps_rec_cnt = 0;
 										
 					if(track_id == 1) {	//only video tracker

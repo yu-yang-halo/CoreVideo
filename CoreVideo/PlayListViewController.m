@@ -20,6 +20,8 @@
 
 @property (weak) IBOutlet NSTableHeaderView *headerView;
 
+@property (weak) IBOutlet NSButton *buttonAdd;
+@property (weak) IBOutlet NSButton *buttonRemove;
 
 @property(nonatomic,strong) NSMutableArray *playlist;
 @end
@@ -31,6 +33,9 @@
     
     [self.view setWantsLayer:YES];
    
+    [self setButtonColor:_buttonAdd andColor:[NSColor whiteColor]];
+    [self setButtonColor:_buttonRemove andColor:[NSColor whiteColor]];
+    
     
     [self.tableView setBackgroundColor:[NSColor blackColor
                                         ]];
@@ -161,6 +166,24 @@
     [delegate.videoVC close];
     
     [delegate.videoVC initAssetData:[NSURL URLWithString:path]];
+}
+- (void)setButtonColor:(NSButton *)button andColor:(NSColor *)color {
+    if (color == nil) {
+        color = [NSColor redColor];
+    }
+    
+    int fontSize = 16;
+    NSFont *font = [NSFont systemFontOfSize:fontSize];
+    NSDictionary * attrs = [NSDictionary dictionaryWithObjectsAndKeys:font,
+                            NSFontAttributeName,
+                            color,
+                            NSForegroundColorAttributeName,
+                            nil];
+    
+    NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:[button title] attributes:attrs];
+    //[attributedString setAlignment:NSCenterTextAlignment range:NSMakeRange(0, [attributedString length])];
+    [button setAttributedTitle:attributedString];
+  
 }
 
 @end
