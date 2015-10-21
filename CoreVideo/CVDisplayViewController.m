@@ -90,11 +90,13 @@
 
 -(void)dataLogicProcessOfViodePath:(NSString *)playVideoPath{
     currentPlayVideoPath=playVideoPath;
-    maxSpd=0;
+    
     currentSpd=0;
 
     
     NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
+    maxSpd=[MyCache findMaxSpeed:currentPlayVideoPath];
+    [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:maxSpd]];
     
     currentSpeedDataArr=[NSMutableArray new];
     currentGsensorDataArr=[NSMutableArray new];
@@ -136,12 +138,9 @@
         if(index0<[currentSpeedDataArr count]){
             NSNumber *mspd=currentSpeedDataArr[index0];
             currentSpd=[mspd integerValue];
-            if(maxSpd<[mspd integerValue]){
-                maxSpd=[mspd integerValue];
-            }
             
             [self.speedView setCurrentSpeed:[AppUtils convertSpeed:[mspd integerValue]]];
-            [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:maxSpd]];
+            
         }
     }else{
         [self.speedView setCurrentSpeed:[AppUtils convertSpeed:0]];

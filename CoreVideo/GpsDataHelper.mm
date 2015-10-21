@@ -10,9 +10,13 @@
 #import "AssistFile.h"
 #import "FileList.h"
 
+const NSString *KEY_VIDEO_DATAS=@"key_video_datas";
+const NSString *KEY_MAX_SPEED=@"key_max_speed";
+
+
 @implementation GpsDataHelper
 
-+(NSArray *)readGpsData:(NSString *)filePath{
++(NSDictionary *)readGpsData:(NSString *)filePath{
     filePath=[self clearfilePrefix:filePath];
     CAssistFile m_assistInfo=CAssistFile();
     CFileList   m_filelist=CFileList();
@@ -40,9 +44,14 @@
     vector<AssistInfo_t> vectors=*m_assistInfo.GetAssistInfoList();
     
     vector<AssistInfo_t>::iterator iter;
+    int max_speed=0;
     for(iter=vectors.begin();iter!=vectors.end();iter++){
         AssistInfo_t info=*iter;
          NSLog(@"lat:%s lgt:%s x:%f y:%f z:%f angle:%f spd:%d",info.gps_lat.data(),info.gps_lgt.data(),info.gsensor_x,info.gsensor_y,info.gsensor_z,info.north_angle,info.spd);
+        
+        if(max_speed<info.spd){
+            max_speed=info.spd;
+        }
         NSMutableDictionary *dic=[NSMutableDictionary new];
         [dic setObject:[NSString stringWithUTF8String:info.gps_lat.data()] forKey:@"gps_lat"];
         [dic setObject:[NSString stringWithUTF8String:info.gps_lgt.data()] forKey:@"gps_lgt"];
@@ -58,8 +67,9 @@
         [videoDats addObject:dic];
         
     }
+    NSLog(@"Max Speed %d",max_speed);
+    return [NSDictionary dictionaryWithObjectsAndKeys:videoDats,KEY_VIDEO_DATAS,[NSNumber numberWithInt:max_speed],KEY_MAX_SPEED, nil];
     
-    return videoDats;
     
 }
 +(NSString *)clearfilePrefix:(NSString *)filePath{

@@ -26,5 +26,6 @@ typedef void (^cacheCompleteHandler)();
 +(void)syncPlayList:(NSArray *)playlist;
 
 +(NSArray *)findGpsDatas:(NSString *)videoPath;
++(int)findMaxSpeed:(NSString *)videoPath;
 
 @end

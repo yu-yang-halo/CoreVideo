@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+extern const NSString *KEY_VIDEO_DATAS;
+extern const NSString *KEY_MAX_SPEED;
 
 @interface GpsDataHelper : NSObject
 
-+(NSArray *)readGpsData:(NSString *)filePath;
++(NSDictionary *)readGpsData:(NSString *)filePath;
 
 @end

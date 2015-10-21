@@ -21,9 +21,8 @@ NSString *const keyActiveYN=@"key_active_yn";
         if(playList==nil){
             playList=[NSMutableArray new];
         }
-        NSArray *gpsDats=[GpsDataHelper readGpsData:path];
-        
-        NSMutableDictionary *pathDic=[NSMutableDictionary dictionaryWithObjectsAndKeys:path,keyPATH,gpsDats,keyGPSDATA,nil];
+        NSDictionary *gpsDats=[GpsDataHelper readGpsData:path];
+        NSMutableDictionary *pathDic=[NSMutableDictionary dictionaryWithObjectsAndKeys:path,keyPATH,[gpsDats objectForKey:KEY_VIDEO_DATAS],keyGPSDATA,[gpsDats objectForKey:KEY_MAX_SPEED],KEY_MAX_SPEED, nil];
         
         
         [playList addObject:pathDic];
@@ -48,8 +47,8 @@ NSString *const keyActiveYN=@"key_active_yn";
         
         
         for (NSURL *path in pathArr) {
-             NSArray *gpsDats=[GpsDataHelper readGpsData:[path absoluteString]];
-             NSMutableDictionary *pathDic=[NSMutableDictionary dictionaryWithObjectsAndKeys:[path absoluteString],keyPATH,gpsDats,keyGPSDATA,nil];
+            NSDictionary *gpsDats=[GpsDataHelper readGpsData:[path absoluteString]];
+            NSMutableDictionary *pathDic=[NSMutableDictionary dictionaryWithObjectsAndKeys:[path absoluteString],keyPATH,[gpsDats objectForKey:KEY_VIDEO_DATAS],keyGPSDATA,[gpsDats objectForKey:KEY_MAX_SPEED],KEY_MAX_SPEED, nil];
              [playList addObject:pathDic];
         }
         
@@ -86,6 +85,16 @@ NSString *const keyActiveYN=@"key_active_yn";
         }
     }
     return gpsDataArr;
+}
++(int)findMaxSpeed:(NSString *)videoPath{
+    int maxSpd = 0;
+    for (NSDictionary *gpsItem in [self playList]) {
+        if([[gpsItem objectForKey:keyPATH] isEqualToString:videoPath]){
+            maxSpd=[[gpsItem objectForKey:KEY_MAX_SPEED] intValue];
+            break;
+        }
+    }
+    return maxSpd;
 }
 
 @end
