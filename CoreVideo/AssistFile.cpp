@@ -98,8 +98,8 @@ int CAssistFile::ParseRMC(char *gpsinfo, string &strLat, string &strLgt, int &sp
 	char lgt[32] = {0};
 	char speed[32] = {0};
 	char nangle[32] = {0};
-	char lat_dir = 'N';
-	char lgt_dir = 'E';
+	char lat_dir = 'N';//çº¬åº¦
+	char lgt_dir = 'E';//ç»åº¦
 
 	do {
 		p = strtok(gpsinfo, ",");
@@ -118,19 +118,19 @@ int CAssistFile::ParseRMC(char *gpsinfo, string &strLat, string &strLgt, int &sp
 
 		p = strtok(NULL, ",");		//<3> lat
 		if(!p || strlen(p) > 32) break;
-		sprintf(lgt, "%s", p);
+		sprintf(lat, "%s", p);
 
 		p = strtok(NULL, ",");		//<4> lat dir
 		if(!p) break;
-		lgt_dir = p[0];
+		lat_dir = p[0];
 
 		p = strtok(NULL, ",");		//<5> lgt
 		if(!p || strlen(p) > 32) break;
-		sprintf(lat, "%s", p);
+		sprintf(lgt, "%s", p);
 
 		p = strtok(NULL, ",");		//<6> lgt dir
 		if(!p) break;
-		lat_dir = p[0];
+		lgt_dir = p[0];
 
 		p = strtok(NULL, ",");		//<7> speed
 		if(!p || strlen(p) > 32) break;
@@ -230,7 +230,7 @@ int CAssistFile::ParseLine(char *pszLine, int key)
 	}	
 
 	m_infoList.push_back(node);
-#if 1	//Ä£ÄâÎÄ¼şÒÔ1Hz²ÉÑù,Êµ¼ÊÊÇÓÃ10Hz²ÉÑù
+#if 1	//Æ’Â£Æ’â€šÅ’Æ’ÂºË›â€œâ€˜1Hzâ‰¤â€¦â€”Ë˜,Â ÂµÂºÂ Â Â«â€âˆš10Hzâ‰¤â€¦â€”Ë˜
 	m_infoList.push_back(node);
 	m_infoList.push_back(node);
 	m_infoList.push_back(node);
@@ -340,10 +340,10 @@ int CAssistFile::ParseAssistDataForSunplus(string strMOVFile)
 
 	/****************sunplus mov file struct ***************************************
 	   [ftypSize][ftyp]
-	       [mdatSize][mdat]......     --->ËùÓĞÒôÊÓÆµÊı¾İ
-		   [moovSize][moov]......     --->ÎÄ¼şÊı¾İÍ·¼°Ë÷Òı
-		   [udatSize][udat]......     --->ÓÃ»§Êı¾İ
-		   [flagSize][icat6330]       --->sunplus¼ÓµÄÎÄ¼ş±êÊ¶
+	       [mdatSize][mdat]......     --->Ã€Ë˜â€â€“â€œÃ™Â â€âˆ†ÂµÂ ËÃ¦â€º
+		   [moovSize][moov]......     --->Å’Æ’ÂºË›Â ËÃ¦â€ºÃ•âˆ‘ÂºâˆÃ€Ëœâ€œË
+		   [udatSize][udat]......     --->â€âˆšÂªÃŸÂ ËÃ¦â€º
+		   [flagSize][icat6330]       --->sunplusÂºâ€ÂµÆ’Å’Æ’ÂºË›Â±ÃÂ âˆ‚
    ********************************************************************************/
 
 	unsigned int ftypsize = 0, mdatsize = 0, moov_addr = 0, moovsize = 0, udat_addr = 0, udatsize = 0;
@@ -435,7 +435,7 @@ int CAssistFile::ParseAssistDataForSunplus(string strMOVFile)
 			ParseRMC(gps_dat.gps_info_rmc, node.gps_lat, node.gps_lgt, node.spd, node.north_angle);				
 
 			m_infoList.push_back(node);
-#if 1	//Ä£ÄâÎÄ¼şÒÔ1Hz²ÉÑù,Êµ¼ÊÊÇÓÃ10Hz²ÉÑù
+#if 1	//Æ’Â£Æ’â€šÅ’Æ’ÂºË›â€œâ€˜1Hzâ‰¤â€¦â€”Ë˜,Â ÂµÂºÂ Â Â«â€âˆš10Hzâ‰¤â€¦â€”Ë˜
 			m_infoList.push_back(node);
 			m_infoList.push_back(node);
 			m_infoList.push_back(node);
@@ -824,8 +824,8 @@ int CAssistFile::ParseAssistDataForNovatek(string strMOVFile)
 							fread(chSize, 1, 4, fd);								
 							addr = ENDIAN_CONV(chSize);
 							//alladdr[i] = addr; //Skip 0x00 0x35
-							//alladdr[i] = addr + 0x20000; //0x10000: cluster size: 128K   Á¢ÌåÉù: 0x20000
-							alladdr[i] = addr + 0x10000; //cluster size: 128K   µ¥ÉùµÀ: 0x10000
+							//alladdr[i] = addr + 0x20000; //0x10000: cluster size: 128K   Â¡Â¢ÃƒÃ‚â€¦Ë˜: 0x20000
+							alladdr[i] = addr + 0x10000; //cluster size: 128K   Âµâ€¢â€¦Ë˜ÂµÂ¿: 0x10000
 							printf("    idx%d: 0x%08X\n", i, addr);
 						}
 						gps_rec_cnt = size;
@@ -892,7 +892,7 @@ int CAssistFile::ParseAssistDataForNovatek(string strMOVFile)
 							}	
 
 							m_infoList.push_back(node);
-#if 1	//Ä£ÄâÎÄ¼şÒÔ1Hz²ÉÑù,Êµ¼ÊÊÇÓÃ10Hz²ÉÑù
+#if 1	//Æ’Â£Æ’â€šÅ’Æ’ÂºË›â€œâ€˜1Hzâ‰¤â€¦â€”Ë˜,Â ÂµÂºÂ Â Â«â€âˆš10Hzâ‰¤â€¦â€”Ë˜
 							m_infoList.push_back(node);
 							m_infoList.push_back(node);
 							m_infoList.push_back(node);

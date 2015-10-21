@@ -119,7 +119,7 @@
 
          if(gps_lat.floatValue>0&&gps_lgt.floatValue>0){
              
-             [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:gps_lat.floatValue],[NSNumber numberWithFloat:gps_lgt.floatValue], nil]];
+             [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:gps_lgt.floatValue],[NSNumber numberWithFloat:gps_lat.floatValue], nil]];
          }
          
         

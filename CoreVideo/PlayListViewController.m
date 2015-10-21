@@ -178,10 +178,12 @@
                             NSFontAttributeName,
                             color,
                             NSForegroundColorAttributeName,
+                            
                             nil];
     
-    NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:[button title] attributes:attrs];
-    //[attributedString setAlignment:NSCenterTextAlignment range:NSMakeRange(0, [attributedString length])];
+    NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:[button title] attributes:attrs];
+    [attributedString setAlignment:NSRightTextAlignment range:NSMakeRange(0, [attributedString length])];
+    
     [button setAttributedTitle:attributedString];
   
 }

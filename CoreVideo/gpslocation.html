@@ -11,75 +11,77 @@
     </head>
     
     <body>
+    
         <div id="mapContainer"></div>
-        <script>
-            var defaultLayer=new AMap.TileLayer();
-            var traffic=new AMap.TileLayer.Traffic();
-            var map;
-            var centerPoint;
-            loadMapData();
-            function loadMapData(){
-                map= new AMap.Map("mapContainer", {
-                                       resizeEnable: true,
-                                       layers:[defaultLayer,traffic],
-                                       center:centerPoint,
-                                       zoom: 17,
-                                       continuousZoomEnable: false
-                                       });
-                                       
-                                       map.on( "complete", completeEventHandler);
-                                       AMap.plugin(['AMap.ToolBar','AMap.Scale'],
-                                                   function(){
-                                                   
-                                                   var toobar=new AMap.ToolBar();
-                                                   var scale=new AMap.Scale();
-                                                   map.addControl(toobar);
-                                                   map.addControl(scale);
-                                                   });
-            
-            }
-                                                                                       
-            // 地图图块加载完毕后执行函数
-            function completeEventHandler() {
-                if(centerPoint){
-                        marker = new AMap.Marker({
-                                          map: map,
-                                          
-                                          icon:"mcar3.png",
-                                          offset: new AMap.Pixel(-16,-39),
-                                          autoRotation: true
-                                          });
-                    
-                }
-             
-                
-
-            }
         
-        function drawPolyLinePath(lineArr){
-            if(lineArr.length>0){
-               centerPoint=lineArr[0];
-            }
-            loadMapData();
-            // 绘制轨迹
-            var polyline = new AMap.Polyline({
-                                             map: map,
-                                             path: lineArr,
-                                             strokeColor: "#0091FF",  //线颜色
-                                             strokeOpacity:0.9,     //线透明度
-                                             strokeWeight: 4,      //线宽
-                                             strokeStyle: "solid"  //线样式
-                                             });
-                                             map.setFitView();
-                                             
-          //marker.title="行驶路径公里数：";//＋polyline.getLength();
-                                             
-          cocoa_getDistance(polyline.getLength());
-        }
-        function updateMarkerPosition(position){
-            marker.setPosition(position);
-        }
-    </script>
     </body>
+    <script>
+        var defaultLayer=new AMap.TileLayer();
+        var traffic=new AMap.TileLayer.Traffic();
+        var map;
+        var centerPoint;
+        loadMapData();
+        function loadMapData(){
+            map= new AMap.Map("mapContainer", {
+                              resizeEnable: true,
+                              layers:[defaultLayer,traffic],
+                              center:centerPoint,
+                              zoom: 17,
+                              continuousZoomEnable: false
+                              });
+                              
+                              map.on( "complete", completeEventHandler);
+                              AMap.plugin(['AMap.ToolBar','AMap.Scale'],
+                                          function(){
+                                          
+                                          var toobar=new AMap.ToolBar();
+                                          var scale=new AMap.Scale();
+                                          map.addControl(toobar);
+                                          map.addControl(scale);
+                                          });
+                                          
+        }
+    
+    // 地图图块加载完毕后执行函数
+    function completeEventHandler() {
+        if(centerPoint){
+            marker = new AMap.Marker({
+                                     map: map,
+                                     
+                                     icon:"mcar3.png",
+                                     offset: new AMap.Pixel(-16,-39),
+                                     autoRotation: true
+                                     });
+                                     
+        }
+        
+        
+        
+    }
+    
+    function drawPolyLinePath(lineArr){
+        if(lineArr.length>0){
+            centerPoint=lineArr[0];
+        }
+        loadMapData();
+        // 绘制轨迹
+        var polyline = new AMap.Polyline({
+                                         map: map,
+                                         path: lineArr,
+                                         strokeColor: "#0091FF",  //线颜色
+                                         strokeOpacity:0.9,     //线透明度
+                                         strokeWeight: 4,      //线宽
+                                         strokeStyle: "solid"  //线样式
+                                         });
+                                         map.setFitView();
+                                         
+                                         //marker.title="行驶路径公里数：";//＋polyline.getLength();
+                                         
+                                         cocoa_getDistance(polyline.getLength());
+    }
+    function updateMarkerPosition(position){
+        marker.setPosition(position);
+    }
+    </script>
     
 </html>
