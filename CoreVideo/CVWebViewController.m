@@ -46,11 +46,7 @@
     
     [self.view addSubview:_webview];
     
-    NSString *gpsPath=[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"amap.html"];
     
- 
-    
-    [[self.webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:gpsPath]]];
     
     JSContext *context=self.webview.mainFrame.javaScriptContext;
     
@@ -64,6 +60,16 @@
     };
     
     
+}
+
+-(void)loadMapHTMLData:(BOOL)locationInChina{
+     NSString *mapHtml=@"amap.html";
+     if(!locationInChina){
+        mapHtml=@"google_map.html";
+     }
+     NSString *gpsPath=[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:mapHtml];
+    
+     [[self.webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:gpsPath]]];
 }
 
 -(void)reloadWeb:(id)sender{
@@ -109,6 +115,9 @@
     
      currentPlayVideoPath=playVideoPath;
     
+    
+     BOOL isINCHINA=[MyCache locationIsINChina:currentPlayVideoPath];
+     [self loadMapHTMLData:isINCHINA];
      NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
     
      currentVideoGpsDataArr=[NSMutableArray new];

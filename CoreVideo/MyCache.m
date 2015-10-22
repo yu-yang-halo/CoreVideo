@@ -22,7 +22,7 @@ NSString *const keyActiveYN=@"key_active_yn";
             playList=[NSMutableArray new];
         }
         NSDictionary *gpsDats=[GpsDataHelper readGpsData:path];
-        NSMutableDictionary *pathDic=[NSMutableDictionary dictionaryWithObjectsAndKeys:path,keyPATH,[gpsDats objectForKey:KEY_VIDEO_DATAS],keyGPSDATA,[gpsDats objectForKey:KEY_MAX_SPEED],KEY_MAX_SPEED, nil];
+        NSMutableDictionary *pathDic=[NSMutableDictionary dictionaryWithObjectsAndKeys:path,keyPATH,[gpsDats objectForKey:KEY_VIDEO_DATAS],keyGPSDATA,[gpsDats objectForKey:KEY_MAX_SPEED],KEY_MAX_SPEED,[gpsDats objectForKey:KEY_IS_IN_CHINA],KEY_IS_IN_CHINA,nil];
         
         
         [playList addObject:pathDic];
@@ -48,7 +48,7 @@ NSString *const keyActiveYN=@"key_active_yn";
         
         for (NSURL *path in pathArr) {
             NSDictionary *gpsDats=[GpsDataHelper readGpsData:[path absoluteString]];
-            NSMutableDictionary *pathDic=[NSMutableDictionary dictionaryWithObjectsAndKeys:[path absoluteString],keyPATH,[gpsDats objectForKey:KEY_VIDEO_DATAS],keyGPSDATA,[gpsDats objectForKey:KEY_MAX_SPEED],KEY_MAX_SPEED, nil];
+            NSMutableDictionary *pathDic=[NSMutableDictionary dictionaryWithObjectsAndKeys:[path absoluteString],keyPATH,[gpsDats objectForKey:KEY_VIDEO_DATAS],keyGPSDATA,[gpsDats objectForKey:KEY_MAX_SPEED],KEY_MAX_SPEED,[gpsDats objectForKey:KEY_IS_IN_CHINA],KEY_IS_IN_CHINA, nil];
              [playList addObject:pathDic];
         }
         
@@ -85,6 +85,16 @@ NSString *const keyActiveYN=@"key_active_yn";
         }
     }
     return gpsDataArr;
+}
++(BOOL)locationIsINChina:(NSString *)videoPath{
+    BOOL isINCHINA = YES;
+    for (NSDictionary *gpsItem in [self playList]) {
+        if([[gpsItem objectForKey:keyPATH] isEqualToString:videoPath]){
+            isINCHINA=[[gpsItem objectForKey:KEY_IS_IN_CHINA] boolValue];
+            break;
+        }
+    }
+    return isINCHINA;
 }
 +(int)findMaxSpeed:(NSString *)videoPath{
     int maxSpd = 0;

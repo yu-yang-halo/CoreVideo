@@ -12,7 +12,7 @@
 
 const NSString *KEY_VIDEO_DATAS=@"key_video_datas";
 const NSString *KEY_MAX_SPEED=@"key_max_speed";
-
+const NSString *KEY_IS_IN_CHINA=@"key_is_in_china";
 
 @implementation GpsDataHelper
 
@@ -45,6 +45,11 @@ const NSString *KEY_MAX_SPEED=@"key_max_speed";
     
     vector<AssistInfo_t>::iterator iter;
     int max_speed=0;
+    BOOL isInChina=true;//默认中国境内
+    
+    float latitude=0;
+    float longitude=0;
+   
     for(iter=vectors.begin();iter!=vectors.end();iter++){
         AssistInfo_t info=*iter;
          NSLog(@"lat:%s lgt:%s x:%f y:%f z:%f angle:%f spd:%d",info.gps_lat.data(),info.gps_lgt.data(),info.gsensor_x,info.gsensor_y,info.gsensor_z,info.north_angle,info.spd);
@@ -52,6 +57,11 @@ const NSString *KEY_MAX_SPEED=@"key_max_speed";
         if(max_speed<info.spd){
             max_speed=info.spd;
         }
+        
+        latitude=[[NSString stringWithUTF8String:info.gps_lat.data()] floatValue];
+        longitude=[[NSString stringWithUTF8String:info.gps_lgt.data()] floatValue];
+        
+        
         NSMutableDictionary *dic=[NSMutableDictionary new];
         [dic setObject:[NSString stringWithUTF8String:info.gps_lat.data()] forKey:@"gps_lat"];
         [dic setObject:[NSString stringWithUTF8String:info.gps_lgt.data()] forKey:@"gps_lgt"];
@@ -67,8 +77,11 @@ const NSString *KEY_MAX_SPEED=@"key_max_speed";
         [videoDats addObject:dic];
         
     }
+    if(latitude!=0&&longitude!=0){
+        isInChina=[self locationInChina:latitude longitude:longitude];
+    }
     NSLog(@"Max Speed %d",max_speed);
-    return [NSDictionary dictionaryWithObjectsAndKeys:videoDats,KEY_VIDEO_DATAS,[NSNumber numberWithInt:max_speed],KEY_MAX_SPEED, nil];
+    return [NSDictionary dictionaryWithObjectsAndKeys:videoDats,KEY_VIDEO_DATAS,[NSNumber numberWithInt:max_speed],KEY_MAX_SPEED,[NSNumber numberWithBool:isInChina],KEY_IS_IN_CHINA,nil];
     
     
 }
@@ -78,6 +91,22 @@ const NSString *KEY_MAX_SPEED=@"key_max_speed";
     }
     NSLog(@"filePath %@",filePath);
     return filePath;
+}
+
++(BOOL)locationInChina:(float)lat longitude:(float)lng{
+    /*
+     *  经度范围:73°33′E至135°05′E 纬度范围:3°51′N至53°33′N
+     *
+     */
+    
+    if(lat>=3.51&&lat<=53.33&&lng>=73.33&&lng<=135.05){
+        NSLog(@"在中国境内");
+        return true;
+    }else{
+        NSLog(@"不在中国境内");
+        return false;
+    }
+    
 }
 
 @end

@@ -27,5 +27,6 @@ typedef void (^cacheCompleteHandler)();
 
 +(NSArray *)findGpsDatas:(NSString *)videoPath;
 +(int)findMaxSpeed:(NSString *)videoPath;
++(BOOL)locationIsINChina:(NSString *)videoPath;
 
 @end
