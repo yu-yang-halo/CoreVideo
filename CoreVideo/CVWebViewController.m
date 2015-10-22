@@ -46,7 +46,7 @@
     
     [self.view addSubview:_webview];
     
-    NSString *gpsPath=[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"gpslocation.html"];
+    NSString *gpsPath=[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"amap.html"];
     
  
     

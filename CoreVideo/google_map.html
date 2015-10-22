@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<title>Simple Polylines</title>
+		<style>
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			#googleMapContainer{
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		    <div id="googleMapContainer"></div>
+	</body>
+	<script>
+		var map;
+		var centerLatLng= {
+				lat: 22.6265903,
+				lng: 113.9209813
+			};
+		var paths = [{
+				lat: 22.6264885,
+				lng: 113.9209800
+			}, {
+				lat: 22.6265903,
+				lng: 113.9209813
+			}, {
+				lat: 22.6266891,
+				lng: 113.9209855
+			}, {
+				lat: 22.6267955,
+				lng: 113.9209836
+			}];
+		function initGoogleMap() {
+			map = new google.maps.Map(document.getElementById('googleMapContainer'), {
+				zoom: 17,
+				center: centerLatLng,
+				mapTypeId: google.maps.MapTypeId.TERRAIN
+			});
+			marker = new google.maps.Marker({
+				position: centerLatLng,
+				map: map,
+				icon: "mcar3.png",
+				title: "My Car",
+			});
+			drawPolyLinePath(paths);
+		}
+		function drawPolyLinePath(flightPlanCoordinates) {
+			if(flightPlanCoordinates!=undefined&&flightPlanCoordinates.length>0){
+				 centerLatLng = flightPlanCoordinates[0];
+			}
+			//initGoogleMap();
+			var polyline = new google.maps.Polyline({
+				path: flightPlanCoordinates,
+				geodesic: true,
+				strokeColor: '#0091FF',
+				strokeOpacity: 1.0,
+				strokeWeight: 2
+			});
+			polyline.setMap(map);
+			var path = polyline.getPath();
+			var distance = google.maps.geometry.spherical.computeLength(path);
+			cocoa_getDistance(distance);
+		}
+
+		function updateMarkerPosition(position) {
+			 marker.setPosition(position);
+		}
+		
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDebmA7wWsc1RH_ih8vA-8gvZJ_1WlrdN4&signed_in=true&libraries=geometry&callback=initGoogleMap" async defer></script>
+
+</html>
