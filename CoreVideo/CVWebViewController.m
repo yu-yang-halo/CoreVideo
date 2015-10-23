@@ -15,6 +15,7 @@
     NSMutableArray *currentVideoGpsDataArr;
     NSString       *currentPlayVideoPath;
     Float64         totalTime;
+    BOOL  currentLocationChina;
 }
 
 @end
@@ -25,6 +26,8 @@
     [super viewDidLoad];
 
 
+    currentLocationChina=YES;
+    
     
     self.webview=[[WebView alloc] initWithFrame:self.view.bounds];
     
@@ -37,6 +40,7 @@
     [_webview addSubview:btn];
     
   
+    [self loadMapHTMLData:currentLocationChina];
     
     
     
@@ -74,8 +78,6 @@
 
 -(void)reloadWeb:(id)sender{
     [_webview.mainFrame reload];
-   
-
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame{
@@ -117,7 +119,13 @@
     
     
      BOOL isINCHINA=[MyCache locationIsINChina:currentPlayVideoPath];
-     [self loadMapHTMLData:isINCHINA];
+    
+     if(currentLocationChina!=isINCHINA){
+         [self loadMapHTMLData:isINCHINA];
+         currentLocationChina=isINCHINA;
+     }
+    
+    
      NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
     
      currentVideoGpsDataArr=[NSMutableArray new];
@@ -126,15 +134,22 @@
          NSString *gps_lat=[obj objectForKey:@"gps_lat"];
          NSString *gps_lgt=[obj objectForKey:@"gps_lgt"];
 
-         if(gps_lat.floatValue>0&&gps_lgt.floatValue>0){
+         if(gps_lat.floatValue!=0&&gps_lgt.floatValue!=0){
              
-             [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:gps_lgt.floatValue],[NSNumber numberWithFloat:gps_lat.floatValue], nil]];
+             if(isINCHINA){
+                 [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:gps_lgt.floatValue],[NSNumber numberWithFloat:gps_lat.floatValue], nil]];
+             }else{
+                 [currentVideoGpsDataArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:gps_lat.floatValue],@"lat",[NSNumber numberWithFloat:gps_lgt.floatValue],@"lng",nil]];
+                 
+             }
+             
+            
          }
          
         
         
      }];
-    
+   // NSLog(@"*****%@****",[currentVideoGpsDataArr JSONString]);
     [self.webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"drawPolyLinePath(%@)",[currentVideoGpsDataArr JSONString]]];
 }
 

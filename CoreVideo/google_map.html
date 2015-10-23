@@ -27,22 +27,9 @@
 				lat: 22.6265903,
 				lng: 113.9209813
 			};
-		var paths = [{
-				lat: 22.6264885,
-				lng: 113.9209800
-			}, {
-				lat: 22.6265903,
-				lng: 113.9209813
-			}, {
-				lat: 22.6266891,
-				lng: 113.9209855
-			}, {
-				lat: 22.6267955,
-				lng: 113.9209836
-			}];
 		function initGoogleMap() {
 			map = new google.maps.Map(document.getElementById('googleMapContainer'), {
-				zoom: 17,
+				zoom: 16,
 				center: centerLatLng,
 				mapTypeId: google.maps.MapTypeId.TERRAIN
 			});
@@ -52,13 +39,12 @@
 				icon: "mcar3.png",
 				title: "My Car",
 			});
-			drawPolyLinePath(paths);
 		}
 		function drawPolyLinePath(flightPlanCoordinates) {
 			if(flightPlanCoordinates!=undefined&&flightPlanCoordinates.length>0){
 				 centerLatLng = flightPlanCoordinates[0];
 			}
-			//initGoogleMap();
+			initGoogleMap();
 			var polyline = new google.maps.Polyline({
 				path: flightPlanCoordinates,
 				geodesic: true,
@@ -76,6 +62,9 @@
 			 marker.setPosition(position);
 		}
 		
+        
+        
+        
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDebmA7wWsc1RH_ih8vA-8gvZJ_1WlrdN4&signed_in=true&libraries=geometry&callback=initGoogleMap" async defer></script>
 
