@@ -16,9 +16,12 @@ static void *AVSPPlayerItemStatusContext = &AVSPPlayerItemStatusContext;
 static void *AVSPPlayerRateContext = &AVSPPlayerRateContext;
 static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 
+static int RATE_VIDEO[]={2,5,10,60};
+static int RATE_VIDEO_LENGTH=4;
+
+
 @interface VideoViewController (){
     NSInteger zoomState;//0 放大  1 缩小
-    float mVideoRate;
 }
 @property (weak) IBOutlet NSView *controlView;
 @property(nonatomic,strong) AVAssetImageGenerator *imageGenerator;
@@ -193,6 +196,9 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
 
 
 - (IBAction)playOrPause:(id)sender {
+    i=0;
+    j=0;
+    
     NSButton *btn=(NSButton *)sender;
     NSLog(@"state: %ld",btn.state);
     if(self.player==nil){
@@ -241,24 +247,30 @@ static void *AVSPPlayerLayerReadyForDisplay = &AVSPPlayerLayerReadyForDisplay;
     [[NSWorkspace sharedWorkspace] selectFile:nil inFileViewerRootedAtPath:[self pictureSaveDirectory]];
     
 }
+static int i=0;
+static int j=0;
 
 - (IBAction)forwardRate:(id)sender {
+    j=0;
     if(self.player!=nil){
-         mVideoRate+=0.5;
-        [self.player setRate:mVideoRate];
+        if(i>=RATE_VIDEO_LENGTH){
+            i=0;
+        }
+        int rate_val=RATE_VIDEO[i++];
+        [self.player setRate:rate_val];
+        [AppToast showToast:[NSString stringWithFormat:@"%dx",rate_val] duration:0.8];
     }
 }
 
 - (IBAction)backwardRate:(id)sender {
+    i=0;
     if(self.player!=nil){
-        if(mVideoRate>1.0){
-            mVideoRate=1.0;
+        if(j>=RATE_VIDEO_LENGTH){
+            j=0;
         }
-         mVideoRate-=0.2;
-        if(mVideoRate<=0){
-            mVideoRate=0.1;
-        }
-        [self.player setRate:mVideoRate];
+        int rate_val=-RATE_VIDEO[j++];
+        [self.player setRate:rate_val];
+        [AppToast showToast:[NSString stringWithFormat:@"%dx",rate_val] duration:0.8];
     }
 }
 
