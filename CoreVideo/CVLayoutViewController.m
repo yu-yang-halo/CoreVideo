@@ -13,12 +13,15 @@
 #import "CVDisplayViewController.h"
 #import "CVModuleProtocol.h"
 #import "AppColorManager.h"
+#import "GpsViewController.h"
 
 @interface CVLayoutViewController ()<CVModuleProtocol>{
     VideoViewController     *videoVC ;
-    CVWebViewController     *webVC ;
+   // CVWebViewController     *webVC ;
     PlayListViewController  *playlistVC;
     CVDisplayViewController *displayVC;
+    GpsViewController       *gpsVC;
+    
     
     NSRect globalView1Rect;
     NSRect globalView0Rect;
@@ -60,14 +63,19 @@
     
     displayVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"displayVC"];
     
-    webVC      =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"webVC"];
-    webVC.distanceDelegate=displayVC;
+   // webVC      =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"webVC"];
+   // webVC.distanceDelegate=displayVC;
+    
+    gpsVC=[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"gpsVC"];
+    
+    
+    
     
     
     
     videoVC    =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"videoVC"];
     videoVC.zoomInDelegate=self;
-    videoVC.gpsDelegate=webVC;
+    //videoVC.gpsDelegate=webVC;
     videoVC.speedDelegate=displayVC;
     
     playlistVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"playlistVC"];
@@ -80,7 +88,7 @@
     
     [self.videoView addSubview:videoVC.view];
     [self.playListView addSubview:playlistVC.view];
-    [self.mapView addSubview:webVC.view];
+    [self.mapView addSubview:gpsVC.view];
     [self.displayView addSubview:displayVC.view];
     
     
@@ -148,10 +156,10 @@
     [displayVC.view setFrame:leftRect1];
     
     [playlistVC.view setFrame:rightRect1];
-    [webVC.view setFrame:rightRect0];
+    [gpsVC.view setFrame:rightRect0];
     
     
-    [webVC.webview setFrame:webVC.view.bounds];
+    //[webVC.webview setFrame:webVC.view.bounds];
     
     
     

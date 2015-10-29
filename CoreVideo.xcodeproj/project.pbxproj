@@ -24,6 +24,7 @@
 		18DAF4CE1BB6AE4B004EDA75 /* AppLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF4CD1BB6AE4B004EDA75 /* AppLanguageManager.m */; };
 		18DAF4D11BB6BE34004EDA75 /* AppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF4D01BB6BE34004EDA75 /* AppUtils.m */; };
 		18DAF4D41BB6C133004EDA75 /* AppUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DAF4D31BB6C133004EDA75 /* AppUserDefaults.m */; };
+		18DB2BB81BDFAB8000EA793F /* GpsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB2BB71BDFAB8000EA793F /* GpsViewController.m */; };
 		8461A0021BA3FA6E0048DD69 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461A0011BA3FA6E0048DD69 /* VideoViewController.m */; };
 		846C31DE1BA66E480007ACDB /* MyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31DD1BA66E480007ACDB /* MyCache.m */; };
 		846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E11BA679EC0007ACDB /* PlayListViewController.m */; };
@@ -96,6 +97,8 @@
 		18DAF4D01BB6BE34004EDA75 /* AppUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtils.m; sourceTree = "<group>"; };
 		18DAF4D21BB6C133004EDA75 /* AppUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUserDefaults.h; sourceTree = "<group>"; };
 		18DAF4D31BB6C133004EDA75 /* AppUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUserDefaults.m; sourceTree = "<group>"; };
+		18DB2BB61BDFAB8000EA793F /* GpsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpsViewController.h; sourceTree = "<group>"; };
+		18DB2BB71BDFAB8000EA793F /* GpsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GpsViewController.m; sourceTree = "<group>"; };
 		8461A0001BA3FA6E0048DD69 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		8461A0011BA3FA6E0048DD69 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		846C31DC1BA66E480007ACDB /* MyCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCache.h; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				84AF2E731BAB9920003B3217 /* CVDisplayViewController.h */,
 				84AF2E741BAB9920003B3217 /* CVDisplayViewController.m */,
 				84A2AA801BBA1DD900F6BCC3 /* CVModuleProtocol.h */,
+				18DB2BB61BDFAB8000EA793F /* GpsViewController.h */,
+				18DB2BB71BDFAB8000EA793F /* GpsViewController.m */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -438,6 +443,7 @@
 			files = (
 				846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */,
 				18DA97381BB96AB4007FCEF6 /* AppController.m in Sources */,
+				18DB2BB81BDFAB8000EA793F /* GpsViewController.m in Sources */,
 				180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */,
 				1890EA501BB677E600AAE6E1 /* PreferenceController.m in Sources */,
 				18DAF4CE1BB6AE4B004EDA75 /* AppLanguageManager.m in Sources */,

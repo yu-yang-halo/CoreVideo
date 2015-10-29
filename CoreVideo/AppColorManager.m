@@ -10,7 +10,7 @@
 
 @implementation AppColorManager
 +(NSColor *)appBackgroundColor{
-    NSColor *bgColor=[NSColor colorWithCalibratedRed:37/255.0 green:37/255.0 blue:44/255.0 alpha:1.0];
+    NSColor *bgColor=[NSColor colorWithCalibratedRed:66/255.0 green:69/255.0 blue:74/255.0 alpha:1.0];
     return bgColor;
 }
 @end
