@@ -55,8 +55,6 @@
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUI:) name:SPEED_UNIT_NOTIFICATION object:nil];
     
-    [self.gsensorContainer setWantsLayer:YES];
-    [self.gsensorContainer.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
     
     [_maxSpeedLabelText.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
      [_avageSpeedLabelText.layer setBackgroundColor:[[NSColor blackColor] CGColor]];

@@ -40,8 +40,13 @@
     [self.tableView setBackgroundColor:[NSColor blackColor
                                         ]];
     
+    [self.tableView.headerView setFrame:NSZeroRect];
+    [self.tableView setHeaderView:nil];
+    
+    
     [self.tableView setFocusRingType:NSFocusRingTypeNone];
     [self.tableView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleRegular];
+    
     
     [self.tableView setRowSizeStyle:NSTableViewRowSizeStyleCustom];
     

@@ -12,6 +12,7 @@
 #import "CVWindowController.h"
 #import "PlayListViewController.h"
 
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property(nonatomic,strong) VideoViewController *videoVC;
