@@ -13,6 +13,8 @@
 		1890EA501BB677E600AAE6E1 /* PreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1890EA4E1BB677E600AAE6E1 /* PreferenceController.m */; };
 		1890EA5E1BB688D500AAE6E1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1890EA601BB688D500AAE6E1 /* Localizable.strings */; };
 		1890EA671BB68CCE00AAE6E1 /* PreferenceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890EA691BB68CCE00AAE6E1 /* PreferenceController.xib */; };
+		189910C11BE447D20011FC92 /* BlackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189910C01BE447D20011FC92 /* BlackView.m */; };
+		189910C41BE458160011FC92 /* CVTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 189910C31BE458160011FC92 /* CVTextField.m */; };
 		18B22BAA1BA6F30000D593C4 /* AssistFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18B22BA91BA6F30000D593C4 /* AssistFile.cpp */; };
 		18D885931BC4D5F400285E2B /* AppToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D885921BC4D5F400285E2B /* AppToast.m */; };
 		18D885971BC4DEDC00285E2B /* CVToastWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D885951BC4DEDC00285E2B /* CVToastWindowController.m */; };
@@ -77,6 +79,10 @@
 		1890EA651BB68B0200AAE6E1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1890EA661BB68B0300AAE6E1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1890EA681BB68CCE00AAE6E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferenceController.xib; sourceTree = "<group>"; };
+		189910BF1BE447D20011FC92 /* BlackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackView.h; sourceTree = "<group>"; };
+		189910C01BE447D20011FC92 /* BlackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackView.m; sourceTree = "<group>"; };
+		189910C21BE458160011FC92 /* CVTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVTextField.h; sourceTree = "<group>"; };
+		189910C31BE458160011FC92 /* CVTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVTextField.m; sourceTree = "<group>"; };
 		18B22BA81BA6F30000D593C4 /* AssistFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssistFile.h; sourceTree = "<group>"; };
 		18B22BA91BA6F30000D593C4 /* AssistFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssistFile.cpp; sourceTree = "<group>"; };
 		18D885911BC4D5F400285E2B /* AppToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppToast.h; sourceTree = "<group>"; };
@@ -331,6 +337,10 @@
 				180364DB1BAEADD100870783 /* CustomGsensorView.m */,
 				8453B5A31BE361F000B21AD4 /* CVView.h */,
 				8453B5A41BE361F000B21AD4 /* CVView.m */,
+				189910BF1BE447D20011FC92 /* BlackView.h */,
+				189910C01BE447D20011FC92 /* BlackView.m */,
+				189910C21BE458160011FC92 /* CVTextField.h */,
+				189910C31BE458160011FC92 /* CVTextField.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -450,6 +460,7 @@
 			files = (
 				846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */,
 				18DA97381BB96AB4007FCEF6 /* AppController.m in Sources */,
+				189910C41BE458160011FC92 /* CVTextField.m in Sources */,
 				18DB2BB81BDFAB8000EA793F /* GpsViewController.m in Sources */,
 				8453B5A51BE361F000B21AD4 /* CVView.m in Sources */,
 				180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */,
@@ -462,6 +473,7 @@
 				84B43FE71BA806FA00B4B46A /* GpsDataHelper.mm in Sources */,
 				84B43FE41BA7E1AA00B4B46A /* FileList.cpp in Sources */,
 				8461A0021BA3FA6E0048DD69 /* VideoViewController.m in Sources */,
+				189910C11BE447D20011FC92 /* BlackView.m in Sources */,
 				84B43FEC1BA81D6700B4B46A /* CVWebViewController.m in Sources */,
 				18DAF4D41BB6C133004EDA75 /* AppUserDefaults.m in Sources */,
 				18D89F691BA4EDE7000D058C /* CVWindowController.m in Sources */,

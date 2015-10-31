@@ -23,8 +23,9 @@
     
     
     // 简便起见，这里把圆角半径设置为长和宽平均值的1/10
-    CGFloat radius = (width + height) * 0.05;
-    CGFloat dxy=2;
+    CGFloat radius =2;
+    CGFloat dxy=3;
+    CGFloat lineWidth=0.6;
     
     
     // 获取CGContext，注意UIKit里用的是一个专门的函数
@@ -48,13 +49,15 @@
     CGContextAddLineToPoint(context, dxy, radius+dxy);
     CGContextAddArc(context, radius+dxy, radius+dxy, radius, M_PI, 1.5 * M_PI, 0);
     
-    CGContextSetLineWidth(context, 0.5);
+    CGContextSetLineWidth(context, lineWidth);
    
     // 闭合路径
     CGContextClosePath(context);
+    //CGContextSetAllowsAntialiasing(context,false);
     // 填充半透明黑色
-    CGContextSetRGBStrokeColor(context, 0.0, 0.7, 0.0, 0.8);
+    CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
     CGContextDrawPath(context, kCGPathStroke);
+   
 }
 
 @end

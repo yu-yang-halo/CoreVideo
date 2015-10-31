@@ -43,6 +43,17 @@
 @property (weak) IBOutlet NSTextField *avageSpeedLabelText;
 @property (weak) IBOutlet NSTextField *totalDistanceLabelText;
 
+@property (weak) IBOutlet NSImageView *directLeftImageView;
+
+@property (weak) IBOutlet NSImageView *directRightImageView;
+
+@property (weak) IBOutlet NSImageView *directFrontImageView;
+
+@property (weak) IBOutlet NSImageView *directBackImageView;
+
+@property (weak) IBOutlet NSTextField *speedValueLabel;
+
+@property (weak) IBOutlet NSTextField *speedUnitLabel;
 
 @end
 
@@ -55,12 +66,7 @@
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUI:) name:SPEED_UNIT_NOTIFICATION object:nil];
     
-    
-    [_maxSpeedLabelText.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
-     [_avageSpeedLabelText.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
-    
-     [_totalDistanceLabelText.layer setBackgroundColor:[[NSColor blackColor] CGColor]];
-    
+
 }
 
 -(void)updateUI:(NSNotification *)notification{
@@ -75,8 +81,6 @@
     
     [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:maxSpd]];
     [self.movingDistance setStringValue:[AppUtils convertDistanceUnit:totalDistance]];
-    
-
     
 }
 -(void)dealloc{
@@ -139,9 +143,15 @@
             
             [self.speedView setCurrentSpeed:[AppUtils convertSpeed:[mspd integerValue]]];
             
+            [self.speedValueLabel setStringValue:[NSString stringWithFormat:@"%.f",[AppUtils convertSpeed:[mspd integerValue]]]];
+            
+            [self.speedUnitLabel setStringValue:[AppUtils currentSpeedUnit]];
+            
         }
     }else{
         [self.speedView setCurrentSpeed:[AppUtils convertSpeed:0]];
+
+        
         [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:0]];
     }
     
@@ -153,6 +163,7 @@
             float yVal=[currentGsensorDataArr[index1][1] floatValue];
             float zVal=[currentGsensorDataArr[index1][2] floatValue];
             
+            [self updateImageDirectX:xVal yValue:yVal];
             
             [_xTextField setStringValue:[NSString stringWithFormat:@"X: %.2f",xVal]];
             [_yTextField setStringValue:[NSString stringWithFormat:@"Y: %.2f",yVal]];
@@ -163,6 +174,35 @@
 
     
 }
+/*
+ 
+ X：加速时的左右变化；Y：加速时的前后变化；Z：加速时的上下变化轴
+ 
+ Y<0 向前 ; Y>0 向后
+ 
+ X<0 向左 ; X>0 向右
+ 
+ */
+
+-(void)updateImageDirectX:(float) xVal yValue:(float)yVal{
+    if(xVal<0){
+        self.directLeftImageView.image=[NSImage imageNamed:@"car_left_active"];
+        self.directRightImageView.image=[NSImage imageNamed:@"car_right"];
+    }else{
+        self.directRightImageView.image=[NSImage imageNamed:@"car_right_active"];
+        self.directLeftImageView.image=[NSImage imageNamed:@"car_left"];
+    }
+    
+    if(yVal<0){
+        self.directFrontImageView.image=[NSImage imageNamed:@"car_left_active"];
+        self.directBackImageView.image=[NSImage imageNamed:@"car_right"];
+    }else{
+        self.directBackImageView.image=[NSImage imageNamed:@"car_right_active"];
+        self.directFrontImageView.image=[NSImage imageNamed:@"car_left"];
+    }
+}
+
+
 
 #pragma mark 计算平均速度代理callback
 /**

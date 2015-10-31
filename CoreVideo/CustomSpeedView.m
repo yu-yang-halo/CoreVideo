@@ -9,8 +9,8 @@
 #import "CustomSpeedView.h"
 #import "AppUtils.h"
 #import "AppUserDefaults.h"
-static NSInteger Radius=80;
-static NSInteger LineWidth=40;
+static NSInteger Radius=40;
+static NSInteger LineWidth=30;
 static NSInteger MIN_ANGLE=0;
 static NSInteger MAX_ANGLE=180;//从右到左
 
@@ -23,6 +23,7 @@ static NSString* MAX_SPEED_MPH=@"75";//从左到右读
     float   ratio;//速度转换刻度系数
     NSString*  max_spd_str;
     NSString*  min_spd_str;
+    CALayer *face;
 }
 
 @end
@@ -40,7 +41,35 @@ static NSString* MAX_SPEED_MPH=@"75";//从左到右读
  */
 
 @implementation CustomSpeedView
+-(void)awakeFromNib{
+    
+    midX=NSMidX(self.bounds);
+    midY=NSMidY(self.bounds)/2;
+    
+    
+    face = [CALayer layer];
+    face.frame = CGRectMake(midX-10,-7, 15, 60);
+    face.contents=[NSImage imageNamed:@"meter_arrow"];
+    [self.layer addSublayer:face];
 
+    face.anchorPoint=CGPointMake(0.5, 0.12);
+    
+    CATransform3D transform = CATransform3DMakeRotation( -M_PI/2*1.09+M_PI, 0, 0, 1);
+    // [-M_PI/2*1.09+M_PI,-M_PI/2*1.09]
+    face.transform = transform;
+    
+    
+    
+    
+}
+
+-(void)updateRotation:(float)rotation{
+     NSLog(@"rotation  %f %f",180-rotation,rotation/180);
+    CATransform3D transform = CATransform3DMakeRotation( -M_PI/2*1.09+M_PI-(180-rotation)/180*M_PI, 0, 0, 1);
+   
+    // [-M_PI/2*1.09+M_PI,-M_PI/2*1.09]
+    face.transform = transform;
+}
 
 -(void)setCurrentSpeed:(NSInteger)currentSpeed{
     
@@ -62,6 +91,8 @@ static NSString* MAX_SPEED_MPH=@"75";//从左到右读
 }
 
 
+
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     if(max_spd_str==nil){
@@ -77,8 +108,6 @@ static NSString* MAX_SPEED_MPH=@"75";//从左到右读
     
     
     
-    midX=NSMidX(self.bounds);
-    midY=NSMidY(self.bounds)/2;
     
     
     
@@ -88,7 +117,7 @@ static NSString* MAX_SPEED_MPH=@"75";//从左到右读
     
     [self drawArc:[NSColor colorWithCalibratedRed:251 green:108 blue:0 alpha:1] startAngle:(MAX_ANGLE-_currentSpeed*ratio) endAngle:MAX_ANGLE];
 
-    
+    [self updateRotation:(MAX_ANGLE-_currentSpeed*ratio)];
     
     NSString *currentSpeed=[NSString stringWithFormat:@"%.f",[AppUtils convertSpeed:_currentSpeed]];
   
@@ -103,9 +132,9 @@ static NSString* MAX_SPEED_MPH=@"75";//从左到右读
     NSSize size=[currentSpeed sizeWithAttributes:md];
     NSSize unitSize=[[AppUtils currentSpeedUnit] sizeWithAttributes:md1];
     
-    [self drawText:currentSpeed location:NSMakePoint(midX-size.width/2,midY) attibutes:md];
+    //[self drawText:currentSpeed location:NSMakePoint(midX-size.width/2,midY) attibutes:md];
     
-    [self drawText:[AppUtils currentSpeedUnit] location:NSMakePoint(midX-unitSize.width/2,midY-unitSize.height) attibutes:md1];
+    //[self drawText:[AppUtils currentSpeedUnit] location:NSMakePoint(midX-unitSize.width/2,midY-unitSize.height) attibutes:md1];
 
     
     
@@ -118,9 +147,9 @@ static NSString* MAX_SPEED_MPH=@"75";//从左到右读
     NSSize  minsSize=[min_spd_str sizeWithAttributes:md2];
     NSSize  maxsSize=[max_spd_str sizeWithAttributes:md2];
     
-    [self drawText:min_spd_str location:NSMakePoint(midX-minsSize.width/2-Radius,midY-minsSize.height) attibutes:md2];
+    //[self drawText:min_spd_str location:NSMakePoint(midX-minsSize.width/2-Radius,midY-minsSize.height) attibutes:md2];
     
-    [self drawText:max_spd_str location:NSMakePoint(midX-maxsSize.width/2+Radius,midY-maxsSize.height) attibutes:md2];
+    //[self drawText:max_spd_str location:NSMakePoint(midX-maxsSize.width/2+Radius,midY-maxsSize.height) attibutes:md2];
     
     
     
