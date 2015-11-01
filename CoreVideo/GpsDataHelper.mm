@@ -71,6 +71,7 @@ const NSString *KEY_IS_IN_CHINA=@"key_is_in_china";
         
         [dic setObject:[NSNumber numberWithDouble:info.north_angle] forKey:@"north_angle"];
         [dic setObject:[NSNumber numberWithInt:info.spd] forKey:@"spd"];
+        NSLog(@"%@",dic);
 
         
         

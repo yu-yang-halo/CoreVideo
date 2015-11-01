@@ -413,6 +413,8 @@
                         <outlet property="latitudeUnitLabel" destination="WVe-0W-h1J" id="xtA-yo-cGE"/>
                         <outlet property="longitudeLabel" destination="Iw1-IX-Pw9" id="bGy-di-dDb"/>
                         <outlet property="longitudeUnitLabel" destination="xQp-Mu-Jyt" id="ksQ-jk-wLl"/>
+                        <outlet property="northAngleImageView" destination="G8y-Cl-fyD" id="9uS-Id-lku"/>
+                        <outlet property="stillImageView" destination="G8y-Cl-fyD" id="3qD-os-cy5"/>
                     </connections>
                 </viewController>
                 <customObject id="dB1-2M-u0W" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

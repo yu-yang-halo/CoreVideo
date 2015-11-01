@@ -1,15 +1,9 @@
 
-/* Class = "NSButtonCell"; title = "播放"; ObjectID = "0XC-4g-uKL"; */
-"0XC-4g-uKL.title" = "播放";
-
 /* Class = "NSMenuItem"; title = "行车记录仪"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "行车记录仪";
 
-/* Class = "NSTextFieldCell"; title = "0Km/H"; ObjectID = "2TG-6r-W2D"; */
+/* Class = "NSTextFieldCell"; title = "0"; ObjectID = "2TG-6r-W2D"; */
 "2TG-6r-W2D.title" = "0";
-
-/* Class = "NSButtonCell"; title = "截图"; ObjectID = "3cT-he-XWR"; */
-"3cT-he-XWR.title" = "截图";
 
 /* Class = "NSTextFieldCell"; title = "X: 0.00"; ObjectID = "4iJ-v4-8pO"; */
 "4iJ-v4-8pO.title" = "X: 0.00";
@@ -23,8 +17,17 @@
 /* Class = "NSMenuItem"; title = "显示"; ObjectID = "5QF-Oa-p0T"; */
 "5QF-Oa-p0T.title" = "显示";
 
+/* Class = "NSTextFieldCell"; title = "---"; ObjectID = "6XE-7a-YX2"; */
+"6XE-7a-YX2.title" = "---";
+
+/* Class = "NSTextFieldCell"; title = "---°--'    --.-- "; ObjectID = "8kQ-co-XyB"; */
+"8kQ-co-XyB.title" = "---°--'    --.-- ";
+
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSTextFieldCell"; title = "播放列表"; ObjectID = "CIU-wK-cuJ"; */
+"CIU-wK-cuJ.title" = "播放列表";
 
 /* Class = "NSWindow"; title = "Window"; ObjectID = "Ckk-yw-fiv"; */
 "Ckk-yw-fiv.title" = "Window";
@@ -44,14 +47,14 @@
 /* Class = "NSMenuItem"; title = "打开"; ObjectID = "IAo-SY-fd9"; */
 "IAo-SY-fd9.title" = "打开";
 
-/* Class = "NSTextFieldCell"; title = "0Km/H"; ObjectID = "JH6-AG-zxs"; */
+/* Class = "NSTextFieldCell"; title = "KM/H"; ObjectID = "Ikv-hO-Zgc"; */
+"Ikv-hO-Zgc.title" = "KM/H";
+
+/* Class = "NSTextFieldCell"; title = "0"; ObjectID = "JH6-AG-zxs"; */
 "JH6-AG-zxs.title" = "0";
 
 /* Class = "NSMenuItem"; title = "设置"; ObjectID = "KaW-ft-85H"; */
 "KaW-ft-85H.title" = "设置";
-
-/* Class = "NSButtonCell"; title = "文件"; ObjectID = "Qnn-HA-1k9"; */
-"Qnn-HA-1k9.title" = "文件";
 
 /* Class = "NSTextFieldCell"; title = "最高时速"; ObjectID = "TQV-8A-2Hv"; */
 "TQV-8A-2Hv.title" = "最高时速";
@@ -62,11 +65,11 @@
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
 "aUF-d1-5bR.title" = "Window";
 
-/* Class = "NSButtonCell"; title = "图片"; ObjectID = "bde-yK-jDu"; */
-"bde-yK-jDu.title" = "图片";
-
 /* Class = "NSMenu"; title = "文件"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "文件";
+
+/* Class = "NSTextFieldCell"; title = "---°--'    --.-- "; ObjectID = "c08-Vt-WHw"; */
+"c08-Vt-WHw.title" = "---°--'    --.-- ";
 
 /* Class = "NSMenuItem"; title = "文件"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "文件";
@@ -76,9 +79,6 @@
 
 /* Class = "NSTextFieldCell"; title = "Y: 0.00"; ObjectID = "gJI-XP-hRo"; */
 "gJI-XP-hRo.title" = "Y: 0.00";
-
-/* Class = "NSTableColumn"; headerCell.title = "文件列表"; ObjectID = "ikD-1Y-J4C"; */
-"ikD-1Y-J4C.headerCell.title" = "文件列表";
 
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "jxT-CU-nIS"; */
 "jxT-CU-nIS.title" = "Format";
@@ -95,10 +95,13 @@
 /* Class = "NSTextFieldCell"; title = "00:00:00"; ObjectID = "sON-m2-MmF"; */
 "sON-m2-MmF.title" = "00:00:00";
 
+/* Class = "NSTextFieldCell"; title = "E"; ObjectID = "tR8-9O-21h"; */
+"tR8-9O-21h.title" = "E";
+
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "tbQ-SY-QQY"; */
 "tbQ-SY-QQY.title" = "Text Cell";
 
-/* Class = "NSTextFieldCell"; title = "0Km"; ObjectID = "u69-R9-DHS"; */
+/* Class = "NSTextFieldCell"; title = "0"; ObjectID = "u69-R9-DHS"; */
 "u69-R9-DHS.title" = "0";
 
 /* Class = "NSMenu"; title = "行车记录仪"; ObjectID = "uQy-DD-JDr"; */
@@ -109,3 +112,6 @@
 
 /* Class = "NSMenuItem"; title = "帮助"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "帮助";
+
+/* Class = "NSTextFieldCell"; title = "N"; ObjectID = "zMO-YZ-1da"; */
+"zMO-YZ-1da.title" = "N";

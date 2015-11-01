@@ -20,6 +20,7 @@
     
     float          totalDistance;//单位 m
     float          totalTime;//单位 s
+    NSLock         *mlock;
 }
 @property (weak) IBOutlet CustomSpeedView *speedView;
 @property (weak) IBOutlet CustomGsensorView *gsensorView;
@@ -63,6 +64,8 @@
     [super viewDidLoad];
     
     [self.view setWantsLayer:YES];
+    
+    mlock=[[NSLock alloc] init];
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUI:) name:SPEED_UNIT_NOTIFICATION object:nil];
     
@@ -94,6 +97,7 @@
     currentPlayVideoPath=playVideoPath;
     
     currentSpd=0;
+
 
     
     NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
@@ -210,11 +214,14 @@
  1km==2里
  1km==1000m
  */
+static BOOL distanceActiveYN=NO;
 -(void)totalDistance:(float)distance{
     totalDistance=distance;
     [self.movingDistance setStringValue:[AppUtils convertDistanceUnit:distance]];
     
+    
     [self loadAverageSpeedContent];
+ 
 }
 
 -(void)videoAllTime:(Float64)allTime{
@@ -225,9 +232,17 @@
 
 //1m/s==3.6km/h
 -(void)loadAverageSpeedContent{
-    if(totalTime>0){
-        [self.averageHSpeed setStringValue:[AppUtils convertSpeedUnit:((totalDistance/totalTime)*3.6)]];
-    }
+      [mlock lock];
+        if(totalTime>0){
+            [self.averageHSpeed setStringValue:[AppUtils convertSpeedUnit:((totalDistance/totalTime)*3.6)]];
+           
+            NSLog(@"平均时速：%@",[AppUtils convertSpeedUnit:((totalDistance/totalTime)*3.6)]);
+            
+        }
+    
+     [mlock unlock];
+    
+   
 }
 
 @end

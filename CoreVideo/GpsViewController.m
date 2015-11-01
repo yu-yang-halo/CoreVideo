@@ -18,6 +18,9 @@
 @property (weak) IBOutlet NSTextField *latitudeUnitLabel;
 
 @property (weak) IBOutlet NSTextField *longitudeUnitLabel;
+@property (weak) IBOutlet NSImageView *northAngleImageView;
+@property (weak) IBOutlet NSImageView *stillImageView;
+
 
 @end
 
@@ -26,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+
 }
 
 
@@ -56,10 +60,31 @@
             _longitudeLabel.stringValue=[self convertLatLngToDFM:[xyItem[0] floatValue]<0?-[xyItem[0] floatValue]:[xyItem[0] floatValue]];
             
             _latitudeLabel.stringValue=[self convertLatLngToDFM:[xyItem[1] floatValue]<0?-[xyItem[1] floatValue]:[xyItem[1] floatValue]];
+            
+            NSLog(@"north_angle %@",xyItem[2]);
+            [self  rotateAngle:[xyItem[2] floatValue]/180*M_PI];
+            
         }
     }
     
     
+}
+static float val=0.0;
+
+-(void)rotateAngle:(float)angle{
+    
+    
+    float xval=self.northAngleImageView.frame.origin.x+self.northAngleImageView.frame.size.width/2;
+    float yval=self.northAngleImageView.frame.origin.y+self.northAngleImageView.frame.size.height/2;
+    
+    self.northAngleImageView.layer.position=CGPointMake(xval, yval);
+    
+    CATransform3D transform = CATransform3DMakeRotation(angle, 0, 0, 1);
+    self.northAngleImageView.layer.anchorPoint=CGPointMake(0.5, 0.5);
+    self.northAngleImageView.layer.transform=transform;
+   
+    
+   
 }
 
 -(NSString *)convertLatLngToDFM:(float)latlng{
@@ -89,9 +114,12 @@
         NSString *gps_lat=[obj objectForKey:@"gps_lat"];
         NSString *gps_lgt=[obj objectForKey:@"gps_lgt"];
         
+        NSNumber *north_angle=[obj objectForKey:@"north_angle"];
+        
+        
         if(gps_lat.floatValue!=0&&gps_lgt.floatValue!=0){
             
-          [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:gps_lgt.floatValue],[NSNumber numberWithFloat:gps_lat.floatValue], nil]];
+          [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:gps_lgt.floatValue],[NSNumber numberWithFloat:gps_lat.floatValue],north_angle, nil]];
             
             
         }
