@@ -18,6 +18,7 @@
 @property(nonatomic,weak) id<CVModuleProtocol> zoomInDelegate;
 @property(nonatomic,weak) id<CVModuleProtocol> gpsDelegate;
 @property(nonatomic,weak) id<CVModuleProtocol> speedDelegate;
+@property(nonatomic,weak) id<CVModuleProtocol> gpsInfoDelegate;
 -(void)initAssetData:(NSURL *)url;
 -(void)close;
 

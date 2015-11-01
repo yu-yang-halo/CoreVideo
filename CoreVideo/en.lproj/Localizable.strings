@@ -9,11 +9,11 @@
 "filelist"="File list";
 "play"="Play";
 "pause"="Pause";
-"km_speedUnit"="Km/H";
+"km_speedUnit"="KM/H";
 "mph_speedUnit"="MPH";
 "m_speedUnit"="m/H";
 "mile_distanceUnit"="Mile";
-"km_distanceUnit"="Km";
+"km_distanceUnit"="KM";
 "m_distanceUnit"="m";
 
 "reload"="reload";

@@ -248,8 +248,8 @@
 				84AF2E731BAB9920003B3217 /* CVDisplayViewController.h */,
 				84AF2E741BAB9920003B3217 /* CVDisplayViewController.m */,
 				18DB2BB61BDFAB8000EA793F /* GpsViewController.h */,
-				84A2AA801BBA1DD900F6BCC3 /* CVModuleProtocol.h */,
 				18DB2BB71BDFAB8000EA793F /* GpsViewController.m */,
+				84A2AA801BBA1DD900F6BCC3 /* CVModuleProtocol.h */,
 			);
 			name = viewController;
 			sourceTree = "<group>";

@@ -17,7 +17,7 @@
 
 @interface CVLayoutViewController ()<CVModuleProtocol>{
     VideoViewController     *videoVC ;
-   // CVWebViewController     *webVC ;
+    CVWebViewController     *webVC ;
     PlayListViewController  *playlistVC;
     CVDisplayViewController *displayVC;
     GpsViewController       *gpsVC;
@@ -36,11 +36,13 @@
 @property (weak) IBOutlet NSSplitView *globalSplitView;
 @property (weak) IBOutlet NSSplitView *leftSplitView;
 @property (weak) IBOutlet NSSplitView *rightSplitView;
+@property (weak) IBOutlet NSView *gmapWebView;
+
 
 @property (weak) IBOutlet NSView *playListView;
 @property (weak) IBOutlet NSView *videoView;
 @property (weak) IBOutlet NSView *displayView;
-@property (weak) IBOutlet NSView *mapView;
+@property (weak) IBOutlet NSView *mapInfoView;
 
 
 
@@ -63,8 +65,8 @@
     
     displayVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"displayVC"];
     
-   // webVC      =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"webVC"];
-   // webVC.distanceDelegate=displayVC;
+    webVC      =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"webVC"];
+    webVC.distanceDelegate=displayVC;
     
     gpsVC=[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"gpsVC"];
     
@@ -75,8 +77,9 @@
     
     videoVC    =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"videoVC"];
     videoVC.zoomInDelegate=self;
-    //videoVC.gpsDelegate=webVC;
+    videoVC.gpsDelegate=webVC;
     videoVC.speedDelegate=displayVC;
+    videoVC.gpsInfoDelegate=gpsVC;
     
     playlistVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"playlistVC"];
     
@@ -88,20 +91,23 @@
     
     [self.videoView addSubview:videoVC.view];
     [self.playListView addSubview:playlistVC.view];
-    [self.mapView addSubview:gpsVC.view];
+    [self.mapInfoView addSubview:gpsVC.view];
     [self.displayView addSubview:displayVC.view];
+    [self.gmapWebView addSubview:webVC.view];
+    
     
     
     //[self updateViewLetfView0:_videoView view1:_displayView rightView0:_mapView view1:_playListView];
     
     [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
     [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,760)];
+    [[[_globalSplitView subviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,266,760)];
     
-    [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,520)];
-    [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,240)];
+    [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
+    [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
     
-    [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,433)];
-    [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,327)];
+    [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,323)];
+    [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,437)];
     
     
     
@@ -126,6 +132,9 @@
     NSArray *leftViews  = [self.leftSplitView subviews];
     NSArray *rightViews = [self.rightSplitView subviews];
     
+    NSView *map_webView=[[_globalSplitView subviews] objectAtIndex:2];
+    
+    
     
     NSView *leftView0=[leftViews objectAtIndex:0];
     NSView *leftView1=[leftViews objectAtIndex:1];
@@ -134,7 +143,7 @@
     NSView *rightView1=[rightViews objectAtIndex:1];
     
    
-    [self updateViewLetfView0:leftView0 view1:leftView1 rightView0:rightView0 view1:rightView1];
+    [self updateViewLetfView0:leftView0 view1:leftView1 rightView0:rightView0 view1:rightView1 webView:map_webView];
 
 
     
@@ -142,12 +151,12 @@
 }
 
 
--(void)updateViewLetfView0:(NSView *)leftView0 view1:(NSView *)leftView1 rightView0:(NSView *)rightView0 view1:(NSView *)rightView1{
+-(void)updateViewLetfView0:(NSView *)leftView0 view1:(NSView *)leftView1 rightView0:(NSView *)rightView0 view1:(NSView *)rightView1 webView:(NSView *)map_webView{
     
-    [self updateViewLetfRect0:leftView0.bounds rect1:leftView1.bounds rightRect0:rightView0.bounds rect1:rightView1.bounds];
+    [self updateViewLetfRect0:leftView0.bounds rect1:leftView1.bounds rightRect0:rightView0.bounds rect1:rightView1.bounds mapRect:map_webView.bounds];
 }
 
--(void)updateViewLetfRect0:(NSRect)leftRect0 rect1:(NSRect)leftRect1 rightRect0:(NSRect)rightRect0 rect1:(NSRect)rightRect1{
+-(void)updateViewLetfRect0:(NSRect)leftRect0 rect1:(NSRect)leftRect1 rightRect0:(NSRect)rightRect0 rect1:(NSRect)rightRect1 mapRect:(NSRect)mRect{
     
     //NSLog(@"leftRect0:%@ leftRect1:%@ rightRect0:%@ rightRect1:%@",[self nsRectToString:leftRect0],[self nsRectToString:leftRect1],[self nsRectToString:rightRect0],[self nsRectToString:rightRect1]);
     
@@ -159,9 +168,10 @@
     [gpsVC.view setFrame:rightRect0];
     
     
-    //[webVC.webview setFrame:webVC.view.bounds];
     
+    [webVC.view setFrame:mRect];
     
+    [webVC.webview setFrame:webVC.view.bounds];
     
 }
 

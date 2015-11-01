@@ -82,6 +82,7 @@ static int RATE_VIDEO_LENGTH=4;
         return;
     }
     [self.gpsDelegate dataLogicProcessOfViodePath:url.absoluteString];
+    [self.gpsInfoDelegate dataLogicProcessOfViodePath:url.absoluteString];
     [self.speedDelegate  dataLogicProcessOfViodePath:url.absoluteString];
     
 
@@ -175,11 +176,15 @@ static int RATE_VIDEO_LENGTH=4;
     self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(playerItem.asset.duration)];
     [self.speedDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
     [self.gpsDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
+    [self.gpsInfoDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
+    
     
     
     [self setTimeObserverToken:[[self player] addPeriodicTimeObserverForInterval:CMTimeMake(1, 100) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         
          [weakSelf.gpsDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
+        [weakSelf.gpsInfoDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
+        
          [weakSelf.speedDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
         
         

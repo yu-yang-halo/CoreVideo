@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
-@interface GpsViewController : NSViewController
+#import "CVModuleProtocol.h"
+@interface GpsViewController : NSViewController<CVModuleProtocol>
 
 @end

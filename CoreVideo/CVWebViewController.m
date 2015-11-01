@@ -63,6 +63,12 @@
         [weakSelf.distanceDelegate totalDistance:value.toDouble];
     };
     
+    context[@"loadGoogleMap"]=^(){
+      
+        
+        
+    };
+    
     
 }
 
@@ -77,17 +83,18 @@
 }
 
 -(void)reloadWeb:(id)sender{
-    [_webview.mainFrame reload];
+   // [_webview.mainFrame reload];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame{
     NSLog(@"didFinishLoadForFrame");
+   
     if(currentVideoGpsDataArr!=nil&&[currentVideoGpsDataArr count]>0){
         [_webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"drawPolyLinePath(%@)",[currentVideoGpsDataArr JSONString]]];
     }
     
-    
 }
+
 -(void)updateDataByCurrentTime:(Float64)time{
     float m_ratio=9.6;
     if(totalTime>0){

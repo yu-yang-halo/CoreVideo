@@ -64,7 +64,7 @@ static NSString* MAX_SPEED_MPH=@"75";//从左到右读
 }
 
 -(void)updateRotation:(float)rotation{
-     NSLog(@"rotation  %f %f",180-rotation,rotation/180);
+    // NSLog(@"rotation  %f %f",180-rotation,rotation/180);
     CATransform3D transform = CATransform3DMakeRotation( -M_PI/2*1.09+M_PI-(180-rotation)/180*M_PI, 0, 0, 1);
    
     // [-M_PI/2*1.09+M_PI,-M_PI/2*1.09]
