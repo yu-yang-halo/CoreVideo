@@ -56,6 +56,9 @@
 /* Class = "NSMenuItem"; title = "设置"; ObjectID = "KaW-ft-85H"; */
 "KaW-ft-85H.title" = "Setting";
 
+/* Class = "NSButton"; ibShadowedToolTip = "快进"; ObjectID = "Mgz-Hs-Chm"; */
+"Mgz-Hs-Chm.ibShadowedToolTip" = "Fast Forward ";
+
 /* Class = "NSTextFieldCell"; title = "最高时速"; ObjectID = "TQV-8A-2Hv"; */
 "TQV-8A-2Hv.title" = "Max Speed";
 
@@ -64,6 +67,9 @@
 
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
 "aUF-d1-5bR.title" = "Window";
+
+/* Class = "NSButton"; ibShadowedToolTip = "快退"; ObjectID = "b5p-kX-9yX"; */
+"b5p-kX-9yX.ibShadowedToolTip" = "Fast Rewind";
 
 /* Class = "NSMenu"; title = "文件"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "File";
@@ -77,11 +83,20 @@
 /* Class = "NSTextFieldCell"; title = "00:00:00"; ObjectID = "dwW-6X-K7w"; */
 "dwW-6X-K7w.title" = "00:00:00";
 
+/* Class = "NSButton"; ibShadowedToolTip = "打开文件"; ObjectID = "fTi-uZ-Q46"; */
+"fTi-uZ-Q46.ibShadowedToolTip" = "Open File";
+
 /* Class = "NSTextFieldCell"; title = "Y: 0.00"; ObjectID = "gJI-XP-hRo"; */
 "gJI-XP-hRo.title" = "Y: 0.00";
 
+/* Class = "NSButton"; ibShadowedToolTip = "缩放"; ObjectID = "i9J-Aa-eR3"; */
+"i9J-Aa-eR3.ibShadowedToolTip" = "Zoom in out";
+
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "jxT-CU-nIS"; */
 "jxT-CU-nIS.title" = "Format";
+
+/* Class = "NSButton"; ibShadowedToolTip = "查看图片"; ObjectID = "mzJ-kx-UD0"; */
+"mzJ-kx-UD0.ibShadowedToolTip" = "View Picture";
 
 /* Class = "NSButtonCell"; title = "删除"; ObjectID = "pA5-pW-3DD"; */
 "pA5-pW-3DD.title" = "Remove";
@@ -101,8 +116,14 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "tbQ-SY-QQY"; */
 "tbQ-SY-QQY.title" = "Text Cell";
 
+/* Class = "NSButton"; ibShadowedToolTip = "播放/暂停"; ObjectID = "tps-tk-M0x"; */
+"tps-tk-M0x.ibShadowedToolTip" = "Play/Pause";
+
 /* Class = "NSTextFieldCell"; title = "0"; ObjectID = "u69-R9-DHS"; */
 "u69-R9-DHS.title" = "0";
+
+/* Class = "NSButton"; ibShadowedToolTip = "截图"; ObjectID = "uF3-A7-9YV"; */
+"uF3-A7-9YV.ibShadowedToolTip" = "Capture";
 
 /* Class = "NSMenu"; title = "行车记录仪"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Car DVR";

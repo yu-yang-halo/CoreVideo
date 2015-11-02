@@ -827,7 +827,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="211" height="102"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XnU-SB-wbU">
-                                                <rect key="frame" x="0.0" y="10" width="104" height="82"/>
+                                                <rect key="frame" x="5" y="10" width="104" height="82"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="82" id="Ggz-1S-kE8"/>
                                                     <constraint firstAttribute="width" constant="104" id="sU6-6W-NWQ"/>
@@ -835,7 +835,7 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="car2" id="opQ-CV-kOn"/>
                                             </imageView>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0XI-6o-BHo">
-                                                <rect key="frame" x="101" y="11" width="100" height="90"/>
+                                                <rect key="frame" x="100" y="11" width="100" height="90"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="90" id="PgC-bn-xso"/>
                                                     <constraint firstAttribute="width" constant="100" id="S2G-s7-YbP"/>
@@ -845,8 +845,8 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="centerY" secondItem="0XI-6o-BHo" secondAttribute="centerY" constant="5" id="6W6-1n-jfH"/>
-                                            <constraint firstItem="0XI-6o-BHo" firstAttribute="leading" secondItem="XnU-SB-wbU" secondAttribute="trailing" constant="-3" id="FVR-t5-qXx"/>
-                                            <constraint firstItem="XnU-SB-wbU" firstAttribute="leading" secondItem="T0O-HK-7uq" secondAttribute="leading" id="VVp-5i-nbQ"/>
+                                            <constraint firstItem="0XI-6o-BHo" firstAttribute="leading" secondItem="XnU-SB-wbU" secondAttribute="trailing" constant="-9" id="FVR-t5-qXx"/>
+                                            <constraint firstItem="XnU-SB-wbU" firstAttribute="leading" secondItem="T0O-HK-7uq" secondAttribute="leading" constant="5" id="VVp-5i-nbQ"/>
                                             <constraint firstAttribute="centerY" secondItem="XnU-SB-wbU" secondAttribute="centerY" id="mDy-pe-VKe"/>
                                             <constraint firstAttribute="width" constant="211" id="qmY-cV-ZUe"/>
                                         </constraints>

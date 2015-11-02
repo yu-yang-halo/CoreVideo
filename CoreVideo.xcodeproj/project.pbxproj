@@ -66,6 +66,8 @@
 		180364DA1BAEADD100870783 /* CustomGsensorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomGsensorView.h; sourceTree = "<group>"; };
 		180364DB1BAEADD100870783 /* CustomGsensorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomGsensorView.m; sourceTree = "<group>"; };
 		180364DD1BAED2BA00870783 /* Class界面 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Class界面"; sourceTree = "<group>"; };
+		18313C1B1BE79BFF00D07AC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		18313C1D1BE79C0600D07AC0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		183CBA9C1BD113760075D7F4 /* AppColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppColorManager.h; sourceTree = "<group>"; };
 		183CBA9D1BD113760075D7F4 /* AppColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppColorManager.m; sourceTree = "<group>"; };
 		1885F5FC1BB6A6DB00D0F3D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PreferenceController.strings; sourceTree = "<group>"; };
@@ -83,8 +85,6 @@
 		189910C31BE458160011FC92 /* CVTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVTextField.m; sourceTree = "<group>"; };
 		18B22BA81BA6F30000D593C4 /* AssistFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssistFile.h; sourceTree = "<group>"; };
 		18B22BA91BA6F30000D593C4 /* AssistFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssistFile.cpp; sourceTree = "<group>"; };
-		18D7C5661BE6274E00634ACD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		18D7C5681BE6275000634ACD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		18D885911BC4D5F400285E2B /* AppToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppToast.h; sourceTree = "<group>"; };
 		18D885921BC4D5F400285E2B /* AppToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppToast.m; sourceTree = "<group>"; };
 		18D885941BC4DEDC00285E2B /* CVToastWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVToastWindowController.h; sourceTree = "<group>"; };
@@ -542,8 +542,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				84A85E7C1BA28E0E00817598 /* Base */,
-				18D7C5661BE6274E00634ACD /* en */,
-				18D7C5681BE6275000634ACD /* zh-Hans */,
+				18313C1B1BE79BFF00D07AC0 /* en */,
+				18313C1D1BE79C0600D07AC0 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
