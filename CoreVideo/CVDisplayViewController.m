@@ -44,13 +44,7 @@
 @property (weak) IBOutlet NSTextField *avageSpeedLabelText;
 @property (weak) IBOutlet NSTextField *totalDistanceLabelText;
 
-@property (weak) IBOutlet NSImageView *directLeftImageView;
 
-@property (weak) IBOutlet NSImageView *directRightImageView;
-
-@property (weak) IBOutlet NSImageView *directFrontImageView;
-
-@property (weak) IBOutlet NSImageView *directBackImageView;
 
 @property (weak) IBOutlet NSTextField *speedValueLabel;
 
@@ -167,7 +161,7 @@
             float yVal=[currentGsensorDataArr[index1][1] floatValue];
             float zVal=[currentGsensorDataArr[index1][2] floatValue];
             
-            [self updateImageDirectX:xVal yValue:yVal];
+            
             
             [_xTextField setStringValue:[NSString stringWithFormat:@"X: %.2f",xVal]];
             [_yTextField setStringValue:[NSString stringWithFormat:@"Y: %.2f",yVal]];
@@ -180,7 +174,7 @@
 }
 /*
  
- X：加速时的左右变化；Y：加速时的前后变化；Z：加速时的上下变化轴
+ X：加速时的前后变化；Y：加速时的左右变化；Z：加速时的上下变化轴
  
  Y<0 向前 ; Y>0 向后
  
@@ -188,23 +182,6 @@
  
  */
 
--(void)updateImageDirectX:(float) xVal yValue:(float)yVal{
-    if(xVal<0){
-        self.directLeftImageView.image=[NSImage imageNamed:@"car_left_active"];
-        self.directRightImageView.image=[NSImage imageNamed:@"car_right"];
-    }else{
-        self.directRightImageView.image=[NSImage imageNamed:@"car_right_active"];
-        self.directLeftImageView.image=[NSImage imageNamed:@"car_left"];
-    }
-    
-    if(yVal<0){
-        self.directFrontImageView.image=[NSImage imageNamed:@"car_left_active"];
-        self.directBackImageView.image=[NSImage imageNamed:@"car_right"];
-    }else{
-        self.directBackImageView.image=[NSImage imageNamed:@"car_right_active"];
-        self.directFrontImageView.image=[NSImage imageNamed:@"car_left"];
-    }
-}
 
 
 

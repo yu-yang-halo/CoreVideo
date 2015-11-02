@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
@@ -217,7 +217,7 @@
                             </button>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXM-kg-aKg">
                                 <rect key="frame" x="5" y="41" width="143" height="150"/>
-                                <clipView key="contentView" copiesOnScroll="NO" id="uHz-0e-rEU">
+                                <clipView key="contentView" misplaced="YES" copiesOnScroll="NO" id="uHz-0e-rEU">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -570,8 +570,8 @@
                                             <constraint firstAttribute="height" constant="40" id="qCW-2Y-6hR"/>
                                             <constraint firstAttribute="width" constant="55" id="t3j-8P-Jaa"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="setting_capture" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vix-sZ-0Jd">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <buttonCell key="cell" type="bevel" alternateTitle="截图" bezelStyle="regularSquare" image="setting_capture" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vix-sZ-0Jd">
+                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system" size="10"/>
                                         </buttonCell>
                                         <connections>
@@ -671,7 +671,7 @@
                 <viewController storyboardIdentifier="displayVC" id="Xwc-os-w9L" customClass="CVDisplayViewController" sceneMemberID="viewController">
                     <view key="view" id="mK5-en-gb8">
                         <rect key="frame" x="0.0" y="0.0" width="758" height="200"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mof-dL-tIq" customClass="CVView">
                                 <rect key="frame" x="379" y="98" width="379" height="102"/>
@@ -768,16 +768,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="758" height="102"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="voi-p2-Y0H" customClass="BlackView">
-                                        <rect key="frame" x="270" y="0.0" width="488" height="102"/>
+                                        <rect key="frame" x="211" y="0.0" width="547" height="102"/>
                                         <subviews>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="oao-Y0-DvF" customClass="CustomGsensorView">
-                                                <rect key="frame" x="77" y="0.0" width="411" height="102"/>
+                                                <rect key="frame" x="80" y="0.0" width="467" height="102"/>
                                             </customView>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rpI-kZ-LYc">
-                                                <rect key="frame" x="5" y="66" width="93" height="22"/>
+                                                <rect key="frame" x="3" y="70" width="93" height="22"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="89" id="rhc-AG-v9n"/>
-                                                    <constraint firstAttribute="height" constant="22" id="xJe-0A-Fu4"/>
+                                                    <constraint firstAttribute="height" constant="22" id="bjI-JO-e45"/>
+                                                    <constraint firstAttribute="width" constant="89" id="yBc-sW-TV5"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="X: 0.00" id="4iJ-v4-8pO">
                                                     <font key="font" size="18" name="HelveticaNeue"/>
@@ -786,10 +786,10 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L77-nw-i7e">
-                                                <rect key="frame" x="5" y="40" width="93" height="22"/>
+                                                <rect key="frame" x="3" y="40" width="93" height="22"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="89" id="fqQ-2A-k4R"/>
-                                                    <constraint firstAttribute="height" constant="22" id="lhg-qo-s92"/>
+                                                    <constraint firstAttribute="width" constant="89" id="OUP-fn-ADK"/>
+                                                    <constraint firstAttribute="height" constant="22" id="ggK-hb-UL5"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Y: 0.00" id="gJI-XP-hRo">
                                                     <font key="font" size="18" name="HelveticaNeue"/>
@@ -798,10 +798,10 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zgI-fe-4mb">
-                                                <rect key="frame" x="5" y="14" width="93" height="22"/>
+                                                <rect key="frame" x="3" y="10" width="93" height="22"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="hFB-tx-eOv"/>
-                                                    <constraint firstAttribute="width" constant="89" id="oQG-v6-dyK"/>
+                                                    <constraint firstAttribute="height" constant="22" id="4tx-1K-bfq"/>
+                                                    <constraint firstAttribute="width" constant="89" id="PCz-T9-8Uo"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Z: 0.00" id="uyE-O6-B1r">
                                                     <font key="font" size="18" name="HelveticaNeue"/>
@@ -811,106 +811,55 @@
                                             </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="L77-nw-i7e" secondAttribute="centerY" id="0j1-MN-2Ep"/>
-                                            <constraint firstItem="L77-nw-i7e" firstAttribute="leading" secondItem="voi-p2-Y0H" secondAttribute="leading" constant="7" id="52A-3W-ZFC"/>
-                                            <constraint firstAttribute="bottom" secondItem="zgI-fe-4mb" secondAttribute="bottom" constant="14" id="FNx-gC-xt3"/>
-                                            <constraint firstAttribute="trailing" secondItem="oao-Y0-DvF" secondAttribute="trailing" id="Iq8-rs-eE3"/>
-                                            <constraint firstAttribute="bottom" secondItem="oao-Y0-DvF" secondAttribute="bottom" id="LvC-xC-hz5"/>
-                                            <constraint firstItem="rpI-kZ-LYc" firstAttribute="top" secondItem="voi-p2-Y0H" secondAttribute="top" constant="14" id="Nbd-9C-WYX"/>
-                                            <constraint firstItem="zgI-fe-4mb" firstAttribute="leading" secondItem="voi-p2-Y0H" secondAttribute="leading" constant="7" id="UIs-Z0-WDJ"/>
-                                            <constraint firstItem="oao-Y0-DvF" firstAttribute="top" secondItem="voi-p2-Y0H" secondAttribute="top" id="UOO-7B-pyi"/>
-                                            <constraint firstItem="oao-Y0-DvF" firstAttribute="leading" secondItem="L77-nw-i7e" secondAttribute="trailing" constant="-19" id="kcu-2e-hGB"/>
-                                            <constraint firstItem="rpI-kZ-LYc" firstAttribute="leading" secondItem="voi-p2-Y0H" secondAttribute="leading" constant="7" id="qzA-uE-06G"/>
-                                        </constraints>
-                                    </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="fZZ-fy-u7w" customClass="CVView">
-                                        <rect key="frame" x="0.0" y="0.0" width="135" height="102"/>
-                                        <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fS2-ut-7hv">
-                                                <rect key="frame" x="15" y="10" width="104" height="82"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="104" id="7y2-Sq-qap"/>
-                                                    <constraint firstAttribute="height" constant="82" id="alQ-0h-xwP"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="car1" id="afA-rV-XoU"/>
-                                            </imageView>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C3O-Q2-fmK">
-                                                <rect key="frame" x="111" y="30" width="17" height="43"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="43" id="18e-zt-4Cg"/>
-                                                    <constraint firstAttribute="width" constant="17" id="wSx-ZF-XOn"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="car_right" id="rpm-9t-OzU"/>
-                                            </imageView>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lnq-Ma-Fbk">
-                                                <rect key="frame" x="6" y="30" width="17" height="43"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="17" id="GCV-x4-Y09"/>
-                                                    <constraint firstAttribute="height" constant="43" id="dUS-Yq-aAI"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="car_left" id="ryt-OV-Wzb"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="C3O-Q2-fmK" firstAttribute="leading" secondItem="fS2-ut-7hv" secondAttribute="trailing" constant="-8" id="1rO-Xl-L4Y"/>
-                                            <constraint firstAttribute="width" constant="135" id="7pD-5p-zMh"/>
-                                            <constraint firstAttribute="centerY" secondItem="C3O-Q2-fmK" secondAttribute="centerY" id="RRV-B2-7II"/>
-                                            <constraint firstAttribute="centerX" secondItem="fS2-ut-7hv" secondAttribute="centerX" id="ZAg-Lr-RMs"/>
-                                            <constraint firstAttribute="centerY" secondItem="fS2-ut-7hv" secondAttribute="centerY" id="cey-DQ-ofY"/>
-                                            <constraint firstItem="fS2-ut-7hv" firstAttribute="leading" secondItem="lnq-Ma-Fbk" secondAttribute="trailing" constant="-8" id="fwu-yq-ZKa"/>
-                                            <constraint firstAttribute="centerY" secondItem="lnq-Ma-Fbk" secondAttribute="centerY" id="l15-tS-oEK"/>
+                                            <constraint firstItem="L77-nw-i7e" firstAttribute="top" secondItem="rpI-kZ-LYc" secondAttribute="bottom" constant="8" id="2Av-ht-iqg"/>
+                                            <constraint firstAttribute="trailing" secondItem="oao-Y0-DvF" secondAttribute="trailing" id="9IA-pM-7Sb"/>
+                                            <constraint firstItem="zgI-fe-4mb" firstAttribute="leading" secondItem="voi-p2-Y0H" secondAttribute="leading" constant="5" id="BVn-0K-TOJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="oao-Y0-DvF" secondAttribute="bottom" id="Y00-Ow-v85"/>
+                                            <constraint firstItem="oao-Y0-DvF" firstAttribute="leading" secondItem="L77-nw-i7e" secondAttribute="trailing" constant="-14" id="ZfD-mp-kHl"/>
+                                            <constraint firstAttribute="centerY" secondItem="L77-nw-i7e" secondAttribute="centerY" id="dZd-Of-g8j"/>
+                                            <constraint firstItem="L77-nw-i7e" firstAttribute="leading" secondItem="voi-p2-Y0H" secondAttribute="leading" constant="5" id="fPb-Ub-Yz3"/>
+                                            <constraint firstItem="rpI-kZ-LYc" firstAttribute="leading" secondItem="voi-p2-Y0H" secondAttribute="leading" constant="5" id="hr6-Hn-fkY"/>
+                                            <constraint firstItem="zgI-fe-4mb" firstAttribute="top" secondItem="L77-nw-i7e" secondAttribute="bottom" constant="8" id="u5f-wt-Yjq"/>
+                                            <constraint firstItem="oao-Y0-DvF" firstAttribute="top" secondItem="voi-p2-Y0H" secondAttribute="top" id="uhX-vo-DgX"/>
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="T0O-HK-7uq" customClass="CVView">
-                                        <rect key="frame" x="135" y="0.0" width="135" height="102"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="211" height="102"/>
                                         <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KpF-R9-YNY">
-                                                <rect key="frame" x="115" y="30" width="17" height="43"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="43" id="20K-FV-aQl"/>
-                                                    <constraint firstAttribute="width" constant="17" id="gqE-Sz-08g"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="car_right" id="uVL-6C-enU"/>
-                                            </imageView>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XnU-SB-wbU">
-                                                <rect key="frame" x="15" y="10" width="104" height="82"/>
+                                                <rect key="frame" x="0.0" y="10" width="104" height="82"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="104" id="Tph-aC-Vmt"/>
-                                                    <constraint firstAttribute="height" constant="82" id="rLW-vY-uYr"/>
+                                                    <constraint firstAttribute="height" constant="82" id="Ggz-1S-kE8"/>
+                                                    <constraint firstAttribute="width" constant="104" id="sU6-6W-NWQ"/>
                                                 </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="car2" id="opQ-CV-kOn"/>
                                             </imageView>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wxk-y8-n1Y">
-                                                <rect key="frame" x="2" y="30" width="17" height="43"/>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0XI-6o-BHo">
+                                                <rect key="frame" x="101" y="11" width="100" height="90"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="43" id="4lk-Sr-vJM"/>
-                                                    <constraint firstAttribute="width" constant="17" id="OXo-i4-jKc"/>
+                                                    <constraint firstAttribute="height" constant="90" id="PgC-bn-xso"/>
+                                                    <constraint firstAttribute="width" constant="100" id="S2G-s7-YbP"/>
                                                 </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="car_left" id="MMi-Mw-wO0"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="xyz" id="55D-B8-X44"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="Wxk-y8-n1Y" secondAttribute="centerY" id="1A2-QS-a24"/>
-                                            <constraint firstAttribute="width" constant="135" id="4eO-1m-NN1"/>
-                                            <constraint firstItem="KpF-R9-YNY" firstAttribute="leading" secondItem="XnU-SB-wbU" secondAttribute="trailing" constant="-4" id="R1Y-zP-avn"/>
-                                            <constraint firstItem="XnU-SB-wbU" firstAttribute="leading" secondItem="Wxk-y8-n1Y" secondAttribute="trailing" constant="-4" id="TIJ-f9-i9u"/>
-                                            <constraint firstAttribute="centerX" secondItem="XnU-SB-wbU" secondAttribute="centerX" id="UbK-yd-NlI"/>
-                                            <constraint firstAttribute="centerY" secondItem="XnU-SB-wbU" secondAttribute="centerY" id="hQ6-w4-hoq"/>
-                                            <constraint firstAttribute="centerY" secondItem="KpF-R9-YNY" secondAttribute="centerY" id="pei-1Z-p9T"/>
+                                            <constraint firstAttribute="centerY" secondItem="0XI-6o-BHo" secondAttribute="centerY" constant="5" id="6W6-1n-jfH"/>
+                                            <constraint firstItem="0XI-6o-BHo" firstAttribute="leading" secondItem="XnU-SB-wbU" secondAttribute="trailing" constant="-3" id="FVR-t5-qXx"/>
+                                            <constraint firstItem="XnU-SB-wbU" firstAttribute="leading" secondItem="T0O-HK-7uq" secondAttribute="leading" id="VVp-5i-nbQ"/>
+                                            <constraint firstAttribute="centerY" secondItem="XnU-SB-wbU" secondAttribute="centerY" id="mDy-pe-VKe"/>
+                                            <constraint firstAttribute="width" constant="211" id="qmY-cV-ZUe"/>
                                         </constraints>
                                     </customView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="voi-p2-Y0H" secondAttribute="trailing" id="2yI-dV-arV"/>
-                                    <constraint firstItem="voi-p2-Y0H" firstAttribute="leading" secondItem="T0O-HK-7uq" secondAttribute="trailing" id="Kbg-Ph-Ua2"/>
-                                    <constraint firstItem="fZZ-fy-u7w" firstAttribute="leading" secondItem="dxY-1s-Dp5" secondAttribute="leading" id="Vfy-C4-hfd"/>
-                                    <constraint firstItem="T0O-HK-7uq" firstAttribute="leading" secondItem="fZZ-fy-u7w" secondAttribute="trailing" id="hpQ-LZ-PUI"/>
-                                    <constraint firstAttribute="bottom" secondItem="voi-p2-Y0H" secondAttribute="bottom" id="lQ5-GU-wlh"/>
-                                    <constraint firstItem="fZZ-fy-u7w" firstAttribute="top" secondItem="dxY-1s-Dp5" secondAttribute="top" id="laf-cy-ToQ"/>
-                                    <constraint firstItem="T0O-HK-7uq" firstAttribute="top" secondItem="dxY-1s-Dp5" secondAttribute="top" id="n11-hg-oad"/>
-                                    <constraint firstItem="voi-p2-Y0H" firstAttribute="top" secondItem="dxY-1s-Dp5" secondAttribute="top" id="puN-13-tHB"/>
-                                    <constraint firstAttribute="bottom" secondItem="fZZ-fy-u7w" secondAttribute="bottom" id="qn4-3S-3BB"/>
-                                    <constraint firstAttribute="bottom" secondItem="T0O-HK-7uq" secondAttribute="bottom" id="s1i-L5-iw6"/>
+                                    <constraint firstAttribute="bottom" secondItem="T0O-HK-7uq" secondAttribute="bottom" id="8Y1-St-LiV"/>
+                                    <constraint firstAttribute="trailing" secondItem="voi-p2-Y0H" secondAttribute="trailing" id="DBB-Ed-LBD"/>
+                                    <constraint firstItem="T0O-HK-7uq" firstAttribute="top" secondItem="dxY-1s-Dp5" secondAttribute="top" id="fMD-ZB-hpp"/>
+                                    <constraint firstItem="voi-p2-Y0H" firstAttribute="top" secondItem="dxY-1s-Dp5" secondAttribute="top" id="kwI-ZM-xZP"/>
+                                    <constraint firstAttribute="bottom" secondItem="voi-p2-Y0H" secondAttribute="bottom" id="sdH-Kx-wIi"/>
+                                    <constraint firstItem="T0O-HK-7uq" firstAttribute="leading" secondItem="dxY-1s-Dp5" secondAttribute="leading" id="vBT-Wu-dvx"/>
+                                    <constraint firstItem="voi-p2-Y0H" firstAttribute="leading" secondItem="T0O-HK-7uq" secondAttribute="trailing" id="zyU-Aa-NFY"/>
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="arR-wK-F8s" customClass="CVView">
@@ -976,11 +925,6 @@
                     <connections>
                         <outlet property="avageSpeedLabelText" destination="UoS-y5-P24" id="ufL-ZD-5hR"/>
                         <outlet property="averageHSpeed" destination="hvg-t7-3U7" id="Fem-63-YYB"/>
-                        <outlet property="direct" destination="KpF-R9-YNY" id="zA8-oc-ceJ"/>
-                        <outlet property="directBackImageView" destination="KpF-R9-YNY" id="j0d-b8-MqO"/>
-                        <outlet property="directFrontImageView" destination="Wxk-y8-n1Y" id="svb-9o-rdc"/>
-                        <outlet property="directLeftImageView" destination="lnq-Ma-Fbk" id="ZIS-dO-xVD"/>
-                        <outlet property="directRightImageView" destination="C3O-Q2-fmK" id="T7w-Cy-FxV"/>
                         <outlet property="gsensorContainer" destination="dxY-1s-Dp5" id="awi-lw-3S7"/>
                         <outlet property="gsensorView" destination="oao-Y0-DvF" id="dxO-Ud-hTj"/>
                         <outlet property="maxHSpeed" destination="9cD-P9-ysQ" id="W0w-ad-bvw"/>
@@ -1002,10 +946,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="car1" width="256" height="256"/>
         <image name="car2" width="128" height="128"/>
-        <image name="car_left" width="24" height="40"/>
-        <image name="car_right" width="24" height="40"/>
         <image name="compass2-move" width="147" height="147"/>
         <image name="compass2-still" width="147" height="147"/>
         <image name="files_add" width="14" height="14"/>
@@ -1019,5 +960,6 @@
         <image name="setting_gps_active" width="22" height="30"/>
         <image name="setting_video_dir" width="41" height="30"/>
         <image name="speaker_on" width="33" height="33"/>
+        <image name="xyz" width="100" height="90"/>
     </resources>
 </document>
