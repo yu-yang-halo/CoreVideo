@@ -61,7 +61,7 @@
             
             _latitudeLabel.stringValue=[self convertLatLngToDFM:[xyItem[1] floatValue]<0?-[xyItem[1] floatValue]:[xyItem[1] floatValue]];
             
-            NSLog(@"north_angle %@",xyItem[2]);
+            //NSLog(@"north_angle %@",xyItem[2]);
             [self  rotateAngle:[xyItem[2] floatValue]/180*M_PI];
             
         }

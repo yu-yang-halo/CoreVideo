@@ -24,25 +24,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-
+    /*
+        默认加载高德地图（中国内）
+     */
     currentLocationChina=YES;
     
-    
     self.webview=[[WebView alloc] initWithFrame:self.view.bounds];
-    
-    NSButton *btn=[[NSButton alloc] initWithFrame:NSMakeRect(0, 0, 70, 20)];
-    
-    [btn setButtonType:(NSMomentaryLightButton)];
-    [btn setTitle:NSLocalizedString(@"reload", nil)];
-    [btn setTarget:self];
-    [btn setAction:@selector(reloadWeb:)];
-    [_webview addSubview:btn];
-    
-  
     [self loadMapHTMLData:currentLocationChina];
-    
-    
     
     
     self.webview.frameLoadDelegate=self;
@@ -52,23 +40,8 @@
     
     
     
-    JSContext *context=self.webview.mainFrame.javaScriptContext;
     
-    __weak CVWebViewController *weakSelf = self;
-    
-    context[@"cocoa_getDistance"]=^(){
-        NSArray *args=[JSContext currentArguments];
-        JSValue *value=args[0];
-        NSLog(@"当前距离是 : %f" ,value.toDouble);
-        [weakSelf.distanceDelegate totalDistance:value.toDouble];
-    };
-    
-    context[@"loadGoogleMap"]=^(){
-      
         
-        
-    };
-    
     
 }
 
@@ -80,18 +53,29 @@
      NSString *gpsPath=[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:mapHtml];
     
      [[self.webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:gpsPath]]];
+    
+    
+
 }
 
--(void)reloadWeb:(id)sender{
-   // [_webview.mainFrame reload];
-}
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame{
     NSLog(@"didFinishLoadForFrame");
+    JSContext *context=self.webview.mainFrame.javaScriptContext;
+    
+    __weak CVWebViewController *weakSelf = self;
+    
+    context[@"cocoa_getDistance"]=^(){
+        NSArray *args=[JSContext currentArguments];
+        JSValue *value=args[0];
+        NSLog(@"当前距离是 : %f" ,value.toDouble);
+        [weakSelf.distanceDelegate totalDistance:value.toDouble];
+    };
    
     if(currentVideoGpsDataArr!=nil&&[currentVideoGpsDataArr count]>0){
         [_webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"drawPolyLinePath(%@)",[currentVideoGpsDataArr JSONString]]];
     }
+    
     
 }
 
@@ -121,6 +105,7 @@
 
 
 -(void)dataLogicProcessOfViodePath:(NSString *)playVideoPath{
+     [self.distanceDelegate totalDistance:0];
     
      currentPlayVideoPath=playVideoPath;
     

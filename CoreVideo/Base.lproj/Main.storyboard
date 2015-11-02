@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jGA-0Y-lOj">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
@@ -217,7 +217,7 @@
                             </button>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXM-kg-aKg">
                                 <rect key="frame" x="5" y="41" width="143" height="150"/>
-                                <clipView key="contentView" misplaced="YES" copiesOnScroll="NO" id="uHz-0e-rEU">
+                                <clipView key="contentView" copiesOnScroll="NO" id="uHz-0e-rEU">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -473,7 +473,7 @@
                                         <rect key="frame" x="158" y="-2" width="48" height="48"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="lfX-1B-t3P"/>
                                     </imageView>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="i9J-Aa-eR3">
+                                    <button toolTip="缩放" translatesAutoresizingMaskIntoConstraints="NO" id="i9J-Aa-eR3">
                                         <rect key="frame" x="484" y="0.0" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="4Uh-hS-ORt"/>
@@ -508,7 +508,7 @@
                                         </constraints>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="speaker_on" id="tMr-d4-mnd"/>
                                     </imageView>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="b5p-kX-9yX">
+                                    <button toolTip="快退" translatesAutoresizingMaskIntoConstraints="NO" id="b5p-kX-9yX">
                                         <rect key="frame" x="172" y="12" width="39" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="39" id="6tY-A5-a54"/>
@@ -522,7 +522,7 @@
                                             <action selector="backwardRate:" target="47X-5P-zVC" id="RHi-bH-ptv"/>
                                         </connections>
                                     </button>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Mgz-Hs-Chm">
+                                    <button toolTip="快进" translatesAutoresizingMaskIntoConstraints="NO" id="Mgz-Hs-Chm">
                                         <rect key="frame" x="276" y="12" width="39" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="39" id="PrN-h7-hMa"/>
@@ -536,7 +536,7 @@
                                             <action selector="forwardRate:" target="47X-5P-zVC" id="vmK-OP-d4M"/>
                                         </connections>
                                     </button>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="tps-tk-M0x">
+                                    <button toolTip="播放/暂停" translatesAutoresizingMaskIntoConstraints="NO" id="tps-tk-M0x">
                                         <rect key="frame" x="214" y="7" width="59" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="AZb-Lm-gM7"/>
@@ -550,7 +550,7 @@
                                             <action selector="playOrPause:" target="47X-5P-zVC" id="VCV-gD-vdU"/>
                                         </connections>
                                     </button>
-                                    <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzJ-kx-UD0">
+                                    <button toolTip="查看图片" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzJ-kx-UD0">
                                         <rect key="frame" x="318" y="11" width="55" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="b7b-Q4-ZFC"/>
@@ -564,32 +564,18 @@
                                             <action selector="lookPicture:" target="47X-5P-zVC" id="8q4-C8-P0K"/>
                                         </connections>
                                     </button>
-                                    <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uF3-A7-9YV">
+                                    <button toolTip="截图" misplaced="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uF3-A7-9YV">
                                         <rect key="frame" x="376" y="11" width="55" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="qCW-2Y-6hR"/>
                                             <constraint firstAttribute="width" constant="55" id="t3j-8P-Jaa"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" alternateTitle="截图" bezelStyle="regularSquare" image="setting_capture" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vix-sZ-0Jd">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="setting_capture" imagePosition="overlaps" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vix-sZ-0Jd">
                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system" size="10"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="capture:" target="47X-5P-zVC" id="Mlv-yE-l6w"/>
-                                        </connections>
-                                    </button>
-                                    <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTi-uZ-Q46">
-                                        <rect key="frame" x="439" y="11" width="55" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="0NW-vI-ko3"/>
-                                            <constraint firstAttribute="width" constant="55" id="BNj-0m-Lrf"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="setting_video_dir" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vnz-YU-Sqx">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="10"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="openFile:" target="47X-5P-zVC" id="L7J-OY-6vh"/>
                                         </connections>
                                     </button>
                                     <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1p1-68-45A">
@@ -603,6 +589,20 @@
                                             <binding destination="47X-5P-zVC" name="maxValue" keyPath="self.duration" id="MnI-g8-fp8"/>
                                         </connections>
                                     </slider>
+                                    <button toolTip="打开文件" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTi-uZ-Q46">
+                                        <rect key="frame" x="439" y="11" width="55" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0NW-vI-ko3"/>
+                                            <constraint firstAttribute="width" constant="55" id="BNj-0m-Lrf"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="setting_video_dir" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="vnz-YU-Sqx">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="10"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openFile:" target="47X-5P-zVC" id="L7J-OY-6vh"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="uF3-A7-9YV" firstAttribute="leading" secondItem="mzJ-kx-UD0" secondAttribute="trailing" constant="15" id="0Ya-o2-WAn"/>
