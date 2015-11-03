@@ -295,15 +295,7 @@ static int j=0;
 
 
 - (IBAction)zoomInOut:(NSButton *)sender {
-    [self.zoomInDelegate zoomInVideoPlayWindow:zoomState];
-    if(zoomState==0){
-        zoomState=1;
-        NSLog(@"放大");
-    }else{
-        zoomState=0;
-        NSLog(@"缩小");
-    }
-    
+    zoomState=[self.zoomInDelegate zoomInVideoPlayWindow:zoomState];
 }
 - (void)close
 {

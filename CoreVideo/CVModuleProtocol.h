@@ -10,7 +10,11 @@
 @protocol CVModuleProtocol <NSObject>
 
 #pragma mark 放大缩小播放窗口    代理协议
--(void)zoomInVideoPlayWindow:(NSInteger)state;
+-(NSInteger)zoomInVideoPlayWindow:(NSInteger)state;
+
+#pragma mark 放大缩小地图窗口    代理协议
+-(NSInteger)zoomInMapWindow:(NSInteger)state;
+
 
 #pragma mark 根据视频路径获取想要的视频数据进行逻辑处理
 -(void)dataLogicProcessOfViodePath:(NSString *)playVideoPath;

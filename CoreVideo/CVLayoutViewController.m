@@ -25,12 +25,16 @@
     
     NSRect globalView1Rect;
     NSRect globalView0Rect;
+    NSRect globalView2Rect;
     
     NSRect leftView1Rect;
     NSRect leftView0Rect;
     
     NSRect rightView1Rect;
     NSRect rightView0Rect;
+    
+    BOOL videoZoomStateMAX;
+    BOOL mapZoomStateMAX;
     
 }
 @property (weak) IBOutlet NSSplitView *globalSplitView;
@@ -61,12 +65,16 @@
     
     [self.view.layer setBackgroundColor:[[AppColorManager appBackgroundColor] CGColor]];
     
+    videoZoomStateMAX=NO;
+    mapZoomStateMAX=NO;
+    
     // Do view setup here.
     
     displayVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"displayVC"];
     
     webVC      =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"webVC"];
     webVC.distanceDelegate=displayVC;
+    webVC.zoomInOutDelegate=self;
     
     gpsVC=[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"gpsVC"];
     
@@ -184,34 +192,78 @@
 }
 
 
--(void)zoomInVideoPlayWindow:(NSInteger)state{
+#pragma mark delegate Window Zoom IN Out
+
+-(NSInteger)zoomInMapWindow:(NSInteger)state{
+    if(videoZoomStateMAX||(!mapZoomStateMAX&&state==1)){
+        state=0;
+    }
+    
+    
     if(state==0){
         
-        globalView1Rect=[[[_globalSplitView subviews] objectAtIndex:1] bounds];
-        globalView0Rect=[[[_globalSplitView subviews] objectAtIndex:0] bounds];
-   
-        leftView1Rect=[[[_leftSplitView subviews] objectAtIndex:1] bounds];
-        leftView0Rect=[[[_leftSplitView subviews] objectAtIndex:0] bounds];
+        [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
+        [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_globalSplitView subviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,532,760)];
         
-        rightView1Rect=[[[_rightSplitView subviews] objectAtIndex:1] bounds];
-        rightView0Rect=[[[_rightSplitView subviews] objectAtIndex:0] bounds];
+        [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
+        [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
         
+        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        mapZoomStateMAX=YES;
+        videoZoomStateMAX=NO;
+    }else{
+        [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
+        [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,760)];
+        [[[_globalSplitView subviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,266,760)];
         
-        [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSZeroRect];
+        [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
+        [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
         
-        [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSZeroRect];
+        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,323)];
+        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,437)];
+        mapZoomStateMAX=NO;
+    }
+    
+    
+    return state==0?1:0;
+}
+-(NSInteger)zoomInVideoPlayWindow:(NSInteger)state{
+    
+    if(mapZoomStateMAX||(!videoZoomStateMAX&&state==1)){
+        state=0;
+    }
+    
+    if(state==0){
+        
+        [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1280,760)];
+        [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_globalSplitView subviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,266,760)];
+        
+        [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1280,760)];
+        [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        
+        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        videoZoomStateMAX=YES;
+        mapZoomStateMAX=NO;
         
     }else{
-        [[[_globalSplitView subviews] objectAtIndex:1] setFrame:globalView1Rect];
-        [[[_globalSplitView subviews] objectAtIndex:0] setFrame:globalView0Rect];
+        [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
+        [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,760)];
+        [[[_globalSplitView subviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,266,760)];
         
-        [[[_leftSplitView subviews] objectAtIndex:1] setFrame:leftView1Rect];
-        [[[_leftSplitView subviews] objectAtIndex:0] setFrame:leftView0Rect];
+        [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
+        [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
         
-        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:rightView1Rect];
-        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:rightView0Rect];
+        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,323)];
+        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,437)];
+        videoZoomStateMAX=NO;
        
     }
+    
+    return state==0?1:0;
 }
 
 

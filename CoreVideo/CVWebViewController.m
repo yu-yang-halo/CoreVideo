@@ -16,6 +16,8 @@
     NSString       *currentPlayVideoPath;
     Float64         totalTime;
     BOOL  currentLocationChina;
+    
+     NSInteger zoomState;//0 放大  1 缩小
 }
 
 @end
@@ -35,14 +37,34 @@
     
     self.webview.frameLoadDelegate=self;
     
+    NSButton *zoomInOut=[[NSButton alloc] initWithFrame:NSMakeRect(0, 0,48, 48)];
+   
+    [zoomInOut.cell setBezelStyle:NSRegularSquareBezelStyle];
+    [zoomInOut setImage:[NSImage imageNamed:@"scale"]];
+    [zoomInOut.cell setImageScaling:NSImageScaleProportionallyDown];
+    [zoomInOut setToolTip:NSLocalizedString(@"zoomin_out",nil)];
+    
+    
+    [zoomInOut setTarget:self];
+    [zoomInOut setAction:@selector(zoomInOut:)];
+    
+    
+    
     
     [self.view addSubview:_webview];
+    [self.view addSubview:zoomInOut];
     
     
     
     
         
     
+}
+
+-(void)zoomInOut:(id)sender{
+    zoomState=[self.zoomInOutDelegate zoomInMapWindow:zoomState];
+    
+
 }
 
 -(void)loadMapHTMLData:(BOOL)locationInChina{
