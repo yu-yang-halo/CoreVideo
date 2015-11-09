@@ -9,6 +9,7 @@
 #import "CVWebViewController.h"
 #import "MyCache.h"
 #import "JSONKit.h"
+#import "BDTransUtil.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 @interface CVWebViewController ()
 {
@@ -27,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     /*
-        默认加载高德地图（中国内）
+        默认加载百度地图（中国内）
      */
     currentLocationChina=YES;
     
@@ -68,7 +69,7 @@
 }
 
 -(void)loadMapHTMLData:(BOOL)locationInChina{
-     NSString *mapHtml=@"amap.html";
+     NSString *mapHtml=@"baidu_map.html";
      if(!locationInChina){
         mapHtml=@"google_map.html";
      }
@@ -121,6 +122,8 @@
 }
 
 
+
+
 -(void)videoAllTime:(Float64)allTime{
     totalTime=allTime;
 }
@@ -151,7 +154,9 @@
          if(gps_lat.floatValue!=0&&gps_lgt.floatValue!=0){
              
              if(isINCHINA){
-                 [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:gps_lgt.floatValue],[NSNumber numberWithFloat:gps_lat.floatValue], nil]];
+                 
+                 [currentVideoGpsDataArr addObject:[BDTransUtil wgs2bdLat:gps_lat.floatValue lgt:gps_lgt.floatValue]];
+                
              }else{
                  [currentVideoGpsDataArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:gps_lat.floatValue],@"lat",[NSNumber numberWithFloat:gps_lgt.floatValue],@"lng",nil]];
                  
@@ -163,7 +168,7 @@
         
         
      }];
-   // NSLog(@"*****%@****",[currentVideoGpsDataArr JSONString]);
+    NSLog(@"*****%@****",[currentVideoGpsDataArr JSONString]);
     [self.webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"drawPolyLinePath(%@)",[currentVideoGpsDataArr JSONString]]];
 }
 

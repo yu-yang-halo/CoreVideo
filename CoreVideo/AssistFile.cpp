@@ -230,7 +230,7 @@ int CAssistFile::ParseLine(char *pszLine, int key)
 	}	
 
 	m_infoList.push_back(node);
-#if 1	//ƒ£ƒ‚Œƒº˛“‘1Hz≤…—˘, µº  «”√10Hz≤…—˘
+#if 0	//ƒ£ƒ‚Œƒº˛“‘1Hz≤…—˘, µº  «”√10Hz≤…—˘
 	m_infoList.push_back(node);
 	m_infoList.push_back(node);
 	m_infoList.push_back(node);
@@ -435,7 +435,7 @@ int CAssistFile::ParseAssistDataForSunplus(string strMOVFile)
 			ParseRMC(gps_dat.gps_info_rmc, node.gps_lat, node.gps_lgt, node.spd, node.north_angle);				
 
 			m_infoList.push_back(node);
-#if 1	//ƒ£ƒ‚Œƒº˛“‘1Hz≤…—˘, µº  «”√10Hz≤…—˘
+#if 0	//ƒ£ƒ‚Œƒº˛“‘1Hz≤…—˘, µº  «”√10Hz≤…—˘
 			m_infoList.push_back(node);
 			m_infoList.push_back(node);
 			m_infoList.push_back(node);
@@ -569,15 +569,15 @@ int CAssistFile::ParseAssistDataForNovatek(string strMOVFile)
 					}	
 
 					m_infoList.AddTail(node);
-					m_infoList.AddTail(node);
-					m_infoList.AddTail(node);
-					m_infoList.AddTail(node);
-					m_infoList.AddTail(node);
-					m_infoList.AddTail(node);
-					m_infoList.AddTail(node);
-					m_infoList.AddTail(node);
-					m_infoList.AddTail(node);
-					m_infoList.AddTail(node);		
+//					m_infoList.AddTail(node);
+//					m_infoList.AddTail(node);
+//					m_infoList.AddTail(node);
+//					m_infoList.AddTail(node);
+//					m_infoList.AddTail(node);
+//					m_infoList.AddTail(node);
+//					m_infoList.AddTail(node);
+//					m_infoList.AddTail(node);
+//					m_infoList.AddTail(node);		
 				}
 			}
 
@@ -892,7 +892,7 @@ int CAssistFile::ParseAssistDataForNovatek(string strMOVFile)
 							}	
 
 							m_infoList.push_back(node);
-#if 1	//ƒ£ƒ‚Œƒº˛“‘1Hz≤…—˘, µº  «”√10Hz≤…—˘
+#if 0	//ƒ£ƒ‚Œƒº˛“‘1Hz≤…—˘, µº  «”√10Hz≤…—˘
 							m_infoList.push_back(node);
 							m_infoList.push_back(node);
 							m_infoList.push_back(node);

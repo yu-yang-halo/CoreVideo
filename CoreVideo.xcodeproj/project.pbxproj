@@ -50,6 +50,9 @@
 		84B5DFDC1BAAC54500DA74DB /* mcar3.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B5DFDB1BAAC54500DA74DB /* mcar3.png */; };
 		84BC6A091BA8FF0400FBF400 /* CVLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC6A081BA8FF0400FBF400 /* CVLayoutViewController.m */; };
 		84BD9D3C1BD8A92B0023F217 /* google_map.html in Resources */ = {isa = PBXBuildFile; fileRef = 84BD9D3B1BD8A92B0023F217 /* google_map.html */; };
+		84F8199E1BF0682E00FA2314 /* baidu_map.html in Resources */ = {isa = PBXBuildFile; fileRef = 84F8199D1BF0682E00FA2314 /* baidu_map.html */; };
+		84F819A11BF0924900FA2314 /* BDTransUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F819A01BF0924900FA2314 /* BDTransUtil.m */; };
+		84F819A51BF09F5F00FA2314 /* GeoUtils.js in Resources */ = {isa = PBXBuildFile; fileRef = 84F819A41BF09F5F00FA2314 /* GeoUtils.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +150,10 @@
 		84BC6A071BA8FF0400FBF400 /* CVLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVLayoutViewController.h; sourceTree = "<group>"; };
 		84BC6A081BA8FF0400FBF400 /* CVLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVLayoutViewController.m; sourceTree = "<group>"; };
 		84BD9D3B1BD8A92B0023F217 /* google_map.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = google_map.html; sourceTree = "<group>"; };
+		84F8199D1BF0682E00FA2314 /* baidu_map.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = baidu_map.html; sourceTree = "<group>"; };
+		84F8199F1BF0924900FA2314 /* BDTransUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDTransUtil.h; sourceTree = "<group>"; };
+		84F819A01BF0924900FA2314 /* BDTransUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDTransUtil.m; sourceTree = "<group>"; };
+		84F819A41BF09F5F00FA2314 /* GeoUtils.js */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = sourcecode.javascript; path = GeoUtils.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +209,8 @@
 				18B22BA91BA6F30000D593C4 /* AssistFile.cpp */,
 				84B43FE51BA806FA00B4B46A /* GpsDataHelper.h */,
 				84B43FE61BA806FA00B4B46A /* GpsDataHelper.mm */,
+				84F8199F1BF0924900FA2314 /* BDTransUtil.h */,
+				84F819A01BF0924900FA2314 /* BDTransUtil.m */,
 			);
 			name = assist;
 			sourceTree = "<group>";
@@ -288,6 +297,8 @@
 				84A85E7B1BA28E0E00817598 /* Main.storyboard */,
 				84B43FE81BA8182400B4B46A /* amap.html */,
 				84BD9D3B1BD8A92B0023F217 /* google_map.html */,
+				84F8199D1BF0682E00FA2314 /* baidu_map.html */,
+				84F819A41BF09F5F00FA2314 /* GeoUtils.js */,
 				84B5DFD71BAAC0D100DA74DB /* mcar1.png */,
 				84B5DFD91BAAC44100DA74DB /* mcar2.png */,
 				84B5DFD51BAABF7C00DA74DB /* mcar.png */,
@@ -432,9 +443,11 @@
 				84A85E7A1BA28E0E00817598 /* Images.xcassets in Resources */,
 				84B5DFDC1BAAC54500DA74DB /* mcar3.png in Resources */,
 				180364DE1BAED2BA00870783 /* Class界面 in Resources */,
+				84F819A51BF09F5F00FA2314 /* GeoUtils.js in Resources */,
 				84B5DFD61BAABF7C00DA74DB /* mcar.png in Resources */,
 				18D885981BC4DEDC00285E2B /* CVToastWindowController.xib in Resources */,
 				84BD9D3C1BD8A92B0023F217 /* google_map.html in Resources */,
+				84F8199E1BF0682E00FA2314 /* baidu_map.html in Resources */,
 				84B5DFCF1BAA5BF900DA74DB /* 高德地图KEY in Resources */,
 				84B5DFDA1BAAC44200DA74DB /* mcar2.png in Resources */,
 				84B43FE91BA8182400B4B46A /* amap.html in Resources */,
@@ -463,6 +476,7 @@
 				189910C41BE458160011FC92 /* CVTextField.m in Sources */,
 				18DB2BB81BDFAB8000EA793F /* GpsViewController.m in Sources */,
 				8453B5A51BE361F000B21AD4 /* CVView.m in Sources */,
+				84F819A11BF0924900FA2314 /* BDTransUtil.m in Sources */,
 				180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */,
 				1890EA501BB677E600AAE6E1 /* PreferenceController.m in Sources */,
 				18DAF4CE1BB6AE4B004EDA75 /* AppLanguageManager.m in Sources */,
