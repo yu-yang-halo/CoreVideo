@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>05D1BE31788C92848807852199BE4F012E5B7B01</key>
-		<string>github.com:yu-yang-halo/CoreVideo.git</string>
+		<string>https://github.com/yu-yang-halo/CoreVideo</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CoreVideo.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:yu-yang-halo/CoreVideo.git</string>
+	<string>https://github.com/yu-yang-halo/CoreVideo</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>05D1BE31788C92848807852199BE4F012E5B7B01</string>
 			<key>IDESourceControlWCCName</key>
-			<string>CoreVideoNew</string>
+			<string>CoreVideo</string>
 		</dict>
 	</array>
 </dict>

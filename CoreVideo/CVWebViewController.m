@@ -63,9 +63,8 @@
 }
 
 -(void)zoomInOut:(id)sender{
+    [self loadMapHTMLData:currentLocationChina];
     zoomState=[self.zoomInOutDelegate zoomInMapWindow:zoomState];
-    
-
 }
 
 -(void)loadMapHTMLData:(BOOL)locationInChina{
