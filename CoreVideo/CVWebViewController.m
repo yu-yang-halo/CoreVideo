@@ -74,7 +74,18 @@
      }
      NSString *gpsPath=[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:mapHtml];
     
+  
+    
+    NSString *htmlString = [NSString stringWithContentsOfFile:gpsPath encoding:NSUTF8StringEncoding error:nil];
+    
+    /*
+     该种方式加载本地html数据可能会出现无法显示的奇怪问题
+     
      [[self.webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:gpsPath]]];
+     */
+    
+    [[self.webview mainFrame]  loadHTMLString:htmlString baseURL:[NSURL URLWithString:gpsPath]];
+    
     
     
 
