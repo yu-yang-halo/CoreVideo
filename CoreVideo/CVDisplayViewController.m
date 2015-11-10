@@ -124,8 +124,8 @@
     
 }
 -(void)updateDataByCurrentTime:(Float64)time{
-    float m_ratio0=9.9;
-    float m_ratio1=9.9;
+    float m_ratio0=1.0;
+    float m_ratio1=1.0;
     if(totalTime!=0){
        m_ratio0= [currentSpeedDataArr count]/totalTime;
        m_ratio1= [currentGsensorDataArr count]/totalTime;

@@ -44,7 +44,7 @@
 			if(flightPlanCoordinates!=undefined&&flightPlanCoordinates.length>0){
 				 centerLatLng = flightPlanCoordinates[0];
 			}
-			//initGoogleMap();
+			initGoogleMap();
 			var polyline = new google.maps.Polyline({
 				path: flightPlanCoordinates,
 				geodesic: true,

@@ -102,7 +102,7 @@
 }
 
 -(void)updateDataByCurrentTime:(Float64)time{
-    float m_ratio=9.6;
+    float m_ratio=1.0;
     if(totalTime>0){
         m_ratio= [currentVideoGpsDataArr count]/totalTime;
     }
@@ -155,6 +155,8 @@
              if(isINCHINA){
                  
                  [currentVideoGpsDataArr addObject:[BDTransUtil wgs2bdLat:gps_lat.floatValue lgt:gps_lgt.floatValue]];
+                  
+                 
                 
              }else{
                  [currentVideoGpsDataArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:gps_lat.floatValue],@"lat",[NSNumber numberWithFloat:gps_lgt.floatValue],@"lng",nil]];
@@ -167,7 +169,7 @@
         
         
      }];
-    NSLog(@"*****%@****",[currentVideoGpsDataArr JSONString]);
+   // NSLog(@"*****%@****",[currentVideoGpsDataArr JSONString]);
     [self.webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"drawPolyLinePath(%@)",[currentVideoGpsDataArr JSONString]]];
 }
 

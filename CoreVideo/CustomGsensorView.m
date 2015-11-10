@@ -106,7 +106,7 @@ static float y_min_shaft=0;
     
     //-3~3 _ly  x:  i/count*(X_shaft-spaceX) y
     
-    if(_gsensorArray!=nil&&[_gsensorArray count]>(index+1)){
+    if(_gsensorArray!=nil&&[_gsensorArray count]>=(index+1)){
         NSArray *subArr=[_gsensorArray subarrayWithRange:NSMakeRange(0,index+1)];
         
         for (int i=0;i<[subArr count];i++) {

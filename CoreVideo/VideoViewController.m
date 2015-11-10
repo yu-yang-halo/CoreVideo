@@ -121,7 +121,7 @@ static int RATE_VIDEO_LENGTH=4;
         
         if ([asset statusOfValueForKey:key error:&error] == AVKeyValueStatusFailed)
         {
-            NSLog(@"%@",error);
+            NSLog(@"error %@",error);
             return;
         }
     }
@@ -381,7 +381,7 @@ static int j=0;
                 enable = YES;
                 break;
             case AVPlayerItemStatusFailed:
-                NSLog(@"%@",[[[self player] currentItem] error]);
+                NSLog(@"AVPlayerItemStatusFailed %@",[[[self player] currentItem] error]);
                 break;
         }
         

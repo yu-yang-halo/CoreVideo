@@ -35,7 +35,7 @@
 
 
 -(void)updateDataByCurrentTime:(Float64)time{
-    float m_ratio=9.6;
+    float m_ratio=1.0;
     if(totalTime>0){
         m_ratio= [currentVideoGpsDataArr count]/totalTime;
     }
