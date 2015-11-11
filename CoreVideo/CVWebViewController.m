@@ -84,7 +84,8 @@
      [[self.webview mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:gpsPath]]];
      */
     
-    [[self.webview mainFrame]  loadHTMLString:htmlString baseURL:[NSURL URLWithString:gpsPath]];
+    //[[self.webview mainFrame]  loadHTMLString:htmlString baseURL:[NSURL URLWithString:gpsPath]];
+    [[self.webview mainFrame]  loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] resourceURL]];
     
     
     

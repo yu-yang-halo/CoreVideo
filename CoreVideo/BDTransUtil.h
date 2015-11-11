@@ -14,8 +14,10 @@
 
 @interface BDTransUtil : NSObject
 
-
+//(GCJ-02)  火星坐标转百度坐标
 +(NSArray *)gcj2bdLat:(double)lat lgt:(double)lon;
+
+//(WGS-84)  地球坐标转百度坐标
 +(NSArray *)wgs2bdLat:(double)lat lgt:(double)lon;
 
 

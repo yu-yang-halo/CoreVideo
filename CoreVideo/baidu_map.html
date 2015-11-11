@@ -78,7 +78,7 @@
 		    function updateMarkerPosition(position){
                 var bdPoint=new BMap.Point(position[0],position[1]);
 		        marker.setPosition(bdPoint);
-                map.centerAndZoom(bdPoint, 18);  // 初始化地图,设置中心点坐标和地图级别
+                map.setCenter(bdPoint);  // 初始化地图,设置中心点坐标和地图级别
 		    }
 	</script>
 

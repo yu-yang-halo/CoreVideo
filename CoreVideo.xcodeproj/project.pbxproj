@@ -45,8 +45,6 @@
 		84B5DFCF1BAA5BF900DA74DB /* 高德地图KEY in Resources */ = {isa = PBXBuildFile; fileRef = 84B5DFCE1BAA5BF900DA74DB /* 高德地图KEY */; };
 		84B5DFD21BAA758600DA74DB /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B5DFD11BAA758600DA74DB /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84B5DFD61BAABF7C00DA74DB /* mcar.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B5DFD51BAABF7C00DA74DB /* mcar.png */; };
-		84B5DFD81BAAC0D100DA74DB /* mcar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B5DFD71BAAC0D100DA74DB /* mcar1.png */; };
-		84B5DFDA1BAAC44200DA74DB /* mcar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B5DFD91BAAC44100DA74DB /* mcar2.png */; };
 		84B5DFDC1BAAC54500DA74DB /* mcar3.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B5DFDB1BAAC54500DA74DB /* mcar3.png */; };
 		84BC6A091BA8FF0400FBF400 /* CVLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC6A081BA8FF0400FBF400 /* CVLayoutViewController.m */; };
 		84BD9D3C1BD8A92B0023F217 /* google_map.html in Resources */ = {isa = PBXBuildFile; fileRef = 84BD9D3B1BD8A92B0023F217 /* google_map.html */; };
@@ -144,8 +142,6 @@
 		84B5DFD01BAA758600DA74DB /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		84B5DFD11BAA758600DA74DB /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		84B5DFD51BAABF7C00DA74DB /* mcar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mcar.png; sourceTree = "<group>"; };
-		84B5DFD71BAAC0D100DA74DB /* mcar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mcar1.png; sourceTree = "<group>"; };
-		84B5DFD91BAAC44100DA74DB /* mcar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mcar2.png; sourceTree = "<group>"; };
 		84B5DFDB1BAAC54500DA74DB /* mcar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mcar3.png; sourceTree = "<group>"; };
 		84BC6A071BA8FF0400FBF400 /* CVLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVLayoutViewController.h; sourceTree = "<group>"; };
 		84BC6A081BA8FF0400FBF400 /* CVLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVLayoutViewController.m; sourceTree = "<group>"; };
@@ -299,8 +295,6 @@
 				84BD9D3B1BD8A92B0023F217 /* google_map.html */,
 				84F8199D1BF0682E00FA2314 /* baidu_map.html */,
 				84F819A41BF09F5F00FA2314 /* GeoUtils.js */,
-				84B5DFD71BAAC0D100DA74DB /* mcar1.png */,
-				84B5DFD91BAAC44100DA74DB /* mcar2.png */,
 				84B5DFD51BAABF7C00DA74DB /* mcar.png */,
 				84B5DFDB1BAAC54500DA74DB /* mcar3.png */,
 				84A85E6C1BA28E0E00817598 /* Supporting Files */,
@@ -438,7 +432,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84B5DFD81BAAC0D100DA74DB /* mcar1.png in Resources */,
 				1890EA5E1BB688D500AAE6E1 /* Localizable.strings in Resources */,
 				84A85E7A1BA28E0E00817598 /* Images.xcassets in Resources */,
 				84B5DFDC1BAAC54500DA74DB /* mcar3.png in Resources */,
@@ -449,7 +442,6 @@
 				84BD9D3C1BD8A92B0023F217 /* google_map.html in Resources */,
 				84F8199E1BF0682E00FA2314 /* baidu_map.html in Resources */,
 				84B5DFCF1BAA5BF900DA74DB /* 高德地图KEY in Resources */,
-				84B5DFDA1BAAC44200DA74DB /* mcar2.png in Resources */,
 				84B43FE91BA8182400B4B46A /* amap.html in Resources */,
 				84A85E7D1BA28E0E00817598 /* Main.storyboard in Resources */,
 				1890EA671BB68CCE00AAE6E1 /* PreferenceController.xib in Resources */,

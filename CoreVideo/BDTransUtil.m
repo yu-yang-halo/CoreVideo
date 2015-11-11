@@ -24,7 +24,7 @@ static double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
 
 
 @implementation BDTransUtil
-
+//火星坐标转百度坐标
 +(NSArray *)gcj2bdLat:(double)lat lgt:(double)lon{
     double x = lon, y = lat;
     
@@ -34,6 +34,7 @@ static double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
     double bd_lat = z * sin(theta) + 0.006;
     return @[@(bd_lon), @(bd_lat)];
 }
+//地球坐标转百度坐标
 +(NSArray *)wgs2bdLat:(double)lat lgt:(double)lon{
    
     NSArray *wgs2gcj = [BDTransUtil wgs2gcjLat:lat lgt:lon];
@@ -42,7 +43,7 @@ static double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
     
     return gcj2bd;
 }
-
+//百度坐标转火星坐标
 +(NSArray *)bd2gcjLat:(double)lat lgt:(double)lon{
     double x = lon - 0.0065, y = lat - 0.006;
     double z = sqrt(x * x + y * y) - 0.00002 * sin(y * x_pi);
@@ -51,6 +52,8 @@ static double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
     double gg_lat = z * sin(theta);
     return @[@(gg_lat), @(gg_lon)];
 }
+
+//地球坐标转火星坐标
 +(NSArray *)wgs2gcjLat:(double)lat lgt:(double)lon{
     double dLat = [BDTransUtil transformLat:(lon - 105.0) lgt:(lat - 35.0)];
     double dLon = [BDTransUtil transformLon:(lon - 105.0) lgt:(lat - 35.0)];
