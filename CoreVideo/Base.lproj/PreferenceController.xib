@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferenceController">
@@ -30,6 +30,7 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="139" id="aVf-RQ-Dy0"/>
                         </constraints>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="速度单位" id="W0R-vO-zam">
                             <font key="font" size="13" name="STHeitiSC-Light"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -41,6 +42,7 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="108" id="MG5-es-a2C"/>
                         </constraints>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="系统语言" id="rDv-xq-mdy">
                             <font key="font" size="13" name="STHeitiSC-Light"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -53,8 +55,9 @@
                             <constraint firstAttribute="width" constant="244" id="MjF-OC-dmC"/>
                             <constraint firstAttribute="height" constant="18" id="QUF-z7-S2e"/>
                         </constraints>
+                        <animations/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        <size key="cellSize" width="79" height="18"/>
+                        <size key="cellSize" width="81" height="18"/>
                         <size key="intercellSpacing" width="4" height="2"/>
                         <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="lsd-vY-8qO">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -84,6 +87,7 @@
                             <constraint firstAttribute="width" constant="244" id="27A-NT-l0f"/>
                             <constraint firstAttribute="height" constant="18" id="pww-xc-ftq"/>
                         </constraints>
+                        <animations/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         <size key="cellSize" width="48" height="18"/>
                         <size key="intercellSpacing" width="4" height="2"/>
@@ -93,7 +97,7 @@
                         </buttonCell>
                         <cells>
                             <column>
-                                <buttonCell type="radio" title="中文" imagePosition="left" alignment="left" enabled="NO" state="on" tag="1" inset="2" id="283-kV-864">
+                                <buttonCell type="radio" title="中文" imagePosition="left" alignment="left" enabled="NO" tag="1" inset="2" id="283-kV-864">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -122,6 +126,7 @@
                     <constraint firstItem="3UF-or-x8s" firstAttribute="leading" secondItem="Tye-Fn-uQE" secondAttribute="leading" constant="32" id="nRf-4C-2Gk"/>
                     <constraint firstItem="S9e-7x-fqz" firstAttribute="top" secondItem="vCo-nD-Qvr" secondAttribute="bottom" constant="16" id="znM-HD-vct"/>
                 </constraints>
+                <animations/>
             </view>
             <point key="canvasLocation" x="639" y="-51"/>
         </window>

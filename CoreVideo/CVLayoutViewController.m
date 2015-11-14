@@ -199,7 +199,6 @@
         state=0;
     }
     
-    
     if(state==0){
         
         [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
@@ -233,6 +232,7 @@
     
     if(mapZoomStateMAX||(!videoZoomStateMAX&&state==1)){
         state=0;
+        [webVC reloadHtmlData];
     }
     
     if(state==0){

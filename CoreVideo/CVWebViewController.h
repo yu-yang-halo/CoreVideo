@@ -16,4 +16,6 @@
 @property(nonatomic,strong) WebView *webview;
 @property(nonatomic,weak) id<CVModuleProtocol> distanceDelegate;
 @property(nonatomic,weak) id<CVModuleProtocol> zoomInOutDelegate;
+
+-(void)reloadHtmlData;
 @end

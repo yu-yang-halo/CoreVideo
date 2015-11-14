@@ -27,17 +27,25 @@ NSString *const SPEED_UNIT_NOTIFICATION=@"speed_unit_notification";
     if([@"zh-Hans" isEqualToString:[AppLanguageManager systemCurrentLanguage]]){
        
         [_languageRadio setState:1 atRow:0 column:0];
+        [_languageRadio setState:0 atRow:0 column:1];
         
     }else{
         
         [_languageRadio setState:1 atRow:0 column:1];
+        [_languageRadio setState:0 atRow:0 column:0];
     }
     
     
     if([AppUserDefaults isKMPH]){
+        
         [_speedUnitRadio setState:1 atRow:0 column:0];
+        [_speedUnitRadio setState:0 atRow:0 column:1];
+        
     }else{
+        
         [_speedUnitRadio setState:1 atRow:0 column:1];
+        [_speedUnitRadio setState:0 atRow:0 column:0];
+        
     }
     
 }

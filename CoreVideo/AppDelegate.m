@@ -43,6 +43,19 @@
     NSLog(@"filename %@",filename);
     return YES;
 }
+-(IBAction)showHelp:(id)sender{
+    NSString *version=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *build=[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    
+    NSString *appName=NSLocalizedStringFromTable(@"CFBundleDisplayName",@"InfoPlist", nil);
+    
+    NSString *message=[NSString stringWithFormat:@"Version %@(Build %@)",version,build];
+    
+    NSRunAlertPanel(appName, message,
+                                 nil, nil,nil);
+    
+}
+
 - (IBAction)openFile:(id)sender {
    
     __weak AppDelegate *weakSelf=self;

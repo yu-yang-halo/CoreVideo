@@ -145,6 +145,7 @@ static int RATE_VIDEO_LENGTH=4;
         self.videolayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
         self.videolayer.frame = self.containerView.layer.bounds;
         self.videolayer.autoresizingMask = kCALayerWidthSizable | kCALayerHeightSizable;
+         NSLog(@"隐藏视频图像");
         self.videolayer.hidden = YES;
         
         [self.containerView.layer addSublayer:_videolayer];
@@ -221,6 +222,7 @@ static int RATE_VIDEO_LENGTH=4;
     }
     
 }
+
 
 -(NSString *)pictureSaveDirectory{
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory,NSUserDomainMask,YES);
@@ -404,7 +406,7 @@ static int j=0;
         if ([change[NSKeyValueChangeNewKey] boolValue] == YES)
         {
             // The AVPlayerLayer is ready for display. Hide the loading spinner and show it.
-        
+            NSLog(@"显示视频图像");
             self.videolayer.hidden = NO;
         }
     }
