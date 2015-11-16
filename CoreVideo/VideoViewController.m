@@ -133,6 +133,7 @@ static int RATE_VIDEO_LENGTH=4;
         return;
     }
     
+    
     // We can play this asset.
     // Set up an AVPlayerLayer according to whether the asset contains video.
     if ([[asset tracksWithMediaType:AVMediaTypeVideo] count] != 0)
@@ -141,18 +142,56 @@ static int RATE_VIDEO_LENGTH=4;
         if(self.videolayer!=nil){
             [_videolayer removeFromSuperlayer];
         }
-        self.player=[AVPlayer new];
-        self.videolayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+      
+       
+        AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
+        
+        self.player=[AVPlayer playerWithPlayerItem:playerItem];
+        
+        
+        
+        self.videolayer = [AVPlayerLayer playerLayerWithPlayer:_player];
         self.videolayer.frame = self.containerView.layer.bounds;
         self.videolayer.autoresizingMask = kCALayerWidthSizable | kCALayerHeightSizable;
-         NSLog(@"隐藏视频图像");
+         NSLog(@"隐藏视频图像  %d",self.videolayer.readyForDisplay);
+        
+        
         self.videolayer.hidden = YES;
         
         [self.containerView.layer addSublayer:_videolayer];
         
-        [self addObserver:self forKeyPath:@"player.rate" options:NSKeyValueObservingOptionNew context:AVSPPlayerRateContext];
-        [self addObserver:self forKeyPath:@"player.currentItem.status" options:NSKeyValueObservingOptionNew context:AVSPPlayerItemStatusContext];
+        [self addObserver:self forKeyPath:@"player.rate" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:AVSPPlayerRateContext];
+        [self addObserver:self forKeyPath:@"player.currentItem.status" options: NSKeyValueObservingOptionNew context:AVSPPlayerItemStatusContext];
         [self addObserver:self forKeyPath:@"videolayer.readyForDisplay" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:AVSPPlayerLayerReadyForDisplay];
+        
+        
+        
+        // Use a weak self variable to avoid a retain cycle in the block
+        __weak VideoViewController *weakSelf = self;
+        
+        self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(playerItem.asset.duration)];
+        [self.speedDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
+        [self.gpsDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
+        [self.gpsInfoDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
+        
+        
+        
+        [self setTimeObserverToken:[[self player] addPeriodicTimeObserverForInterval:CMTimeMake(1, 100) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+            
+            [weakSelf.gpsDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
+            [weakSelf.gpsInfoDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
+            
+            [weakSelf.speedDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
+            
+            
+            weakSelf.timeSlider.doubleValue = CMTimeGetSeconds(time);
+            weakSelf.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(time)];
+        }]];
+        
+        self.volumSlider.floatValue=self.player.volume;
+        [_player play];
+
+        
         
         
     }
@@ -163,38 +202,15 @@ static int RATE_VIDEO_LENGTH=4;
     }
     
     // Create a new AVPlayerItem and make it our player's current item.
-    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
     
-
     
     
     // If needed, configure player item here (example: adding outputs, setting text style rules, selecting media options) before associating it with a player
-    [self.player replaceCurrentItemWithPlayerItem:playerItem];
-    
-    // Use a weak self variable to avoid a retain cycle in the block
-    __weak VideoViewController *weakSelf = self;
-   
-    self.totalTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(playerItem.asset.duration)];
-    [self.speedDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
-    [self.gpsDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
-    [self.gpsInfoDelegate videoAllTime:CMTimeGetSeconds(playerItem.asset.duration)];
+    //[self.player replaceCurrentItemWithPlayerItem:playerItem];
     
     
     
-    [self setTimeObserverToken:[[self player] addPeriodicTimeObserverForInterval:CMTimeMake(1, 100) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-        
-         [weakSelf.gpsDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
-        [weakSelf.gpsInfoDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
-        
-         [weakSelf.speedDelegate updateDataByCurrentTime:CMTimeGetSeconds(time)];
-        
-        
-         weakSelf.timeSlider.doubleValue = CMTimeGetSeconds(time);
-         weakSelf.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(time)];
-    }]];
     
-    self.volumSlider.floatValue=self.player.volume;
-    [_player play];
     
    
 }
@@ -396,13 +412,14 @@ static int j=0;
         if(rate==0.f){
              [_playButton setImage:[NSImage imageNamed:@"player_play"]];
         }else{
-            [_playButton setImage:[NSImage imageNamed:@"player_pause"]];
+             [_playButton setImage:[NSImage imageNamed:@"player_pause"]];
         }
         
        
     }
     else if (context == AVSPPlayerLayerReadyForDisplay)
     {
+        
         if ([change[NSKeyValueChangeNewKey] boolValue] == YES)
         {
             // The AVPlayerLayer is ready for display. Hide the loading spinner and show it.

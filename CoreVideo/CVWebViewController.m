@@ -11,6 +11,7 @@
 #import "JSONKit.h"
 #import "BDTransUtil.h"
 #import <JavaScriptCore/JavaScriptCore.h>
+#import "Reachability.h"
 @interface CVWebViewController ()
 {
     NSMutableArray *currentVideoGpsDataArr;
@@ -19,6 +20,7 @@
     BOOL  currentLocationChina;
     
      NSInteger zoomState;//0 放大  1 缩小
+    NSTextField *textField;
 }
 
 @end
@@ -33,12 +35,21 @@
     currentLocationChina=YES;
     
     self.webview=[[WebView alloc] initWithFrame:self.view.bounds];
-    [self loadMapHTMLData:currentLocationChina];
+    
     
     
     self.webview.frameLoadDelegate=self;
     
     NSButton *zoomInOut=[[NSButton alloc] initWithFrame:NSMakeRect(0, 0,48, 48)];
+    textField=[[NSTextField alloc] initWithFrame:NSMakeRect(49,5,150 ,22)];
+    
+    [textField setEditable:NO];
+    [textField setBezeled:NO];
+    [textField setBordered:NO];
+    [textField setDrawsBackground:NO];
+    [textField setSelectable:NO];
+    [textField setHidden:YES];
+    
    
     [zoomInOut.cell setBezelStyle:NSRegularSquareBezelStyle];
     [zoomInOut setImage:[NSImage imageNamed:@"scale"]];
@@ -54,12 +65,42 @@
     
     [self.view addSubview:_webview];
     [self.view addSubview:zoomInOut];
+    [self.view addSubview:textField];
     
     
+    [self startInternetNotification];
+}
+
+-(void)startInternetNotification{
+    // Allocate a reachability object
+    Reachability* reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
     
-    
+    // Set the blocks
+    reach.reachableBlock = ^(Reachability*reach)
+    {
+        // keep in mind this is called on a background thread
+        // and if you are updating the UI it needs to happen
+        // on the main thread, like this:
         
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+             [self reloadHtmlData];
+             [textField setHidden:NO];
+             [textField setTextColor:[NSColor purpleColor]];
+             [textField setStringValue:NSLocalizedString(@"map_online",nil)];
+        });
+    };
     
+    reach.unreachableBlock = ^(Reachability*reach)
+    {
+       
+        [textField setHidden:NO];
+        [textField setTextColor:[NSColor redColor]];
+        [textField setStringValue:NSLocalizedString(@"map_offline",nil)];
+    };
+    
+    // Start the notifier, which will cause the reachability object to retain itself!
+    [reach startNotifier];
 }
 
 -(void)zoomInOut:(id)sender{

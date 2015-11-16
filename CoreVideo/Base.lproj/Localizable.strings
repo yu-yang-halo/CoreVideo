@@ -22,3 +22,6 @@
 "capture_fail"="无法截图";
 
 "zoomin_out"="缩放";
+
+"map_online"="地图在线";
+"map_offline"="地图离线,请检查网络";

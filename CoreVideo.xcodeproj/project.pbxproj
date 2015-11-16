@@ -48,6 +48,7 @@
 		84B5DFDC1BAAC54500DA74DB /* mcar3.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B5DFDB1BAAC54500DA74DB /* mcar3.png */; };
 		84BC6A091BA8FF0400FBF400 /* CVLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC6A081BA8FF0400FBF400 /* CVLayoutViewController.m */; };
 		84BD9D3C1BD8A92B0023F217 /* google_map.html in Resources */ = {isa = PBXBuildFile; fileRef = 84BD9D3B1BD8A92B0023F217 /* google_map.html */; };
+		84CB0DC41BF9707F007356A8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0DC31BF9707F007356A8 /* Reachability.m */; };
 		84F8199E1BF0682E00FA2314 /* baidu_map.html in Resources */ = {isa = PBXBuildFile; fileRef = 84F8199D1BF0682E00FA2314 /* baidu_map.html */; };
 		84F819A11BF0924900FA2314 /* BDTransUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F819A01BF0924900FA2314 /* BDTransUtil.m */; };
 		84F819A51BF09F5F00FA2314 /* GeoUtils.js in Resources */ = {isa = PBXBuildFile; fileRef = 84F819A41BF09F5F00FA2314 /* GeoUtils.js */; };
@@ -146,6 +147,8 @@
 		84BC6A071BA8FF0400FBF400 /* CVLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVLayoutViewController.h; sourceTree = "<group>"; };
 		84BC6A081BA8FF0400FBF400 /* CVLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CVLayoutViewController.m; sourceTree = "<group>"; };
 		84BD9D3B1BD8A92B0023F217 /* google_map.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = google_map.html; sourceTree = "<group>"; };
+		84CB0DC21BF9707F007356A8 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		84CB0DC31BF9707F007356A8 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		84F8199D1BF0682E00FA2314 /* baidu_map.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = baidu_map.html; sourceTree = "<group>"; };
 		84F8199F1BF0924900FA2314 /* BDTransUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDTransUtil.h; sourceTree = "<group>"; };
 		84F819A01BF0924900FA2314 /* BDTransUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDTransUtil.m; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 		18B22BA71BA6F2E900D593C4 /* assist */ = {
 			isa = PBXGroup;
 			children = (
+				84CB0DC21BF9707F007356A8 /* Reachability.h */,
+				84CB0DC31BF9707F007356A8 /* Reachability.m */,
 				84B5DFD01BAA758600DA74DB /* JSONKit.h */,
 				84B5DFD11BAA758600DA74DB /* JSONKit.m */,
 				84B43FE21BA7E1AA00B4B46A /* FileList.cpp */,
@@ -467,6 +472,7 @@
 				18DA97381BB96AB4007FCEF6 /* AppController.m in Sources */,
 				189910C41BE458160011FC92 /* CVTextField.m in Sources */,
 				18DB2BB81BDFAB8000EA793F /* GpsViewController.m in Sources */,
+				84CB0DC41BF9707F007356A8 /* Reachability.m in Sources */,
 				8453B5A51BE361F000B21AD4 /* CVView.m in Sources */,
 				84F819A11BF0924900FA2314 /* BDTransUtil.m in Sources */,
 				180364DC1BAEADD100870783 /* CustomGsensorView.m in Sources */,

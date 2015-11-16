@@ -21,3 +21,6 @@
 "capture_fail"="Fail";
 
 "zoomin_out"="Zoom in out";
+
+"map_online"="Online";
+"map_offline"="Offline,check network";
