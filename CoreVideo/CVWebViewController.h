@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 #import "CVModuleProtocol.h"
-
+#import "CVWindowController.h"
 
 @interface CVWebViewController : NSViewController<CVModuleProtocol>
 

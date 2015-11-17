@@ -8,6 +8,8 @@
 
 #import "CVWindowController.h"
 #import "AppDelegate.h"
+const NSString *notification_full_screen=@"window_full_change";
+
 @interface CVWindowController ()
 
 @end
@@ -41,10 +43,28 @@ static CGFloat  winHeight=760;
     
     [self.window setContentMaxSize:NSMakeSize(screenW,screenH)];
     [self.window setContentMinSize:NSMakeSize(winWidth,winHeight)];
+    self.window.delegate=self;
+    
+   
     
 }
 - (void)windowWillLoad{
     NSLog(@"windowWillLoad...");
+}
+
+- (void)windowWillEnterFullScreen:(NSNotification *)notification   NS_AVAILABLE_MAC(10_7){
+    //NSLog(@"windowWillEnterFullScreen");
+}
+- (void)windowDidEnterFullScreen:(NSNotification *)notification   NS_AVAILABLE_MAC(10_7){
+    NSLog(@"windowDidEnterFullScreen");
+    [[NSNotificationCenter defaultCenter] postNotificationName:notification_full_screen object:nil];
+}
+- (void)windowWillExitFullScreen:(NSNotification *)notification   NS_AVAILABLE_MAC(10_7){
+    //NSLog(@"windowWillExitFullScreen");
+}
+- (void)windowDidExitFullScreen:(NSNotification *)notification{
+    NSLog(@"windowDidExitFullScreen");
+     [[NSNotificationCenter defaultCenter] postNotificationName:notification_full_screen object:nil];
 }
 
 

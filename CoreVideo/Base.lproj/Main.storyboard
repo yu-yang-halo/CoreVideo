@@ -947,7 +947,7 @@
                                             <constraint firstAttribute="height" constant="23" id="eyj-3N-lWb"/>
                                         </constraints>
                                         <animations/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="KM/H" id="Ikv-hO-Zgc">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="Ikv-hO-Zgc">
                                             <font key="font" size="18" name="HelveticaNeue-Bold"/>
                                             <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

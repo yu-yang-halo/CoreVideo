@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
-@interface CVWindowController : NSWindowController
+extern const NSString *notification_full_screen;
+@interface CVWindowController : NSWindowController <NSWindowDelegate>
 
 @end

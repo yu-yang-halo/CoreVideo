@@ -69,6 +69,18 @@
     
     
     [self startInternetNotification];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowFullScreenChange:) name:notification_full_screen object:nil];
+    
+}
+-(void)windowFullScreenChange:(NSNotification *)notification{
+   
+    [self reloadHtmlData];
+    
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:notification_full_screen object:nil];
 }
 
 -(void)startInternetNotification{
@@ -229,5 +241,6 @@
    // NSLog(@"*****%@****",[currentVideoGpsDataArr JSONString]);
     [self.webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"drawPolyLinePath(%@)",[currentVideoGpsDataArr JSONString]]];
 }
+
 
 @end
