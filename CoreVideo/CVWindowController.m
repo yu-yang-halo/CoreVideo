@@ -21,12 +21,16 @@ static CGFloat  winHeight=760;
     AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
     
     delegate.windowVC=self;
+    NSRect mainScreen=[[NSScreen mainScreen] frame];
+    
+    winWidth=mainScreen.size.width*0.85;
+    winHeight=mainScreen.size.height*0.85;
     
     NSLog(@"windowDidLoad...");
    
     NSString *appName= NSLocalizedStringFromTable(@"CFBundleDisplayName",@"InfoPlist", nil);
     [self.window setTitle:appName];
-   
+    
     [self.window setMiniwindowTitle:appName];
     
     CGFloat screenW=[[NSScreen mainScreen] frame].size.width;
@@ -35,7 +39,7 @@ static CGFloat  winHeight=760;
     [self.window setFrame:NSMakeRect((screenW-winWidth)/2,(screenH-winHeight)/2, winWidth, winHeight) display:YES];
     
     
-    [self.window setContentMaxSize:NSMakeSize(winWidth,winHeight)];
+    [self.window setContentMaxSize:NSMakeSize(screenW,screenH)];
     [self.window setContentMinSize:NSMakeSize(winWidth,winHeight)];
     
 }
