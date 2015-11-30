@@ -22,7 +22,7 @@
     float          totalTime;//单位 s
     NSLock         *mlock;
 }
-@property (weak) IBOutlet CustomSpeedView *speedView;
+
 @property (weak) IBOutlet CustomGsensorView *gsensorView;
 
 @property (weak) IBOutlet NSView *gsensorContainer;
@@ -46,9 +46,6 @@
 
 
 
-@property (weak) IBOutlet NSTextField *speedValueLabel;
-
-@property (weak) IBOutlet NSTextField *speedUnitLabel;
 
 @end
 
@@ -74,7 +71,6 @@
     }else{
          [self.averageHSpeed setStringValue:[AppUtils convertSpeedUnit:(0.0)]];
     }
-    [self.speedView setCurrentSpeed:[AppUtils convertSpeed:currentSpd]];
     
     [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:maxSpd]];
     [self.movingDistance setStringValue:[AppUtils convertDistanceUnit:totalDistance]];
@@ -138,17 +134,8 @@
         if(index0<[currentSpeedDataArr count]){
             NSNumber *mspd=currentSpeedDataArr[index0];
             currentSpd=[mspd integerValue];
-            
-            [self.speedView setCurrentSpeed:[AppUtils convertSpeed:[mspd integerValue]]];
-            
-            [self.speedValueLabel setStringValue:[NSString stringWithFormat:@"%.f",[AppUtils convertSpeed:[mspd integerValue]]]];
-            
-            [self.speedUnitLabel setStringValue:[AppUtils currentSpeedUnit]];
-            
         }
     }else{
-        [self.speedView setCurrentSpeed:[AppUtils convertSpeed:0]];
-
         
         [self.maxHSpeed setStringValue:[AppUtils convertSpeedUnit:0]];
     }
