@@ -129,6 +129,33 @@
 
     
 }
+-(NSString *)currentSplitView:(NSSplitView *)splitview{
+    if(splitview==_globalSplitView){
+        return @"_globalSplitView";
+    }else if(splitview==_leftSplitView){
+        return @"_leftSplitView";
+    }else if(splitview==_rightSplitView){
+        return @"_rightSplitView";
+    }
+    return nil;
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex{
+    
+    NSLog(@"splitView %@ proposedMinimumPosition %f  dividerIndex %ld",[self currentSplitView:splitView],proposedMinimumPosition,dividerIndex);
+    return proposedMinimumPosition;
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex{
+    NSLog(@"splitView %@ proposedMaximumPosition %f  dividerIndex %ld",[self currentSplitView:splitView],proposedMaximumPosition,dividerIndex);
+    return proposedMaximumPosition;
+}
+
+- (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex{
+    NSLog(@"splitView %@ proposedPosition %f  dividerIndex %ld",[self currentSplitView:splitView],proposedPosition,dividerIndex);
+    return proposedPosition;
+}
+
 
 - (void)splitViewWillResizeSubviews:(NSNotification *)notification{
    // NSLog(@"splitViewWillResizeSubviews %@",notification.userInfo);
