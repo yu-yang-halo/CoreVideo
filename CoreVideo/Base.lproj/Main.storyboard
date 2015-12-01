@@ -476,26 +476,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="540" height="74"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Lg-7A-Yrm">
-                                        <rect key="frame" x="463" y="54" width="58" height="17"/>
+                                        <rect key="frame" x="437" y="54" width="84" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="0WG-8c-jXi"/>
-                                            <constraint firstAttribute="width" constant="54" id="MII-lX-IKq"/>
+                                            <constraint firstAttribute="width" constant="80" id="MII-lX-IKq"/>
                                         </constraints>
                                         <animations/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="dwW-6X-K7w">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="00:00:00" id="dwW-6X-K7w">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D1H-c7-OyU">
-                                        <rect key="frame" x="19" y="54" width="58" height="17"/>
+                                        <rect key="frame" x="19" y="54" width="84" height="17"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="54" id="B3s-2S-73b"/>
+                                            <constraint firstAttribute="width" constant="80" id="B3s-2S-73b"/>
                                             <constraint firstAttribute="height" constant="17" id="QBX-zN-3j8"/>
                                         </constraints>
                                         <animations/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="sON-m2-MmF">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="00:00:00" id="sON-m2-MmF">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -619,8 +619,8 @@
                                             <action selector="capture:" target="47X-5P-zVC" id="Mlv-yE-l6w"/>
                                         </connections>
                                     </button>
-                                    <slider verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1p1-68-45A">
-                                        <rect key="frame" x="90" y="52" width="381" height="18"/>
+                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1p1-68-45A">
+                                        <rect key="frame" x="105" y="53" width="330" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="XLi-BQ-i4N"/>
                                         </constraints>
@@ -666,7 +666,7 @@
                                     <constraint firstItem="lnO-zm-yYl" firstAttribute="leading" secondItem="MSc-jn-j5L" secondAttribute="leading" constant="20" id="b4k-Wb-qIe"/>
                                     <constraint firstItem="1p1-68-45A" firstAttribute="leading" secondItem="D1H-c7-OyU" secondAttribute="trailing" constant="6" id="cZC-WC-kwL"/>
                                     <constraint firstItem="uF3-A7-9YV" firstAttribute="top" secondItem="1p1-68-45A" secondAttribute="bottom" constant="3" id="et6-qD-PN0"/>
-                                    <constraint firstItem="7Lg-7A-Yrm" firstAttribute="leading" secondItem="1p1-68-45A" secondAttribute="trailing" constant="7" id="jbL-2E-qbW"/>
+                                    <constraint firstItem="7Lg-7A-Yrm" firstAttribute="leading" secondItem="1p1-68-45A" secondAttribute="trailing" constant="6" id="jbL-2E-qbW"/>
                                     <constraint firstItem="tps-tk-M0x" firstAttribute="top" secondItem="1p1-68-45A" secondAttribute="bottom" id="l9T-Vt-hZ5"/>
                                     <constraint firstAttribute="trailing" secondItem="7Lg-7A-Yrm" secondAttribute="trailing" constant="21" id="lU9-2D-d2B"/>
                                     <constraint firstItem="mzJ-kx-UD0" firstAttribute="top" secondItem="1p1-68-45A" secondAttribute="bottom" constant="3" id="q0r-dc-Hlf"/>

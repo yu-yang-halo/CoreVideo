@@ -223,10 +223,20 @@
              
              if(isINCHINA){
                  
-                 [currentVideoGpsDataArr addObject:[BDTransUtil wgs2bdLat:gps_lat.floatValue lgt:gps_lgt.floatValue]];
+                 /*
+                  直接使用
+                  [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:gps_lgt.floatValue], [NSNumber numberWithFloat:gps_lat.floatValue],nil]];
+                  以地球坐标转为百度坐标 *********
+                  [currentVideoGpsDataArr addObject:[BDTransUtil wgs2bdLat:gps_lat.floatValue lgt:gps_lgt.floatValue]];
+                  以火星坐标转为百度坐标
+                  [currentVideoGpsDataArr addObject:[BDTransUtil gcj2bdLat:gps_lat.floatValue lgt:gps_lgt.floatValue]];
                   
+                  */
+                
+                  [currentVideoGpsDataArr addObject:[BDTransUtil wgs2bdLat:gps_lat.floatValue lgt:gps_lgt.floatValue]];
                  
                 
+                 
              }else{
                  [currentVideoGpsDataArr addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:gps_lat.floatValue],@"lat",[NSNumber numberWithFloat:gps_lgt.floatValue],@"lng",nil]];
                  
