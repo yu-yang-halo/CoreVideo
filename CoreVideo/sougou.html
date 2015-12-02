@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+		<!--
+    	作者：623240480@qq.com
+    	时间：2015-12-02
+    	描述：搜狗地图
+    -->
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=gb2312"/>
+<title>搜狗地图显示行车轨迹</title>
+<style type="text/css">
+	body, 
+	html,
+	#mapContainer {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+</style>
+<script type="text/javascript" src="http://api.go2map.com/maps/js/api_v2.5.1.js"></script>
+
+</head>
+<body>
+  <div id="mapContainer"></div>
+</body>
+<script type="text/javascript">
+	var map;
+	var marker;
+	var centerPoint;
+
+	var myOptions = {
+      zoom: 18,
+      mapTypeId: sogou.maps.MapTypeId.ROADMAP
+    }
+   map = new sogou.maps.Map(document.getElementById("mapContainer"), myOptions);
+   
+   
+	loadMapData();
+	
+  function loadMapData() {
+      map.clearAll();
+  	if(centerPoint==undefined){
+            centerPoint=new sogou.maps.LatLng(39.981320,116.320247);
+		}
+  	map.setCenter(centerPoint);
+    
+    //创建marker
+	  var pt = centerPoint;
+    marker = new sogou.maps.Marker({
+        position: pt,
+        map: map,
+        //icon: "mcar3.png",
+    });   
+  }
+  function drawPolyLinePath(lineArr){
+		    	var bptArrs=[];
+		        if(lineArr.length>0){
+		        	for(var i=0;i<lineArr.length;i++){
+		        		var point=lineArr[i];
+		        	    bptArrs.push(new sogou.maps.LatLng(point[1],point[0]));
+		        	    
+		        	}
+		           
+		        }
+		        if(bptArrs.length>0){
+		        	 centerPoint=bptArrs[0];
+		        	 loadMapData();
+		        	  var polyline = new sogou.maps.Polyline({
+                      path: bptArrs,
+                      strokeColor: "#0091FF",
+                      strokeOpacity: 0.9,
+                      strokeWeight: 4
+                 });
+                 polyline.setMap(map);
+		            
+		             var distance=calcDistance(bptArrs);
+		             cocoa_getDistance(distance);
+		        }  
+		                                        
+		    }
+       function updateMarkerPosition(position){
+       	        var sgPoint=new sogou.maps.LatLng(position[1],position[0])
+                marker.setPosition(sgPoint);
+                map.setCenter(sgPoint);  // 初始化地图,设置中心点坐标和地图级别
+		    }
+  
+  var convertor=new sogou.maps.Convertor();
+function calcDistance(a)
+{
+    var b=0,i;
+    for(i=0;i<a.length;i++)
+    {
+        if(a[i+1]) b+=convertor.latLngDistance(a[i],a[i+1]);
+    }
+    return parseInt(b)
+}
+</script>
+</html>

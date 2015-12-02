@@ -40,7 +40,7 @@
     
     self.webview.frameLoadDelegate=self;
     
-    NSButton *zoomInOut=[[NSButton alloc] initWithFrame:NSMakeRect(0, 0,48, 48)];
+    NSButton *zoomInOut=[[NSButton alloc] initWithFrame:NSMakeRect(0, 0,44, 43)];
     textField=[[NSTextField alloc] initWithFrame:NSMakeRect(49,5,150 ,22)];
     
     [textField setEditable:NO];
@@ -54,6 +54,7 @@
     [zoomInOut.cell setBezelStyle:NSRegularSquareBezelStyle];
     [zoomInOut setImage:[NSImage imageNamed:@"scale"]];
     [zoomInOut.cell setImageScaling:NSImageScaleProportionallyDown];
+    [zoomInOut setBordered:NO];
     [zoomInOut setToolTip:NSLocalizedString(@"zoomin_out",nil)];
     
     

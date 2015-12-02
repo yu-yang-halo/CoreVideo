@@ -29,6 +29,7 @@
         map = new BMap.Map("mapContainer");    // 创建Map实例
         var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});
         var top_left_navigation = new BMap.NavigationControl();
+        map.addControl(new BMap.MapTypeControl());
         map.addControl(top_left_control);
         map.addControl(top_left_navigation);
 		loadMapData();

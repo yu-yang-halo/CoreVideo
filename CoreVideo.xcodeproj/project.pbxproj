@@ -31,6 +31,7 @@
 		8461A0021BA3FA6E0048DD69 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461A0011BA3FA6E0048DD69 /* VideoViewController.m */; };
 		846C31DE1BA66E480007ACDB /* MyCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31DD1BA66E480007ACDB /* MyCache.m */; };
 		846C31E21BA679EC0007ACDB /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E11BA679EC0007ACDB /* PlayListViewController.m */; };
+		848477941C0EA03A00167C3A /* sougou.html in Resources */ = {isa = PBXBuildFile; fileRef = 848477931C0EA03A00167C3A /* sougou.html */; };
 		84A85E701BA28E0E00817598 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E6F1BA28E0E00817598 /* AppDelegate.m */; };
 		84A85E721BA28E0E00817598 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A85E711BA28E0E00817598 /* main.m */; };
 		84A85E7A1BA28E0E00817598 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A85E791BA28E0E00817598 /* Images.xcassets */; };
@@ -117,6 +118,7 @@
 		846C31DD1BA66E480007ACDB /* MyCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCache.m; sourceTree = "<group>"; };
 		846C31E01BA679EC0007ACDB /* PlayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayListViewController.h; sourceTree = "<group>"; };
 		846C31E11BA679EC0007ACDB /* PlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayListViewController.m; sourceTree = "<group>"; };
+		848477931C0EA03A00167C3A /* sougou.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sougou.html; sourceTree = "<group>"; };
 		84A2AA801BBA1DD900F6BCC3 /* CVModuleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVModuleProtocol.h; sourceTree = "<group>"; };
 		84A85E691BA28E0E00817598 /* CoreVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A85E6D1BA28E0E00817598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				84B43FE81BA8182400B4B46A /* amap.html */,
 				84BD9D3B1BD8A92B0023F217 /* google_map.html */,
 				84F8199D1BF0682E00FA2314 /* baidu_map.html */,
+				848477931C0EA03A00167C3A /* sougou.html */,
 				84F819A41BF09F5F00FA2314 /* GeoUtils.js */,
 				84B5DFD51BAABF7C00DA74DB /* mcar.png */,
 				84B5DFDB1BAAC54500DA74DB /* mcar3.png */,
@@ -445,6 +448,7 @@
 				84B5DFD61BAABF7C00DA74DB /* mcar.png in Resources */,
 				18D885981BC4DEDC00285E2B /* CVToastWindowController.xib in Resources */,
 				84BD9D3C1BD8A92B0023F217 /* google_map.html in Resources */,
+				848477941C0EA03A00167C3A /* sougou.html in Resources */,
 				84F8199E1BF0682E00FA2314 /* baidu_map.html in Resources */,
 				84B5DFCF1BAA5BF900DA74DB /* 高德地图KEY in Resources */,
 				84B43FE91BA8182400B4B46A /* amap.html in Resources */,
