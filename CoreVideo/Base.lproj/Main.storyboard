@@ -785,30 +785,34 @@
                                         </constraints>
                                         <animations/>
                                     </customView>
-                                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0O-HK-7uq" customClass="CVView">
-                                        <rect key="frame" x="0.0" y="-2" width="211" height="102"/>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="T0O-HK-7uq" customClass="CVView">
+                                        <rect key="frame" x="0.0" y="0.0" width="211" height="100"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XnU-SB-wbU">
                                                 <rect key="frame" x="8" y="9" width="104" height="82"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="82" id="0ox-Yw-ZT7"/>
+                                                    <constraint firstAttribute="height" constant="82" id="6Ff-qF-RBU"/>
+                                                    <constraint firstAttribute="width" constant="104" id="lgn-Y1-eav"/>
                                                 </constraints>
                                                 <animations/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="car2" id="opQ-CV-kOn"/>
                                             </imageView>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0XI-6o-BHo">
-                                                <rect key="frame" x="103" y="10" width="100" height="90"/>
+                                                <rect key="frame" x="103" y="5" width="100" height="90"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="90" id="Ix3-9C-3MX"/>
+                                                    <constraint firstAttribute="width" constant="100" id="kC4-8M-qoH"/>
+                                                </constraints>
                                                 <animations/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="xyz" id="55D-B8-X44"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="XnU-SB-wbU" secondAttribute="trailing" constant="99" id="3ga-zf-OaL"/>
-                                            <constraint firstItem="0XI-6o-BHo" firstAttribute="top" secondItem="T0O-HK-7uq" secondAttribute="top" id="6Om-J6-419"/>
-                                            <constraint firstItem="XnU-SB-wbU" firstAttribute="leading" secondItem="T0O-HK-7uq" secondAttribute="leading" constant="8" id="D3O-bI-hLn"/>
-                                            <constraint firstItem="XnU-SB-wbU" firstAttribute="top" secondItem="T0O-HK-7uq" secondAttribute="top" constant="9" id="WNU-KQ-aP1"/>
-                                            <constraint firstAttribute="trailing" secondItem="0XI-6o-BHo" secondAttribute="trailing" constant="8" id="YvK-Za-X1t"/>
+                                            <constraint firstItem="XnU-SB-wbU" firstAttribute="leading" secondItem="T0O-HK-7uq" secondAttribute="leading" constant="8" id="8FC-6U-mdG"/>
+                                            <constraint firstAttribute="centerY" secondItem="XnU-SB-wbU" secondAttribute="centerY" id="fm3-Jm-NvJ"/>
+                                            <constraint firstAttribute="centerY" secondItem="0XI-6o-BHo" secondAttribute="centerY" id="fr0-Fi-IEH"/>
                                             <constraint firstAttribute="width" constant="211" id="skh-r8-uV3"/>
+                                            <constraint firstItem="0XI-6o-BHo" firstAttribute="leading" secondItem="XnU-SB-wbU" secondAttribute="trailing" constant="-9" id="xXK-Ah-BAX"/>
                                         </constraints>
                                         <animations/>
                                     </customView>
