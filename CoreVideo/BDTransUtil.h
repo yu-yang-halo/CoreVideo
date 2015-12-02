@@ -19,6 +19,7 @@
 
 //(WGS-84)  地球坐标转百度坐标
 +(NSArray *)wgs2bdLat:(double)lat lgt:(double)lon;
-
+//地球坐标转火星坐标
++(NSArray *)wgs2gcjLat:(double)lat lgt:(double)lon;
 
 @end

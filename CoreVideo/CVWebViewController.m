@@ -12,6 +12,12 @@
 #import "BDTransUtil.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "Reachability.h"
+/*
+   国内地图 
+   国外地图
+ */
+const static NSString* IN_OF_CHINA_MAP=@"baidu_map.html";
+const static NSString* OUT_OF_CHINA_MAP=@"google_map.html";
 @interface CVWebViewController ()
 {
     NSMutableArray *currentVideoGpsDataArr;
@@ -126,9 +132,9 @@
 }
 
 -(void)loadMapHTMLData:(BOOL)locationInChina{
-     NSString *mapHtml=@"baidu_map.html";
+     NSString *mapHtml=IN_OF_CHINA_MAP;
      if(!locationInChina){
-        mapHtml=@"google_map.html";
+        mapHtml=OUT_OF_CHINA_MAP;
      }
      NSString *gpsPath=[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:mapHtml];
     
@@ -227,13 +233,19 @@
                  /*
                   直接使用
                   [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:gps_lgt.floatValue], [NSNumber numberWithFloat:gps_lat.floatValue],nil]];
-                  以地球坐标转为百度坐标 *********
+                  **********************************************************
+                  以地球坐标转为百度坐标 (此方案误差最小)
                   [currentVideoGpsDataArr addObject:[BDTransUtil wgs2bdLat:gps_lat.floatValue lgt:gps_lgt.floatValue]];
+                  ***********************************************************
+                  
                   以火星坐标转为百度坐标
                   [currentVideoGpsDataArr addObject:[BDTransUtil gcj2bdLat:gps_lat.floatValue lgt:gps_lgt.floatValue]];
                   
+                  以地球坐标转为火星坐标
+                  NSArray *gcjArr=[BDTransUtil wgs2gcjLat:gps_lat.floatValue lgt:gps_lgt.floatValue];
+                  [currentVideoGpsDataArr addObject:[NSArray arrayWithObjects:gcjArr[1],gcjArr[0], nil]];
+                  
                   */
-                
                   [currentVideoGpsDataArr addObject:[BDTransUtil wgs2bdLat:gps_lat.floatValue lgt:gps_lgt.floatValue]];
                  
                 
