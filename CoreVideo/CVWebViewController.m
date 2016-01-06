@@ -92,7 +92,7 @@ const static NSString* OUT_OF_CHINA_MAP=@"google_map.html";
 
 -(void)startInternetNotification{
     // Allocate a reachability object
-    Reachability* reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
+    Reachability* reach = [Reachability reachabilityWithHostname:@"developer.apple.com"];
     
     // Set the blocks
     reach.reachableBlock = ^(Reachability*reach)
