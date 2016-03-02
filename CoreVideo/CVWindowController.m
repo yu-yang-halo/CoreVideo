@@ -9,7 +9,7 @@
 #import "CVWindowController.h"
 #import "AppDelegate.h"
 const NSString *notification_full_screen=@"window_full_change";
-const float FIX_SIZE=0.92;
+const float FIX_SIZE=0.7;
 @interface CVWindowController ()
 
 @end

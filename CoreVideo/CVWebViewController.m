@@ -202,13 +202,14 @@
     
      currentPlayVideoPath=playVideoPath;
     
-    
+    /*
      BOOL isINCHINA=[MyCache locationIsINChina:currentPlayVideoPath];
     
      if(currentLocationChina!=isINCHINA){
          [self loadMapHTMLData:isINCHINA];
          currentLocationChina=isINCHINA;
      }
+     */
     
     
      NSArray *gpsDataArr=[MyCache findGpsDatas:currentPlayVideoPath];
@@ -221,7 +222,7 @@
 
          if(gps_lat.floatValue!=0&&gps_lgt.floatValue!=0){
              
-             if(isINCHINA){
+             if(currentLocationChina){
                  
                  /*
                   直接使用

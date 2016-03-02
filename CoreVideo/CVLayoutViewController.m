@@ -119,8 +119,8 @@
     [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
     [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
     
-    [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,323)];
-    [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,437)];
+    [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,360)];
+    [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,400)];
     
     
     
@@ -282,8 +282,8 @@
         [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
         [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
         
-        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,323)];
-        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,437)];
+        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,360)];
+        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,400)];
         mapZoomStateMAX=NO;
     }
     
