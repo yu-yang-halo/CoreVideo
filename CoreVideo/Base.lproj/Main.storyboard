@@ -506,21 +506,6 @@
                                         <animations/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="lfX-1B-t3P"/>
                                     </imageView>
-                                    <button toolTip="缩放" translatesAutoresizingMaskIntoConstraints="NO" id="i9J-Aa-eR3">
-                                        <rect key="frame" x="489" y="0.0" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="E4I-hH-ZSQ"/>
-                                            <constraint firstAttribute="height" constant="43" id="SLb-Pf-blA"/>
-                                        </constraints>
-                                        <animations/>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="scale" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w2V-NZ-vKj">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="zoomInOut:" target="47X-5P-zVC" id="ICK-7n-xfR"/>
-                                        </connections>
-                                    </button>
                                     <slider verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ae9-Dn-ggD">
                                         <rect key="frame" x="56" y="20" width="104" height="21"/>
                                         <constraints>
@@ -629,8 +614,8 @@
                                             <binding destination="47X-5P-zVC" name="maxValue" keyPath="self.duration" id="MnI-g8-fp8"/>
                                         </connections>
                                     </slider>
-                                    <button toolTip="打开文件" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTi-uZ-Q46">
-                                        <rect key="frame" x="439" y="11" width="55" height="40"/>
+                                    <button toolTip="打开文件" translatesAutoresizingMaskIntoConstraints="NO" id="fTi-uZ-Q46">
+                                        <rect key="frame" x="431" y="11" width="55" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="0NW-vI-ko3"/>
                                             <constraint firstAttribute="width" constant="55" id="BNj-0m-Lrf"/>
@@ -644,10 +629,26 @@
                                             <action selector="openFile:" target="47X-5P-zVC" id="L7J-OY-6vh"/>
                                         </connections>
                                     </button>
+                                    <button toolTip="缩放" translatesAutoresizingMaskIntoConstraints="NO" id="i9J-Aa-eR3">
+                                        <rect key="frame" x="489" y="0.0" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="E4I-hH-ZSQ"/>
+                                            <constraint firstAttribute="height" constant="43" id="SLb-Pf-blA"/>
+                                        </constraints>
+                                        <animations/>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="scale" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w2V-NZ-vKj">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="zoomInOut:" target="47X-5P-zVC" id="ICK-7n-xfR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="uF3-A7-9YV" firstAttribute="leading" secondItem="mzJ-kx-UD0" secondAttribute="trailing" constant="10" id="0Ya-o2-WAn"/>
                                     <constraint firstAttribute="trailing" secondItem="i9J-Aa-eR3" secondAttribute="trailing" constant="5" id="0cD-VN-5mo"/>
+                                    <constraint firstItem="i9J-Aa-eR3" firstAttribute="leading" secondItem="fTi-uZ-Q46" secondAttribute="trailing" constant="5" id="55E-am-rTa"/>
                                     <constraint firstAttribute="centerX" secondItem="tps-tk-M0x" secondAttribute="centerX" constant="26.5" id="EoX-aA-f1g"/>
                                     <constraint firstItem="7Lg-7A-Yrm" firstAttribute="top" secondItem="MSc-jn-j5L" secondAttribute="top" constant="3" id="HAP-TR-e92"/>
                                     <constraint firstItem="fTi-uZ-Q46" firstAttribute="top" secondItem="7Lg-7A-Yrm" secondAttribute="bottom" constant="3" id="HNl-im-TdU"/>
@@ -657,7 +658,6 @@
                                     <constraint firstItem="Ae9-Dn-ggD" firstAttribute="top" secondItem="D1H-c7-OyU" secondAttribute="bottom" constant="15" id="Mxv-4w-JzD"/>
                                     <constraint firstItem="1p1-68-45A" firstAttribute="top" secondItem="MSc-jn-j5L" secondAttribute="top" constant="5" id="OWg-eb-uKn"/>
                                     <constraint firstItem="b5p-kX-9yX" firstAttribute="top" secondItem="1p1-68-45A" secondAttribute="bottom" constant="4" id="PCt-vP-ybg"/>
-                                    <constraint firstItem="mzJ-kx-UD0" firstAttribute="leading" secondItem="Mgz-Hs-Chm" secondAttribute="trailing" constant="35" id="R6d-o7-sEm"/>
                                     <constraint firstItem="Mgz-Hs-Chm" firstAttribute="top" secondItem="1p1-68-45A" secondAttribute="bottom" constant="4" id="XSv-03-E4U"/>
                                     <constraint firstItem="D1H-c7-OyU" firstAttribute="top" secondItem="MSc-jn-j5L" secondAttribute="top" constant="3" id="ZKY-m3-o8m"/>
                                     <constraint firstItem="i9J-Aa-eR3" firstAttribute="top" secondItem="7Lg-7A-Yrm" secondAttribute="bottom" constant="8" id="aac-Ee-G9l"/>
