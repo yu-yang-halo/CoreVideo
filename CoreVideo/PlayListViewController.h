@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CVModuleProtocol.h"
 #import <WebKit/WebKit.h>
-@interface PlayListViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate>
+@interface PlayListViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,CVModuleProtocol>
 -(void)reloadPlayListData;
 @end

@@ -43,6 +43,9 @@ static int RATE_VIDEO_LENGTH=4;
 @property (weak) IBOutlet NSButton *captureButton;
 @property(nonatomic,assign) BOOL isAddVideoFile;
 
+@property (weak) IBOutlet NSButton *voiceBtn;
+- (IBAction)clickVoiceBtn:(id)sender;
+
 - (IBAction)playOrPause:(id)sender;
 - (IBAction)capture:(id)sender;
 - (IBAction)lookPicture:(id)sender;
@@ -72,6 +75,9 @@ static int RATE_VIDEO_LENGTH=4;
     [self.controlView setWantsLayer:YES];
     [self.controlView.layer setCornerRadius:2];
     [self.controlView.layer setBackgroundColor:[[AppColorManager appBackgroundColor] CGColor]];
+    
+    self.voiceBtn.tag=1;
+    
     
     
 }
@@ -186,9 +192,25 @@ static int RATE_VIDEO_LENGTH=4;
             
             weakSelf.timeSlider.doubleValue = CMTimeGetSeconds(time);
             weakSelf.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:CMTimeGetSeconds(time)];
+            
+            
+            if(CMTimeGetSeconds(playerItem.asset.duration)==CMTimeGetSeconds(time)){
+               
+                [weakSelf.videoEndDelegate videoEnd];
+            }
+            
+            
+            
         }]];
         
         self.volumSlider.floatValue=self.player.volume;
+        
+        if(self.player.volume>0){
+            [self.voiceBtn setImage:[NSImage imageNamed:@"speaker_on"]];
+        }else{
+            [self.voiceBtn setImage:[NSImage imageNamed:@"speaker_off"]];
+        }
+        
         [_player play];
 
         
@@ -216,6 +238,28 @@ static int RATE_VIDEO_LENGTH=4;
 }
 
 
+
+- (IBAction)clickVoiceBtn:(id)sender {
+    
+    NSButton *mVoiceBtn=(NSButton *)sender;
+    
+    
+    if(mVoiceBtn.tag==1){
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:self.volume] forKey:@"volume"];
+        
+        
+        [mVoiceBtn setImage:[NSImage imageNamed:@"speaker_off"]];
+        [self setVolume:0];
+        [mVoiceBtn setTag:0];
+        
+    }else{
+        NSNumber *vNumValue=[[NSUserDefaults standardUserDefaults] objectForKey:@"volume"];
+        [mVoiceBtn setImage:[NSImage imageNamed:@"speaker_on"]];
+        [self setVolume:[vNumValue floatValue]];
+        [mVoiceBtn setTag:1];
+    }
+    
+}
 
 - (IBAction)playOrPause:(id)sender {
     i=0;
@@ -379,10 +423,13 @@ static int j=0;
     return CMTimeGetSeconds(self.player.currentTime);
 }
 
+
+
 - (void)setCurrentTime:(double)time
 {
     [self.player seekToTime:CMTimeMakeWithSeconds(time, 1) toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
      self.currentTimeField.stringValue=[TimeFormatUtils stringFromSeconds:time];
+    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

@@ -73,11 +73,32 @@
 		        	 var polyline = new BMap.Polyline(bptArrs, {strokeColor:"#0091FF", strokeWeight:4, strokeOpacity:0.9}); 
 		             map.addOverlay(polyline); 
 		             
-		             var distance=BMapLib.GeoUtils.getPolylineDistance(bptArrs);
+                     
+                    
+		             //var distance=BMapLib.GeoUtils.getPolylineDistance(bptArrs);
+                     var distance=caculateDistanceFunc(bptArrs);
+                     
 		             cocoa_getDistance(distance);
 		        }  
 		                                        
 		    }
+    function caculateDistanceFunc(bptArrs){
+        var length=0;
+        if(bptArrs.length>60){
+            length=BMapLib.GeoUtils.getDistance(bptArrs[0], bptArrs[bptArrs.length/4]);
+
+
+           length=length+BMapLib.GeoUtils.getDistance(bptArrs[bptArrs.length/4], bptArrs[bptArrs.length/2]);
+           length=length+BMapLib.GeoUtils.getDistance(bptArrs[bptArrs.length/2], bptArrs[bptArrs.length*3/4]);
+           length=length+BMapLib.GeoUtils.getDistance(bptArrs[bptArrs.length*3/4], bptArrs[bptArrs.length-1]);
+ 
+
+
+        }else{
+            length=BMapLib.GeoUtils.getPolylineDistance(bptArrs);
+        }
+        return length;
+    }
 		    function updateMarkerPosition(position){
                 var bdPoint=new BMap.Point(position[0],position[1]);
 		        marker.setPosition(bdPoint);

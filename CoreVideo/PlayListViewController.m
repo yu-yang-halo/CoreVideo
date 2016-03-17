@@ -123,6 +123,7 @@
     
 }
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
+   
     if(_playlist!=nil){
         NSString *abbrev=[NSString stringWithFormat:@"%ld:%@",row,[self abbreviationFile:[[_playlist objectAtIndex:row] objectForKey:keyPATH]]];
         
@@ -133,7 +134,7 @@
             selectIndex=row;
         
         }
-        
+         //NSLog(@"*****************row %ld  selectIndex %ld",row,selectIndex);
         return [abbrev stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }else{
         return @"";
@@ -150,18 +151,26 @@
   
     
     selectIndex=proposedSelectionIndexes.firstIndex;
-    if(selectIndex<[_playlist count]){
-         [self playCurrentItem:[[_playlist objectAtIndex:selectIndex] objectForKey:keyPATH]];
-        
-        AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
-        [delegate activeCurrentPlayIndex:selectIndex];
-    }
     
+    [self selectIndexPlay:selectIndex];
     
-    
-    [self reloadPlayListData];
     return proposedSelectionIndexes;
 }
+
+-(void)selectIndexPlay:(NSInteger)index{
+    if(index<[_playlist count]){
+        [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
+        [self playCurrentItem:[[_playlist objectAtIndex:index] objectForKey:keyPATH]];
+        
+        AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+        [delegate activeCurrentPlayIndex:index];
+    }else{
+        selectIndex=-1;
+    }
+    
+    [self reloadPlayListData];
+}
+
 - (void)tableView:(NSTableView *)tableView didClickTableColumn:(NSTableColumn *)tableColumn{
     NSLog(@"%@",tableColumn);
 }
@@ -191,6 +200,12 @@
     
     [button setAttributedTitle:attributedString];
   
+}
+-(void)videoEnd{
+     NSLog(@"video over...");
+    
+     [self selectIndexPlay:(++selectIndex)];
+    
 }
 
 @end

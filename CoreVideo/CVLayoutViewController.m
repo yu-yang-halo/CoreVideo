@@ -83,18 +83,22 @@
     
     gpsVC=[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"gpsVC"];
     
+    playlistVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"playlistVC"];
+    
     
     
     
     
     
     videoVC    =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"videoVC"];
+    
     videoVC.zoomInDelegate=self;
     videoVC.gpsDelegate=webVC;
     videoVC.speedDelegate=displayVC;
     videoVC.gpsInfoDelegate=gpsVC;
+    videoVC.videoEndDelegate=playlistVC;
     
-    playlistVC =[[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"playlistVC"];
+    
     
     //leftRect0:x:0.000000 y:0.000000 w:1013.000000 h:422.000000 leftRect1:x:0.000000 y:0.000000 w:1013.000000 h:328.000000 rightRect0:x:0.000000 y:0.000000 w:266.000000 h:423.000000 rightRect1:x:0.000000 y:0.000000 w:266.000000 h:327.000000
     

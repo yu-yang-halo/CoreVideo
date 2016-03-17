@@ -27,5 +27,8 @@
 #pragma mark 获取总距离
 -(void)totalDistance:(float)distance;
 
+#pragma mark 视频结束
+-(void)videoEnd;
+
 
 @end

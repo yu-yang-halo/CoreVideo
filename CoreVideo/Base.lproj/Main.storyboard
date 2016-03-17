@@ -518,15 +518,6 @@
                                             <binding destination="47X-5P-zVC" name="value" keyPath="self.volume" id="3LV-CL-nAW"/>
                                         </connections>
                                     </slider>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lnO-zm-yYl">
-                                        <rect key="frame" x="20" y="21" width="36" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="36" id="Vzo-iY-AgS"/>
-                                            <constraint firstAttribute="height" constant="20" id="sJD-Ij-A3J"/>
-                                        </constraints>
-                                        <animations/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="speaker_on" id="tMr-d4-mnd"/>
-                                    </imageView>
                                     <button toolTip="快退" translatesAutoresizingMaskIntoConstraints="NO" id="b5p-kX-9yX">
                                         <rect key="frame" x="172" y="12" width="39" height="39"/>
                                         <constraints>
@@ -644,6 +635,23 @@
                                             <action selector="zoomInOut:" target="47X-5P-zVC" id="ICK-7n-xfR"/>
                                         </connections>
                                     </button>
+                                    <button toolTip="快退" translatesAutoresizingMaskIntoConstraints="NO" id="HFj-XD-jPT">
+                                        <rect key="frame" x="23" y="17" width="27" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="27" id="KMr-pr-522"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="27" id="TKg-7k-ggm"/>
+                                            <constraint firstAttribute="height" constant="27" id="Upp-5p-8MR"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="oUK-ig-qPb"/>
+                                        </constraints>
+                                        <animations/>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="speaker_on" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="nMT-6Q-VGv">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="10"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="clickVoiceBtn:" target="47X-5P-zVC" id="SYO-CE-Bns"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="uF3-A7-9YV" firstAttribute="leading" secondItem="mzJ-kx-UD0" secondAttribute="trailing" constant="10" id="0Ya-o2-WAn"/>
@@ -653,20 +661,20 @@
                                     <constraint firstItem="7Lg-7A-Yrm" firstAttribute="top" secondItem="MSc-jn-j5L" secondAttribute="top" constant="3" id="HAP-TR-e92"/>
                                     <constraint firstItem="fTi-uZ-Q46" firstAttribute="top" secondItem="7Lg-7A-Yrm" secondAttribute="bottom" constant="3" id="HNl-im-TdU"/>
                                     <constraint firstItem="fTi-uZ-Q46" firstAttribute="leading" secondItem="uF3-A7-9YV" secondAttribute="trailing" constant="10" id="I3c-ny-sZ3"/>
-                                    <constraint firstItem="lnO-zm-yYl" firstAttribute="top" secondItem="D1H-c7-OyU" secondAttribute="bottom" constant="13" id="I7L-PQ-AJz"/>
-                                    <constraint firstItem="Ae9-Dn-ggD" firstAttribute="leading" secondItem="lnO-zm-yYl" secondAttribute="trailing" constant="2" id="KGf-FY-Il7"/>
                                     <constraint firstItem="Ae9-Dn-ggD" firstAttribute="top" secondItem="D1H-c7-OyU" secondAttribute="bottom" constant="15" id="Mxv-4w-JzD"/>
                                     <constraint firstItem="1p1-68-45A" firstAttribute="top" secondItem="MSc-jn-j5L" secondAttribute="top" constant="5" id="OWg-eb-uKn"/>
                                     <constraint firstItem="b5p-kX-9yX" firstAttribute="top" secondItem="1p1-68-45A" secondAttribute="bottom" constant="4" id="PCt-vP-ybg"/>
                                     <constraint firstItem="Mgz-Hs-Chm" firstAttribute="top" secondItem="1p1-68-45A" secondAttribute="bottom" constant="4" id="XSv-03-E4U"/>
+                                    <constraint firstItem="Ae9-Dn-ggD" firstAttribute="leading" secondItem="HFj-XD-jPT" secondAttribute="trailing" constant="8" id="XwM-BQ-hay"/>
                                     <constraint firstItem="D1H-c7-OyU" firstAttribute="top" secondItem="MSc-jn-j5L" secondAttribute="top" constant="3" id="ZKY-m3-o8m"/>
                                     <constraint firstItem="i9J-Aa-eR3" firstAttribute="top" secondItem="7Lg-7A-Yrm" secondAttribute="bottom" constant="8" id="aac-Ee-G9l"/>
-                                    <constraint firstItem="lnO-zm-yYl" firstAttribute="leading" secondItem="MSc-jn-j5L" secondAttribute="leading" constant="20" id="b4k-Wb-qIe"/>
                                     <constraint firstItem="1p1-68-45A" firstAttribute="leading" secondItem="D1H-c7-OyU" secondAttribute="trailing" constant="6" id="cZC-WC-kwL"/>
+                                    <constraint firstItem="HFj-XD-jPT" firstAttribute="leading" secondItem="MSc-jn-j5L" secondAttribute="leading" constant="23" id="eeE-0F-2hw"/>
                                     <constraint firstItem="uF3-A7-9YV" firstAttribute="top" secondItem="1p1-68-45A" secondAttribute="bottom" constant="3" id="et6-qD-PN0"/>
                                     <constraint firstItem="7Lg-7A-Yrm" firstAttribute="leading" secondItem="1p1-68-45A" secondAttribute="trailing" constant="6" id="jbL-2E-qbW"/>
                                     <constraint firstItem="tps-tk-M0x" firstAttribute="top" secondItem="1p1-68-45A" secondAttribute="bottom" id="l9T-Vt-hZ5"/>
                                     <constraint firstAttribute="trailing" secondItem="7Lg-7A-Yrm" secondAttribute="trailing" constant="21" id="lU9-2D-d2B"/>
+                                    <constraint firstItem="HFj-XD-jPT" firstAttribute="top" secondItem="D1H-c7-OyU" secondAttribute="bottom" constant="10" id="lyn-jd-MXc"/>
                                     <constraint firstItem="mzJ-kx-UD0" firstAttribute="top" secondItem="1p1-68-45A" secondAttribute="bottom" constant="3" id="q0r-dc-Hlf"/>
                                     <constraint firstItem="Mgz-Hs-Chm" firstAttribute="leading" secondItem="tps-tk-M0x" secondAttribute="trailing" constant="3" id="r7D-8o-fcU"/>
                                     <constraint firstItem="tps-tk-M0x" firstAttribute="leading" secondItem="b5p-kX-9yX" secondAttribute="trailing" constant="3" id="upP-Bo-5Bv"/>
@@ -700,6 +708,7 @@
                         <outlet property="playButton" destination="tps-tk-M0x" id="X5U-13-vay"/>
                         <outlet property="timeSlider" destination="1p1-68-45A" id="EBA-TS-AAm"/>
                         <outlet property="totalTimeField" destination="7Lg-7A-Yrm" id="Gfb-Yz-fpk"/>
+                        <outlet property="voiceBtn" destination="HFj-XD-jPT" id="rSU-QM-cLh"/>
                         <outlet property="volumSlider" destination="Ae9-Dn-ggD" id="LQk-NR-nbR"/>
                     </connections>
                 </viewController>

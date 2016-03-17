@@ -19,6 +19,8 @@
 @property(nonatomic,weak) id<CVModuleProtocol> gpsDelegate;
 @property(nonatomic,weak) id<CVModuleProtocol> speedDelegate;
 @property(nonatomic,weak) id<CVModuleProtocol> gpsInfoDelegate;
+@property(nonatomic,weak) id<CVModuleProtocol> videoEndDelegate;
+
 -(void)initAssetData:(NSURL *)url;
 -(void)close;
 
