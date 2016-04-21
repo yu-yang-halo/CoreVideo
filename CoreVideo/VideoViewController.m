@@ -247,10 +247,7 @@ static int RATE_VIDEO_LENGTH=4;
     if(mVoiceBtn.tag==1){
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:self.volume] forKey:@"volume"];
         
-        
-        [mVoiceBtn setImage:[NSImage imageNamed:@"speaker_off"]];
         [self setVolume:0];
-        [mVoiceBtn setTag:0];
         
     }else{
         NSNumber *vNumValue=[[NSUserDefaults standardUserDefaults] objectForKey:@"volume"];
@@ -353,6 +350,10 @@ static int j=0;
 - (void)setVolume:(float)volume
 {
     self.player.volume = volume;
+    if(volume==0){
+         [_voiceBtn setImage:[NSImage imageNamed:@"speaker_off"]];
+         [_voiceBtn setTag:0];
+    }
 }
 
 

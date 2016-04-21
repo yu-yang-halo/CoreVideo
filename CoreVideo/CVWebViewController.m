@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     /*
-        默认加载百度地图（中国内）
+        默认加载百度地图（中国内）YES--百度地图  NO－Google地图
      */
     currentLocationChina=YES;
     
@@ -249,7 +249,7 @@
         
         
      }];
-   // NSLog(@"*****%@****",[currentVideoGpsDataArr JSONString]);
+    NSLog(@"*****count ::%ld****",[currentVideoGpsDataArr count]);
     [self.webview stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"drawPolyLinePath(%@)",[currentVideoGpsDataArr JSONString]]];
 }
 

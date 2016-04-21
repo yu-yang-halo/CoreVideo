@@ -84,15 +84,15 @@
 		    }
     function caculateDistanceFunc(bptArrs){
         var length=0;
-        if(bptArrs.length>60){
-            length=BMapLib.GeoUtils.getDistance(bptArrs[0], bptArrs[bptArrs.length/4]);
-
-
-           length=length+BMapLib.GeoUtils.getDistance(bptArrs[bptArrs.length/4], bptArrs[bptArrs.length/2]);
-           length=length+BMapLib.GeoUtils.getDistance(bptArrs[bptArrs.length/2], bptArrs[bptArrs.length*3/4]);
-           length=length+BMapLib.GeoUtils.getDistance(bptArrs[bptArrs.length*3/4], bptArrs[bptArrs.length-1]);
- 
-
+        var size=bptArrs.length;
+        
+        if(size>=180){
+           length+=BMapLib.GeoUtils.getDistance(bptArrs[0], bptArrs[size/4]);
+           
+           length+=BMapLib.GeoUtils.getDistance(bptArrs[size/4], bptArrs[size/2]);
+           length+=BMapLib.GeoUtils.getDistance(bptArrs[size/2], bptArrs[size*3/4]);
+           length+=BMapLib.GeoUtils.getDistance(bptArrs[size*3/4], bptArrs[size-1]);
+           
 
         }else{
             length=BMapLib.GeoUtils.getPolylineDistance(bptArrs);
