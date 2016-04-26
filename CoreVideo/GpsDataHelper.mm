@@ -52,14 +52,20 @@ const NSString *KEY_IS_IN_CHINA=@"key_is_in_china";
    
     for(iter=vectors.begin();iter!=vectors.end();iter++){
         AssistInfo_t info=*iter;
-        // NSLog(@"lat:%s lgt:%s x:%f y:%f z:%f angle:%f spd:%d",info.gps_lat.data(),info.gps_lgt.data(),info.gsensor_x,info.gsensor_y,info.gsensor_z,info.north_angle,info.spd);
+         NSLog(@"lat:%s lgt:%s x:%f y:%f z:%f angle:%f spd:%d",info.gps_lat.data(),info.gps_lgt.data(),info.gsensor_x,info.gsensor_y,info.gsensor_z,info.north_angle,info.spd);
         
+        latitude=[[NSString stringWithUTF8String:info.gps_lat.data()] floatValue];
+        longitude=[[NSString stringWithUTF8String:info.gps_lgt.data()] floatValue];
+        
+        if(latitude==0||longitude==0||info.north_angle==0){
+            NSLog(@"continue..............");
+            continue;
+        }
         if(max_speed<info.spd){
             max_speed=info.spd;
         }
         
-        latitude=[[NSString stringWithUTF8String:info.gps_lat.data()] floatValue];
-        longitude=[[NSString stringWithUTF8String:info.gps_lgt.data()] floatValue];
+        
         
         
         NSMutableDictionary *dic=[NSMutableDictionary new];

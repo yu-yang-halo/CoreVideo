@@ -32,7 +32,7 @@
     /*
         默认加载百度地图（中国内）YES--百度地图  NO－Google地图
      */
-    currentLocationChina=YES;
+    currentLocationChina=NO;
     
     self.webview=[[WebView alloc] initWithFrame:self.view.bounds];
     
