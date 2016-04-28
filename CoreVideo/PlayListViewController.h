@@ -11,4 +11,6 @@
 #import <WebKit/WebKit.h>
 @interface PlayListViewController : NSViewController<NSTableViewDataSource,NSTableViewDelegate,CVModuleProtocol>
 -(void)reloadPlayListData;
+
+
 @end

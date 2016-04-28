@@ -30,5 +30,8 @@
 #pragma mark 视频结束
 -(void)videoEnd;
 
+#pragma mark 播放下一个文件
+-(void)playNext:(BOOL)isNext;
+
 
 @end

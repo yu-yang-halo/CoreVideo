@@ -156,7 +156,16 @@
     
     return proposedSelectionIndexes;
 }
-
+-(void)playNext:(BOOL)isNext{
+    if(isNext){
+        selectIndex++;
+    }else{
+        selectIndex--;
+    }
+    
+    [self selectIndexPlay:selectIndex];
+    
+}
 -(void)selectIndexPlay:(NSInteger)index{
     if(index<[_playlist count]){
         [self.tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];

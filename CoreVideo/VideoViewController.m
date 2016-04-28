@@ -57,6 +57,10 @@ static int RATE_VIDEO_LENGTH=4;
 
 - (IBAction)zoomInOut:(id)sender;
 
+- (IBAction)nextFile:(id)sender;
+
+- (IBAction)lastFile:(id)sender;
+
 @end
 
 @implementation VideoViewController
@@ -353,12 +357,23 @@ static int j=0;
     if(volume==0){
          [_voiceBtn setImage:[NSImage imageNamed:@"speaker_off"]];
          [_voiceBtn setTag:0];
+    }else{
+        [_voiceBtn setImage:[NSImage imageNamed:@"speaker_on"]];
+        [_voiceBtn setTag:1];
     }
 }
 
 
 - (IBAction)zoomInOut:(NSButton *)sender {
     zoomState=[self.zoomInDelegate zoomInVideoPlayWindow:zoomState];
+}
+
+- (IBAction)nextFile:(id)sender {
+    [_videoEndDelegate playNext:YES];
+}
+
+- (IBAction)lastFile:(id)sender {
+    [_videoEndDelegate playNext:NO];
 }
 - (void)close
 {
