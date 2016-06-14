@@ -104,7 +104,8 @@
         NSNumber *gsensor_x=[obj objectForKey:@"gsensor_x"];
         NSNumber *gsensor_y=[obj objectForKey:@"gsensor_y"];
         NSNumber *gsensor_z=[obj objectForKey:@"gsensor_z"];
-        if([gsensor_x floatValue]>2||[gsensor_x floatValue]<-2||[gsensor_y floatValue]>2||[gsensor_y floatValue]<-2||[gsensor_z floatValue]>2||[gsensor_z floatValue]<-2){
+        int range=4;
+        if([gsensor_x floatValue]>range||[gsensor_x floatValue]<-range||[gsensor_y floatValue]>range||[gsensor_y floatValue]<-range||[gsensor_z floatValue]>range||[gsensor_z floatValue]<-range){
             
         }else{
             [currentGsensorDataArr addObject:@[gsensor_x,gsensor_y,gsensor_z]];

@@ -97,6 +97,9 @@
         }else{
             length=BMapLib.GeoUtils.getPolylineDistance(bptArrs);
         }
+        if(length==nan){
+            return 0;
+        }
         return length;
     }
 		    function updateMarkerPosition(position){

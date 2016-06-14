@@ -389,7 +389,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
-				ORGANIZATIONNAME = "cn.lztech  合肥联正电子科技有限公司";
+				ORGANIZATIONNAME = "yuyang    QQ:623240480";
 				TargetAttributes = {
 					84A85E681BA28E0E00817598 = {
 						CreatedOnToolsVersion = 6.4;
