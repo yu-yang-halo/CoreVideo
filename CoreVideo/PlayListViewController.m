@@ -43,6 +43,8 @@
     [self.tableView.headerView setFrame:NSZeroRect];
     [self.tableView setHeaderView:nil];
     
+  
+    
     
     [self.tableView setFocusRingType:NSFocusRingTypeNone];
     [self.tableView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleRegular];
@@ -215,6 +217,16 @@
     
      [self selectIndexPlay:(++selectIndex)];
     
+}
+- (BOOL)tableView:(NSTableView *)tableView shouldTypeSelectForEvent:(NSEvent *)event withCurrentSearchString:(nullable NSString *)searchString NS_AVAILABLE_MAC(10_5){
+    NSLog(@"play event***** %@",event);
+    return NO;
+}
+-(void)keyDown:(NSEvent *)theEvent{
+    NSLog(@"play list***** %@",theEvent);
+   
+    AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
+    [delegate.videoVC keyDown:theEvent];
 }
 
 @end

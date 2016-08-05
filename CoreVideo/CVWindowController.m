@@ -1,3 +1,4 @@
+
 //
 //  CVWindowController.m
 //  CoreVideo
@@ -65,6 +66,10 @@ static CGFloat  winHeight=760;
 - (void)windowDidExitFullScreen:(NSNotification *)notification{
     NSLog(@"windowDidExitFullScreen");
      [[NSNotificationCenter defaultCenter] postNotificationName:notification_full_screen object:nil];
+}
+
+-(void)keyDown:(NSEvent *)theEvent{
+    NSLog(@"window****** %@",theEvent);
 }
 
 

@@ -268,6 +268,9 @@ static int RATE_VIDEO_LENGTH=4;
     
     NSButton *btn=(NSButton *)sender;
     NSLog(@"state: %ld",btn.state);
+    [self execPlayOrPause];
+}
+-(void)execPlayOrPause{
     if(self.player==nil){
         return;
     }
@@ -279,9 +282,9 @@ static int RATE_VIDEO_LENGTH=4;
         
     }else{
         [self.player pause];
-       
+        
     }
-    
+
 }
 
 
@@ -503,6 +506,12 @@ static int j=0;
 - (IBAction)openFile:(id)sender {
     AppDelegate *delegate=[[NSApplication sharedApplication] delegate];
     [delegate openFile:sender];
+}
+-(void)keyDown:(NSEvent *)theEvent{
+    NSLog(@"video****** %@",theEvent);
+    if([theEvent.characters isEqualToString:@" "]){
+        [self execPlayOrPause];
+    }
 }
 
 @end

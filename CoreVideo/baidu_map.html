@@ -97,7 +97,7 @@
         }else{
             length=BMapLib.GeoUtils.getPolylineDistance(bptArrs);
         }
-        if(length==nan){
+        if(isNaN(length)){
             return 0;
         }
         return length;

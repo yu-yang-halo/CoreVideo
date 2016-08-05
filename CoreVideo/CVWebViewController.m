@@ -159,7 +159,7 @@
     context[@"cocoa_getDistance"]=^(){
         NSArray *args=[JSContext currentArguments];
         JSValue *value=args[0];
-        NSLog(@"当前距离是 : %f" ,value.toDouble);
+        NSLog(@"当前距离是 : %f  %@" ,value.toDouble,value);
         [weakSelf.distanceDelegate totalDistance:value.toDouble];
     };
    
