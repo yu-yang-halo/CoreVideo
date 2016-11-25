@@ -14,6 +14,7 @@
 #import "CVModuleProtocol.h"
 #import "AppColorManager.h"
 #import "GpsViewController.h"
+#import "AppDelegate.h"
 
 @interface CVLayoutViewController ()<CVModuleProtocol>{
     VideoViewController     *videoVC ;
@@ -64,6 +65,8 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowFullScreenChange:) name:notification_full_screen object:nil];
     
+   
+    self.view.translatesAutoresizingMaskIntoConstraints=YES;
     
     [self.view setWantsLayer:YES];
     
@@ -108,8 +111,15 @@
     [self.displayView addSubview:displayVC.view];
     [self.gmapWebView addSubview:webVC.view];
     
+    [self viewConstraintInit:self.videoView destView:videoVC.view];
+    [self viewConstraintInit:self.playListView destView:playlistVC.view];
+    [self viewConstraintInit:self.mapInfoView destView:gpsVC.view];
+    [self viewConstraintInit:self.displayView destView:displayVC.view];
+    [self viewConstraintInit:self.gmapWebView destView:webVC.view];
     
     
+    
+
     //[self updateViewLetfView0:_videoView view1:_displayView rightView0:_mapView view1:_playListView];
     
     [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
@@ -130,10 +140,75 @@
     [_leftSplitView    setDelegate:self];
     [_rightSplitView   setDelegate:self];
     
-    
 
     
 }
+
+-(void)viewConstraintInit:(NSView *)sourceView destView:(NSView *)destView{
+    [sourceView addConstraint:[NSLayoutConstraint
+                                   
+                                   constraintWithItem:destView
+                                   
+                                   attribute:NSLayoutAttributeTop
+                                   
+                                   relatedBy:NSLayoutRelationEqual
+                                   
+                                   toItem:sourceView
+                                   
+                                   attribute:NSLayoutAttributeTop
+                                   
+                                   multiplier:1
+                                   
+                                   constant:0]];
+    [sourceView addConstraint:[NSLayoutConstraint
+                               
+                               constraintWithItem:destView
+                               
+                               attribute:NSLayoutAttributeLeft
+                               
+                               relatedBy:NSLayoutRelationEqual
+                               
+                               toItem:sourceView
+                               
+                               attribute:NSLayoutAttributeLeft
+                               
+                               multiplier:1
+                               
+                               constant:0]];
+    [sourceView addConstraint:[NSLayoutConstraint
+                               
+                               constraintWithItem:destView
+                               
+                               attribute:NSLayoutAttributeBottom
+                               
+                               relatedBy:NSLayoutRelationEqual
+                               
+                               toItem:sourceView
+                               
+                               attribute:NSLayoutAttributeBottom
+                               
+                               multiplier:1
+                               
+                               constant:0]];
+    [sourceView addConstraint:[NSLayoutConstraint
+                               
+                               constraintWithItem:destView
+                               
+                               attribute:NSLayoutAttributeRight
+                               
+                               relatedBy:NSLayoutRelationEqual
+                               
+                               toItem:sourceView
+                               
+                               attribute:NSLayoutAttributeRight
+                               
+                               multiplier:1
+                               
+                               constant:0]];
+    
+
+}
+
 -(NSString *)currentSplitView:(NSSplitView *)splitview{
     if(splitview==_globalSplitView){
         return @"_globalSplitView";
@@ -194,15 +269,16 @@
 
 - (void)splitViewWillResizeSubviews:(NSNotification *)notification{
    // NSLog(@"splitViewWillResizeSubviews %@",notification.userInfo);
+   
     
 }
 - (void)splitViewDidResizeSubviews:(NSNotification *)notification{
    // NSArray *splitViews = [self.globalSplitView subviews];
     
-    NSArray *leftViews  = [self.leftSplitView subviews];
-    NSArray *rightViews = [self.rightSplitView subviews];
+    NSArray *leftViews  = [self.leftSplitView arrangedSubviews];
+    NSArray *rightViews = [self.rightSplitView arrangedSubviews];
     
-    NSView *map_webView=[[_globalSplitView subviews] objectAtIndex:2];
+    NSView *map_webView=[[_globalSplitView arrangedSubviews] objectAtIndex:2];
     
     
     
@@ -212,11 +288,13 @@
     NSView *rightView0=[rightViews objectAtIndex:0];
     NSView *rightView1=[rightViews objectAtIndex:1];
     
+    
+    
    
     [self updateViewLetfView0:leftView0 view1:leftView1 rightView0:rightView0 view1:rightView1 webView:map_webView];
 
 
-    
+   
     
 }
 
@@ -229,7 +307,7 @@
 -(void)updateViewLetfRect0:(NSRect)leftRect0 rect1:(NSRect)leftRect1 rightRect0:(NSRect)rightRect0 rect1:(NSRect)rightRect1 mapRect:(NSRect)mRect{
     
     //NSLog(@"leftRect0:%@ leftRect1:%@ rightRect0:%@ rightRect1:%@",[self nsRectToString:leftRect0],[self nsRectToString:leftRect1],[self nsRectToString:rightRect0],[self nsRectToString:rightRect1]);
-    
+  
     
     [videoVC.view setFrame:leftRect0];
     [displayVC.view setFrame:leftRect1];
@@ -243,7 +321,11 @@
     
     [webVC.webview setFrame:webVC.view.bounds];
     
+    
+
+    
 }
+
 
 -(NSString *)nsRectToString:(NSRect)rect{
     return [NSString stringWithFormat:@"x:%f y:%f w:%f h:%f",rect.origin.x,rect.origin.y,rect.size.width,rect.size.height];
@@ -263,31 +345,40 @@
     
     if(state==0){
         
-        [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
-        [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
-        [[[_globalSplitView subviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,532,760)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,532,760)];
         
-        [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
+        [[[_leftSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
         [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
         
-        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,0,0)];
-        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_rightSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_rightSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        
+        [_rightSplitView setFrame:NSMakeRect(0,0,0,0)];
+        
+        
+        
         mapZoomStateMAX=YES;
         videoZoomStateMAX=NO;
     }else{
-        [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
-        [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,760)];
-        [[[_globalSplitView subviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,266,760)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,760)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,266,760)];
         
-        [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
-        [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
+        [[[_leftSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
+        [[[_leftSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
         
-        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,323)];
-        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,437)];
+        [[[_rightSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,323)];
+        [[[_rightSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,437)];
+        
+
         mapZoomStateMAX=NO;
     }
     
-    
+    [_globalSplitView adjustSubviews];
+    [_leftSplitView   adjustSubviews];
+    [_rightSplitView  adjustSubviews];
     return state==0?1:0;
 }
 -(NSInteger)zoomInVideoPlayWindow:(NSInteger)state{
@@ -299,32 +390,38 @@
     
     if(state==0){
         
-        [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1280,760)];
-        [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
-        [[[_globalSplitView subviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,266,760)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1280,760)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,266,760)];
         
-        [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1280,760)];
-        [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_leftSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1280,760)];
+        [[[_leftSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
         
-        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,0,0)];
-        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_rightSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,0,0)];
+        [[[_rightSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,0,0)];
+        [_rightSplitView setFrame:NSMakeRect(0,0,0,0)];
+        
+
         videoZoomStateMAX=YES;
         mapZoomStateMAX=NO;
         
     }else{
-        [[[_globalSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
-        [[[_globalSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,760)];
-        [[[_globalSplitView subviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,266,760)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,760)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,760)];
+        [[[_globalSplitView arrangedSubviews] objectAtIndex:2] setFrame:NSMakeRect(0,0,266,760)];
         
-        [[[_leftSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
-        [[[_leftSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
+        [[[_leftSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,1014,540)];
+        [[[_leftSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,1014,220)];
         
-        [[[_rightSplitView subviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,323)];
-        [[[_rightSplitView subviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,437)];
+        [[[_rightSplitView arrangedSubviews] objectAtIndex:0] setFrame:NSMakeRect(0,0,266,323)];
+        [[[_rightSplitView arrangedSubviews] objectAtIndex:1] setFrame:NSMakeRect(0,0,266,437)];
         videoZoomStateMAX=NO;
        
     }
     
+    [_globalSplitView adjustSubviews];
+    [_leftSplitView   adjustSubviews];
+    [_rightSplitView  adjustSubviews];
     return state==0?1:0;
 }
 

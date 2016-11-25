@@ -9,7 +9,7 @@
 #import "CVWindowController.h"
 #import "AppDelegate.h"
 const NSString *notification_full_screen=@"window_full_change";
-const float FIX_SIZE=0.92;
+const float FIX_SIZE=0.62;
 @interface CVWindowController ()
 
 @end
@@ -43,7 +43,10 @@ static CGFloat  winHeight=760;
     
     [self.window setContentMaxSize:NSMakeSize(screenW,screenH)];
     [self.window setContentMinSize:NSMakeSize(winWidth,winHeight)];
-    self.window.delegate=self;
+     self.window.delegate=self;
+    
+   
+    
     
    
     
